@@ -3,3 +3,67 @@ body, html {
   background-repeat: no-repeat;
   height: 100%;
 }
+
+header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.summary {
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.steps,
+.water,
+.sleep,
+.activity {
+
+}
+
+.widgets {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+
+}
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+.user-profile {
+
+}
+
+.date-and-time {
+
+}
+
+.app-title {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+}

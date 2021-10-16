@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en" dir=ltr>
   <head>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <!-- let's choose a font for our project -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,32 +13,36 @@
   </head>
   <body>
     <header>
-      <h1>fitlit</h1>
-      <section>
-        <h2>user profile</h2>
-        <!-- user profile section to be added  -->
+      <section class="app-title">
+        <h1>fitlit</h1>
       </section>
-      <article>
-        <h2>date & time</h2>
-        <!-- need to add the date and time to this article -->
-      </article>
+      <nav>
+        <article class="user-profile">
+          <h2>user profile</h2>
+          <!-- user profile section to be added  -->
+        </article>
+        <article class="date-and-time">
+          <h2>date & time</h2>
+          <!-- need to add the date and time to this article -->
+        </article>
+      </nav>
     </header>
-    <aside>
-      <h2>Today's overall activity</h2>
-    </aside>
     <main>
       <!-- do we need a title here? -->
-      <section>
-        <article>
+      <aside class="summary">
+        <h2>Today's overall activity</h2>
+      </aside>
+      <section class="widgets">
+        <article class="steps">
           <h3>Steps</h3>
         </article>
-        <article>
+        <article class="water">
           <h3>Water</h3>
         </article>
-        <article>
+        <article class="sleep">
           <h3>Sleep</h3>
         </article>
-        <article>
+        <article class="activity">
           <h3>Activity</h3>
         </article>
       </section>
@@ -49,10 +53,10 @@
         <!-- </section> -->
     <!-- </aside> -->
     <!-- we need to update these script tags to match our classes (indent?) -->
-    <footer>
+    <!-- <footer>
       <!-- nav could be here for mobile //login?
     copyright: this awesome group! -->
-    </footer>
+    <!-- </footer> --> -->
     <script type="text/javascript" src="player.js"></script>
     <script type="text/javascript" src="games.js"></script>
     <script type="text/javascript" src="main.js"></script>
