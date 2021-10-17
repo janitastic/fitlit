@@ -39,12 +39,13 @@ describe('User Repository', () => {
     })
     userRepo1 = new UserRepository([user1, user2, user3]);
   })
-  it('should be a function', function () {
+  it('should be a function', () => {
     expect(UserRepository).to.be.a('function');
   });
   it('should be able to fetch user data when given an ID', () =>{
-    
     expect(userRepo1.fetchUserData(3)).to.deep.equal(user3);
-
+  })
+  it('should be able to calculate the average daily step goal amongts all users', () => {
+    expect(userRepo1.getAvgStepCount()).to.equal(6666);
   })
 });
