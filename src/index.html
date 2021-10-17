@@ -30,19 +30,20 @@
     <main>
       <!-- do we need a title here? -->
       <aside class="summary">
-        <h2>Today's overall activity</h2>
+        <h2 id="firstName"></h2>
+        <h3>Today's overall activity</h3>
       </aside>
       <section class="widgets">
-        <article class="steps">
+        <article class="steps" id="userSteps">
           <h3>Steps</h3>
         </article>
-        <article class="water">
+        <article class="water" id="userWater">
           <h3>Water</h3>
         </article>
-        <article class="sleep">
+        <article class="sleep" id="userSleep">
           <h3>Sleep</h3>
         </article>
-        <article class="activity">
+        <article class="activity" id="userActivity">
           <h3>Activity</h3>
         </article>
       </section>
@@ -57,8 +58,8 @@
       <!-- nav could be here for mobile //login?
     copyright: this awesome group! -->
     <!-- </footer> --> -->
-    <script type="text/javascript" src="player.js"></script>
-    <script type="text/javascript" src="games.js"></script>
-    <script type="text/javascript" src="main.js"></script>
+    <script type="module" src="scripts.js"></script>
+    <!-- <script type="text/javascript" src="./data/users.js"></script>
+    <script type="text/javascript" src="./data/UserRepository.js"></script> -->
   </body>
 </html>
