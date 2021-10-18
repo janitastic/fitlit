@@ -15,8 +15,8 @@ import activityData from './data/activityData.js';
 import sleepData from './data/sleepData.js';
 import h20Data from './data/h20Data.js';
 
-const user = new User(userData[0]); //error that "User" is not defined
 const userRepository = new UserRepository(userData);
+const currentUser = new User(userRepository.users[10]); // so far this is just for the DOM
 // const sleepData = new Sleep(sleepData);
 // const activityData = new Activity(activityData);
 // const h20Data = new Hydration(h20Data);
@@ -33,7 +33,7 @@ window.addEventListener('load', displayName);
 //helper functions go here
 
 function displayName() {
-  greeting.innerText = `Welcome, ${user.getFirstName()}!`
+  greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`
 }
 console.log(displayName());
 // An example of how you tell webpack to use a CSS file
