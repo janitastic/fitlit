@@ -27,15 +27,15 @@ function displayName() {
 }
 console.log(displayName());
 // An example of how you tell webpack to use a CSS file
-// import './css/styles.css';
+import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png'
+import './images/turing-logo.png'
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
 
-// import users from './data/users.js';
+import users from './data/users.js';
 // import UserRepository from './data/UserRepository.js';
 // import Activity from './Activity';
