@@ -27,15 +27,39 @@ const userSteps = document.querySelector('#userSteps');
 const userWater = document.querySelector('#userWater');
 const userSleep = document.querySelector('#userSleep');
 const userActivity = document.querySelector('#userActivity');
+const userEmail = document.querySelector('#userEmail');
+const userAddress = document.querySelector('#userAddress');
+const userStride = document.querySelector('#userStride');
+const userStepGoal = document.querySelector('#userStepGoal');
 
 //eventListeners go here
-window.addEventListener('load', displayName);
+window.addEventListener('load', displayUserInfoCard);
 //helper functions go here
 
-function displayName() {
+function displayUserInfoCard() {
   greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`
+  displayUserEmail();
+  displayUserAddress();
+  displayUserStride();
+  displayUserDailyStepGoal();
 }
-console.log(displayName());
+
+function displayUserEmail(){
+  userEmail.innerText = `email: ${currentUser.email}` // need query selector
+}
+
+function displayUserAddress(){
+  userAddress.innerText = `address: ${currentUser.address}`
+}
+
+function displayUserStride(){
+  userStride.innerText = `stride length: ${currentUser.strideLength}`
+}
+
+function displayUserDailyStepGoal(){
+  userStepGoal.innerText = `Daily Step Goal: ${currentUser.dailyStepGoal}`
+}
+
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
 
