@@ -22,21 +22,21 @@ const currentUser = new User(userRepository.users[10]); // so far this is just f
 // const h20Data = new Hydration(h20Data);
 
 // querySelectors go here
-const greeting = document.querySelector('#firstName');
-const userSteps = document.querySelector('#userSteps');
-const userWater = document.querySelector('#userWater');
-const userSleep = document.querySelector('#userSleep');
-const userActivity = document.querySelector('#userActivity');
-const userEmail = document.querySelector('#userEmail');
-const userAddress = document.querySelector('#userAddress');
-const userStride = document.querySelector('#userStride');
-const userStepGoal = document.querySelector('#userStepGoal');
+const greeting = document.getElementById('firstName');
+const userSteps = document.getElementById('userSteps');
+const userWater = document.getElementById('userWater');
+const userSleep = document.getElementById('userSleep');
+const userActivity = document.getElementById('userActivity');
+const userEmail = document.getElementById('userEmail');
+const userAddress = document.getElementById('userAddress');
+const userStride = document.getElementById('userStride');
+const userStepGoal = document.getElementById('userStepGoal');
 
 //eventListeners go here
-window.addEventListener('load', displayUserInfoCard);
+window.addEventListener('load', () => {displayUserInfoCard();});
 //helper functions go here
 
-function displayUserInfoCard() {
+const displayUserInfoCard = () => {
   greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`
   displayUserEmail();
   displayUserAddress();
@@ -44,19 +44,19 @@ function displayUserInfoCard() {
   displayUserDailyStepGoal();
 }
 
-function displayUserEmail(){
-  userEmail.innerText = `email: ${currentUser.email}` // need query selector
+const displayUserEmail = () => {
+  userEmail.innerText = `email: ${currentUser.email}`
 }
 
-function displayUserAddress(){
+const displayUserAddress = () => {
   userAddress.innerText = `address: ${currentUser.address}`
 }
 
-function displayUserStride(){
+const displayUserStride = () => {
   userStride.innerText = `stride length: ${currentUser.strideLength}`
 }
 
-function displayUserDailyStepGoal(){
+const displayUserDailyStepGoal = () => {
   userStepGoal.innerText = `Daily Step Goal: ${currentUser.dailyStepGoal}`
 }
 
