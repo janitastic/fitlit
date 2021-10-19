@@ -44,19 +44,19 @@ function displayUserInfoCard() {
   displayUserDailyStepGoal();
 }
 
-function displayUserEmail(){
-  userEmail.innerText = `email: ${currentUser.email}` 
+const displayUserEmail = () => {
+  userEmail.innerText = `email: ${currentUser.email}`
 }
 
-function displayUserAddress(){
+const displayUserAddress = () => {
   userAddress.innerText = `address: ${currentUser.address}`
 }
 
-function displayUserStride(){
+const displayUserStride = () => {
   userStride.innerText = `stride length: ${currentUser.strideLength}`
 }
 
-function displayUserDailyStepGoal(){
+const displayUserDailyStepGoal = () => {
   userStepGoal.innerText = `Daily Step Goal: ${currentUser.dailyStepGoal}`
 }
 
