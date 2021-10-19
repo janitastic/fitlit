@@ -5,18 +5,57 @@
 // Display their first name somewhere prominently on the page to welcome them
 // For a specific user, display how their step goal compares to the average step goal amongst all users (this display should not be hard-coded)
 
+
+
+// import fetchUserData from other JS file
+
 import User from './User';
 import UserRepository from './UserRepository';
 import Sleep from './Sleep';
 import Hydration from './Hydration';
 import Activity from './Activity';
-import userData from './data/users.js';
-import activityData from './data/activityData.js';
-import sleepData from './data/sleepData.js';
-import h20Data from './data/h20Data.js';
+// import userData from './data/users.js';
+// import activityData from './data/activityData.js';
+// import sleepData from './data/sleepData.js';
+// import h20Data from './data/h20Data.js';
+let userData;
+let sleepData;
+let activityData;
+let h20Data;
+let userRepository;
+let currentUser;
+let allUsers;
 
-const userRepository = new UserRepository(userData);
-const currentUser = new User(userRepository.users[10]); // so far this is just for the DOM
+import {
+  fetchUserData,
+  fetchSleepData,
+  fetchActivityData,
+  fetchHydrationData
+} from './apiCalls.js';
+
+const fetchAllData = () => {
+  Promise.all([fetchUserData(), fetchSleepData(), fetchActivityData(), fetchHydrationData()])
+    .then(allUserData => parseData(allUserData))
+}
+
+const parseData = (allUserData) => {
+  console.log(allUserData);
+  userData = allUserData[0].userData;
+  sleepData = allUserData[1].sleepData;
+  activityData = allUserData[2].activityData;
+  h20Data = allUserData[3].hydrationData;
+  allData(userData, sleepData, activityData, h20Data)
+}
+
+const allData = (user, sleep, activity, h20) => {
+  userRepository = new UserRepository(user);
+  currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
+  // userSleep = new Sleep()
+  //instantiate other classes so data is accessible
+  //Repo for each other class?
+  displayUserInfoCard();
+}
+
 // const sleepData = new Sleep(sleepData);
 // const activityData = new Activity(activityData);
 // const h20Data = new Hydration(h20Data);
@@ -31,9 +70,12 @@ const userEmail = document.getElementById('userEmail');
 const userAddress = document.getElementById('userAddress');
 const userStride = document.getElementById('userStride');
 const userStepGoal = document.getElementById('userStepGoal');
+const avgStepGoal = document.getElementById('avgStepGoal');
 
 //eventListeners go here
-window.addEventListener('load', () => {displayUserInfoCard();});
+window.addEventListener('load', () => {
+  fetchAllData();
+});
 //helper functions go here
 
 const displayUserInfoCard = () => {
@@ -42,23 +84,34 @@ const displayUserInfoCard = () => {
   displayUserAddress();
   displayUserStride();
   displayUserDailyStepGoal();
+  displayAvgStepGoal();
 }
 
 const displayUserEmail = () => {
-  userEmail.innerText = `email: ${currentUser.email}`
+  userEmail.innerText = `Email: ${currentUser.email}`
 }
 
 const displayUserAddress = () => {
-  userAddress.innerText = `address: ${currentUser.address}`
+  userAddress.innerText = `Address: ${currentUser.address}`
 }
 
 const displayUserStride = () => {
-  userStride.innerText = `stride length: ${currentUser.strideLength}`
+  userStride.innerText = `Stride Length: ${currentUser.strideLength}`
 }
 
 const displayUserDailyStepGoal = () => {
   userStepGoal.innerText = `Daily Step Goal: ${currentUser.dailyStepGoal}`
+
 }
+
+const displayAvgStepGoal = () => {
+  avgStepGoal.innerText = `Average Community Step Goal: ${userRepository.getAvgStepCount()}`
+}
+
+ const getRandomIndex = (array) => {
+ return Math.floor(Math.random() * array.length)
+ };
+
 
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
