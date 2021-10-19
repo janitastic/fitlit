@@ -22,20 +22,44 @@ const currentUser = new User(userRepository.users[10]); // so far this is just f
 // const h20Data = new Hydration(h20Data);
 
 // querySelectors go here
-const greeting = document.querySelector('#firstName');
-const userSteps = document.querySelector('#userSteps');
-const userWater = document.querySelector('#userWater');
-const userSleep = document.querySelector('#userSleep');
-const userActivity = document.querySelector('#userActivity');
+const greeting = document.getElementById('firstName');
+const userSteps = document.getElementById('userSteps');
+const userWater = document.getElementById('userWater');
+const userSleep = document.getElementById('userSleep');
+const userActivity = document.getElementById('userActivity');
+const userEmail = document.getElementById('userEmail');
+const userAddress = document.getElementById('userAddress');
+const userStride = document.getElementById('userStride');
+const userStepGoal = document.getElementById('userStepGoal');
 
 //eventListeners go here
-window.addEventListener('load', displayName);
+window.addEventListener('load', () => {displayUserInfoCard();});
 //helper functions go here
 
-function displayName() {
+const displayUserInfoCard = () => {
   greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`
+  displayUserEmail();
+  displayUserAddress();
+  displayUserStride();
+  displayUserDailyStepGoal();
 }
-console.log(displayName());
+
+const displayUserEmail = () => {
+  userEmail.innerText = `email: ${currentUser.email}`
+}
+
+const displayUserAddress = () => {
+  userAddress.innerText = `address: ${currentUser.address}`
+}
+
+const displayUserStride = () => {
+  userStride.innerText = `stride length: ${currentUser.strideLength}`
+}
+
+const displayUserDailyStepGoal = () => {
+  userStepGoal.innerText = `Daily Step Goal: ${currentUser.dailyStepGoal}`
+}
+
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
 
