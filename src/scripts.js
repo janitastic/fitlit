@@ -5,15 +5,21 @@
 // Display their first name somewhere prominently on the page to welcome them
 // For a specific user, display how their step goal compares to the average step goal amongst all users (this display should not be hard-coded)
 
+
+console.log(fetchUserData());
+// import fetchUserData from other JS file
+
 import User from './User';
 import UserRepository from './UserRepository';
 import Sleep from './Sleep';
 import Hydration from './Hydration';
 import Activity from './Activity';
-import userData from './data/users.js';
+// import userData from './data/users.js';
 import activityData from './data/activityData.js';
 import sleepData from './data/sleepData.js';
 import h20Data from './data/h20Data.js';
+
+import fetchUserData from './apiCalls.js';
 
 const userRepository = new UserRepository(userData);
 const currentUser = new User(userRepository.users[10]); // so far this is just for the DOM
