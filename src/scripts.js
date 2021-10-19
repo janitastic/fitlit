@@ -15,31 +15,41 @@ import Sleep from './Sleep';
 import Hydration from './Hydration';
 import Activity from './Activity';
 // import userData from './data/users.js';
-import activityData from './data/activityData.js';
-import sleepData from './data/sleepData.js';
-import h20Data from './data/h20Data.js';
+// import activityData from './data/activityData.js';
+// import sleepData from './data/sleepData.js';
+// import h20Data from './data/h20Data.js';
 let userData;
+let sleepData;
+let activityData;
+let h20Data;
 let userRepository;
 let currentUser;
 
-import fetchUserData from './apiCalls.js';
+import {
+  fetchUserData,
+  fetchSleepData,
+  fetchActivityData,
+  fetchHydrationData
+} from './apiCalls.js';
 
 const fetchAllData = () => {
-  Promise.all([fetchUserData(), sleepData(), activityData(), h20Data()])
-    .then(data => parseData(data))
+  Promise.all([fetchUserData(), fetchSleepData(), fetchActivityData(), fetchHydrationData()])
+    .then(allUserData => parseData(allUserData))
 }
 
-const parseData = (data) => {
-  userData = data[0].userData;
-  sleepData = data[1].sleepData;
-  activityData = data[2].activityData;
-  h20Data = data[3].hydrationData;
+const parseData = (allUserData) => {
+  console.log(allUserData);
+  userData = allUserData[0].userData;
+  sleepData = allUserData[1].sleepData;
+  activityData = allUserData[2].activityData;
+  h20Data = allUserData[3].hydrationData;
   allData(userData, sleepData, activityData, h20Data)
 }
 
 const allData = (info, sleep, activity, hydration) => {
-  const userRepository = new UserRepository(info);
-  const currentUser = new User(userRepository.users[10]);
+  userRepository = new UserRepository(info);
+  currentUser = new User(userRepository.users[10]);
+  displayUserInfoCard();
 }
 
 // const sleepData = new Sleep(sleepData);
@@ -58,7 +68,9 @@ const userStride = document.getElementById('userStride');
 const userStepGoal = document.getElementById('userStepGoal');
 
 //eventListeners go here
-window.addEventListener('load', () => {displayUserInfoCard();});
+window.addEventListener('load', () => {
+  fetchAllData();
+});
 //helper functions go here
 
 const displayUserInfoCard = () => {
