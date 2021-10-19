@@ -24,6 +24,7 @@ let activityData;
 let h20Data;
 let userRepository;
 let currentUser;
+let allUsers;
 
 import {
   fetchUserData,
@@ -46,9 +47,12 @@ const parseData = (allUserData) => {
   allData(userData, sleepData, activityData, h20Data)
 }
 
-const allData = (info, sleep, activity, hydration) => {
-  userRepository = new UserRepository(info);
-  currentUser = new User(userRepository.users[10]);
+const allData = (user, sleep, activity, h20) => {
+  userRepository = new UserRepository(user);
+  currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
+  // userSleep = new Sleep()
+  //instantiate other classes so data is accessible
+  //Repo for each other class?
   displayUserInfoCard();
 }
 
@@ -66,6 +70,7 @@ const userEmail = document.getElementById('userEmail');
 const userAddress = document.getElementById('userAddress');
 const userStride = document.getElementById('userStride');
 const userStepGoal = document.getElementById('userStepGoal');
+const avgStepGoal = document.getElementById('avgStepGoal');
 
 //eventListeners go here
 window.addEventListener('load', () => {
@@ -79,23 +84,34 @@ const displayUserInfoCard = () => {
   displayUserAddress();
   displayUserStride();
   displayUserDailyStepGoal();
+  displayAvgStepGoal();
 }
 
 const displayUserEmail = () => {
-  userEmail.innerText = `email: ${currentUser.email}`
+  userEmail.innerText = `Email: ${currentUser.email}`
 }
 
 const displayUserAddress = () => {
-  userAddress.innerText = `address: ${currentUser.address}`
+  userAddress.innerText = `Address: ${currentUser.address}`
 }
 
 const displayUserStride = () => {
-  userStride.innerText = `stride length: ${currentUser.strideLength}`
+  userStride.innerText = `Stride Length: ${currentUser.strideLength}`
 }
 
 const displayUserDailyStepGoal = () => {
   userStepGoal.innerText = `Daily Step Goal: ${currentUser.dailyStepGoal}`
+
 }
+
+const displayAvgStepGoal = () => {
+  avgStepGoal.innerText = `Average Community Step Goal: ${userRepository.getAvgStepCount()}`
+}
+
+ const getRandomIndex = (array) => {
+ return Math.floor(Math.random() * array.length)
+ };
+
 
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
