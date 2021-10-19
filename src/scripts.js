@@ -33,10 +33,10 @@ const userStride = document.getElementById('userStride');
 const userStepGoal = document.getElementById('userStepGoal');
 
 //eventListeners go here
-window.addEventListener('load', displayUserInfoCard);
+window.addEventListener('load', () => {displayUserInfoCard();});
 //helper functions go here
 
-function displayUserInfoCard() {
+const displayUserInfoCard = () => {
   greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`
   displayUserEmail();
   displayUserAddress();
