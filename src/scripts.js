@@ -6,7 +6,7 @@
 // For a specific user, display how their step goal compares to the average step goal amongst all users (this display should not be hard-coded)
 
 
-console.log(fetchUserData());
+
 // import fetchUserData from other JS file
 
 import User from './User';
@@ -18,11 +18,30 @@ import Activity from './Activity';
 import activityData from './data/activityData.js';
 import sleepData from './data/sleepData.js';
 import h20Data from './data/h20Data.js';
+let userData;
+let userRepository;
+let currentUser;
 
 import fetchUserData from './apiCalls.js';
 
-const userRepository = new UserRepository(userData);
-const currentUser = new User(userRepository.users[10]); // so far this is just for the DOM
+const fetchAllData = () => {
+  Promise.all([fetchUserData(), sleepData(), activityData(), h20Data()])
+    .then(data => parseData(data))
+}
+
+const parseData = (data) => {
+  userData = data[0].userData;
+  sleepData = data[1].sleepData;
+  activityData = data[2].activityData;
+  h20Data = data[3].hydrationData;
+  allData(userData, sleepData, activityData, h20Data)
+}
+
+const allData = (info, sleep, activity, hydration) => {
+  const userRepository = new UserRepository(info);
+  const currentUser = new User(userRepository.users[10]);
+}
+
 // const sleepData = new Sleep(sleepData);
 // const activityData = new Activity(activityData);
 // const h20Data = new Hydration(h20Data);
