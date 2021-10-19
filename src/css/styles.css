@@ -66,7 +66,8 @@ h3 {
   padding: 3%;
   margin: 2%;
   width: 50%;
-  box-shadow: 7px 3px 8px 0px #7c7c7c
+  overflow-wrap: break-word;
+  box-shadow: 7px 3px 8px 0px #7c7c7c;
 }
 
 .user-profile {
