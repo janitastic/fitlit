@@ -1,7 +1,16 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  /* background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); */
   background-repeat: no-repeat;
   height: 100%;
+}
+
+.theme-dark {
+  background-color: #0a0a0a;
+  color: #fff;
 }
 
 header {
@@ -13,6 +22,7 @@ header {
 .summary {
   display: flex;
   justify-content: center;
+  background: linear-gradient(222deg, #d83c48, #5622c7);
 }
 
 main {
@@ -30,6 +40,7 @@ main {
 .widgets {
   display: flex;
   flex-direction: column;
+  background-color: #151516;
 }
 
 footer {
@@ -37,7 +48,8 @@ footer {
 }
 
 h1 {
-
+  color: #A1A1A6;
+  font-size: 2em;
 }
 
 h2 {
@@ -45,25 +57,60 @@ h2 {
 }
 
 h3 {
+  text-transform: capitalize;
+}
 
+.card {
+  border-radius: 1em;
+  padding: 3%;
+  margin: 2%;
+  width: 50%;
 }
 
 .user-profile {
-
+  background: linear-gradient(229deg, #d83c48, #673dc2);
 }
 
 .date-and-time {
-
+  background: linear-gradient(45deg, #d83c48, #5622c7);
 }
 
 .app-title {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-items: center;
+  margin: 1% 2%;
 }
 
 nav {
   display: flex;
   justify-content: space-around;
+}
+
+/* Media Queries for Screen Size */
+@media only screen and (max-width: 1068px) {
+  .card {
+    max-width: 50%;
+  }
+}
+
+@media only screen and (max-width: 734px) {
+  .card {
+    min-width: 90%;
+  }
+
+  nav,
+  main {
+    flex-wrap: wrap;
+  }
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .card {
+    min-width: 90%;
+  }
+
+  nav,
+  main {
+    flex-wrap: wrap;
+  }
 }
