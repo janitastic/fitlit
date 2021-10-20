@@ -49,8 +49,10 @@ const parseData = (allUserData) => {
 
 const allData = (user, sleep, activity, h20) => {
   userRepository = new UserRepository(user);
+  // userId = getRandomIndex(userRepository.users)
   currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
   // userSleep = new Sleep()
+  // userh20 = new Hydration(h20)
   //instantiate other classes so data is accessible
   //Repo for each other class?
   displayUserInfoCard();
@@ -71,6 +73,8 @@ const userAddress = document.getElementById('userAddress');
 const userStride = document.getElementById('userStride');
 const userStepGoal = document.getElementById('userStepGoal');
 const avgStepGoal = document.getElementById('avgStepGoal');
+const userh20Data = document.getElementById('userh20Data');
+
 
 //eventListeners go here
 window.addEventListener('load', () => {
@@ -107,6 +111,12 @@ const displayUserDailyStepGoal = () => {
 const displayAvgStepGoal = () => {
   avgStepGoal.innerText = `Average Community Step Goal: ${userRepository.getAvgStepCount()}`
 }
+
+// const displayh20Data = () => {
+//   let waterData = Hydration.geth20Data();
+//   userh20Data.innerText = waterData
+//   console.log(waterData, "Water")
+// }
 
  const getRandomIndex = (array) => {
  return Math.floor(Math.random() * array.length)
