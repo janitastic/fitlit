@@ -7,7 +7,7 @@
 
 
 
-// import fetchUserData from other JS file
+import Chart from 'chart.js/auto';
 
 import User from './User';
 import UserRepository from './UserRepository';
@@ -122,3 +122,42 @@ import './images/turing-logo.png'
 // console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
+
+// charts
+
+
+var ctx = document.getElementById('myChart').getContext('2d');
+
+const labels = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", 'Friday', 'Saturday'];
+const data = {
+  labels: labels,
+  datasets: [{
+    label: 'Daily Water Consumption',
+    data: [64, 30, 36, 72, 24, 50, 20],
+    backgroundColor: ['rgba(54, 162, 235, 0.4)'],
+    borderColor: ['rgb(54, 162, 235)'],
+    borderWidth: 1,
+    order: 1
+  }, {
+    label: "Hydration Goal",
+    data: [64, 64, 64, 64, 64, 64, 64],
+    backgroundColor: ['rgba(255, 255, 255, 0.8)'],
+    order: 1
+  }]
+};
+
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: data,
+  options: {
+    plugins: {
+      legend: false
+    },
+    indexAxis: 'y',
+  scales: {
+    y: {
+      beginAtZero: true,
+      stacked: true
+    }
+  }
+}});
