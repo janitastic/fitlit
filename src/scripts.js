@@ -45,8 +45,9 @@ const allData = (user, sleep, activity, h20Data) => {
   userRepository = new UserRepository(user);
   // userId = getRandomIndex(userRepository.users)
   currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
+  // currentDate = new User(userRepository.users[getRandomIndex(userRepository.users)]);
   // userSleep = new Sleep()
-  userh20 = new Hydration(h20Data);//added this trying to add the avgWaterConsumed
+  userh20 = new Hydration(h20Data);
   //instantiate other classes so data is accessible
   //Repo for each other class?
   displayUserInfoCard();
@@ -68,6 +69,8 @@ const userStride = document.getElementById('userStride');
 const userStepGoal = document.getElementById('userStepGoal');
 const avgStepGoal = document.getElementById('avgStepGoal');
 const userh20Data = document.getElementById('userh20Data');//can remove this after we figure out how to push this data to a graph
+const dailyH20Consumed = document.getElementById('dailyH20Consumed');
+const weeklyWaterConsumed = document.getElementById('weeklyWaterConsumed');
 
 
 //eventListeners go here
@@ -109,7 +112,9 @@ const displayAvgStepGoal = () => {
 //the function below is currently not doing anything
 const displayAvgWaterConsumed = (id) => {
   userh20Data.innerText = userh20.getAvgOuncesPerDay(currentUser.id);
-  console.log('is this working', userh20.getAvgOuncesPerDay(currentUser.id));
+    //we need to figure out how to generate a date for the below argument
+  dailyH20Consumed.innerText = userh20.calculateDailyOunces(currentUser.id,'2019/06/15');
+  weeklyWaterConsumed.innerText = userh20.calculateWeeklyWater(currentUser.id, '2019/06/15');
 }
 
  const getRandomIndex = (array) => {
