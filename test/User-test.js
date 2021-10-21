@@ -44,10 +44,10 @@ describe('User', () => {
     expect(user2.getFirstName()).to.equal('Jarvis')
   })
 
-  it('should be able to calculate total ounces consumed in a specific day', () => {
-    const totalOunces = hydrationInfo.calculateDailyOunces();
-    expect(totalOunces).to.equal(133);
-  })
+  // it('should be able to calculate total ounces consumed in a specific day', () => {
+  //   const totalOunces = hydrationInfo.calculateDailyOunces();
+  //   expect(totalOunces).to.equal(133);
+  // })
 
   it('should return how much water the user consumed on average', () => {
     expect(hydrationInfo.getAvgOuncesPerDay(1)).to.equal(44);
