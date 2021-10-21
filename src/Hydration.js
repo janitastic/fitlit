@@ -13,13 +13,26 @@ class Hydration {
     });
 
     let totalOuncesConsumed = userWaterConsumption.reduce((totalOunces, waterInfo) => {
-      return totalOunces + waterInfo.numOunces;
+      return totalOunces += waterInfo.numOunces;
     }, 0);
 
     let avgWaterConsumed = Math.round(totalOuncesConsumed / userWaterConsumption.length);
 
-    console.log(`this is our average >>>> ${avgWaterConsumed}`);
+    console.log(`avg ounces consumed by user >>>> ${avgWaterConsumed}`);
     return avgWaterConsumed;
+  }
+
+  calculateDailyOunces(id) {
+    let userWaterConsumption = this.h20Data.filter(waterInfo => {
+      return waterInfo.userID === id;
+    });
+
+    let totalOuncesConsumed = userWaterConsumption.reduce((totalOunces, waterInfo) => {
+      return totalOunces += waterInfo.numOunces;
+    }, 0);
+
+    console.log(`daily ounces >>>> ${totalOuncesConsumed}`)
+    return totalOuncesConsumed;
   }
 }
 
