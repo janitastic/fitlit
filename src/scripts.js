@@ -1,12 +1,5 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
-
-//Create an info card on the dashboard with all of user’s info on the page
-// Display their first name somewhere prominently on the page to welcome them
-// For a specific user, display how their step goal compares to the average step goal amongst all users (this display should not be hard-coded)
-
-
-
 // import fetchUserData from other JS file
 
 import User from './User';
@@ -25,6 +18,7 @@ let h20Data;
 let userRepository;
 let currentUser;
 let allUsers;
+let userh20;//added this here trying to populate the avgWaterConsumed
 
 import {
   fetchUserData,
@@ -36,7 +30,7 @@ import {
 const fetchAllData = () => {
   Promise.all([fetchUserData(), fetchSleepData(), fetchActivityData(), fetchHydrationData()])
     .then(allUserData => parseData(allUserData))
-}
+};
 
 const parseData = (allUserData) => {
   console.log(allUserData);
@@ -45,16 +39,19 @@ const parseData = (allUserData) => {
   activityData = allUserData[2].activityData;
   h20Data = allUserData[3].hydrationData;
   allData(userData, sleepData, activityData, h20Data)
-}
+};
 
-const allData = (user, sleep, activity, h20) => {
+const allData = (user, sleep, activity, h20Data) => {
   userRepository = new UserRepository(user);
+  // userId = getRandomIndex(userRepository.users)
   currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
+  // currentDate = new User(userRepository.users[getRandomIndex(userRepository.users)]);
   // userSleep = new Sleep()
+  userh20 = new Hydration(h20Data);
   //instantiate other classes so data is accessible
   //Repo for each other class?
   displayUserInfoCard();
-}
+};
 
 // const sleepData = new Sleep(sleepData);
 // const activityData = new Activity(activityData);
@@ -71,6 +68,10 @@ const userAddress = document.getElementById('userAddress');
 const userStride = document.getElementById('userStride');
 const userStepGoal = document.getElementById('userStepGoal');
 const avgStepGoal = document.getElementById('avgStepGoal');
+const userh20Data = document.getElementById('userh20Data');//can remove this after we figure out how to push this data to a graph
+const dailyH20Consumed = document.getElementById('dailyH20Consumed');
+const weeklyWaterConsumed = document.getElementById('weeklyWaterConsumed');
+
 
 //eventListeners go here
 window.addEventListener('load', () => {
@@ -79,33 +80,41 @@ window.addEventListener('load', () => {
 //helper functions go here
 
 const displayUserInfoCard = () => {
-  greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`
+  greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`;
   displayUserEmail();
   displayUserAddress();
   displayUserStride();
   displayUserDailyStepGoal();
   displayAvgStepGoal();
-}
+  displayAvgWaterConsumed();
+};
 
 const displayUserEmail = () => {
-  userEmail.innerText = `Email: ${currentUser.email}`
-}
+  userEmail.innerText = `Email: ${currentUser.email}`;
+};
 
 const displayUserAddress = () => {
-  userAddress.innerText = `Address: ${currentUser.address}`
-}
+  userAddress.innerText = `Address: ${currentUser.address}`;
+};
 
 const displayUserStride = () => {
-  userStride.innerText = `Stride Length: ${currentUser.strideLength}`
-}
+  userStride.innerText = `Stride Length: ${currentUser.strideLength}`;
+};
 
 const displayUserDailyStepGoal = () => {
-  userStepGoal.innerText = `Daily Step Goal: ${currentUser.dailyStepGoal}`
-
-}
+  userStepGoal.innerText = `Daily Step Goal: ${currentUser.dailyStepGoal}`;
+};
 
 const displayAvgStepGoal = () => {
   avgStepGoal.innerText = `Average Community Step Goal: ${userRepository.getAvgStepCount()}`
+}
+
+//the function below is currently not doing anything
+const displayAvgWaterConsumed = (id) => {
+  userh20Data.innerText = userh20.getAvgOuncesPerDay(currentUser.id);
+    //we need to figure out how to generate a date for the below argument
+  dailyH20Consumed.innerText = userh20.calculateDailyOunces(currentUser.id,'2019/06/15');
+  weeklyWaterConsumed.innerText = userh20.calculateWeeklyWater(currentUser.id, '2019/06/15');
 }
 
  const getRandomIndex = (array) => {
@@ -117,7 +126,8 @@ const displayAvgStepGoal = () => {
 import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+import './images/turing-logo.png';//we can probably take this out
+
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 
