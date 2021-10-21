@@ -41,12 +41,12 @@ const parseData = (allUserData) => {
   allData(userData, sleepData, activityData, h20Data)
 };
 
-const allData = (user, sleep, activity, h20) => {
+const allData = (user, sleep, activity, h20Data) => {
   userRepository = new UserRepository(user);
   // userId = getRandomIndex(userRepository.users)
   currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
   // userSleep = new Sleep()
-  userh20 = new Hydration(h20);//added this trying to add the avgWaterConsumed
+  userh20 = new Hydration(h20Data);//added this trying to add the avgWaterConsumed
   //instantiate other classes so data is accessible
   //Repo for each other class?
   displayUserInfoCard();
@@ -83,6 +83,7 @@ const displayUserInfoCard = () => {
   displayUserStride();
   displayUserDailyStepGoal();
   displayAvgStepGoal();
+  displayAvgWaterConsumed();
 };
 
 const displayUserEmail = () => {
@@ -106,9 +107,9 @@ const displayAvgStepGoal = () => {
 }
 
 //the function below is currently not doing anything
-const displayAvgWaterConsumed = () => {
-  userh20Data.innerText = userh20.avgWaterConsumed;
-  console.log('is this working', userh20.avgWaterConsumed);
+const displayAvgWaterConsumed = (id) => {
+  userh20Data.innerText = userh20.getAvgOuncesPerDay(currentUser.id);
+  console.log('is this working', userh20.getAvgOuncesPerDay(currentUser.id));
 }
 
  const getRandomIndex = (array) => {
