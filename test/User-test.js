@@ -8,7 +8,7 @@ describe('User', () => {
   let user1;
   let user2;
   let user3;
-  let hydration;
+  let hydrationInfo;
 
   beforeEach(() => {
     user1 = new User({
@@ -31,13 +31,13 @@ describe('User', () => {
       "friends": [9, 18, 24, 19]
     })
 
-    let h20Data = [
+    let hydrationData = [
       {userID: 1, date: '2019/06/15', numOunces: 37},
       {userID: 1, date: '2019/06/16', numOunces: 42},
       {userID: 1, date: '2019/06/17', numOunces: 54}
     ];
 
-    hydration = new Hydration(h20Data);
+    hydrationInfo = new Hydration(hydrationData);
   })
 
   it('should be able to return a users first name', () => {
@@ -45,6 +45,6 @@ describe('User', () => {
   })
 
   it('should return how much water the user consumed on average', () => {
-    expect(hydration.getAvgOuncesPerDay(1)).to.equal(44);
+    expect(hydrationInfo.getAvgOuncesPerDay(1)).to.equal(44);
   })
 })
