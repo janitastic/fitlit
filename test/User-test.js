@@ -31,7 +31,11 @@ describe('User', () => {
       "friends": [9, 18, 24, 19]
     })
 
-    let h20Data = [{userID: 1, date: '2019/06/15', numOunces: 37}, {userID: 1, date: '2019/06/16', numOunces: 42}, {userID: 1, date: '2019/06/17', numOunces: 54}];
+    let h20Data = [
+      {userID: 1, date: '2019/06/15', numOunces: 37},
+      {userID: 1, date: '2019/06/16', numOunces: 42},
+      {userID: 1, date: '2019/06/17', numOunces: 54}
+    ];
 
     hydration = new Hydration(h20Data);
   })
