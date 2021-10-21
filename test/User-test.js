@@ -2,11 +2,14 @@ import {
   expect
 } from 'chai';
 import User from '../src/User';
+import Hydration from '../src/Hydration';
 
 describe('User', () => {
   let user1;
   let user2;
   let user3;
+  let hydration;
+
   beforeEach(() => {
     user1 = new User({
       "id": 1,
@@ -17,6 +20,7 @@ describe('User', () => {
       "dailyStepGoal": 10000,
       "friends": [16, 4, 8]
     })
+
     user2 = new User({
       "id": 2,
       "name": "Jarvis Considine",
@@ -26,8 +30,17 @@ describe('User', () => {
       "dailyStepGoal": 5000,
       "friends": [9, 18, 24, 19]
     })
+
+    let h20Data = [{userID: 1, date: '2019/06/15', numOunces: 37}, {userID: 1, date: '2019/06/16', numOunces: 42}, {userID: 1, date: '2019/06/17', numOunces: 54}];
+
+    hydration = new Hydration(h20Data);
   })
+
   it('should be able to return a users first name', () => {
     expect(user2.getFirstName()).to.equal('Jarvis')
+  })
+
+  it('should return how much water the user consumed on average', () => {
+    expect(hydration.getAvgOuncesPerDay(1)).to.equal(44);
   })
 })
