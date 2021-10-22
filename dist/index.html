@@ -17,36 +17,51 @@
           <p id="userStride"></p>
           <p id="userStepGoal"></p>
           <p id="avgStepGoal"></p>
-
         </article>
-        <article class="card date-and-time">
-          <h3>date & time</h3>
-          <!-- need to add the date and time to this article -->
-        </article>
+        <aside class="card summary">
+          <h3>Today's overall activity</h3>
+          <div>
+            <!-- <p class="chart-title">Water</p> -->
+            <p id ="dailyH20Consumed"></p>
+            <canvas id="dailyWaterChart" width="400" height="100"></canvas>
+          </div>
+        </aside>
       </nav>
     </header>
     <main>
       <!-- do we need a title here? -->
-      <aside class="card summary">
-        <h3>Today's overall activity</h3>
-        <canvas id="dailyWaterChart" width="400" height="100"></canvas>
-      </aside>
-      <section class="card widgets">
+      <section class="card average-widgets">
+        <h3>Average Activity</h3>
+        <article class="steps" id="avgUserSteps">
+          <h4>Steps</h4>
+        </article>
+        <article class="water" id="avgUserWater">
+          <h4>Water</h4>
+          <canvas id="avgUserWaterChart" width="200" height="30";></canvas>
+          <!-- <p id ="userh20Data"></p>
+          <p id ="weeklyWaterConsumed"></p> -->
+        </article>
+        <article class="sleep" id="avgUserSleep">
+          <h4>Sleep</h4>
+        </article>
+        <article class="activity" id="avgUserActivity">
+          <h4>Activity</h4>
+        </article>
+      </section>
+      <section class="card weekly-widgets">
+        <h3>Weekly Activity</h3>
         <article class="steps" id="userSteps">
-          <h3>Steps</h3>
+          <h4>Steps</h4>
         </article>
         <article class="water" id="userWater">
-          <h3>Water</h3>
-          <canvas id="myChart" width="200" height="200"></canvas>
-          <p id ="userh20Data"></p>
-          <p id ="dailyH20Consumed"></p>
-          <p id ="weeklyWaterConsumed"></p>
+          <h4>Water</h4>
+          <canvas id="weeklyWaterChart" width="200" height="200"></canvas>
         </article>
         <article class="sleep" id="userSleep">
-          <h3>Sleep</h3>
+          <h4>Sleep</h4>
         </article>
         <article class="activity" id="userActivity">
-          <h3>Activity</h3>
+          <h4>Activity</h4>
         </article>
       </section>
     </main>

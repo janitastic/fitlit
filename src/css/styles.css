@@ -22,8 +22,8 @@ header {
 
 .summary {
   display: flex;
-  justify-content: center;
-  background: linear-gradient(222deg, #d83c48, #5622c7);
+  flex-direction: column;
+  background-color: #151516;
 }
 
 main {
@@ -38,14 +38,16 @@ main {
 
 }
 
-.widgets {
+.average-widgets {
   display: flex;
   flex-direction: column;
-  background-color: #151516;
+  background: linear-gradient(227deg, #d83c48, #5622c7);
 }
 
-footer {
-
+.weekly-widgets {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(132deg, #d83c48, #5622c7);
 }
 
 h1 {
@@ -59,6 +61,12 @@ h2 {
 
 h3 {
   text-transform: capitalize;
+  margin-bottom: 0;
+  text-shadow: 2px 2px 5px black;
+}
+
+h4 {
+  margin-left: 2%;
 }
 
 .card {
@@ -71,7 +79,7 @@ h3 {
 }
 
 .user-profile {
-  background: linear-gradient(229deg, #d83c48, #673dc2);
+  background: linear-gradient(315deg, #d83c48, #673dc2);
 }
 
 .date-and-time {
@@ -90,6 +98,16 @@ nav {
   justify-content: space-around;
 }
 
+/* CHARTS */
+.chart-title {
+  margin-top: 5%;
+  margin-left: 2%;
+  margin-bottom: 0;
+}
+
+.graph {
+  margin-top: 0;
+}
 /* Media Queries for Screen Size */
 @media only screen and (max-width: 1068px) {
   .card {

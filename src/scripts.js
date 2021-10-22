@@ -78,9 +78,10 @@ const userAddress = document.getElementById('userAddress');
 const userStride = document.getElementById('userStride');
 const userStepGoal = document.getElementById('userStepGoal');
 const avgStepGoal = document.getElementById('avgStepGoal');
-const userh20Data = document.getElementById('userh20Data');//can remove this after we figure out how to push this data to a graph
-const dailyH20Consumed = document.getElementById('dailyH20Consumed');
-const weeklyWaterConsumed = document.getElementById('weeklyWaterConsumed');
+//the 3 below are for the water charts, may not need them
+  // const userh20Data = document.getElementById('userh20Data');
+  // const dailyH20Consumed = document.getElementById('dailyH20Consumed');
+  // const weeklyWaterConsumed = document.getElementById('weeklyWaterConsumed');
 
 
 //eventListeners go here
@@ -96,7 +97,7 @@ const displayUserInfoCard = () => {
   displayUserStride();
   displayUserDailyStepGoal();
   displayAvgStepGoal();
-  displayAvgWaterConsumed();
+  // displayAvgWaterConsumed();
 };
 
 const displayUserEmail = () => {
@@ -120,12 +121,13 @@ const displayAvgStepGoal = () => {
 }
 
 //the function below is currently not doing anything
-const displayAvgWaterConsumed = (id) => {
-  userh20Data.innerText = userh20.getAvgOuncesPerDay(currentUser.id);
-    //we need to figure out how to generate a date for the below argument
-  dailyH20Consumed.innerText = userh20.calculateDailyOunces(currentUser.id,'2019/06/15');
-  weeklyWaterConsumed.innerText = userh20.calculateWeeklyWater(currentUser.id, '2019/06/15');
-}
+// const displayAvgWaterConsumed = (id) => {
+//   userh20Data.innerText = userh20.getAvgOuncesPerDay(currentUser.id);
+//     //we need to figure out how to generate a date for the below argument
+//   // dailyH20Consumed.innerText = userh20.calculateDailyOunces(currentUser.id,'2019/06/15');
+//   dailyH20Consumed.innerHTML = `<p class="chart-title">Water - ${userh20.calculateDailyOunces(currentUser.id,'2019/06/15')} of 64 oz Goal</p>`;
+//   weeklyWaterConsumed.innerText = userh20.calculateWeeklyWater(currentUser.id, '2019/06/15');
+// }
 
  const getRandomIndex = (array) => {
  return Math.floor(Math.random() * array.length)
@@ -145,91 +147,153 @@ import './images/turing-logo.png';//we can probably take this out
 
 // ChartJS integration goes here:
 const displayCharts = () => {
-console.log(">>>>>>", userh20);
-let weeklyWaterChartData = userh20.calculateWeeklyWater(currentUser.id, '2019/06/15');
+  //WEEKLY WATER
+  let weeklyWaterChartData = userh20.calculateWeeklyWater(currentUser.id, '2019/06/15');
 
 
-var weeklyWaterChart = document.getElementById('myChart').getContext('2d');
+  var weeklyWaterChart = document.getElementById('weeklyWaterChart').getContext('2d');
 
-const weeklyWaterLabels = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", 'Friday', 'Saturday'];
-const weeklyWaterData = {
-  labels: weeklyWaterLabels,
-  datasets: [{
-    label: 'Daily Water Consumption',
-    data: weeklyWaterChartData,
-    // data: [64, 30, 36, 72, 24, 50, 20],
-    backgroundColor: ['rgba(54, 162, 235, 0.4)'],
-    borderColor: ['rgb(54, 162, 235)'],
-    borderWidth: 1,
-    order: 1
-  }, {
-    label: "Hydration Goal",
-    data: [64, 64, 64, 64, 64, 64, 64],
-    backgroundColor: ['rgba(255, 255, 255, 0.8)'],
-    order: 1
-  }]
-};
+  const weeklyWaterLabels = ['SUN', 'MON', 'TUES', 'WED', 'THUR', 'FRI', 'SAT'];
+  const weeklyWaterData = {
+    labels: weeklyWaterLabels,
+    datasets: [{
+      label: 'Daily Water Consumption',
+      data: weeklyWaterChartData,
+      // data: [64, 30, 36, 72, 24, 50, 20],
+      backgroundColor: ['rgba(54, 162, 235, 0.4)'],
+      borderColor: ['rgb(54, 162, 235)'],
+      borderWidth: 1,
+      order: 1
+    }, {
+      label: "Hydration Goal",
+      data: [64, 64, 64, 64, 64, 64, 64],
+      backgroundColor: ['rgba(255, 255, 255, 0.8)'],
+      order: 1
+    }]
+  };
 
-var weeklyWaterChartBuilder = new Chart(weeklyWaterChart, {
-  type: 'bar',
-  data: weeklyWaterData,
-  options: {
-    plugins: {
-      legend: false
-    },
-    indexAxis: 'y',
-  scales: {
-    y: {
-      beginAtZero: true,
-      stacked: true
-    }
-  }
-}});
-
-var dailyWaterChart = document.getElementById('dailyWaterChart').getContext('2d');
-
-let dailyWaterChartData = userh20.calculateDailyOunces(currentUser.id, '2019/06/15')
-
-
-const dailyWaterData = {
-  labels: [""],
-  datasets: [{
-    label: 'Daily Water Consumption',
-    data: [dailyWaterChartData],
-    backgroundColor: ['rgba(54, 162, 235, 0.4)'],
-    borderColor: ['rgb(54, 162, 235)'],
-    borderWidth: 1,
-    order: 1
-  }, {
-    label: "Hydration Goal",
-    data: [64],
-    backgroundColor: ['rgba(255, 255, 255, 0.8)'],
-    order: 1
-  }]
-};
-
-var dailyWaterChartBuilder = new Chart(dailyWaterChart, {
-  type: 'bar',
-  data: dailyWaterData,
-  options: {
-    plugins: {
-      legend: false
-    },
-    indexAxis: 'y',
-  scales: {
-    x: {
-      grid: {
-        display: false
-        }
+  var weeklyWaterChartBuilder = new Chart(weeklyWaterChart, {
+    type: 'bar',
+    data: weeklyWaterData,
+    options: {
+      plugins: {
+        legend: false
       },
-    y: {
-      title: false,
-      beginAtZero: true,
-      stacked: true,
-      grid: {
+      indexAxis: 'y',
+    scales: {
+      x: {
+        grid: {
+          display: false
+        } ,
         display: false
+        },
+      y: {
+        beginAtZero: true,
+        stacked: true,
+        grid: {
+          display: false
+        }
       }
     }
-  }
-}});
+  }});
+
+  // DAILY WATER CHART
+
+  var dailyWaterChart = document.getElementById('dailyWaterChart').getContext('2d');
+
+  let dailyWaterChartData = userh20.calculateDailyOunces(currentUser.id, '2019/06/15')
+
+
+  const dailyWaterData = {
+    labels: [""],
+    datasets: [{
+      label: 'Daily Water Consumption',
+      data: [dailyWaterChartData],
+      backgroundColor: ['rgba(54, 162, 235, 0.4)'],
+      borderColor: ['rgb(54, 162, 235)'],
+      borderWidth: 1,
+      order: 1
+    }, {
+      label: "Hydration Goal",
+      data: [64],
+      backgroundColor: ['rgba(255, 255, 255, 0.8)'],
+      order: 1
+    }]
+  };
+
+  var dailyWaterChartBuilder = new Chart(dailyWaterChart, {
+    type: 'bar',
+    data: dailyWaterData,
+    options: {
+      plugins: {
+        legend: false
+      },
+      indexAxis: 'y',
+    scales: {
+      x: {
+        grid: {
+          display: false
+        } ,
+        display: false
+        },
+      y: {
+        title: false,
+        beginAtZero: true,
+        stacked: true,
+        grid: {
+          display: false
+        }
+      }
+    }
+  }});
+
+//AVERAGE WATER
+
+  var totalAvgWaterChart = document.getElementById('avgUserWaterChart').getContext('2d');
+
+  let avgWaterChartData = userh20.getAvgOuncesPerDay(currentUser.id);
+
+
+  const avgWaterData = {
+    labels: [""],
+    datasets: [{
+      label: 'Average Water Consumption',
+      data: [avgWaterChartData],
+      backgroundColor: ['rgba(54, 162, 235, 0.4)'],
+      borderColor: ['rgb(54, 162, 235)'],
+      borderWidth: 1,
+      order: 1
+    }, {
+      label: "Hydration Goal",
+      data: [64],
+      backgroundColor: ['rgba(255, 255, 255, 0.8)'],
+      order: 1
+    }]
+  };
+
+  var avgWaterChartBuilder = new Chart(totalAvgWaterChart, {
+    type: 'bar',
+    data: avgWaterData,
+    options: {
+      plugins: {
+        legend: false
+      },
+      indexAxis: 'y',
+    scales: {
+      x: {
+        grid: {
+          display: false
+        } ,
+        display: false
+        },
+      y: {
+        title: false,
+        beginAtZero: true,
+        stacked: true,
+        grid: {
+          display: false
+        }
+      }
+    }
+  }});
 }
