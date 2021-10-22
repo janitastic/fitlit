@@ -123,14 +123,13 @@ import './images/turing-logo.png'
 
 // An example of how you tell webpack to use a JS file
 
-// charts
+// ChartJS integration goes here:
 
+var weeklyWaterChart = document.getElementById('myChart').getContext('2d');
 
-var ctx = document.getElementById('myChart').getContext('2d');
-
-const labels = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", 'Friday', 'Saturday'];
-const data = {
-  labels: labels,
+const weeklyWaterLabels = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", 'Friday', 'Saturday'];
+const weeklyWaterData = {
+  labels: weeklyWaterLabels,
   datasets: [{
     label: 'Daily Water Consumption',
     data: [64, 30, 36, 72, 24, 50, 20],
@@ -146,9 +145,9 @@ const data = {
   }]
 };
 
-var myChart = new Chart(ctx, {
+var weeklyWaterChartBuilder = new Chart(weeklyWaterChart, {
   type: 'bar',
-  data: data,
+  data: weeklyWaterData,
   options: {
     plugins: {
       legend: false
@@ -158,6 +157,46 @@ var myChart = new Chart(ctx, {
     y: {
       beginAtZero: true,
       stacked: true
+    }
+  }
+}});
+
+var dailyWaterChart = document.getElementById('dailyWaterChart').getContext('2d');
+
+
+const dailyWaterData = {
+  labels: [""],
+  datasets: [{
+    label: 'Daily Water Consumption',
+    data: [36],
+    backgroundColor: ['rgba(54, 162, 235, 0.4)'],
+    borderColor: ['rgb(54, 162, 235)'],
+    borderWidth: 1,
+    order: 1
+  }, {
+    label: "Hydration Goal",
+    data: [64],
+    backgroundColor: ['rgba(255, 255, 255, 0.8)'],
+    order: 1
+  }]
+};
+
+var dailyWaterChartBuilder = new Chart(dailyWaterChart, {
+  type: 'bar',
+  data: dailyWaterData,
+  options: {
+    plugins: {
+      legend: false
+    },
+    indexAxis: 'y',
+  scales: {
+    y: {
+      title: false,
+      beginAtZero: true,
+      stacked: true,
+      grid: {
+        display: false
+      }
     }
   }
 }});
