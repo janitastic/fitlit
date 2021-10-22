@@ -41,4 +41,10 @@ sleepInfo = new Sleep(sleepData);
     const dailySleepQual = sleepInfo.getDailySleepQual(1,'2019/06/15');
     expect(dailySleepQual).to.equal(2.2)
   })
+  
+  it('should be able to return the daily hours slept each day for a week', () => {
+    const totalHoursSlept = sleepInfo.getWeeklyHrsSlept(1, '2019/06/15');
+    expect(totalHoursSlept).to.deep.equal([6.1, 7, 10.8, 5.4, 4.1, 9.6, 5.1])
+  })
+
 })
