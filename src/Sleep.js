@@ -66,6 +66,26 @@ class Sleep {
     }, []);
       return dailySleep;
   }
+  getWeeklySleepQual(id, startDate) {
+    const userSleepQual = this.sleepData.filter((sleepInfo) => {
+      return sleepInfo.userID === id;
+    });
+
+    let targetStartDate = userSleepQual.findIndex(sleepInfo => {
+      
+      return sleepInfo.date === startDate;
+    });
+
+    let targetEndDate = targetStartDate + 7;
+    
+    const weeklySleepQual = userSleepQual.slice(targetStartDate, targetEndDate);
+
+    const dailySleepQuality = weeklySleepQual.reduce((daySleepQual, day) => {
+      daySleepQual.push(day.sleepQuality)
+      return daySleepQual;
+    }, []);
+      return dailySleepQuality;
+  }
 }
 
 
