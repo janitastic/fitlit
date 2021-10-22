@@ -24,9 +24,11 @@ describe('User', () => {
 sleepInfo = new Sleep(sleepData);
 
 })
-  it('should be able calculate a user/s daily average sleep', () => {
+  it('should be able calculate a user/s daily average hours sleep', () => {
     expect(sleepInfo.getAvgSleepPerDay(1)).to.equal(7);
   })
 
-
+  it('should be able to calculate a user/s daily average sleep quality', () =>{
+    expect(sleepInfo.getAvgDailySleepQual(1)).to.equal(3)
+  })
 })
