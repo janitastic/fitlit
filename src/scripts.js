@@ -123,7 +123,8 @@ const displayAvgStepGoal = () => {
 const displayAvgWaterConsumed = (id) => {
   userh20Data.innerText = userh20.getAvgOuncesPerDay(currentUser.id);
     //we need to figure out how to generate a date for the below argument
-  dailyH20Consumed.innerText = userh20.calculateDailyOunces(currentUser.id,'2019/06/15');
+  // dailyH20Consumed.innerText = userh20.calculateDailyOunces(currentUser.id,'2019/06/15');
+  dailyH20Consumed.innerHTML = `<p class="chart-title">Water - ${userh20.calculateDailyOunces(currentUser.id,'2019/06/15')} of 64 oz Goal</p>`;
   weeklyWaterConsumed.innerText = userh20.calculateWeeklyWater(currentUser.id, '2019/06/15');
 }
 
@@ -151,7 +152,7 @@ let weeklyWaterChartData = userh20.calculateWeeklyWater(currentUser.id, '2019/06
 
 var weeklyWaterChart = document.getElementById('myChart').getContext('2d');
 
-const weeklyWaterLabels = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", 'Friday', 'Saturday'];
+const weeklyWaterLabels = ['SUN', 'MON', 'TUES', 'WED', 'THUR', 'FRI', 'SAT'];
 const weeklyWaterData = {
   labels: weeklyWaterLabels,
   datasets: [{
@@ -179,9 +180,18 @@ var weeklyWaterChartBuilder = new Chart(weeklyWaterChart, {
     },
     indexAxis: 'y',
   scales: {
+    x: {
+      grid: {
+        display: false
+      } ,
+      display: false
+      },
     y: {
       beginAtZero: true,
-      stacked: true
+      stacked: true,
+      grid: {
+        display: false
+      }
     }
   }
 }});
@@ -220,7 +230,8 @@ var dailyWaterChartBuilder = new Chart(dailyWaterChart, {
     x: {
       grid: {
         display: false
-        }
+      } ,
+      display: false
       },
     y: {
       title: false,

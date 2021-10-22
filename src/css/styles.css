@@ -22,8 +22,8 @@ header {
 
 .summary {
   display: flex;
-  background: linear-gradient(222deg, #d83c48, #5622c7);
   flex-direction: column;
+  background-color: #151516;
 }
 
 main {
@@ -41,7 +41,7 @@ main {
 .widgets {
   display: flex;
   flex-direction: column;
-  background-color: #151516;
+  background: linear-gradient(222deg, #d83c48, #5622c7);
 }
 
 footer {
