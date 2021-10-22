@@ -59,6 +59,12 @@ h2 {
 
 h3 {
   text-transform: capitalize;
+  margin-bottom: 0;
+  text-shadow: 2px 2px 5px black;
+}
+
+h4 {
+  margin-left: 2%;
 }
 
 .card {
@@ -92,9 +98,14 @@ nav {
 
 /* CHARTS */
 .chart-title {
+  margin-top: 5%;
+  margin-left: 2%;
   margin-bottom: 0;
 }
 
+.graph {
+  margin-top: 0;
+}
 /* Media Queries for Screen Size */
 @media only screen and (max-width: 1068px) {
   .card {
