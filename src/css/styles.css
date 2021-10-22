@@ -22,8 +22,8 @@ header {
 
 .summary {
   display: flex;
-  justify-content: center;
   background: linear-gradient(222deg, #d83c48, #5622c7);
+  flex-direction: column;
 }
 
 main {
@@ -88,6 +88,11 @@ h3 {
 nav {
   display: flex;
   justify-content: space-around;
+}
+
+/* CHARTS */
+.chart-title {
+  margin-bottom: 0;
 }
 
 /* Media Queries for Screen Size */
