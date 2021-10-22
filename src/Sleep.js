@@ -27,6 +27,16 @@ class Sleep {
 
     return Math.round(dailySleepQual/ userSleepHours.length)
   }
+
+  getDailyHrsSlept(id, selectedDate) {
+    const userSleepHours = this.sleepData.filter((sleepInfo) => {
+      return sleepInfo.userID === id;
+    })
+    const dailyHoursSlept = userSleepHours.find(day => {
+      return day.date === selectedDate;
+    })
+    return dailyHoursSlept.hoursSlept;
+  }
 }
 
 
