@@ -22,7 +22,6 @@ class Hydration {
     });
 
     const dailyWaterConsumed = userWaterConsumption.find(day => {
-      console.log('this is the day >>>>', day);
       return day.date === selectedDate;
     });
 
