@@ -44,7 +44,7 @@ class Hydration {
 
     const dailyWaterIntake = weeklyWaterIntake.reduce((dailyWater, day) => {
       dailyWater.push(day.numOunces)
-      console.log('dailyWater', dailyWater)
+      // console.log('dailyWater', dailyWater)
       return dailyWater;
     }, []);
       return dailyWaterIntake;
