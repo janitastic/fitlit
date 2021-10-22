@@ -1,6 +1,6 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
-<<<<<<< HEAD
+
 
 //Create an info card on the dashboard with all of user’s info on the page
 // Display their first name somewhere prominently on the page to welcome them
@@ -9,9 +9,7 @@
 
 
 import Chart from 'chart.js/auto';
-=======
-// import fetchUserData from other JS file
->>>>>>> main
+
 
 import User from './User';
 import UserRepository from './UserRepository';
@@ -62,6 +60,7 @@ const allData = (user, sleep, activity, h20Data) => {
   //instantiate other classes so data is accessible
   //Repo for each other class?
   displayUserInfoCard();
+  displayCharts();
 };
 
 // const sleepData = new Sleep(sleepData);
@@ -145,6 +144,10 @@ import './images/turing-logo.png';//we can probably take this out
 // An example of how you tell webpack to use a JS file
 
 // ChartJS integration goes here:
+const displayCharts = () => {
+console.log(">>>>>>", userh20);
+let weeklyWaterChartData = userh20.calculateWeeklyWater(currentUser.id, '2019/06/15');
+
 
 var weeklyWaterChart = document.getElementById('myChart').getContext('2d');
 
@@ -153,7 +156,8 @@ const weeklyWaterData = {
   labels: weeklyWaterLabels,
   datasets: [{
     label: 'Daily Water Consumption',
-    data: [64, 30, 36, 72, 24, 50, 20],
+    data: weeklyWaterChartData,
+    // data: [64, 30, 36, 72, 24, 50, 20],
     backgroundColor: ['rgba(54, 162, 235, 0.4)'],
     borderColor: ['rgb(54, 162, 235)'],
     borderWidth: 1,
@@ -184,12 +188,14 @@ var weeklyWaterChartBuilder = new Chart(weeklyWaterChart, {
 
 var dailyWaterChart = document.getElementById('dailyWaterChart').getContext('2d');
 
+let dailyWaterChartData = userh20.calculateDailyOunces(currentUser.id, '2019/06/15')
+
 
 const dailyWaterData = {
   labels: [""],
   datasets: [{
     label: 'Daily Water Consumption',
-    data: [36],
+    data: [dailyWaterChartData],
     backgroundColor: ['rgba(54, 162, 235, 0.4)'],
     borderColor: ['rgb(54, 162, 235)'],
     borderWidth: 1,
@@ -221,3 +227,4 @@ var dailyWaterChartBuilder = new Chart(dailyWaterChart, {
     }
   }
 }});
+}
