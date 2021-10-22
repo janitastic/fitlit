@@ -36,4 +36,9 @@ sleepInfo = new Sleep(sleepData);
     const dailyHoursSlept = sleepInfo.getDailyHrsSlept(1,'2019/06/15');
     expect(dailyHoursSlept).to.equal(6.1);
   })
+
+  it('should be able to return a user/s sleep quality specified by a certain date', () => {
+    const dailySleepQual = sleepInfo.getDailySleepQual(1,'2019/06/15');
+    expect(dailySleepQual).to.equal(2.2)
+  })
 })

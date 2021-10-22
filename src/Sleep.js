@@ -9,10 +9,10 @@ class Sleep {
     });
 
     const totalHoursSlept = userSleepHours.reduce((totalHours, sleepInfo) => {
-      return totalHours +=  sleepInfo.hoursSlept
+      return totalHours += sleepInfo.hoursSlept
     }, 0);
 
-    return Math.round(totalHoursSlept/ userSleepHours.length)
+    return Math.round(totalHoursSlept / userSleepHours.length)
   }
 
   getAvgDailySleepQual(id) {
@@ -25,7 +25,7 @@ class Sleep {
       return totalQual += sleepInfo.sleepQuality
     }, 0);
 
-    return Math.round(dailySleepQual/ userSleepHours.length)
+    return Math.round(dailySleepQual / userSleepHours.length)
   }
 
   getDailyHrsSlept(id, selectedDate) {
@@ -36,6 +36,16 @@ class Sleep {
       return day.date === selectedDate;
     })
     return dailyHoursSlept.hoursSlept;
+  }
+
+  getDailySleepQual(id, selectedDate) {
+    const userSleepHours = this.sleepData.filter((sleepInfo) => {
+      return sleepInfo.userID === id;
+    })
+    const dailySleepQual = userSleepHours.find(day => {
+      return day.date === selectedDate;
+    })
+    return dailySleepQual.sleepQuality
   }
 }
 
