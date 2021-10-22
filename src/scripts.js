@@ -217,6 +217,11 @@ var dailyWaterChartBuilder = new Chart(dailyWaterChart, {
     },
     indexAxis: 'y',
   scales: {
+    x: {
+      grid: {
+        display: false
+        }
+      },
     y: {
       title: false,
       beginAtZero: true,
