@@ -79,6 +79,7 @@ const userAddress = document.getElementById('userAddress');
 const userStride = document.getElementById('userStride');
 const userStepGoal = document.getElementById('userStepGoal');
 const avgStepGoal = document.getElementById('avgStepGoal');
+const dailySleepQuality = document.getElementById('dailySleepQuality');
 //the 3 below are for the water charts, may not need them
   // const userh20Data = document.getElementById('userh20Data');
   // const dailyH20Consumed = document.getElementById('dailyH20Consumed');
@@ -98,6 +99,7 @@ const displayUserInfoCard = () => {
   displayUserStride();
   displayUserDailyStepGoal();
   displayAvgStepGoal();
+  displaySleepQuality();
   // displayAvgWaterConsumed();
 };
 
@@ -129,6 +131,10 @@ const displayAvgStepGoal = () => {
 //   dailyH20Consumed.innerHTML = `<p class="chart-title">Water - ${userh20.calculateDailyOunces(currentUser.id,'2019/06/15')} of 64 oz Goal</p>`;
 //   weeklyWaterConsumed.innerText = userh20.calculateWeeklyWater(currentUser.id, '2019/06/15');
 // }
+
+const displaySleepQuality = () => {
+  dailySleepQuality.innerText = allUsersSleep.getDailySleepQual(currentUser.id, '2020/01/22');
+}
 
  const getRandomIndex = (array) => {
  return Math.floor(Math.random() * array.length)
