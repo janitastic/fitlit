@@ -28,6 +28,7 @@ header {
 
 main {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
@@ -67,13 +68,23 @@ h3 {
 
 h4 {
   margin-left: 2%;
+  margin-bottom: 0;
 }
 
-.card {
+.mini-card {
   border-radius: 1em;
   padding: 3%;
   margin: 2%;
   width: 50%;
+  overflow-wrap: break-word;
+  box-shadow: 7px 3px 8px 0px #7c7c7c;
+}
+
+.large-card {
+  border-radius: 1em;
+  padding: 3%;
+  margin: 2%;
+  width: 90%;
   overflow-wrap: break-word;
   box-shadow: 7px 3px 8px 0px #7c7c7c;
 }
@@ -108,6 +119,7 @@ nav {
 .graph {
   margin-top: 0;
 }
+
 /* Media Queries for Screen Size */
 @media only screen and (max-width: 1068px) {
   .card {
