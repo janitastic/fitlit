@@ -36,13 +36,15 @@ main {
 .water,
 .sleep,
 .activity {
-
+  white-space: nowrap;
 }
 
 .average-widgets {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  background: linear-gradient(227deg, #d83c48, #5622c7);
+  background: linear-gradient(227deg, #d83c48, #5622c7); */
+  display: flex;
+  justify-content: space-between;
 }
 
 .weekly-widgets {
@@ -87,6 +89,9 @@ h4 {
   width: 90%;
   overflow-wrap: break-word;
   box-shadow: 7px 3px 8px 0px #7c7c7c;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(227deg, #d83c48, #5622c7);
 }
 
 .user-profile {
