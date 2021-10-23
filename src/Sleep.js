@@ -53,12 +53,12 @@ class Sleep {
     });
 
     let targetStartDate = userSleepHours.findIndex(sleepInfo => {
-      
+
       return sleepInfo.date === startDate;
     });
 
     let targetEndDate = targetStartDate + 7;
-    
+
     const weeklyHoursSlept = userSleepHours.slice(targetStartDate, targetEndDate);
     const dailySleep = weeklyHoursSlept.reduce((dailyHours, day) => {
       dailyHours.push(day.hoursSlept)
@@ -72,12 +72,12 @@ class Sleep {
     });
 
     let targetStartDate = userSleepQual.findIndex(sleepInfo => {
-      
+
       return sleepInfo.date === startDate;
     });
 
     let targetEndDate = targetStartDate + 7;
-    
+
     const weeklySleepQual = userSleepQual.slice(targetStartDate, targetEndDate);
 
     const dailySleepQuality = weeklySleepQual.reduce((daySleepQual, day) => {
@@ -85,6 +85,18 @@ class Sleep {
       return daySleepQual;
     }, []);
       return dailySleepQuality;
+  }
+
+  getAvgAllSleepQual() {
+    // const allUsersSleepQual = this.sleepData.map((sleepInfo) => {
+    //   return sleepInfo.sleepQuality
+    // });
+    const sumOfSleepQual = this.sleepData.reduce((acc, sleepInfo) => {
+      acc += sleepInfo.sleepQuality
+      return acc
+    }, 0);
+    const allUserAvgQual = Math.round(sumOfSleepQual / this.sleepData.length * 10) / 10;
+    return allUserAvgQual;
   }
 }
 
