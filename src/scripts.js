@@ -80,6 +80,7 @@ const userStride = document.getElementById('userStride');
 const userStepGoal = document.getElementById('userStepGoal');
 const avgStepGoal = document.getElementById('avgStepGoal');
 const dailySleepQuality = document.getElementById('dailySleepQuality');
+const avgSleepQuality = document.getElementById('avgSleepQuality');
 //the 3 below are for the water charts, may not need them
   // const userh20Data = document.getElementById('userh20Data');
   // const dailyH20Consumed = document.getElementById('dailyH20Consumed');
@@ -134,6 +135,7 @@ const displayAvgStepGoal = () => {
 
 const displaySleepQuality = () => {
   dailySleepQuality.innerText = allUsersSleep.getDailySleepQual(currentUser.id, '2020/01/22');
+  avgSleepQuality.innerText = allUsersSleep.getAvgDailySleepQual(currentUser.id)
 }
 
  const getRandomIndex = (array) => {
@@ -407,11 +409,11 @@ const displayCharts = () => {
     //WEEKLY SLEEP
 
     let weeklySleepChartData = allUsersSleep.getWeeklyHrsSlept(currentUser.id, '2020/01/22');
-
+    let weeklySleepQualData = allUsersSleep.getWeeklySleepQual(currentUser.id, '2020/01/22');
 
     var weeklySleepChart = document.getElementById('weeklySleepChart').getContext('2d');
 
-    const weeklySleepLabels = ['SUN', 'MON', 'TUES', 'WED', 'THUR', 'FRI', 'SAT'];
+    const weeklySleepLabels = weeklySleepQualData;
     const weeklySleepData = {
       labels: weeklySleepLabels,
       datasets: [{
@@ -452,7 +454,7 @@ const displayCharts = () => {
             display: false
           }
         }
-      }
+      },
     }});
 
 }
