@@ -33,14 +33,17 @@ class Hydration {
     const userWaterConsumption = this.h20Data.filter(waterInfo => {
       return waterInfo.userID === id;
     });
+    // console.log("user water", userWaterConsumption)
+    const userWaterConsumptionReverse = userWaterConsumption.reverse()
+    // console.log("user water consumption reverse ", userWaterConsumptionReverse)
 
-    let targetStartDate = userWaterConsumption.findIndex(waterInfo => {
+    let targetStartDate = userWaterConsumptionReverse.findIndex(waterInfo => {
       return waterInfo.date === startDate;
     });
 
     let targetEndDate = targetStartDate + 7;
 
-    const weeklyWaterIntake = userWaterConsumption.slice(targetStartDate, targetEndDate);
+    const weeklyWaterIntake = userWaterConsumptionReverse.slice(targetStartDate, targetEndDate);
 
     const dailyWaterIntake = weeklyWaterIntake.reduce((dailyWater, day) => {
       dailyWater.push(day.numOunces)

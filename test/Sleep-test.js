@@ -46,13 +46,13 @@ sleepInfo = new Sleep(sleepData);
   })
 
   it('should be able to return the daily hours slept each day for a week', () => {
-    const totalHoursSlept = sleepInfo.getWeeklyHrsSlept(1, '2019/06/15');
-    expect(totalHoursSlept).to.deep.equal([6.1, 7, 10.8, 5.4, 4.1, 9.6, 5.1])
+    const totalHoursSlept = sleepInfo.getWeeklyHrsSlept(1, '2019/06/21');
+    expect(totalHoursSlept).to.deep.equal([5.1, 9.6, 4.1, 5.4, 10.8, 7, 6.1])
   })
 
   it('should be able to return the daily sleep quality each day for a week', () => {
-    const totalSleepQual = sleepInfo.getWeeklySleepQual(1, '2019/06/15');
-    expect(totalSleepQual).to.deep.equal([2.2, 4.7, 4.7, 3, 3.6, 2.9, 2.6])
+    const totalSleepQual = sleepInfo.getWeeklySleepQual(1, '2019/06/21');
+    expect(totalSleepQual).to.deep.equal([2.6, 2.9, 3.6, 3, 4.7, 4.7, 2.2])
   })
 
   it('should be able to return the sleep average for all users', () => {

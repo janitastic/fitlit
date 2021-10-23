@@ -28,6 +28,7 @@ let userRepository;
 let currentUser;
 let allUsers;
 let userh20;//added this here trying to populate the avgWaterConsumed
+let allUsersSleep;
 
 import {
   fetchUserData,
@@ -55,7 +56,7 @@ const allData = (user, sleep, activity, h20Data) => {
   // userId = getRandomIndex(userRepository.users)
   currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
   // currentDate = new User(userRepository.users[getRandomIndex(userRepository.users)]);
-  // userSleep = new Sleep()
+  allUsersSleep = new Sleep(sleepData)
   userh20 = new Hydration(h20Data);
   //instantiate other classes so data is accessible
   //Repo for each other class?
@@ -78,6 +79,8 @@ const userAddress = document.getElementById('userAddress');
 const userStride = document.getElementById('userStride');
 const userStepGoal = document.getElementById('userStepGoal');
 const avgStepGoal = document.getElementById('avgStepGoal');
+const dailySleepQuality = document.getElementById('dailySleepQuality');
+const avgSleepQuality = document.getElementById('avgSleepQuality');
 //the 3 below are for the water charts, may not need them
   // const userh20Data = document.getElementById('userh20Data');
   // const dailyH20Consumed = document.getElementById('dailyH20Consumed');
@@ -97,6 +100,7 @@ const displayUserInfoCard = () => {
   displayUserStride();
   displayUserDailyStepGoal();
   displayAvgStepGoal();
+  displaySleepQuality();
   // displayAvgWaterConsumed();
 };
 
@@ -129,6 +133,11 @@ const displayAvgStepGoal = () => {
 //   weeklyWaterConsumed.innerText = userh20.calculateWeeklyWater(currentUser.id, '2019/06/15');
 // }
 
+const displaySleepQuality = () => {
+  dailySleepQuality.innerText = allUsersSleep.getDailySleepQual(currentUser.id, '2020/01/22');
+  avgSleepQuality.innerText = allUsersSleep.getAvgDailySleepQual(currentUser.id)
+}
+
  const getRandomIndex = (array) => {
  return Math.floor(Math.random() * array.length)
  };
@@ -148,7 +157,7 @@ import './images/turing-logo.png';//we can probably take this out
 // ChartJS integration goes here:
 const displayCharts = () => {
   //WEEKLY WATER
-  let weeklyWaterChartData = userh20.calculateWeeklyWater(currentUser.id, '2019/06/15');
+  let weeklyWaterChartData = userh20.calculateWeeklyWater(currentUser.id, '2020/01/22');
 
 
   var weeklyWaterChart = document.getElementById('weeklyWaterChart').getContext('2d');
@@ -201,7 +210,7 @@ const displayCharts = () => {
 
   var dailyWaterChart = document.getElementById('dailyWaterChart').getContext('2d');
 
-  let dailyWaterChartData = userh20.calculateDailyOunces(currentUser.id, '2019/06/15')
+  let dailyWaterChartData = userh20.calculateDailyOunces(currentUser.id, '2020/01/22')
 
 
   const dailyWaterData = {
@@ -296,4 +305,156 @@ const displayCharts = () => {
       }
     }
   }});
+
+  // DAILY SLEEP CHART
+
+  var dailySleepChart = document.getElementById('dailySleepChart').getContext('2d');
+
+  let dailySleepChartData = allUsersSleep.getDailyHrsSlept(currentUser.id, '2020/01/22')
+
+
+  const dailySleepData = {
+    labels: [""],
+    datasets: [{
+      label: 'Time Slept',
+      data: [dailySleepChartData],
+      backgroundColor: ['rgba(96, 23, 116, 0.4)'],
+      borderColor: ['rgb(96, 23, 116)'],
+      borderWidth: 1,
+      order: 1
+    }, {
+      label: "Sleep Goal",
+      data: [7],
+      backgroundColor: ['rgba(255, 255, 255, 0.8)'],
+      order: 1
+    }]
+  };
+
+  var dailySleepChartBuilder = new Chart(dailySleepChart, {
+    type: 'bar',
+    data: dailySleepData,
+    options: {
+      plugins: {
+        legend: false
+      },
+      indexAxis: 'y',
+    scales: {
+      x: {
+        grid: {
+          display: false
+        } ,
+        display: false
+        },
+      y: {
+        title: false,
+        beginAtZero: true,
+        stacked: true,
+        grid: {
+          display: false
+        }
+      }
+    }
+  }});
+
+  //AVERAGE SLEEP
+
+    var totalAvgSleepChart = document.getElementById('avgUserSleepChart').getContext('2d');
+
+    let avgSleepChartData = allUsersSleep.getAvgSleepPerDay(currentUser.id);
+
+
+    const avgSleepData = {
+      labels: [""],
+      datasets: [{
+        label: 'Time Slept Average',
+        data: [avgSleepChartData],
+        backgroundColor: ['rgba(96, 23, 116, 0.4)'],
+        borderColor: ['rgb(96, 23, 116)'],
+        borderWidth: 1,
+        order: 1
+      }, {
+        label: "Sleep Goal",
+        data: [7],
+        backgroundColor: ['rgba(255, 255, 255, 0.8)'],
+        order: 1
+      }]
+    };
+
+    var avgSleepChartBuilder = new Chart(totalAvgSleepChart, {
+      type: 'bar',
+      data: avgSleepData,
+      options: {
+        plugins: {
+          legend: false
+        },
+        indexAxis: 'y',
+      scales: {
+        x: {
+          grid: {
+            display: false
+          } ,
+          display: false
+          },
+        y: {
+          title: false,
+          beginAtZero: true,
+          stacked: true,
+          grid: {
+            display: false
+          }
+        }
+      }
+    }});
+
+    //WEEKLY SLEEP
+
+    let weeklySleepChartData = allUsersSleep.getWeeklyHrsSlept(currentUser.id, '2020/01/22');
+    let weeklySleepQualData = allUsersSleep.getWeeklySleepQual(currentUser.id, '2020/01/22');
+
+    var weeklySleepChart = document.getElementById('weeklySleepChart').getContext('2d');
+
+    const weeklySleepLabels = weeklySleepQualData;
+    const weeklySleepData = {
+      labels: weeklySleepLabels,
+      datasets: [{
+        label: 'Daily Time Slept',
+        data: weeklySleepChartData,
+        // data: [64, 30, 36, 72, 24, 50, 20],
+        backgroundColor: ['rgba(96, 23, 116, 0.4)'],
+        borderColor: ['rgb(96, 23, 116)'],
+        borderWidth: 1,
+        order: 1
+      }, {
+        label: "Sleep Goal",
+        data: [7, 7, 7, 7, 7, 7, 7],
+        backgroundColor: ['rgba(255, 255, 255, 0.8)'],
+        order: 1
+      }]
+    };
+
+    var weeklySleepChartBuilder = new Chart(weeklySleepChart, {
+      type: 'bar',
+      data: weeklySleepData,
+      options: {
+        plugins: {
+          legend: false
+        },
+        indexAxis: 'y',
+      scales: {
+        x: {
+          grid: {
+            display: false
+          } ,
+          display: false
+          },
+        y: {
+          beginAtZero: true,
+          stacked: true,
+          grid: {
+            display: false
+          }
+        }
+      },
+    }});
+
 }

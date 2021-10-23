@@ -20,10 +20,18 @@
         </article>
         <aside class="card summary">
           <h3>Today's overall activity</h3>
+          <!-- dailySleepChart' -->
           <div>
-            <!-- <p class="chart-title">Water</p> -->
-            <p id ="dailyH20Consumed"></p>
+            <h3>Water</h3>
             <canvas id="dailyWaterChart" width="400" height="100"></canvas>
+          </div>
+          <div>
+            <h3>Sleep</h3>
+            <canvas id="dailySleepChart" width="400" height="100"></canvas>
+          </div>
+          <div>
+            <h3>Sleep Quality</h3>
+            <p id="dailySleepQuality"></p>
           </div>
         </aside>
       </nav>
@@ -37,12 +45,16 @@
         </article>
         <article class="water" id="avgUserWater">
           <h4>Water</h4>
+          <!-- avgUserSleepChart -->
           <canvas id="avgUserWaterChart" width="200" height="31";></canvas>
           <!-- <p id ="userh20Data"></p>
           <p id ="weeklyWaterConsumed"></p> -->
         </article>
         <article class="sleep" id="avgUserSleep">
           <h4>Sleep</h4>
+          <canvas id="avgUserSleepChart" width="200" height="31";></canvas>
+          <h4>Sleep Quality</h4>
+          <p id="avgSleepQuality"></p>
         </article>
         <article class="activity" id="avgUserActivity">
           <h4>Activity</h4>
@@ -59,6 +71,7 @@
         </article>
         <article class="sleep" id="userSleep">
           <h4>Sleep</h4>
+          <canvas id="weeklySleepChart" width="200" height="200"></canvas>
         </article>
         <article class="activity" id="userActivity">
           <h4>Activity</h4>

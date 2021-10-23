@@ -32,7 +32,7 @@ describe('User', () => {
   })
 
   it('should return the amount of water consumed each day for a week ', () => {
-    const totalOunces = hydrationInfo.calculateWeeklyWater(1, '2019/06/15');
-    expect(totalOunces).to.deep.equal([37, 42, 54, 65, 87, 22, 16]);
+    const totalOunces = hydrationInfo.calculateWeeklyWater(1, '2019/06/21');
+    expect(totalOunces).to.deep.equal([16, 22, 87, 65, 54, 42, 37]);
   })
 })
