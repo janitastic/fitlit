@@ -154,7 +154,8 @@ import './images/turing-logo.png';//we can probably take this out
 
 // An example of how you tell webpack to use a JS file
 
-// ChartJS integration goes here:
+/*********** ChartJS integration goes here: ***********/
+
 const displayCharts = () => {
   //WEEKLY WATER
   let weeklyWaterChartData = userh20.calculateWeeklyWater(currentUser.id, '2020/01/22');
@@ -166,7 +167,7 @@ const displayCharts = () => {
   const weeklyWaterData = {
     labels: weeklyWaterLabels,
     datasets: [{
-      label: 'Daily Water Consumption',
+      label: 'Total Ounces',
       data: weeklyWaterChartData,
       // data: [64, 30, 36, 72, 24, 50, 20],
       backgroundColor: ['rgba(54, 162, 235, 0.4)'],
@@ -174,7 +175,7 @@ const displayCharts = () => {
       borderWidth: 1,
       order: 1
     }, {
-      label: "Hydration Goal",
+      label: 'Your Goal',
       data: [64, 64, 64, 64, 64, 64, 64],
       backgroundColor: ['rgba(255, 255, 255, 0.8)'],
       order: 1
@@ -186,14 +187,14 @@ const displayCharts = () => {
     data: weeklyWaterData,
     options: {
       plugins: {
-        legend: false
+        legend: false,
       },
       indexAxis: 'y',
     scales: {
       x: {
         grid: {
           display: false
-        } ,
+        },
         display: false
         },
       y: {
@@ -201,7 +202,10 @@ const displayCharts = () => {
         stacked: true,
         grid: {
           display: false
-        }
+        },
+        ticks: {
+          color: ['#FFF'],
+        },
       }
     }
   }});
@@ -214,16 +218,16 @@ const displayCharts = () => {
 
 
   const dailyWaterData = {
-    labels: [""],
+    labels: ['test'],
     datasets: [{
-      label: 'Daily Water Consumption',
+      label: 'Ounces',
       data: [dailyWaterChartData],
       backgroundColor: ['rgba(54, 162, 235, 0.4)'],
       borderColor: ['rgb(54, 162, 235)'],
       borderWidth: 1,
       order: 1
     }, {
-      label: "Hydration Goal",
+      label: 'Goal',
       data: [64],
       backgroundColor: ['rgba(255, 255, 255, 0.8)'],
       order: 1
@@ -251,7 +255,10 @@ const displayCharts = () => {
         stacked: true,
         grid: {
           display: false
-        }
+        },
+        ticks: {
+          color: ['#FFF'],
+        },
       }
     }
   }});
@@ -301,7 +308,10 @@ const displayCharts = () => {
         stacked: true,
         grid: {
           display: false
-        }
+        },
+        ticks: {
+          color: ['#FFF'],
+        },
       }
     }
   }});
@@ -351,7 +361,10 @@ const displayCharts = () => {
         stacked: true,
         grid: {
           display: false
-        }
+        },
+        ticks: {
+          color: ['#FFF'],
+        },
       }
     }
   }});
@@ -401,7 +414,10 @@ const displayCharts = () => {
           stacked: true,
           grid: {
             display: false
-          }
+          },
+          ticks: {
+            color: ['#FFF'],
+          },
         }
       }
     }});
@@ -452,7 +468,10 @@ const displayCharts = () => {
           stacked: true,
           grid: {
             display: false
-          }
+          },
+          ticks: {
+            color: ['#FFF'],
+          },
         }
       },
     }});
