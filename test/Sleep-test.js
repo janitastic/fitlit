@@ -15,7 +15,10 @@ describe('User', () => {
       {userID: 1, date: '2019/06/18', hoursSlept: 5.4, sleepQuality: 3},
       {userID: 1, date: '2019/06/19', hoursSlept: 4.1, sleepQuality: 3.6},
       {userID: 1, date: '2019/06/20', hoursSlept: 9.6, sleepQuality: 2.9},
-      {userID: 1, date: '2019/06/21', hoursSlept: 5.1, sleepQuality: 2.6}
+      {userID: 1, date: '2019/06/21', hoursSlept: 5.1, sleepQuality: 2.6},
+      {userID: 2, date: '2019/06/15', hoursSlept: 6.1, sleepQuality: 2.2},
+      {userID: 2, date: '2019/06/16', hoursSlept: 7, sleepQuality: 4.7}
+
     ];
 // //date: "2019/06/15"
 // hoursSlept: 6.1
@@ -41,7 +44,7 @@ sleepInfo = new Sleep(sleepData);
     const dailySleepQual = sleepInfo.getDailySleepQual(1,'2019/06/15');
     expect(dailySleepQual).to.equal(2.2)
   })
-  
+
   it('should be able to return the daily hours slept each day for a week', () => {
     const totalHoursSlept = sleepInfo.getWeeklyHrsSlept(1, '2019/06/15');
     expect(totalHoursSlept).to.deep.equal([6.1, 7, 10.8, 5.4, 4.1, 9.6, 5.1])
@@ -51,5 +54,10 @@ sleepInfo = new Sleep(sleepData);
     const totalSleepQual = sleepInfo.getWeeklySleepQual(1, '2019/06/15');
     expect(totalSleepQual).to.deep.equal([2.2, 4.7, 4.7, 3, 3.6, 2.9, 2.6])
   })
-  
+
+  it('should be able to return the sleep average for all users', () => {
+    const totalAvgSleepQual = sleepInfo.getAvgAllSleepQual();
+    expect(totalAvgSleepQual).to.equal(3.4)
+  })
+
 })
