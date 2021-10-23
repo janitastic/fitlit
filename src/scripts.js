@@ -398,4 +398,55 @@ const displayCharts = () => {
       }
     }});
 
+    //WEEKLY SLEEP
+
+    let weeklySleepChartData = allUsersSleep.getWeeklyHrsSlept(currentUser.id, '2020/01/22');
+
+
+    var weeklySleepChart = document.getElementById('weeklySleepChart').getContext('2d');
+
+    const weeklySleepLabels = ['SUN', 'MON', 'TUES', 'WED', 'THUR', 'FRI', 'SAT'];
+    const weeklySleepData = {
+      labels: weeklySleepLabels,
+      datasets: [{
+        label: 'Daily Time Slept',
+        data: weeklySleepChartData,
+        // data: [64, 30, 36, 72, 24, 50, 20],
+        backgroundColor: ['rgba(96, 23, 116, 0.4)'],
+        borderColor: ['rgb(96, 23, 116)'],
+        borderWidth: 1,
+        order: 1
+      }, {
+        label: "Sleep Goal",
+        data: [7, 7, 7, 7, 7, 7, 7],
+        backgroundColor: ['rgba(255, 255, 255, 0.8)'],
+        order: 1
+      }]
+    };
+
+    var weeklySleepChartBuilder = new Chart(weeklySleepChart, {
+      type: 'bar',
+      data: weeklySleepData,
+      options: {
+        plugins: {
+          legend: false
+        },
+        indexAxis: 'y',
+      scales: {
+        x: {
+          grid: {
+            display: false
+          } ,
+          display: false
+          },
+        y: {
+          beginAtZero: true,
+          stacked: true,
+          grid: {
+            display: false
+          }
+        }
+      }
+    }});
+
 }
