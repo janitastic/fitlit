@@ -66,29 +66,29 @@ class Sleep {
       dailyHours.push(day.hoursSlept)
       return dailyHours;
     }, []);
-      return dailySleep;
+    return dailySleep;
   }
   getWeeklySleepQual(id, startDate) {
     const userSleepQual = this.sleepData.filter((sleepInfo) => {
       return sleepInfo.userID === id;
     });
 
-    const userSleepQualReverse = userSleepQual.reverse();
+    const pastWeekSleepQual = userSleepQual.reverse();
 
-    let targetStartDate = userSleepQualReverse.findIndex(sleepInfo => {
+    let targetStartDate = pastWeekSleepQual.findIndex(sleepInfo => {
 
       return sleepInfo.date === startDate;
     });
 
     let targetEndDate = targetStartDate + 7;
 
-    const weeklySleepQual = userSleepQualReverse.slice(targetStartDate, targetEndDate);
+    const weeklySleepQual = pastWeekSleepQual.slice(targetStartDate, targetEndDate);
 
     const dailySleepQuality = weeklySleepQual.reduce((daySleepQual, day) => {
       daySleepQual.push(day.sleepQuality)
       return daySleepQual;
     }, []);
-      return dailySleepQuality;
+    return dailySleepQuality;
   }
 
   getAvgAllSleepQual() {

@@ -1,10 +1,15 @@
 ## 💪🏼 FitLit! 💪🏼
-  ##### A Front End Engineering Project by [Jani Palomino](https://github.com/janitastic), [Nate Ewert- Krocker](https://github.com/NEwertKrocker), [Regan Losey](https://github.com/reganlosey), and [Susanna Carey](https://github.com/susannaopal)
+  ### A Front End Engineering Project by [Jani Palomino](https://github.com/janitastic), [Nate Ewert- Krocker](https://github.com/NEwertKrocker), [Regan Losey](https://github.com/reganlosey), and [Susanna Carey](https://github.com/susannaopal)
+<br>
 
-  ##### Project Manager: [Cassandra Torkse](https://github.com/CassandraGoose)
+  #### Project Manager: [Cassandra Torkse](https://github.com/CassandraGoose)
+<br>
 
-  ##### Formal Code Review by :
-  [Mentor/ Rock Name goes here] (link to their GH profile goes here)
+  #### Formal Code Review by :
+  - [Mike Limberg](https://github.com/mlimberg)
+  - [Rachel Williams](https://github.com/rwilliams659)
+  - [Katie Scruggs](https://github.com/katiescruggs)
+<br>
 
   ### Techologies Used:
   - Javascript
