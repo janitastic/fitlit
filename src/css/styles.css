@@ -3,14 +3,12 @@
 }
 
 body, html {
-  /* background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); */
   background-repeat: no-repeat;
   height: 100%;
 }
 
 .theme-dark {
   background-color: #0a0a0a;
-  /* background-color: #1e1e1e; */
   color: #fff;
 }
 
@@ -49,9 +47,6 @@ main {
 }
 
 .average-widgets {
-  /* display: flex;
-  flex-direction: column;
-  background: linear-gradient(227deg, #d83c48, #5622c7); */
   display: flex;
   justify-content: space-between;
 }
@@ -74,7 +69,6 @@ h2 {
 h3 {
   text-transform: capitalize;
   margin-bottom: 0;
-  /* text-shadow: 2px 2px 5px black; */
 }
 
 h4 {
@@ -175,7 +169,6 @@ nav {
 
   .sleep-score {
     display: flex;
-    /* justify-content: space-around; */
   }
 
   .sleep-margin {

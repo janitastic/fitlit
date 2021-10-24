@@ -18,30 +18,26 @@ describe('User', () => {
       {userID: 1, date: '2019/06/21', hoursSlept: 5.1, sleepQuality: 2.6},
       {userID: 2, date: '2019/06/15', hoursSlept: 6.1, sleepQuality: 2.2},
       {userID: 2, date: '2019/06/16', hoursSlept: 7, sleepQuality: 4.7}
-
     ];
-// //date: "2019/06/15"
-// hoursSlept: 6.1
-// sleepQuality: 2.2
-// userID: 1
-sleepInfo = new Sleep(sleepData);
 
-})
+    sleepInfo = new Sleep(sleepData);
+
+  })
   it('should be able calculate a user/s daily average hours sleep', () => {
     expect(sleepInfo.getAvgSleepPerDay(1)).to.equal(7);
   })
 
-  it('should be able to calculate a user/s daily average sleep quality', () =>{
+  it('should be able to calculate a user/s daily average sleep quality', () => {
     expect(sleepInfo.getAvgDailySleepQual(1)).to.equal(3)
   })
 
   it('should be able to return a user/s hours slept specified by a certain date', () => {
-    const dailyHoursSlept = sleepInfo.getDailyHrsSlept(1,'2019/06/15');
+    const dailyHoursSlept = sleepInfo.getDailyHrsSlept(1, '2019/06/15');
     expect(dailyHoursSlept).to.equal(6.1);
   })
 
   it('should be able to return a user/s sleep quality specified by a certain date', () => {
-    const dailySleepQual = sleepInfo.getDailySleepQual(1,'2019/06/15');
+    const dailySleepQual = sleepInfo.getDailySleepQual(1, '2019/06/15');
     expect(dailySleepQual).to.equal(2.2)
   })
 
