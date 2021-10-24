@@ -25,7 +25,6 @@ class Hydration {
       return day.date === selectedDate;
     });
 
-    // console.log(`daily ounces >>>> ${dailyWaterConsumed.numOunces}`)
     return dailyWaterConsumed.numOunces;
   }
 
@@ -33,9 +32,7 @@ class Hydration {
     const userWaterConsumption = this.h20Data.filter(waterInfo => {
       return waterInfo.userID === id;
     });
-    // console.log("user water", userWaterConsumption)
     const userWaterConsumptionReverse = userWaterConsumption.reverse()
-    // console.log("user water consumption reverse ", userWaterConsumptionReverse)
 
     let targetStartDate = userWaterConsumptionReverse.findIndex(waterInfo => {
       return waterInfo.date === startDate;
@@ -49,7 +46,7 @@ class Hydration {
       dailyWater.push(day.numOunces)
       return dailyWater;
     }, []);
-      return dailyWaterIntake;
+    return dailyWaterIntake;
   }
 }
 

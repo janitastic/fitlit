@@ -21,7 +21,6 @@ class Sleep {
     })
 
     const dailySleepQual = userSleepHours.reduce((totalQual, sleepInfo) => {
-      // console.log('sleepInfo>>>', sleepInfo.sleepQuality);
       return totalQual += sleepInfo.sleepQuality
     }, 0);
 
@@ -66,7 +65,7 @@ class Sleep {
       dailyHours.push(day.hoursSlept)
       return dailyHours;
     }, []);
-      return dailySleep;
+    return dailySleep;
   }
   getWeeklySleepQual(id, startDate) {
     const userSleepQual = this.sleepData.filter((sleepInfo) => {
@@ -88,7 +87,7 @@ class Sleep {
       daySleepQual.push(day.sleepQuality)
       return daySleepQual;
     }, []);
-      return dailySleepQuality;
+    return dailySleepQuality;
   }
 
   getAvgAllSleepQual() {
