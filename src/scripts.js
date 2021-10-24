@@ -28,7 +28,6 @@ const fetchAllData = () => {
 };
 
 const parseData = (allUserData) => {
-  console.log(allUserData);
   userData = allUserData[0].userData;
   sleepData = allUserData[1].sleepData;
   activityData = allUserData[2].activityData;

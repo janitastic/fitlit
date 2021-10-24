@@ -20,7 +20,6 @@ const fetchHydrationData = () => {
     .then((response) => response.json())
 };
 
-// module.exports = fetchUserData, fetchSleepData, fetchActivityData, fetchHydrationData
 export {
   fetchUserData,
   fetchSleepData,
