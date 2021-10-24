@@ -39,6 +39,15 @@ main {
   white-space: nowrap;
 }
 
+.sleep-score {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sleep-margin {
+  margin-right: 70%;
+}
+
 .average-widgets {
   /* display: flex;
   flex-direction: column;
@@ -65,12 +74,20 @@ h2 {
 h3 {
   text-transform: capitalize;
   margin-bottom: 0;
-  text-shadow: 2px 2px 5px black;
+  /* text-shadow: 2px 2px 5px black; */
 }
 
 h4 {
   margin-left: 2%;
   margin-bottom: 0;
+}
+
+li {
+  margin-top: 5%;
+}
+
+.user-info {
+  font-weight: bolder;
 }
 
 .mini-card {
@@ -141,6 +158,10 @@ nav {
   main {
     flex-wrap: wrap;
   }
+
+  .sleep-margin {
+    margin-right: 50%;
+  }
 }
 @media (min-width: 320px) and (max-width: 480px) {
   .card {
@@ -150,5 +171,14 @@ nav {
   nav,
   main {
     flex-wrap: wrap;
+  }
+
+  .sleep-score {
+    display: flex;
+    /* justify-content: space-around; */
+  }
+
+  .sleep-margin {
+    margin-right: 0;
   }
 }

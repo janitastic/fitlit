@@ -105,23 +105,23 @@ const displayUserInfoCard = () => {
 };
 
 const displayUserEmail = () => {
-  userEmail.innerText = `Email: ${currentUser.email}`;
+  userEmail.innerText = `${currentUser.email}`;
 };
 
 const displayUserAddress = () => {
-  userAddress.innerText = `Address: ${currentUser.address}`;
+  userAddress.innerText = `${currentUser.address}`;
 };
 
 const displayUserStride = () => {
-  userStride.innerText = `Stride Length: ${currentUser.strideLength}`;
+  userStride.innerText = `${currentUser.strideLength}`;
 };
 
 const displayUserDailyStepGoal = () => {
-  userStepGoal.innerText = `Daily Step Goal: ${currentUser.dailyStepGoal}`;
+  userStepGoal.innerText = `${currentUser.dailyStepGoal}`;
 };
 
 const displayAvgStepGoal = () => {
-  avgStepGoal.innerText = `Average Community Step Goal: ${userRepository.getAvgStepCount()}`
+  avgStepGoal.innerText = `${userRepository.getAvgStepCount()}`
 }
 
 //the function below is currently not doing anything
@@ -295,25 +295,25 @@ const displayCharts = () => {
         legend: false
       },
       indexAxis: 'y',
-    scales: {
-      x: {
-        grid: {
+      scales: {
+        x: {
+          grid: {
+            display: false
+          },
           display: false
-        } ,
-        display: false
-        },
-      y: {
-        title: false,
-        beginAtZero: true,
-        stacked: true,
-        grid: {
-          display: false
-        },
-        ticks: {
-          color: ['#FFF'],
-        },
+          },
+        y: {
+          title: false,
+          beginAtZero: true,
+          stacked: true,
+          grid: {
+            display: false
+          },
+          ticks: {
+            color: ['#FFF'],
+          },
+        }
       }
-    }
   }});
 
   // DAILY SLEEP CHART
