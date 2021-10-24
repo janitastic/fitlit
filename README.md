@@ -27,7 +27,7 @@
 ### Functionality:
    With the Fitlit application, the user can keep track of a multitude of health and fitness metrics. Widgets will display a visual representation of the user's daily and weekly water intake, daily step goal and their average step goal of their community, as well as the measurements of their daily and weekly hours slept and sleep quality.    
    In a further extension of the application the user will also be able to, by selection of a specific date or week using an integrated calendar, visualize detailed measurements of their physical activity, including miles walked, flights of stairs climbed and total minutes active.
-
+   
 ![Fitlit.gif!](./src/images/fitlit.gif)
 
 ### Installation and Setup:
