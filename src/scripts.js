@@ -187,7 +187,11 @@ const displayCharts = () => {
     data: weeklyWaterData,
     options: {
       plugins: {
-        legend: false,
+        legend: {
+          labels: {
+            color: ['#FFF']
+          }
+        }
       },
       indexAxis: 'y',
     scales: {
@@ -429,21 +433,32 @@ const displayCharts = () => {
 
     var weeklySleepChart = document.getElementById('weeklySleepChart').getContext('2d');
 
-    const weeklySleepLabels = weeklySleepQualData;
+    const weeklySleepQuality = weeklySleepQualData;
     const weeklySleepData = {
-      labels: weeklySleepLabels,
+      labels: ['SUN', 'MON', 'TUES', 'WED', 'THUR', 'FRI', 'SAT'],
       datasets: [{
+        type: 'bar',
         label: 'Time Slept',
         data: weeklySleepChartData,
-        // data: [64, 30, 36, 72, 24, 50, 20],
         backgroundColor: ['rgba(96, 23, 116, 0.4)'],
         borderColor: ['rgb(96, 23, 116)'],
         borderWidth: 1,
-        order: 1
+        order: 2
       }, {
+        type: 'bar',
         label: 'Goal',
         data: [7, 7, 7, 7, 7, 7, 7],
         backgroundColor: ['rgba(255, 255, 255, 0.8)'],
+        order: 3
+      }, {
+        type: 'line',
+        label: 'Sleep Quality',
+        data: weeklySleepQuality,
+        pointRadius: 7,
+        pointHoverRadius: 12,
+        borderWidth: 8,
+        tension: 0.3,
+        backgroundColor: ['rgb(96, 23, 116)'],
         order: 1
       }]
     };
@@ -453,27 +468,34 @@ const displayCharts = () => {
       data: weeklySleepData,
       options: {
         plugins: {
-          legend: false
+          legend: {
+            labels: {
+              color: ['#FFF']
+            }
+          }
+        },
+        tooltip: {
+          mode: 'dataset'
         },
         indexAxis: 'y',
-      scales: {
-        x: {
-          grid: {
+        scales: {
+          x: {
+            grid: {
+              display: false
+            } ,
             display: false
-          } ,
-          display: false
-          },
-        y: {
-          beginAtZero: true,
-          stacked: true,
-          grid: {
-            display: false
-          },
-          ticks: {
-            color: ['#FFF'],
-          },
-        }
-      },
+            },
+          y: {
+            beginAtZero: true,
+            stacked: true,
+            grid: {
+              display: false
+            },
+            ticks: {
+              color: ['#FFF'],
+            },
+          }
+        },
     }});
 
 }
