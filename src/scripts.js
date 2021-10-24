@@ -4,6 +4,8 @@ import UserRepository from './UserRepository';
 import Sleep from './Sleep';
 import Hydration from './Hydration';
 import Activity from './Activity';
+import './css/styles.css';
+import './images/turing-logo.png';
 let sleepData;
 let activityData;
 let h20Data;
@@ -101,10 +103,6 @@ const displaySleepQuality = () => {
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length)
 };
-
-import './css/styles.css';
-
-import './images/turing-logo.png';
 
 //CHARTJS INTEGRATION
 const displayCharts = () => {
