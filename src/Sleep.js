@@ -21,7 +21,6 @@ class Sleep {
     })
 
     const dailySleepQual = userSleepHours.reduce((totalQual, sleepInfo) => {
-      // console.log('sleepInfo>>>', sleepInfo.sleepQuality);
       return totalQual += sleepInfo.sleepQuality
     }, 0);
 

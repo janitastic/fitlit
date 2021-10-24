@@ -1,5 +1,5 @@
-class Activity{
-  constructor(activityData){ //activityData comes from our data folder -> activityData.js
+class Activity {
+  constructor(activityData) { 
     this.activityData = activityData;
   }
 }
