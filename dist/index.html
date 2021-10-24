@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Activity Tracker</title>
+    <title>FitLit | Activity Tracker</title>
   </head>
   <body class="theme-dark">
     <header>
@@ -10,68 +10,72 @@
         <h1>fitlit</h1>
       </section>
       <nav>
-        <article class="card user-profile">
+        <article class="mini-card user-profile">
           <h2 id="firstName"></h2>
-          <p id="userEmail"></p>
-          <p id="userAddress"></p>
-          <p id="userStride"></p>
-          <p id="userStepGoal"></p>
-          <p id="avgStepGoal"></p>
+            <h3>Profile</h3>
+              <ul>
+                <li>Email - <br><span id="userEmail" class="user-info"></span></li>
+                <li>Address - <br><span id="userAddress" class="user-info"></li>
+                <li>Stride Length - <span id="userStride" class="user-info"></li>
+                <li>Daily Step Goal - <span id="userStepGoal" class="user-info"></li>
+                <li>Community Step Goal - <span id="avgStepGoal" class="user-info"></li>
+              </ul>
         </article>
-        <aside class="card summary">
-          <h3>Today's overall activity</h3>
-          <!-- dailySleepChart' -->
-          <div>
-            <h3>Water</h3>
-            <canvas id="dailyWaterChart" width="400" height="100"></canvas>
-          </div>
-          <div>
-            <h3>Sleep</h3>
-            <canvas id="dailySleepChart" width="400" height="100"></canvas>
-          </div>
-          <div>
-            <h3>Sleep Quality</h3>
-            <p id="dailySleepQuality"></p>
-          </div>
-        </aside>
+        <aside class="mini-card summary">
+          <h3>Today's Overview</h3>
+          <article>
+            <h4>Steps</h4>
+          </article>
+          <article>
+            <h4>Water</h4>
+            <canvas id="dailyWaterChart" width="400" height="60"></canvas>
+          </article>
+          <article>
+            <div class="sleep-score">
+              <h4 class="sleep-margin">Sleep</h4>
+              <h4>Quality = <span id="dailySleepQuality"></span></h4>
+            </div>
+            <canvas id="dailySleepChart" width="400" height="60"></canvas>
+          </article>
+          </article>
+          <article>
+            <h4>Activity</h4>
+          </article>
       </nav>
     </header>
     <main>
-      <!-- do we need a title here? -->
-      <section class="card average-widgets">
-        <h3>Average Activity</h3>
-        <article class="steps" id="avgUserSteps">
-          <h4>Steps</h4>
-        </article>
-        <article class="water" id="avgUserWater">
-          <h4>Water</h4>
-          <!-- avgUserSleepChart -->
-          <canvas id="avgUserWaterChart" width="200" height="31";></canvas>
-          <!-- <p id ="userh20Data"></p>
-          <p id ="weeklyWaterConsumed"></p> -->
-        </article>
-        <article class="sleep" id="avgUserSleep">
-          <h4>Sleep</h4>
-          <canvas id="avgUserSleepChart" width="200" height="31";></canvas>
-          <h4>Sleep Quality</h4>
-          <p id="avgSleepQuality"></p>
-        </article>
-        <article class="activity" id="avgUserActivity">
-          <h4>Activity</h4>
-        </article>
+      <section class="large-card">
+        <h3>Averages</h3>
+        <div class="average-widgets">
+          <article class="steps" id="avgUserSteps">
+            <h4>Steps</h4>
+          </article>
+          <article class="water" id="avgUserWater">
+            <h4>Water</h4>
+            <canvas id="avgUserWaterChart" width="200" height="60";></canvas>
+          </article>
+          <article class="sleep" id="avgUserSleep">
+            <h4>Sleep</h4>
+            <canvas id="avgUserSleepChart" width="200" height="60";></canvas>
+            <h4>Quality = <span id="avgSleepQuality"></span></h4>
+          </article>
+          <article class="activity" id="avgUserActivity">
+            <h4>Activity</h4>
+          </article>
+        </div>
       </section>
-      <section class="card weekly-widgets">
-        <h3>Weekly Activity</h3>
+      <section class="large-card weekly-widgets">
+        <h3>Weekly</h3>
         <article class="steps" id="userSteps">
           <h4>Steps</h4>
         </article>
         <article class="water" id="userWater">
           <h4>Water</h4>
-          <canvas id="weeklyWaterChart" width="200" height="200"></canvas>
+          <canvas id="weeklyWaterChart" width="200" height="60" style="margin-left: 4%"></canvas>
         </article>
         <article class="sleep" id="userSleep">
           <h4>Sleep</h4>
-          <canvas id="weeklySleepChart" width="200" height="200"></canvas>
+          <canvas id="weeklySleepChart" width="200" height="60" style="margin-left: 4%"></canvas>
         </article>
         <article class="activity" id="userActivity">
           <h4>Activity</h4>

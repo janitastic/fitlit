@@ -28,6 +28,7 @@ header {
 
 main {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
@@ -35,13 +36,24 @@ main {
 .water,
 .sleep,
 .activity {
+  white-space: nowrap;
+}
 
+.sleep-score {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sleep-margin {
+  margin-right: 70%;
 }
 
 .average-widgets {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  background: linear-gradient(227deg, #d83c48, #5622c7);
+  background: linear-gradient(227deg, #d83c48, #5622c7); */
+  display: flex;
+  justify-content: space-between;
 }
 
 .weekly-widgets {
@@ -62,20 +74,41 @@ h2 {
 h3 {
   text-transform: capitalize;
   margin-bottom: 0;
-  text-shadow: 2px 2px 5px black;
+  /* text-shadow: 2px 2px 5px black; */
 }
 
 h4 {
   margin-left: 2%;
+  margin-bottom: 0;
 }
 
-.card {
+li {
+  margin-top: 5%;
+}
+
+.user-info {
+  font-weight: bolder;
+}
+
+.mini-card {
   border-radius: 1em;
   padding: 3%;
   margin: 2%;
   width: 50%;
   overflow-wrap: break-word;
   box-shadow: 7px 3px 8px 0px #7c7c7c;
+}
+
+.large-card {
+  border-radius: 1em;
+  padding: 3%;
+  margin: 2%;
+  width: 90%;
+  overflow-wrap: break-word;
+  box-shadow: 7px 3px 8px 0px #7c7c7c;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(227deg, #d83c48, #5622c7);
 }
 
 .user-profile {
@@ -108,6 +141,7 @@ nav {
 .graph {
   margin-top: 0;
 }
+
 /* Media Queries for Screen Size */
 @media only screen and (max-width: 1068px) {
   .card {
@@ -124,6 +158,10 @@ nav {
   main {
     flex-wrap: wrap;
   }
+
+  .sleep-margin {
+    margin-right: 50%;
+  }
 }
 @media (min-width: 320px) and (max-width: 480px) {
   .card {
@@ -133,5 +171,14 @@ nav {
   nav,
   main {
     flex-wrap: wrap;
+  }
+
+  .sleep-score {
+    display: flex;
+    /* justify-content: space-around; */
+  }
+
+  .sleep-margin {
+    margin-right: 0;
   }
 }

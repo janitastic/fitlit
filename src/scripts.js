@@ -105,23 +105,23 @@ const displayUserInfoCard = () => {
 };
 
 const displayUserEmail = () => {
-  userEmail.innerText = `Email: ${currentUser.email}`;
+  userEmail.innerText = `${currentUser.email}`;
 };
 
 const displayUserAddress = () => {
-  userAddress.innerText = `Address: ${currentUser.address}`;
+  userAddress.innerText = `${currentUser.address}`;
 };
 
 const displayUserStride = () => {
-  userStride.innerText = `Stride Length: ${currentUser.strideLength}`;
+  userStride.innerText = `${currentUser.strideLength}`;
 };
 
 const displayUserDailyStepGoal = () => {
-  userStepGoal.innerText = `Daily Step Goal: ${currentUser.dailyStepGoal}`;
+  userStepGoal.innerText = `${currentUser.dailyStepGoal}`;
 };
 
 const displayAvgStepGoal = () => {
-  avgStepGoal.innerText = `Average Community Step Goal: ${userRepository.getAvgStepCount()}`
+  avgStepGoal.innerText = `${userRepository.getAvgStepCount()}`
 }
 
 //the function below is currently not doing anything
@@ -154,7 +154,8 @@ import './images/turing-logo.png';//we can probably take this out
 
 // An example of how you tell webpack to use a JS file
 
-// ChartJS integration goes here:
+/*********** ChartJS integration goes here: ***********/
+
 const displayCharts = () => {
   //WEEKLY WATER
   let weeklyWaterChartData = userh20.calculateWeeklyWater(currentUser.id, '2020/01/22');
@@ -166,7 +167,7 @@ const displayCharts = () => {
   const weeklyWaterData = {
     labels: weeklyWaterLabels,
     datasets: [{
-      label: 'Daily Water Consumption',
+      label: 'Total Ounces',
       data: weeklyWaterChartData,
       // data: [64, 30, 36, 72, 24, 50, 20],
       backgroundColor: ['rgba(54, 162, 235, 0.4)'],
@@ -174,7 +175,7 @@ const displayCharts = () => {
       borderWidth: 1,
       order: 1
     }, {
-      label: "Hydration Goal",
+      label: 'Goal',
       data: [64, 64, 64, 64, 64, 64, 64],
       backgroundColor: ['rgba(255, 255, 255, 0.8)'],
       order: 1
@@ -186,14 +187,14 @@ const displayCharts = () => {
     data: weeklyWaterData,
     options: {
       plugins: {
-        legend: false
+        legend: false,
       },
       indexAxis: 'y',
     scales: {
       x: {
         grid: {
           display: false
-        } ,
+        },
         display: false
         },
       y: {
@@ -201,7 +202,10 @@ const displayCharts = () => {
         stacked: true,
         grid: {
           display: false
-        }
+        },
+        ticks: {
+          color: ['#FFF'],
+        },
       }
     }
   }});
@@ -214,16 +218,16 @@ const displayCharts = () => {
 
 
   const dailyWaterData = {
-    labels: [""],
+    labels: [''],
     datasets: [{
-      label: 'Daily Water Consumption',
+      label: 'Ounces',
       data: [dailyWaterChartData],
       backgroundColor: ['rgba(54, 162, 235, 0.4)'],
       borderColor: ['rgb(54, 162, 235)'],
       borderWidth: 1,
       order: 1
     }, {
-      label: "Hydration Goal",
+      label: 'Goal',
       data: [64],
       backgroundColor: ['rgba(255, 255, 255, 0.8)'],
       order: 1
@@ -251,7 +255,10 @@ const displayCharts = () => {
         stacked: true,
         grid: {
           display: false
-        }
+        },
+        ticks: {
+          color: ['#FFF'],
+        },
       }
     }
   }});
@@ -264,16 +271,16 @@ const displayCharts = () => {
 
 
   const avgWaterData = {
-    labels: [""],
+    labels: [''],
     datasets: [{
-      label: 'Average Water Consumption',
+      label: 'Average Ounces',
       data: [avgWaterChartData],
       backgroundColor: ['rgba(54, 162, 235, 0.4)'],
       borderColor: ['rgb(54, 162, 235)'],
       borderWidth: 1,
       order: 1
     }, {
-      label: "Hydration Goal",
+      label: 'Goal',
       data: [64],
       backgroundColor: ['rgba(255, 255, 255, 0.8)'],
       order: 1
@@ -288,22 +295,25 @@ const displayCharts = () => {
         legend: false
       },
       indexAxis: 'y',
-    scales: {
-      x: {
-        grid: {
+      scales: {
+        x: {
+          grid: {
+            display: false
+          },
           display: false
-        } ,
-        display: false
-        },
-      y: {
-        title: false,
-        beginAtZero: true,
-        stacked: true,
-        grid: {
-          display: false
+          },
+        y: {
+          title: false,
+          beginAtZero: true,
+          stacked: true,
+          grid: {
+            display: false
+          },
+          ticks: {
+            color: ['#FFF'],
+          },
         }
       }
-    }
   }});
 
   // DAILY SLEEP CHART
@@ -323,7 +333,7 @@ const displayCharts = () => {
       borderWidth: 1,
       order: 1
     }, {
-      label: "Sleep Goal",
+      label: 'Goal',
       data: [7],
       backgroundColor: ['rgba(255, 255, 255, 0.8)'],
       order: 1
@@ -351,7 +361,10 @@ const displayCharts = () => {
         stacked: true,
         grid: {
           display: false
-        }
+        },
+        ticks: {
+          color: ['#FFF'],
+        },
       }
     }
   }});
@@ -364,7 +377,7 @@ const displayCharts = () => {
 
 
     const avgSleepData = {
-      labels: [""],
+      labels: [''],
       datasets: [{
         label: 'Time Slept Average',
         data: [avgSleepChartData],
@@ -373,7 +386,7 @@ const displayCharts = () => {
         borderWidth: 1,
         order: 1
       }, {
-        label: "Sleep Goal",
+        label: 'Goal',
         data: [7],
         backgroundColor: ['rgba(255, 255, 255, 0.8)'],
         order: 1
@@ -401,7 +414,10 @@ const displayCharts = () => {
           stacked: true,
           grid: {
             display: false
-          }
+          },
+          ticks: {
+            color: ['#FFF'],
+          },
         }
       }
     }});
@@ -417,7 +433,7 @@ const displayCharts = () => {
     const weeklySleepData = {
       labels: weeklySleepLabels,
       datasets: [{
-        label: 'Daily Time Slept',
+        label: 'Time Slept',
         data: weeklySleepChartData,
         // data: [64, 30, 36, 72, 24, 50, 20],
         backgroundColor: ['rgba(96, 23, 116, 0.4)'],
@@ -425,7 +441,7 @@ const displayCharts = () => {
         borderWidth: 1,
         order: 1
       }, {
-        label: "Sleep Goal",
+        label: 'Goal',
         data: [7, 7, 7, 7, 7, 7, 7],
         backgroundColor: ['rgba(255, 255, 255, 0.8)'],
         order: 1
@@ -452,7 +468,10 @@ const displayCharts = () => {
           stacked: true,
           grid: {
             display: false
-          }
+          },
+          ticks: {
+            color: ['#FFF'],
+          },
         }
       },
     }});
