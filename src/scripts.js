@@ -1,33 +1,16 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-
-//Create an info card on the dashboard with all of user’s info on the page
-// Display their first name somewhere prominently on the page to welcome them
-// For a specific user, display how their step goal compares to the average step goal amongst all users (this display should not be hard-coded)
-
-
-
 import Chart from 'chart.js/auto';
-
-
 import User from './User';
 import UserRepository from './UserRepository';
 import Sleep from './Sleep';
 import Hydration from './Hydration';
 import Activity from './Activity';
-// import userData from './data/users.js';
-// import activityData from './data/activityData.js';
-// import sleepData from './data/sleepData.js';
-// import h20Data from './data/h20Data.js';
-let userData;
 let sleepData;
 let activityData;
 let h20Data;
 let userRepository;
 let currentUser;
 let allUsers;
-let userh20;//added this here trying to populate the avgWaterConsumed
+let userh20;
 let allUsersSleep;
 
 import {
@@ -53,22 +36,14 @@ const parseData = (allUserData) => {
 
 const allData = (user, sleep, activity, h20Data) => {
   userRepository = new UserRepository(user);
-  // userId = getRandomIndex(userRepository.users)
   currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
-  // currentDate = new User(userRepository.users[getRandomIndex(userRepository.users)]);
   allUsersSleep = new Sleep(sleepData)
   userh20 = new Hydration(h20Data);
-  //instantiate other classes so data is accessible
-  //Repo for each other class?
   displayUserInfoCard();
   displayCharts();
 };
 
-// const sleepData = new Sleep(sleepData);
-// const activityData = new Activity(activityData);
-// const h20Data = new Hydration(h20Data);
-
-// querySelectors go here
+//QUERY SELECTORS
 const greeting = document.getElementById('firstName');
 const userSteps = document.getElementById('userSteps');
 const userWater = document.getElementById('userWater');
@@ -81,18 +56,13 @@ const userStepGoal = document.getElementById('userStepGoal');
 const avgStepGoal = document.getElementById('avgStepGoal');
 const dailySleepQuality = document.getElementById('dailySleepQuality');
 const avgSleepQuality = document.getElementById('avgSleepQuality');
-//the 3 below are for the water charts, may not need them
-  // const userh20Data = document.getElementById('userh20Data');
-  // const dailyH20Consumed = document.getElementById('dailyH20Consumed');
-  // const weeklyWaterConsumed = document.getElementById('weeklyWaterConsumed');
 
-
-//eventListeners go here
+//EVENT LISTENER
 window.addEventListener('load', () => {
   fetchAllData();
 });
-//helper functions go here
 
+//HELPER FUNCTIONS
 const displayUserInfoCard = () => {
   greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`;
   displayUserEmail();
@@ -101,7 +71,6 @@ const displayUserInfoCard = () => {
   displayUserDailyStepGoal();
   displayAvgStepGoal();
   displaySleepQuality();
-  // displayAvgWaterConsumed();
 };
 
 const displayUserEmail = () => {
@@ -124,52 +93,30 @@ const displayAvgStepGoal = () => {
   avgStepGoal.innerText = `${userRepository.getAvgStepCount()}`
 }
 
-//the function below is currently not doing anything
-// const displayAvgWaterConsumed = (id) => {
-//   userh20Data.innerText = userh20.getAvgOuncesPerDay(currentUser.id);
-//     //we need to figure out how to generate a date for the below argument
-//   // dailyH20Consumed.innerText = userh20.calculateDailyOunces(currentUser.id,'2019/06/15');
-//   dailyH20Consumed.innerHTML = `<p class="chart-title">Water - ${userh20.calculateDailyOunces(currentUser.id,'2019/06/15')} of 64 oz Goal</p>`;
-//   weeklyWaterConsumed.innerText = userh20.calculateWeeklyWater(currentUser.id, '2019/06/15');
-// }
-
 const displaySleepQuality = () => {
   dailySleepQuality.innerText = allUsersSleep.getDailySleepQual(currentUser.id, '2020/01/22');
   avgSleepQuality.innerText = allUsersSleep.getAvgDailySleepQual(currentUser.id)
 }
 
- const getRandomIndex = (array) => {
- return Math.floor(Math.random() * array.length)
- };
+const getRandomIndex = (array) => {
+  return Math.floor(Math.random() * array.length)
+};
 
-
-// An example of how you tell webpack to use a CSS file
 import './css/styles.css';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png';//we can probably take this out
+import './images/turing-logo.png';
 
-
-// console.log('This is the JavaScript entry file - your code begins here.');
-
-// An example of how you tell webpack to use a JS file
-
-/*********** ChartJS integration goes here: ***********/
-
+//CHARTJS INTEGRATION
 const displayCharts = () => {
   //WEEKLY WATER
   let weeklyWaterChartData = userh20.calculateWeeklyWater(currentUser.id, '2020/01/22');
-
-
   var weeklyWaterChart = document.getElementById('weeklyWaterChart').getContext('2d');
-
   const weeklyWaterLabels = ['SUN', 'MON', 'TUES', 'WED', 'THUR', 'FRI', 'SAT'];
   const weeklyWaterData = {
     labels: weeklyWaterLabels,
     datasets: [{
       label: 'Total Ounces',
       data: weeklyWaterChartData,
-      // data: [64, 30, 36, 72, 24, 50, 20],
       backgroundColor: ['rgba(54, 162, 235, 0.4)'],
       borderColor: ['rgb(54, 162, 235)'],
       borderWidth: 1,
@@ -211,12 +158,8 @@ const displayCharts = () => {
   }});
 
   // DAILY WATER CHART
-
   var dailyWaterChart = document.getElementById('dailyWaterChart').getContext('2d');
-
   let dailyWaterChartData = userh20.calculateDailyOunces(currentUser.id, '2020/01/22')
-
-
   const dailyWaterData = {
     labels: [''],
     datasets: [{
@@ -264,12 +207,8 @@ const displayCharts = () => {
   }});
 
 //AVERAGE WATER
-
   var totalAvgWaterChart = document.getElementById('avgUserWaterChart').getContext('2d');
-
   let avgWaterChartData = userh20.getAvgOuncesPerDay(currentUser.id);
-
-
   const avgWaterData = {
     labels: [''],
     datasets: [{
@@ -317,12 +256,8 @@ const displayCharts = () => {
   }});
 
   // DAILY SLEEP CHART
-
   var dailySleepChart = document.getElementById('dailySleepChart').getContext('2d');
-
   let dailySleepChartData = allUsersSleep.getDailyHrsSlept(currentUser.id, '2020/01/22')
-
-
   const dailySleepData = {
     labels: [""],
     datasets: [{
@@ -370,12 +305,8 @@ const displayCharts = () => {
   }});
 
   //AVERAGE SLEEP
-
     var totalAvgSleepChart = document.getElementById('avgUserSleepChart').getContext('2d');
-
     let avgSleepChartData = allUsersSleep.getAvgSleepPerDay(currentUser.id);
-
-
     const avgSleepData = {
       labels: [''],
       datasets: [{
@@ -392,7 +323,6 @@ const displayCharts = () => {
         order: 1
       }]
     };
-
     var avgSleepChartBuilder = new Chart(totalAvgSleepChart, {
       type: 'bar',
       data: avgSleepData,
@@ -423,12 +353,9 @@ const displayCharts = () => {
     }});
 
     //WEEKLY SLEEP
-
     let weeklySleepChartData = allUsersSleep.getWeeklyHrsSlept(currentUser.id, '2020/01/22');
     let weeklySleepQualData = allUsersSleep.getWeeklySleepQual(currentUser.id, '2020/01/22');
-
     var weeklySleepChart = document.getElementById('weeklySleepChart').getContext('2d');
-
     const weeklySleepLabels = weeklySleepQualData;
     const weeklySleepData = {
       labels: weeklySleepLabels,
