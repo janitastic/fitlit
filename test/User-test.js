@@ -28,7 +28,6 @@ describe('User', () => {
       "dailyStepGoal": 5000,
       "friends": [9, 18, 24, 19]
     })
-
   })
 
   it('should be able to return a users first name', () => {
