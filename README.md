@@ -1,10 +1,15 @@
 ## 💪🏼 FitLit! 💪🏼
-  ##### A Front End Engineering Project by [Jani Palomino](https://github.com/janitastic), [Nate Ewert- Krocker](https://github.com/NEwertKrocker), [Regan Losey](https://github.com/reganlosey), and [Susanna Carey](https://github.com/susannaopal)
+  ### A Front End Engineering Project by [Jani Palomino](https://github.com/janitastic), [Nate Ewert- Krocker](https://github.com/NEwertKrocker), [Regan Losey](https://github.com/reganlosey), and [Susanna Carey](https://github.com/susannaopal)
+<br>
 
-  ##### Project Manager: [Cassandra Torkse](https://github.com/CassandraGoose)
+  #### Project Manager: [Cassandra Torkse](https://github.com/CassandraGoose)
+<br>
 
-  ##### Formal Code Review by :
-  [Mentor/ Rock Name goes here] (link to their GH profile goes here)
+  #### Formal Code Review by :
+  - [Mike Limberg](https://github.com/mlimberg)
+  - [Rachel Williams](https://github.com/rwilliams659)
+  - [Katie Scruggs](https://github.com/katiescruggs)
+<br>
 
   ### Techologies Used:
   - Javascript
@@ -22,7 +27,7 @@
 ### Functionality:
    With the Fitlit application, the user can keep track of a multitude of health and fitness metrics. Widgets will display a visual representation of the user's daily and weekly water intake, daily step goal and their average step goal of their community, as well as the measurements of their daily and weekly hours slept and sleep quality.    
    In a further extension of the application the user will also be able to, by selection of a specific date or week using an integrated calendar, visualize detailed measurements of their physical activity, including miles walked, flights of stairs climbed and total minutes active.
-
+   
 ![Fitlit.gif!](./src/images/fitlit.gif)
 
 ### Installation and Setup:

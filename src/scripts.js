@@ -5,7 +5,7 @@ import Sleep from './Sleep';
 import Hydration from './Hydration';
 import Activity from './Activity';
 import './css/styles.css';
-import './images/turing-logo.png';
+let userData;
 let sleepData;
 let activityData;
 let h20Data;
@@ -205,7 +205,7 @@ const displayCharts = () => {
           },
         }
       }
-  }});
+    }});
 
   //AVERAGE WATER
   var totalAvgWaterChart = document.getElementById('avgUserWaterChart').getContext('2d');
@@ -352,76 +352,76 @@ const displayCharts = () => {
         }
       }
     }});
-  
-    //WEEKLY SLEEP
 
-    let weeklySleepChartData = allUsersSleep.getWeeklyHrsSlept(currentUser.id, '2020/01/22');
-    let weeklySleepQualData = allUsersSleep.getWeeklySleepQual(currentUser.id, '2020/01/22');
+  //WEEKLY SLEEP
 
-    var weeklySleepChart = document.getElementById('weeklySleepChart').getContext('2d');
+  let weeklySleepChartData = allUsersSleep.getWeeklyHrsSlept(currentUser.id, '2020/01/22');
+  let weeklySleepQualData = allUsersSleep.getWeeklySleepQual(currentUser.id, '2020/01/22');
 
-    const weeklySleepQuality = weeklySleepQualData;
-    const weeklySleepData = {
-      labels: ['SUN', 'MON', 'TUES', 'WED', 'THUR', 'FRI', 'SAT'],
-      datasets: [{
-        type: 'bar',
-        label: 'Time Slept',
-        data: weeklySleepChartData,
-        backgroundColor: ['rgba(96, 23, 116, 0.4)'],
-        borderColor: ['rgb(96, 23, 116)'],
-        borderWidth: 1,
-        order: 2
-      }, {
-        type: 'bar',
-        label: 'Goal',
-        data: [7, 7, 7, 7, 7, 7, 7],
-        backgroundColor: ['rgba(255, 255, 255, 0.8)'],
-        order: 3
-      }, {
-        type: 'line',
-        label: 'Sleep Quality',
-        data: weeklySleepQuality,
-        pointRadius: 7,
-        pointHoverRadius: 12,
-        borderWidth: 8,
-        tension: 0.3,
-        backgroundColor: ['rgb(96, 23, 116)'],
-        order: 1
-      }]
-    };
+  var weeklySleepChart = document.getElementById('weeklySleepChart').getContext('2d');
 
-    var weeklySleepChartBuilder = new Chart(weeklySleepChart, {
+  const weeklySleepQuality = weeklySleepQualData;
+  const weeklySleepData = {
+    labels: ['SUN', 'MON', 'TUES', 'WED', 'THUR', 'FRI', 'SAT'],
+    datasets: [{
       type: 'bar',
-      data: weeklySleepData,
-      options: {
-        plugins: {
-          legend: {
-            labels: {
-              color: ['#FFF']
-            }
+      label: 'Time Slept',
+      data: weeklySleepChartData,
+      backgroundColor: ['rgba(96, 23, 116, 0.4)'],
+      borderColor: ['rgb(96, 23, 116)'],
+      borderWidth: 1,
+      order: 2
+    }, {
+      type: 'bar',
+      label: 'Goal',
+      data: [7, 7, 7, 7, 7, 7, 7],
+      backgroundColor: ['rgba(255, 255, 255, 0.8)'],
+      order: 3
+    }, {
+      type: 'line',
+      label: 'Sleep Quality',
+      data: weeklySleepQuality,
+      pointRadius: 7,
+      pointHoverRadius: 12,
+      borderWidth: 8,
+      tension: 0.3,
+      backgroundColor: ['rgb(96, 23, 116)'],
+      order: 1
+    }]
+  };
+
+  var weeklySleepChartBuilder = new Chart(weeklySleepChart, {
+    type: 'bar',
+    data: weeklySleepData,
+    options: {
+      plugins: {
+        legend: {
+          labels: {
+            color: ['#FFF']
           }
-        },
-        tooltip: {
-          mode: 'dataset'
-        },
-        indexAxis: 'y',
-        scales: {
-          x: {
-            grid: {
-              display: false
-            } ,
+        }
+      },
+      tooltip: {
+        mode: 'dataset'
+      },
+      indexAxis: 'y',
+      scales: {
+        x: {
+          grid: {
             display: false
-            },
-          y: {
-            beginAtZero: true,
-            stacked: true,
-            grid: {
-              display: false
-            },
-            ticks: {
-              color: ['#FFF'],
-            },
-          }
+          } ,
+          display: false
         },
+        y: {
+          beginAtZero: true,
+          stacked: true,
+          grid: {
+            display: false
+          },
+          ticks: {
+            color: ['#FFF'],
+          },
+        }
+      },
     }});
 }
