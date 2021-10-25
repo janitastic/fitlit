@@ -1,3 +1,5 @@
+/* Overall Display */
+
 * {
   font-family: 'Montserrat', sans-serif;
 }
@@ -7,21 +9,10 @@ body, html {
   height: 100%;
 }
 
-.theme-dark {
-  background-color: #0a0a0a;
-  color: #fff;
-}
-
 header {
   display: flex;
   justify-content: center;
   flex-direction: column;
-}
-
-.summary {
-  display: flex;
-  flex-direction: column;
-  background-color: #151516;
 }
 
 main {
@@ -30,40 +21,14 @@ main {
   justify-content: space-evenly;
 }
 
-.steps,
-.water,
-.sleep,
-.activity {
-  white-space: nowrap;
-}
-
-.sleep-score {
+nav {
   display: flex;
   justify-content: space-around;
-}
-
-.sleep-margin {
-  margin-right: 70%;
-}
-
-.average-widgets {
-  display: flex;
-  justify-content: space-between;
-}
-
-.weekly-widgets {
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(132deg, #d83c48, #5622c7);
 }
 
 h1 {
   color: #A1A1A6;
   font-size: 2em;
-}
-
-h2 {
-
 }
 
 h3 {
@@ -80,28 +45,83 @@ li {
   margin-top: 5%;
 }
 
+.app-title,
+.summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-title {
+  flex-wrap: wrap;
+  margin: 1% 2%;
+}
+
+.summary {
+  background-color: #151516;
+}
+
+.theme-dark {
+  background-color: #0a0a0a;
+  color: #fff;
+}
+
+
+/* Cards Display */
+
+.steps,
+.water,
+.sleep,
+.activity {
+  white-space: nowrap;
+}
+
+.sleep-score,
+.average-widgets,
+.weekly-widgets,
+.large-card, {
+  display: flex;
+}
+
+.weekly-widgets,
+.large-card {
+  flex-direction: column;
+}
+
+.sleep-score {
+  justify-content: space-around;
+}
+
+.sleep-margin {
+  margin-right: 70%;
+}
+
+.average-widgets {
+  justify-content: space-between;
+}
+
+.weekly-widgets {
+  background: linear-gradient(132deg, #d83c48, #5622c7);
+}
+
 .user-info {
   font-weight: bolder;
 }
 
-.mini-card {
-  border-radius: 1em;
-  padding: 3%;
-  margin: 2%;
-  width: 50%;
-  overflow-wrap: break-word;
-  box-shadow: 7px 3px 8px 0px #7c7c7c;
-}
-
+.mini-card,
 .large-card {
   border-radius: 1em;
   padding: 3%;
   margin: 2%;
-  width: 90%;
   overflow-wrap: break-word;
   box-shadow: 7px 3px 8px 0px #7c7c7c;
-  display: flex;
-  flex-direction: column;
+}
+
+.mini-card {
+  width: 50%;
+}
+
+.large-card {
+  width: 90%;
   background: linear-gradient(227deg, #d83c48, #5622c7);
 }
 
@@ -111,18 +131,6 @@ li {
 
 .date-and-time {
   background: linear-gradient(45deg, #d83c48, #5622c7);
-}
-
-.app-title {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin: 1% 2%;
-}
-
-nav {
-  display: flex;
-  justify-content: space-around;
 }
 
 /* CHARTS */
@@ -137,6 +145,7 @@ nav {
 }
 
 /* Media Queries for Screen Size */
+
 @media only screen and (max-width: 1068px) {
   .card {
     max-width: 50%;
