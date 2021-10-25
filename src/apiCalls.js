@@ -6,13 +6,11 @@ const fetchUserData = () => {
 const fetchSleepData = () => {
   return fetch("https://pacific-badlands-43237.herokuapp.com/api/v1/sleep")
     .then((response) => response.json())
-    .then(data => data)
 };
 
 const fetchActivityData = () => {
   return fetch("https://pacific-badlands-43237.herokuapp.com/api/v1/activity")
     .then((response) => response.json())
-    .then(data => data)
 };
 
 const fetchHydrationData = () => {
