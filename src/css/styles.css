@@ -148,13 +148,13 @@ li {
 /* Media Queries for Screen Size */
 
 @media only screen and (max-width: 1068px) {
-  .card {
+  .mini-card {
     max-width: 50%;
   }
 }
 
 @media only screen and (max-width: 734px) {
-  .card {
+  .mini-card {
     min-width: 90%;
   }
 
@@ -168,7 +168,7 @@ li {
   }
 }
 @media (min-width: 320px) and (max-width: 480px) {
-  .card {
+  .mini-card {
     min-width: 90%;
   }
 
