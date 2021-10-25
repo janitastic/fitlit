@@ -18,7 +18,11 @@
   - Mocha/Chai
   - Node.js
   - VSCode / Atom
+  
 
+ ### Visit The Site [Here!](https://janitastic.github.io/fitlit/)
+
+ <br>
 
 ### Project Overview:
    Our group was given a basic code foundation to add to in order to create an interactive fitness tracker that allows a user to track their lifestyle activities over several categories including water intake, amount and quality of sleep, and physical activity.
