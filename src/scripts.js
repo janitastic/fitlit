@@ -5,7 +5,7 @@ import Sleep from './Sleep';
 import Hydration from './Hydration';
 import Activity from './Activity';
 import './css/styles.css';
-import './images/turing-logo.png';
+let userData;
 let sleepData;
 let activityData;
 let h20Data;
@@ -352,7 +352,7 @@ const displayCharts = () => {
         }
       }
     }});
-  
+
   //WEEKLY SLEEP
 
   let weeklySleepChartData = allUsersSleep.getWeeklyHrsSlept(currentUser.id, '2020/01/22');
