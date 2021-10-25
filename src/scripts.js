@@ -5,15 +5,16 @@ import Sleep from './Sleep';
 import Hydration from './Hydration';
 import Activity from './Activity';
 import './css/styles.css';
-let userData;
 let sleepData;
 let activityData;
 let h20Data;
 let userRepository;
 let currentUser;
 let allUsers;
+let userData;
 let userh20;
 let allUsersSleep;
+const todaysDate = '2020/01/22';
 
 import {
   fetchUserData,
@@ -95,7 +96,7 @@ const displayAvgStepGoal = () => {
 }
 
 const displaySleepQuality = () => {
-  dailySleepQuality.innerText = allUsersSleep.getDailySleepQual(currentUser.id, '2020/01/22');
+  dailySleepQuality.innerText = allUsersSleep.getDailySleepQual(currentUser.id, todaysDate);
   avgSleepQuality.innerText = allUsersSleep.getAvgDailySleepQual(currentUser.id)
 }
 
@@ -106,7 +107,7 @@ const getRandomIndex = (array) => {
 //CHARTJS INTEGRATION
 const displayCharts = () => {
   //WEEKLY WATER
-  let weeklyWaterChartData = userh20.calculateWeeklyWater(currentUser.id, '2020/01/22');
+  let weeklyWaterChartData = userh20.calculateWeeklyWater(currentUser.id, todaysDate);
   var weeklyWaterChart = document.getElementById('weeklyWaterChart').getContext('2d');
   const weeklyWaterLabels = ['SUN', 'MON', 'TUES', 'WED', 'THUR', 'FRI', 'SAT'];
   const weeklyWaterData = {
@@ -160,7 +161,7 @@ const displayCharts = () => {
 
   // DAILY WATER CHART
   var dailyWaterChart = document.getElementById('dailyWaterChart').getContext('2d');
-  let dailyWaterChartData = userh20.calculateDailyOunces(currentUser.id, '2020/01/22')
+  let dailyWaterChartData = userh20.calculateDailyOunces(currentUser.id, todaysDate)
   const dailyWaterData = {
     labels: [''],
     datasets: [{
@@ -205,7 +206,7 @@ const displayCharts = () => {
           },
         }
       }
-    }});
+  }});
 
   //AVERAGE WATER
   var totalAvgWaterChart = document.getElementById('avgUserWaterChart').getContext('2d');
@@ -258,7 +259,7 @@ const displayCharts = () => {
 
   // DAILY SLEEP CHART
   var dailySleepChart = document.getElementById('dailySleepChart').getContext('2d');
-  let dailySleepChartData = allUsersSleep.getDailyHrsSlept(currentUser.id, '2020/01/22')
+  let dailySleepChartData = allUsersSleep.getDailyHrsSlept(currentUser.id, todaysDate);
   const dailySleepData = {
     labels: [""],
     datasets: [{
@@ -353,75 +354,75 @@ const displayCharts = () => {
       }
     }});
 
-  //WEEKLY SLEEP
+    //WEEKLY SLEEP
 
-  let weeklySleepChartData = allUsersSleep.getWeeklyHrsSlept(currentUser.id, '2020/01/22');
-  let weeklySleepQualData = allUsersSleep.getWeeklySleepQual(currentUser.id, '2020/01/22');
+    let weeklySleepChartData = allUsersSleep.getWeeklyHrsSlept(currentUser.id, todaysDate);
+    let weeklySleepQualData = allUsersSleep.getWeeklySleepQual(currentUser.id, todaysDate);
 
-  var weeklySleepChart = document.getElementById('weeklySleepChart').getContext('2d');
+    var weeklySleepChart = document.getElementById('weeklySleepChart').getContext('2d');
 
-  const weeklySleepQuality = weeklySleepQualData;
-  const weeklySleepData = {
-    labels: ['SUN', 'MON', 'TUES', 'WED', 'THUR', 'FRI', 'SAT'],
-    datasets: [{
+    const weeklySleepQuality = weeklySleepQualData;
+    const weeklySleepData = {
+      labels: ['SUN', 'MON', 'TUES', 'WED', 'THUR', 'FRI', 'SAT'],
+      datasets: [{
+        type: 'bar',
+        label: 'Time Slept',
+        data: weeklySleepChartData,
+        backgroundColor: ['rgba(96, 23, 116, 0.4)'],
+        borderColor: ['rgb(96, 23, 116)'],
+        borderWidth: 1,
+        order: 2
+      }, {
+        type: 'bar',
+        label: 'Goal',
+        data: [7, 7, 7, 7, 7, 7, 7],
+        backgroundColor: ['rgba(255, 255, 255, 0.8)'],
+        order: 3
+      }, {
+        type: 'line',
+        label: 'Sleep Quality',
+        data: weeklySleepQuality,
+        pointRadius: 7,
+        pointHoverRadius: 12,
+        borderWidth: 8,
+        tension: 0.3,
+        backgroundColor: ['rgb(96, 23, 116)'],
+        order: 1
+      }]
+    };
+
+    var weeklySleepChartBuilder = new Chart(weeklySleepChart, {
       type: 'bar',
-      label: 'Time Slept',
-      data: weeklySleepChartData,
-      backgroundColor: ['rgba(96, 23, 116, 0.4)'],
-      borderColor: ['rgb(96, 23, 116)'],
-      borderWidth: 1,
-      order: 2
-    }, {
-      type: 'bar',
-      label: 'Goal',
-      data: [7, 7, 7, 7, 7, 7, 7],
-      backgroundColor: ['rgba(255, 255, 255, 0.8)'],
-      order: 3
-    }, {
-      type: 'line',
-      label: 'Sleep Quality',
-      data: weeklySleepQuality,
-      pointRadius: 7,
-      pointHoverRadius: 12,
-      borderWidth: 8,
-      tension: 0.3,
-      backgroundColor: ['rgb(96, 23, 116)'],
-      order: 1
-    }]
-  };
-
-  var weeklySleepChartBuilder = new Chart(weeklySleepChart, {
-    type: 'bar',
-    data: weeklySleepData,
-    options: {
-      plugins: {
-        legend: {
-          labels: {
-            color: ['#FFF']
+      data: weeklySleepData,
+      options: {
+        plugins: {
+          legend: {
+            labels: {
+              color: ['#FFF']
+            }
           }
-        }
-      },
-      tooltip: {
-        mode: 'dataset'
-      },
-      indexAxis: 'y',
-      scales: {
-        x: {
-          grid: {
-            display: false
-          } ,
-          display: false
         },
-        y: {
-          beginAtZero: true,
-          stacked: true,
-          grid: {
+        tooltip: {
+          mode: 'dataset'
+        },
+        indexAxis: 'y',
+        scales: {
+          x: {
+            grid: {
+              display: false
+            } ,
             display: false
-          },
-          ticks: {
-            color: ['#FFF'],
-          },
-        }
-      },
+            },
+          y: {
+            beginAtZero: true,
+            stacked: true,
+            grid: {
+              display: false
+            },
+            ticks: {
+              color: ['#FFF'],
+            },
+          }
+        },
     }});
 }

@@ -38,14 +38,13 @@ class Hydration {
       return waterInfo.date === startDate;
     });
 
-    let targetEndDate = targetStartDate + 7;
+    const targetEndDate = targetStartDate + 7;
 
     const weeklyWaterIntake = userWaterConsumptionReverse.slice(targetStartDate, targetEndDate);
 
-    const dailyWaterIntake = weeklyWaterIntake.reduce((dailyWater, day) => {
-      dailyWater.push(day.numOunces)
-      return dailyWater;
-    }, []);
+    const dailyWaterIntake = weeklyWaterIntake.map((day) => {
+      return day.numOunces;
+    });
     return dailyWaterIntake;
   }
 }
