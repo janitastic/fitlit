@@ -104,5 +104,3 @@ const displaySleepQuality = () => {
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length)
 };
-
-//CHARTJS INTEGRATION
