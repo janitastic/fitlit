@@ -96,6 +96,7 @@ li {
 }
 
 .average-widgets {
+  display: flex;
   justify-content: space-between;
 }
 
