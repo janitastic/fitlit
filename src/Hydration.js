@@ -3,10 +3,15 @@ class Hydration {
     this.h20Data = hydrationData;
   }
 
-  getAvgOuncesPerDay(id) {
+  getUserWaterIntake(id) {
     const userWaterConsumption = this.h20Data.filter(waterInfo => {
       return waterInfo.userID === id;
     });
+    return userWaterConsumption;
+  }
+
+  getAvgOuncesPerDay(id) {
+    const userWaterConsumption = this.getUserWaterIntake(id);
 
     const totalOuncesConsumed = userWaterConsumption.reduce((totalOunces, waterInfo) => {
 
@@ -17,9 +22,7 @@ class Hydration {
   }
 
   calculateDailyOunces(id, selectedDate) {
-    const userWaterConsumption = this.h20Data.filter(waterInfo => {
-      return waterInfo.userID === id;
-    });
+    const userWaterConsumption = this.getUserWaterIntake(id);
 
     const dailyWaterConsumed = userWaterConsumption.find(day => {
       return day.date === selectedDate;
@@ -29,9 +32,8 @@ class Hydration {
   }
 
   calculateWeeklyWater(id, startDate) {
-    const userWaterConsumption = this.h20Data.filter(waterInfo => {
-      return waterInfo.userID === id;
-    });
+    const userWaterConsumption = this.getUserWaterIntake(id);
+
     const userWaterConsumptionReverse = userWaterConsumption.reverse()
 
     let targetStartDate = userWaterConsumptionReverse.findIndex(waterInfo => {

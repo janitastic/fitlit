@@ -3,10 +3,15 @@ class Sleep {
     this.sleepData = sleepData;
   }
 
-  getAvgSleepPerDay(id) {
+  getUserSleepHours(id) {
     const userSleepHours = this.sleepData.filter(sleepInfo => {
       return sleepInfo.userID === id
     });
+    return userSleepHours;
+  }
+
+  getAvgSleepPerDay(id) {
+    const userSleepHours = this.getUserSleepHours(id);
 
     const totalHoursSlept = userSleepHours.reduce((totalHours, sleepInfo) => {
       return totalHours += sleepInfo.hoursSlept
@@ -16,9 +21,7 @@ class Sleep {
   }
 
   getAvgDailySleepQual(id) {
-    const userSleepHours = this.sleepData.filter((sleepInfo) => {
-      return sleepInfo.userID === id;
-    })
+    const userSleepHours = this.getUserSleepHours(id);
 
     const dailySleepQual = userSleepHours.reduce((totalQual, sleepInfo) => {
       return totalQual += sleepInfo.sleepQuality
@@ -28,9 +31,8 @@ class Sleep {
   }
 
   getDailyHrsSlept(id, selectedDate) {
-    const userSleepHours = this.sleepData.filter((sleepInfo) => {
-      return sleepInfo.userID === id;
-    })
+    const userSleepHours = this.getUserSleepHours(id);
+
     const dailyHoursSlept = userSleepHours.find(day => {
       return day.date === selectedDate;
     })
@@ -38,18 +40,15 @@ class Sleep {
   }
 
   getDailySleepQual(id, selectedDate) {
-    const userSleepHours = this.sleepData.filter((sleepInfo) => {
-      return sleepInfo.userID === id;
-    })
+    const userSleepHours = this.getUserSleepHours(id);
+
     const dailySleepQual = userSleepHours.find(day => {
       return day.date === selectedDate;
     })
     return dailySleepQual.sleepQuality
   }
   getWeeklyHrsSlept(id, startDate) {
-    const userSleepHours = this.sleepData.filter((sleepInfo) => {
-      return sleepInfo.userID === id;
-    });
+    const userSleepHours = this.getUserSleepHours(id);
 
     const userSleepHoursReverse = userSleepHours.reverse();
 
