@@ -10,18 +10,13 @@ class Activity {
     const userActivityInfo = this.activityData.filter(activityInfo => {
       return activityInfo.userID === user.id;
     })
-    console.log('actInfo>>>', userActivityInfo)
-    console.log('actInfo>>>', userActivityInfo.numSteps)
+
     const dailyMilesWalked = userActivityInfo.find(day => {
       return day.date === selectedDate;
     })
-    console.log('dailyMilesWalked>>>',dailyMilesWalked)
       let milesWalked = dailyMilesWalked.numSteps / (5280 / user.strideLength) 
-      console.log('milesWalked>>>',milesWalked)
+  
       return Math.round(milesWalked * 10)/ 10
-    
-    console.log('milesWalked>>>',dailyMilesWalked)
-    return dailyMilesWalked;
   }
 
   // getDailyMinsActive(id, selectedDate) {
