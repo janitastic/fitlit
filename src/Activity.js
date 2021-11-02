@@ -105,6 +105,14 @@ class Activity {
     return Math.floor(avgStepsTaken / this.allUserSingleDateData.length);
   }
 
+  findCommunityAvgMinutes(selectedDate){
+    this.getAllUserDataSingleDate(selectedDate);
+    const avgMinutesActive = this.allUserSingleDateData.reduce((allActivity, userData) => {
+      allActivity += userData.minutesActive;
+      return allActivity;
+    }, 0)
+    return Math.floor(avgMinutesActive / this.allUserSingleDateData.length);
+  }
 }
 
 module.exports = Activity;

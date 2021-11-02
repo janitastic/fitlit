@@ -70,9 +70,8 @@ describe('Activity', () => {
   it('should be able to find, for all users, the average number of steps taken on a given day', () => {
     expect(activityInfo.findCommunityAvgSteps('2019/06/15')).to.equal(6796)
   })
+
+  it('should be able to find, for all users, the average number of minutes active on a given day', () => {
+    expect(activityInfo.findCommunityAvgMinutes('2019/06/15')).to.equal(159)
+  })
 })
-
-
-// For all users, what is the average number of:
-// - steps taken for a specific date
-// - minutes active for a specific date
