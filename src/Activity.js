@@ -5,6 +5,7 @@ class Activity {
     this.activityData = activityData;
     this.userActivityData;
     this.singleDayData;
+    this.allUserSingleDateData;
   }
 
   getUserActivityData(user){
@@ -19,6 +20,13 @@ class Activity {
       return day.date === selectedDate;
     })
     this.singleDayData = singleDayData;
+  }
+
+  getAllUserDataSingleDate(selectedDate){
+    const allUserSingleDate = this.activityData.filter(day => {
+      return day.date === selectedDate;
+    })
+    this.allUserSingleDateData = allUserSingleDate;
   }
 
   getDailyMiles(user, selectedDate) {
@@ -78,6 +86,25 @@ class Activity {
     })
     return mostStairsClimbed[0].flightsOfStairs;
   }
+
+  findCommunityAvgFlights(selectedDate){
+    this.getAllUserDataSingleDate(selectedDate);
+    const avgFlightsClimbed = this.allUserSingleDateData.reduce((allFlights, userData) => {
+      allFlights += userData.flightsOfStairs;
+      return allFlights
+    }, 0)
+    return Math.floor(avgFlightsClimbed / this.allUserSingleDateData.length * 10) / 10;
+  }
+
+  findCommunityAvgSteps(selectedDate){
+    this.getAllUserDataSingleDate(selectedDate);
+    const avgStepsTaken = this.allUserSingleDateData.reduce((allSteps, userData) => {
+      allSteps += userData.numSteps;
+      return allSteps
+    }, 0)
+    return Math.floor(avgStepsTaken / this.allUserSingleDateData.length);
+  }
+
 }
 
 module.exports = Activity;

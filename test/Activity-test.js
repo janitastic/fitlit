@@ -63,10 +63,16 @@ describe('Activity', () => {
     expect(activityInfo.findMostClimbedFlights(user1)).to.equal(36)
   })
 
+  it('should be able to find, for all users, the average number of climbed flights on a given day', () => {
+    expect(activityInfo.findCommunityAvgFlights('2019/06/15')).to.equal(18.1)
+  })
+
+  it('should be able to find, for all users, the average number of steps taken on a given day', () => {
+    expect(activityInfo.findCommunityAvgSteps('2019/06/15')).to.equal(6796)
+  })
 })
 
 
 // For all users, what is the average number of:
-// - stairs climbed for a specified date
 // - steps taken for a specific date
 // - minutes active for a specific date
