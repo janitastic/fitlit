@@ -54,9 +54,17 @@ describe('Activity', () => {
   it('should be able to answer whether a user met their step goal on a given day', () => {
     expect(activityInfo.checkStepGoalStatus(user1, '2019/06/15')).to.equal(false)
   })
+
+  it('should be able to find all the days when a user exceeded their step goal', () => {
+    expect(activityInfo.findDaysOverStepGoal(user1)).to.deep.equal(['2019/06/17', '2019/06/20'])
+  })
+
+  it('should be able to find all the days when a user exceeded their step goal', () => {
+    expect(activityInfo.findDaysOverStepGoal(user1)).to.deep.equal(['2019/06/17', '2019/06/20'])
+  })
 })
 
-// For a user, find all the days where they exceeded their step goal
+
 // For a user, find their all-time stair climbing record
 // For all users, what is the average number of:
 // - stairs climbed for a specified date

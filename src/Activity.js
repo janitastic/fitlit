@@ -59,6 +59,17 @@ class Activity {
       return false
     }
   }
+
+  findDaysOverStepGoal(user){
+    this.getUserActivityData(user);
+    const stepGoalClears = this.userActivityData.reduce((passedDays, day) => {
+      if(day.numSteps >= user.dailyStepGoal){
+        passedDays.push(day.date)
+      }
+      return passedDays
+    }, [])
+    return stepGoalClears;
+  }
 }
 
 module.exports = Activity;
