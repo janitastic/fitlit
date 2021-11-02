@@ -50,10 +50,12 @@ describe('Activity', () => {
   it('should be able to call up how many minutes a user was active, on average, for a given week', () => {
     expect(activityInfo.getAvgDailyMinsActive(user1, '2019/06/15')).to.equal(171)
   })
+
+  it('should be able to answer whether a user met their step goal on a given day', () => {
+    expect(activityInfo.checkStepGoalStatus(user1, '2019/06/15')).to.equal(false)
+  })
 })
 
-// For a user, how many minutes active did they average for a given week (7 days)?
-// For a user, did they reach their step goal for a given day (specified by a date)?
 // For a user, find all the days where they exceeded their step goal
 // For a user, find their all-time stair climbing record
 // For all users, what is the average number of:

@@ -38,11 +38,26 @@ class Activity {
 
   getAvgDailyMinsActive(user, startDate){
     this.getUserActivityData(user);
-    const totalMinsActive = this.userActivityData.reduce((totalMinsActive, day) => {
+    const targetStartDate = this.userActivityData.findIndex(day => {
+      return day.date === startDate;
+    })
+    const targetEndDate = targetStartDate + 7;
+    let weeklyMinsActive = this.userActivityData.slice(targetStartDate, targetEndDate);
+    const totalMinsActive = weeklyMinsActive.reduce((totalMinsActive, day) => {
       totalMinsActive += day.minutesActive;
       return totalMinsActive
     }, 0)
     return Math.floor(totalMinsActive / 7);
+  }
+
+  checkStepGoalStatus(user, selectedDate){
+    this.getUserActivityData(user);
+    this.getSingleDayData(selectedDate);
+    if(this.singleDayData.numSteps >= user.dailyStepGoal){
+      return true
+    } else {
+      return false
+    }
   }
 }
 
