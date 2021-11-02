@@ -36,9 +36,13 @@ h3 {
   margin-bottom: 0;
 }
 
-h4, h5 {
-  margin-left: 2%;
-  margin-bottom: 0;
+h4 {
+  margin: 4% 0 2% 0;
+}
+
+h5 {
+  margin: 0 0 2% 3%;
+  font-weight: 500;
 }
 
 li {
@@ -86,7 +90,6 @@ li {
   white-space: nowrap;
 }
 
-.sleep-score,
 .average-widgets,
 .weekly-widgets,
 .large-card, {
@@ -96,14 +99,6 @@ li {
 .weekly-widgets,
 .large-card {
   flex-direction: column;
-}
-
-.sleep-score {
-  justify-content: space-around;
-}
-
-.sleep-margin {
-  margin-right: 70%;
 }
 
 .average-widgets {
@@ -149,6 +144,22 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.plus-icon {
+  display: inline-block;
+}
+
+.plus-icon .color-plus {
+  display: none;
+}
+
+.plus-icon:hover .color-plus {
+  display: inline;
+}
+
+.plus-icon:hover .white-plus {
+  display: none;
 }
 
 /* CHARTS */

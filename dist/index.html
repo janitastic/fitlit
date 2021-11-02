@@ -40,20 +40,33 @@
           <article>
             <span class="two-column">
                 <h4>Water</h4>
-                <img class="plus-icon" src="assets/add.png" alt="Log Some Water">
+                <span class="plus-icon">
+                  <img class="white-plus" src="assets/add.png" alt="Log Some Water">
+                  <img class="color-plus" src="assets/add-hover.png" alt="Add Ounces">
+                </span>
             </span>
             <canvas id="dailyWaterChart" width="400" height="60"></canvas>
           </article>
           <article>
-            <div class="sleep-score">
-              <h4 class="sleep-margin">Sleep</h4>
-                <h5>Quality = <span id="dailySleepQuality"></span> / 5</h5>
-            </div>
+              <span class="two-column">
+                <h4>Sleep</h4>
+                <span class="plus-icon">
+                  <img class="white-plus" src="assets/add.png" alt="Log Sleep">
+                  <img class="color-plus" src="assets/add-hover.png" alt="Add Time Slept">
+                </span>
+              </span>
             <canvas id="dailySleepChart" width="400" height="60"></canvas>
+            <h5>Sleep Quality = <span id="dailySleepQuality"></span> / 5</h5>
           </article>
           </article>
           <article>
-            <h4>Activity</h4>
+            <span class="two-column">
+              <h4>Activity</h4>
+              <span class="plus-icon">
+                <img class="white-plus" src="assets/add.png" alt="Log Activity">
+                <img class="color-plus" src="assets/add-hover.png" alt="Add An Activity">
+              </span>
+            </span>
               <h5>Steps Taken</h5>
               <!-- Chart for Steps Taken vs Goal Goes Here -->
               <h5>Flights of Stairs = <span id="flightsOfStairs"></span></h5>
