@@ -145,6 +145,12 @@ li {
   background: linear-gradient(45deg, #d83c48, #5622c7);
 }
 
+.two-column {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* CHARTS */
 .chart-title {
   margin-top: 5%;
