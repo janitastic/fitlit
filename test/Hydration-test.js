@@ -3,7 +3,7 @@ import {
 } from 'chai';
 import Hydration from '../src/Hydration';
 
-describe('User', () => {
+describe('Hydration', () => {
 
   let hydrationInfo;
 

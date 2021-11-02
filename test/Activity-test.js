@@ -5,7 +5,7 @@ import Activity from '../src/Activity';
 import User from '../src/User';
 
 
-describe('User', () => {
+describe('Activity', () => {
    let activityInfo;
    let user1;
 
@@ -30,9 +30,14 @@ describe('User', () => {
       {userID:7, date:'2019/06/15', numSteps:2634, minutesActive:107, flightsOfStairs:5}
     ];
     activityInfo = new Activity(activityData);
-  
-    it('should be able to calculate miles walked based on steps specified by a date', () => {
-      expect(activityInfo.getDailyMiles(user1, '2019/06/15').to.equal(2.9))
-    })
   })
+  
+ 
+  it('should be able to calculate miles walked based on steps specified by a date', () => {
+    expect(activityInfo.getDailyMiles(user1, '2019/06/15')).to.equal(2.9)
+  })
+
+  // it('should be able to return a user\s daily minutes active specified by a date', () => {
+  //     expect(activityInfo.getDailyMinsActive(1, '2019/06/15').to.equal(140))
+  //   })
 })

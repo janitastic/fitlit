@@ -3,7 +3,7 @@ import {
 } from 'chai';
 import Sleep from '../src/Sleep';
 
-describe('User', () => {
+describe('Sleep', () => {
 
   let sleepInfo;
 
