@@ -70,6 +70,14 @@ class Activity {
     }, [])
     return stepGoalClears;
   }
+
+  findMostClimbedFlights(user){
+    this.getUserActivityData(user);
+    const mostStairsClimbed = this.userActivityData.sort((a, b) => {
+      return b.flightsOfStairs - a.flightsOfStairs
+    })
+    return mostStairsClimbed[0].flightsOfStairs;
+  }
 }
 
 module.exports = Activity;
