@@ -45,6 +45,17 @@ li {
   margin-top: 5%;
 }
 
+.banner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.banner-goals,
+.banner-totals {
+  display: flex;
+  justify-content: space-around;
+}
+
 .app-title,
 .summary {
   display: flex;
