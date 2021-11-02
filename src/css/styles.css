@@ -52,12 +52,15 @@ li {
 .banner {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2%;
 }
 
 .banner-goals,
 .banner-totals {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 1em;
+  justify-items: center;
 }
 
 .app-title,
@@ -90,7 +93,7 @@ li {
   white-space: nowrap;
 }
 
-.average-widgets,
+/* .average-widgets, */
 .weekly-widgets,
 .large-card, {
   display: flex;
@@ -102,8 +105,9 @@ li {
 }
 
 .average-widgets {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 4%;
 }
 
 .weekly-widgets {
@@ -144,6 +148,12 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.average-display {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 1em;
 }
 
 .plus-icon {
@@ -204,11 +214,8 @@ label {
   main {
     flex-wrap: wrap;
   }
-
-  .sleep-margin {
-    margin-right: 50%;
-  }
 }
+
 @media (min-width: 320px) and (max-width: 480px) {
   .mini-card {
     min-width: 90%;
@@ -219,11 +226,7 @@ label {
     flex-wrap: wrap;
   }
 
-  .sleep-score {
+  .average-display {
     display: flex;
-  }
-
-  .sleep-margin {
-    margin-right: 0;
   }
 }
