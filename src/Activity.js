@@ -3,36 +3,31 @@ let User = require('../src/User')
 class Activity {
   constructor(activityData) {
     this.activityData = activityData;
+    this.singleDayData;
   }
 
-
-  getDailyMiles(user, selectedDate) {
+  getSingleDayData(user, selectedDate){
     const userActivityInfo = this.activityData.filter(activityInfo => {
       return activityInfo.userID === user.id;
     })
-
-    const dailyMilesWalked = userActivityInfo.find(day => {
+    const singleDayData = userActivityInfo.find(day => {
       return day.date === selectedDate;
     })
-      let milesWalked = dailyMilesWalked.numSteps / (5280 / user.strideLength) 
-  
+    this.singleDayData = singleDayData;
+  }
+
+  getDailyMiles(user, selectedDate) {
+    this.getSingleDayData(user, selectedDate);
+      let milesWalked = this.singleDayData.numSteps / (5280 / user.strideLength)
+
       return Math.round(milesWalked * 10)/ 10
   }
 
-  // getDailyMinsActive(id, selectedDate) {
-  //   const userActivityInfo = this.activityData.filter(activityInfo => {
-  //     return activityInfo.userID === id
-  //   })
-  //   const dailyMinsActive = userActivityInfo.find(day => {
-  //     day.date === selectedDate
-  //     let minsActive = userActivityInfo.minutesActive
-  //     console.log('minsActive>>', minsActive)
-  //     return minsActive;
-  //   })
-  //   console.log('dailyMinsActive>>', dailyMinsActive)
-  //  return dailyMinsActive;
-  // }
+  getDailyMinsActive(user, selectedDate) {
+    this.getSingleDayData(user, selectedDate);
+      let minsActive = this.singleDayData.minutesActive;
+      return minsActive;
+  }
 }
-//For a user, (identified by their userID) how many minutes were they active for a given day (specified by a date)?
 
 module.exports = Activity;
