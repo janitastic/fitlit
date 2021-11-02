@@ -34,9 +34,9 @@
         </article>
         <aside class="mini-card summary">
           <h3>Today's Overview</h3>
-          <article>
+          <!-- <article>
             <h4>Steps</h4>
-          </article>
+          </article> -->
           <article>
             <h4>Water</h4>
             <canvas id="dailyWaterChart" width="400" height="60"></canvas>
@@ -44,13 +44,17 @@
           <article>
             <div class="sleep-score">
               <h4 class="sleep-margin">Sleep</h4>
-              <h4>Quality = <span id="dailySleepQuality"></span></h4>
+                <h5>Quality = <span id="dailySleepQuality"></span> / 5</h5>
             </div>
             <canvas id="dailySleepChart" width="400" height="60"></canvas>
           </article>
           </article>
           <article>
             <h4>Activity</h4>
+              <h5>Steps Taken</h5>
+              <!-- Chart for Steps Taken vs Goal Goes Here -->
+              <h5>Flights of Stairs = <span id="flightsOfStairs"></span></h5>
+              <h5>Active Minutes = <span id="activeMinutes"></span></h5>
           </article>
       </nav>
     </header>
