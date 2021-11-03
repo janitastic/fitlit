@@ -78,7 +78,7 @@
               <button>Save</button>
             </article>
           </section>
-          <section>
+          <section id="logActivity">
             <!-- TODAY'S OVERVIEW: ACTIVITY SECTION -->
             <span class="two-column">
               <h4>Activity</h4>
@@ -87,10 +87,17 @@
                 <img class="color-plus" src="assets/add-hover.png" alt="Add An Activity">
               </span>
             </span>
-              <h5>Steps Taken</h5>
-              <!-- Chart for Steps Taken vs Goal Goes Here -->
-              <h5>Flights of Stairs = <span id="flightsOfStairs"></span></h5>
-              <h5>Active Minutes = <span id="activeMinutes"></span></h5>
+              <article class="daily-activity" id="activityReport">
+                <h5>Steps Taken</h5>
+                <!-- Chart for Steps Taken vs Goal Goes Here -->
+                <h5>Flights of Stairs = <span id="flightsOfStairs"></span></h5>
+                <h5>Active Minutes = <span id="activeMinutes"></span></h5>
+              </article>
+              <article class="hidden" id="activityForm">
+                <label for="steps">How many steps have you taken today?</label>
+                <input type="text" placeholder="total steps" id="stepsTaken" name="step-log" required minlength="4" maxlength="8" size="20">
+                <button>Save</button>
+              </article>
           </section>
       </nav>
     </header>

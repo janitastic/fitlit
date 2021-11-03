@@ -60,16 +60,20 @@ const avgStepGoal = document.getElementById('avgStepGoal');
 const dailySleepQuality = document.getElementById('dailySleepQuality');
 const avgSleepQuality = document.getElementById('avgSleepQuality');
 
-//Form Field Query Selectors
+//Form Field Query Selectors & Event Listeners
 const logWater = document.getElementById('logWater');
 const waterChart = document.getElementById('waterChart');
 const waterForm = document.getElementById('waterForm');
 const logSleep = document.getElementById('logSleep');
 const sleepChart = document.getElementById('sleepChart');
 const sleepForm = document.getElementById('sleepForm');
+const logActivity = document.getElementById('logActivity');
+const activityReport = document.getElementById('activityReport');
+const activityForm = document.getElementById('activityForm');
 
 logWater.addEventListener('click', showWaterForm);
 logSleep.addEventListener('click', showSleepForm);
+logActivity.addEventListener('click', showActivityForm);
 
 //EVENT LISTENERS
 window.addEventListener('load', () => {
@@ -148,4 +152,9 @@ function showWaterForm() {
 function showSleepForm() {
   toggle(sleepChart);
   toggle(sleepForm);
+};
+
+function showActivityForm() {
+  toggle(activityReport);
+  toggle(activityForm);
 };
