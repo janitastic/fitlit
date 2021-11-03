@@ -142,6 +142,17 @@ const displaySleepQuality = () => {
   avgSleepQuality.innerText = allUsersSleep.getAvgDailySleepQual(currentUser.id);
 };
 
+//FUNCTIONS FOR USER AVERAGES
+  /*** FYI - pulled the two below from the charts we're removing ***/
+
+// let userAvgSleepHours = allUsersSleep.getAvgSleepPerDay(currentUser.id);
+
+// let userAvgWater = userh20.getAvgOuncesPerDay(currentUser.id);
+
+
+
+//FUNCTIONS FOR COMMUNITY AVERAGES
+
 //FORM FUNCTIONS
 
 function showWaterForm() {

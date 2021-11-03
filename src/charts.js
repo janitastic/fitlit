@@ -103,54 +103,54 @@ const displayCharts = (userh20, allUsersSleep, currentUser, todaysDate) => {
       }
   }});
 
-  //AVERAGE WATER
-  var totalAvgWaterChart = document.getElementById('avgUserWaterChart').getContext('2d');
-  let avgWaterChartData = userh20.getAvgOuncesPerDay(currentUser.id);
-  const avgWaterData = {
-    labels: [''],
-    datasets: [{
-      label: 'Average Ounces',
-      data: [avgWaterChartData],
-      backgroundColor: ['rgba(54, 162, 235, 0.4)'],
-      borderColor: ['rgb(54, 162, 235)'],
-      borderWidth: 1,
-      order: 1
-    }, {
-      label: 'Goal',
-      data: [64],
-      backgroundColor: ['rgba(255, 255, 255, 0.8)'],
-      order: 1
-    }]
-  };
-
-  var avgWaterChartBuilder = new Chart(totalAvgWaterChart, {
-    type: 'bar',
-    data: avgWaterData,
-    options: {
-      plugins: {
-        legend: false
-      },
-      indexAxis: 'y',
-      scales: {
-        x: {
-          grid: {
-            display: false
-          },
-          display: false
-        },
-        y: {
-          title: false,
-          beginAtZero: true,
-          stacked: true,
-          grid: {
-            display: false
-          },
-          ticks: {
-            color: ['#FFF'],
-          },
-        }
-      }
-    }});
+  //AVERAGE WATER - can we remove this one now?
+  // var totalAvgWaterChart = document.getElementById('avgUserWaterChart').getContext('2d');
+  // let avgWaterChartData = userh20.getAvgOuncesPerDay(currentUser.id);
+  // const avgWaterData = {
+  //   labels: [''],
+  //   datasets: [{
+  //     label: 'Average Ounces',
+  //     data: [avgWaterChartData],
+  //     backgroundColor: ['rgba(54, 162, 235, 0.4)'],
+  //     borderColor: ['rgb(54, 162, 235)'],
+  //     borderWidth: 1,
+  //     order: 1
+  //   }, {
+  //     label: 'Goal',
+  //     data: [64],
+  //     backgroundColor: ['rgba(255, 255, 255, 0.8)'],
+  //     order: 1
+  //   }]
+  // };
+  //
+  // var avgWaterChartBuilder = new Chart(totalAvgWaterChart, {
+  //   type: 'bar',
+  //   data: avgWaterData,
+  //   options: {
+  //     plugins: {
+  //       legend: false
+  //     },
+  //     indexAxis: 'y',
+  //     scales: {
+  //       x: {
+  //         grid: {
+  //           display: false
+  //         },
+  //         display: false
+  //       },
+  //       y: {
+  //         title: false,
+  //         beginAtZero: true,
+  //         stacked: true,
+  //         grid: {
+  //           display: false
+  //         },
+  //         ticks: {
+  //           color: ['#FFF'],
+  //         },
+  //       }
+  //     }
+  //   }});
 
   // DAILY SLEEP CHART
   var dailySleepChart = document.getElementById('dailySleepChart').getContext('2d');
@@ -201,53 +201,53 @@ const displayCharts = (userh20, allUsersSleep, currentUser, todaysDate) => {
       }
     }});
 
-  //AVERAGE SLEEP
-  var totalAvgSleepChart = document.getElementById('avgUserSleepChart').getContext('2d');
-  let avgSleepChartData = allUsersSleep.getAvgSleepPerDay(currentUser.id);
-  const avgSleepData = {
-    labels: [''],
-    datasets: [{
-      label: 'Time Slept Average',
-      data: [avgSleepChartData],
-      backgroundColor: ['rgba(96, 23, 116, 0.4)'],
-      borderColor: ['rgb(96, 23, 116)'],
-      borderWidth: 1,
-      order: 1
-    }, {
-      label: 'Goal',
-      data: [7],
-      backgroundColor: ['rgba(255, 255, 255, 0.8)'],
-      order: 1
-    }]
-  };
-  var avgSleepChartBuilder = new Chart(totalAvgSleepChart, {
-    type: 'bar',
-    data: avgSleepData,
-    options: {
-      plugins: {
-        legend: false
-      },
-      indexAxis: 'y',
-      scales: {
-        x: {
-          grid: {
-            display: false
-          },
-          display: false
-        },
-        y: {
-          title: false,
-          beginAtZero: true,
-          stacked: true,
-          grid: {
-            display: false
-          },
-          ticks: {
-            color: ['#FFF'],
-          },
-        }
-      }
-    }});
+  //AVERAGE SLEEP - we can also remove this chart
+  // var totalAvgSleepChart = document.getElementById('avgUserSleepChart').getContext('2d');
+  // let avgSleepChartData = allUsersSleep.getAvgSleepPerDay(currentUser.id);
+  // const avgSleepData = {
+  //   labels: [''],
+  //   datasets: [{
+  //     label: 'Time Slept Average',
+  //     data: [avgSleepChartData],
+  //     backgroundColor: ['rgba(96, 23, 116, 0.4)'],
+  //     borderColor: ['rgb(96, 23, 116)'],
+  //     borderWidth: 1,
+  //     order: 1
+  //   }, {
+  //     label: 'Goal',
+  //     data: [7],
+  //     backgroundColor: ['rgba(255, 255, 255, 0.8)'],
+  //     order: 1
+  //   }]
+  // };
+  // var avgSleepChartBuilder = new Chart(totalAvgSleepChart, {
+  //   type: 'bar',
+  //   data: avgSleepData,
+  //   options: {
+  //     plugins: {
+  //       legend: false
+  //     },
+  //     indexAxis: 'y',
+  //     scales: {
+  //       x: {
+  //         grid: {
+  //           display: false
+  //         },
+  //         display: false
+  //       },
+  //       y: {
+  //         title: false,
+  //         beginAtZero: true,
+  //         stacked: true,
+  //         grid: {
+  //           display: false
+  //         },
+  //         ticks: {
+  //           color: ['#FFF'],
+  //         },
+  //       }
+  //     }
+  //   }});
 
     //WEEKLY SLEEP
 
