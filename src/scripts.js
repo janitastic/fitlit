@@ -60,47 +60,112 @@ const avgStepGoal = document.getElementById('avgStepGoal');
 const dailySleepQuality = document.getElementById('dailySleepQuality');
 const avgSleepQuality = document.getElementById('avgSleepQuality');
 
-//EVENT LISTENER
+//Form Field Query Selectors & Event Listeners
+const logWater = document.getElementById('logWater');
+const waterChart = document.getElementById('waterChart');
+const waterForm = document.getElementById('waterForm');
+const logSleep = document.getElementById('logSleep');
+const sleepChart = document.getElementById('sleepChart');
+const sleepForm = document.getElementById('sleepForm');
+const logActivity = document.getElementById('logActivity');
+const activityReport = document.getElementById('activityReport');
+const activityForm = document.getElementById('activityForm');
+
+logWater.addEventListener('click', showWaterForm);
+logSleep.addEventListener('click', showSleepForm);
+logActivity.addEventListener('click', showActivityForm);
+
+//EVENT LISTENERS
 window.addEventListener('load', () => {
   fetchAllData();
 });
 
 //HELPER FUNCTIONS
-const displayUserInfoCard = () => {
-  greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`;
-  displayUserEmail();
-  displayUserAddress();
-  displayUserStride();
-  displayUserDailyStepGoal();
-  displayAvgStepGoal();
-  displaySleepQuality();
-};
-
-const displayUserEmail = () => {
-  userEmail.innerText = `${currentUser.email}`;
-};
-
-const displayUserAddress = () => {
-  userAddress.innerText = `${currentUser.address}`;
-};
-
-const displayUserStride = () => {
-  userStride.innerText = `${currentUser.strideLength}`;
-};
-
-const displayUserDailyStepGoal = () => {
-  userStepGoal.innerText = `${currentUser.dailyStepGoal}`;
-};
-
-const displayAvgStepGoal = () => {
-  avgStepGoal.innerText = `${userRepository.getAvgStepCount()}`
+function hide(element) {
+  element.classList.add('hidden')
 }
 
-const displaySleepQuality = () => {
-  dailySleepQuality.innerText = allUsersSleep.getDailySleepQual(currentUser.id, todaysDate);
-  avgSleepQuality.innerText = allUsersSleep.getAvgDailySleepQual(currentUser.id)
+function show(element) {
+  element.classList.remove('hidden')
+}
+
+function toggle(element) {
+  element.classList.toggle('hidden');
 }
 
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length)
+};
+
+//DATA DISPLAY FUNCTIONS
+
+const displayUserInfoCard = () => {
+  greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`;
+  displayUserData();
+  // displayUserEmail();
+  // displayUserAddress();
+  // displayUserStride();
+  // displayUserDailyStepGoal();
+  displayAvgStepGoal();
+  displaySleepQuality();
+};
+
+const displayUserData = () => {
+  userEmail.innerText = `${currentUser.email}`;
+  userAddress.innerText = `${currentUser.address}`;
+  userStride.innerText = `${currentUser.strideLength}`;
+  userStepGoal.innerText = `${currentUser.dailyStepGoal}`;
+};
+
+// const displayUserEmail = () => {
+//   userEmail.innerText = `${currentUser.email}`;
+// };
+//
+// const displayUserAddress = () => {
+//   userAddress.innerText = `${currentUser.address}`;
+// };
+//
+// const displayUserStride = () => {
+//   userStride.innerText = `${currentUser.strideLength}`;
+// };
+//
+// const displayUserDailyStepGoal = () => {
+//   userStepGoal.innerText = `${currentUser.dailyStepGoal}`;
+// };
+
+const displayAvgStepGoal = () => {
+  avgStepGoal.innerText = `${userRepository.getAvgStepCount()}`;
+};
+
+const displaySleepQuality = () => {
+  dailySleepQuality.innerText = allUsersSleep.getDailySleepQual(currentUser.id, todaysDate);
+  avgSleepQuality.innerText = allUsersSleep.getAvgDailySleepQual(currentUser.id);
+};
+
+//FUNCTIONS FOR USER AVERAGES
+  /*** FYI - pulled the two below from the charts we're removing ***/
+
+// let userAvgSleepHours = allUsersSleep.getAvgSleepPerDay(currentUser.id);
+
+// let userAvgWater = userh20.getAvgOuncesPerDay(currentUser.id);
+
+
+
+//FUNCTIONS FOR COMMUNITY AVERAGES
+
+//FORM FUNCTIONS
+
+function showWaterForm() {
+  toggle(waterChart);
+  toggle(waterForm);
+};
+
+function showSleepForm() {
+  toggle(sleepChart);
+  toggle(sleepForm);
+};
+
+function showActivityForm() {
+  toggle(activityReport);
+  toggle(activityForm);
 };

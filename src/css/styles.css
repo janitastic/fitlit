@@ -31,29 +31,46 @@ h1 {
   font-size: 2em;
 }
 
-h3 {
+h2, h3 {
   text-transform: capitalize;
   margin-bottom: 0;
+  text-shadow: 2px 1px 4px #111111;
 }
 
-h4, h5 {
-  margin-left: 2%;
-  margin-bottom: 0;
+h4 {
+  margin: 4% 0 2% 0;
+}
+
+h5 {
+  margin: 0 0 2% 3%;
+  font-weight: 500;
 }
 
 li {
   margin-top: 5%;
 }
 
+.theme-dark {
+  background-color: #0a0a0a;
+  color: #ececec;
+}
+
+.hidden {
+  display: none;
+}
+
 .banner {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2%;
 }
 
 .banner-goals,
 .banner-totals {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 1em;
+  justify-items: center;
 }
 
 .app-title,
@@ -71,12 +88,6 @@ li {
   background-color: #151516;
 }
 
-.theme-dark {
-  background-color: #0a0a0a;
-  color: #fff;
-}
-
-
 /* Cards Display */
 
 .steps,
@@ -86,8 +97,7 @@ li {
   white-space: nowrap;
 }
 
-.sleep-score,
-.average-widgets,
+/* .average-widgets, */
 .weekly-widgets,
 .large-card, {
   display: flex;
@@ -98,17 +108,10 @@ li {
   flex-direction: column;
 }
 
-.sleep-score {
-  justify-content: space-around;
-}
-
-.sleep-margin {
-  margin-right: 70%;
-}
-
 .average-widgets {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 4%;
 }
 
 .weekly-widgets {
@@ -151,6 +154,33 @@ li {
   justify-content: space-between;
 }
 
+.average-display {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 1em;
+}
+
+.averages {
+  font-size: 80%;
+  margin: 4%;
+}
+
+.plus-icon {
+  display: inline-block;
+}
+
+.plus-icon .color-plus {
+  display: none;
+}
+
+.plus-icon:hover .color-plus {
+  display: inline;
+}
+
+.plus-icon:hover .white-plus {
+  display: none;
+}
+
 /* CHARTS */
 .chart-title {
   margin-top: 5%;
@@ -162,18 +192,33 @@ li {
   margin-top: 0;
 }
 
-/* DATE PICKER */
+/* INPUTS */
 label {
     display: block;
 }
 
 input,
 label {
-    margin: 5%;
+  margin: 1%;
 }
 
 .date-selector {
   text-align: center;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  color: #f2f2f2;
+  border: 1px solid #f2f2f2;
+  padding: .5% 2%;
+  border-radius: 100px;
+}
+
+button:hover {
+  background: linear-gradient(
+227deg, #d83c48, #5622c7);
+  border: none;
 }
 
 /* Media Queries for Screen Size */
@@ -193,11 +238,8 @@ label {
   main {
     flex-wrap: wrap;
   }
-
-  .sleep-margin {
-    margin-right: 50%;
-  }
 }
+
 @media (min-width: 320px) and (max-width: 480px) {
   .mini-card {
     min-width: 90%;
@@ -208,11 +250,7 @@ label {
     flex-wrap: wrap;
   }
 
-  .sleep-score {
+  .average-display {
     display: flex;
-  }
-
-  .sleep-margin {
-    margin-right: 0;
   }
 }
