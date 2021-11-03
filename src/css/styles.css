@@ -169,8 +169,14 @@ li {
   display: inline-block;
 }
 
+.plus-icon .white-plus {
+  display: inline;
+  height: 20px;
+}
+
 .plus-icon .color-plus {
   display: none;
+  height: 20px;
 }
 
 .plus-icon:hover .color-plus {

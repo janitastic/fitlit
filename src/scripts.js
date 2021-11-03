@@ -6,6 +6,8 @@ import Hydration from './Hydration';
 import Activity from './Activity';
 import './css/styles.css';
 import displayCharts from './charts.js';
+import './images/add.png';
+import './images/add-hover.png';
 let sleepData;
 let activityData;
 let h20Data;
