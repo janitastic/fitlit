@@ -29,6 +29,7 @@
       </section>
       <!-- TOP BANNER END -->
       <nav>
+        <!-- USER PROFILE CARD -->
         <article class="mini-card user-profile">
             <h3>Your Profile</h3>
               <ul>
@@ -37,38 +38,48 @@
                 <li>Stride Length - <span id="userStride" class="user-info"></li>
               </ul>
         </article>
+        <!-- TODAY'S OVERVIEW CARD -->
         <aside class="mini-card summary">
           <h3>Today's Overview</h3>
-          <section>
+          <section id="logWater">
+            <!-- TODAY'S OVERVIEW: WATER SECTION -->
             <span class="two-column">
-                <h4>Water</h4>
-                <span class="plus-icon">
-                  <button id="addWaterBtn">+</button>
-                  <!-- <img class="white-plus" src="../assets/add.png" alt="Log Some Water">
-                  <img class="color-plus" id="addWaterBtn" src="../assets/add-hover.png" alt="Add Ounces"> -->
-                </span>
+              <h4>Water</h4>
+              <span class="plus-icon">
+                <img class="white-plus" src="../assets/add.png" alt="Log Some Water">
+                <img class="color-plus" id="addWaterBtn" src="../assets/add-hover.png" alt="Add Ounces">
+              </span>
             </span>
-            <article class="daily-water" id="waterChart">
-              <canvas id="dailyWaterChart" width="400" height="60"></canvas>
+              <article class="daily-water" id="waterChart">
+                <canvas id="dailyWaterChart" width="400" height="60"></canvas>
+              </article>
+              <article class="hidden" id="waterForm">
+                <label for="water">How much did you drink?</label>
+                <input type="text" placeholder="total ounces" id="waterIntake" name="ounces-drank" required minlength="4" maxlength="8" size="20">
+                <button>Save</button>
+              </article>
+          </section>
+          <section id="logSleep">
+            <!-- TODAY'S OVERVIEW: SLEEP SECTION -->
+            <span class="two-column">
+              <h4>Sleep</h4>
+              <span class="plus-icon">
+                <img class="white-plus" src="assets/add.png" alt="Log Sleep">
+                <img class="color-plus" src="assets/add-hover.png" alt="Add Time Slept">
+              </span>
+            </span>
+            <article class="daily-sleep" id="sleepChart">
+              <canvas id="dailySleepChart" width="400" height="60"></canvas>
+                <h5>Sleep Quality = <span id="dailySleepQuality"></span> / 5</h5>
             </article>
-            <article class="hidden" id="waterForm">
-              <label for="water">How much did you drink?</label>
-              <input type="text" placeholder="total ounces" id="water-intake" name="ounces-drank" required minlength="4" maxlength="8" size="20">
+            <article class="hidden" id="sleepForm">
+              <label for="sleep">How many hours did you sleep?</label>
+              <input type="text" placeholder="total hours" id="hoursSlept" name="hours-slept" required minlength="4" maxlength="8" size="20">
               <button>Save</button>
             </article>
           </section>
           <section>
-              <span class="two-column">
-                <h4>Sleep</h4>
-                <span class="plus-icon">
-                  <img class="white-plus" src="assets/add.png" alt="Log Sleep">
-                  <img class="color-plus" src="assets/add-hover.png" alt="Add Time Slept">
-                </span>
-              </span>
-            <canvas id="dailySleepChart" width="400" height="60"></canvas>
-            <h5>Sleep Quality = <span id="dailySleepQuality"></span> / 5</h5>
-          </section>
-          <section>
+            <!-- TODAY'S OVERVIEW: ACTIVITY SECTION -->
             <span class="two-column">
               <h4>Activity</h4>
               <span class="plus-icon">
@@ -85,6 +96,7 @@
     </header>
     <main>
         <section class="large-card average-display">
+          <!-- USER AVERAGES SECTION -->
           <section>
             <h3>Your Averages</h3>
             <div class="average-widgets">
@@ -105,6 +117,7 @@
               </article>
             </div>
           </section>
+          <!-- COMMUNITY AVERAGES SECTION -->
           <section>
             <h3>Community Averages</h3>
             <div class="average-widgets">
@@ -126,8 +139,9 @@
             </div>
           </section>
         </section>
+    <!-- WEEKLY TOTALS SECTION -->
       <section class="large-card weekly-widgets">
-        <h3>Weekly</h3>
+        <h3>Weekly Totals</h3>
         <article class="steps" id="userSteps">
           <h4>Steps</h4>
         </article>

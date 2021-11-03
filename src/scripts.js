@@ -61,11 +61,15 @@ const dailySleepQuality = document.getElementById('dailySleepQuality');
 const avgSleepQuality = document.getElementById('avgSleepQuality');
 
 //Form Field Query Selectors
-const addWaterBtn = document.getElementById('addWaterBtn');
+const logWater = document.getElementById('logWater');
 const waterChart = document.getElementById('waterChart');
 const waterForm = document.getElementById('waterForm');
+const logSleep = document.getElementById('logSleep');
+const sleepChart = document.getElementById('sleepChart');
+const sleepForm = document.getElementById('sleepForm');
 
-addWaterBtn.addEventListener('click', showWaterForm);
+logWater.addEventListener('click', showWaterForm);
+logSleep.addEventListener('click', showSleepForm);
 
 //EVENT LISTENERS
 window.addEventListener('load', () => {
@@ -134,10 +138,14 @@ const displaySleepQuality = () => {
   avgSleepQuality.innerText = allUsersSleep.getAvgDailySleepQual(currentUser.id);
 };
 
-//FORM FUNCTIONS & EVENT LISTENERS
-// addWaterBtn.addEventListener('click', showWaterForm);
+//FORM FUNCTIONS
 
 function showWaterForm() {
   toggle(waterChart);
   toggle(waterForm);
+};
+
+function showSleepForm() {
+  toggle(sleepChart);
+  toggle(sleepForm);
 };
