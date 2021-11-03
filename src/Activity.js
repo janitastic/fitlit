@@ -8,14 +8,14 @@ class Activity {
     this.allUserSingleDateData;
   }
 
-  getUserActivityData(user){
+  getUserActivityData(user) {
     const userActivityInfo = this.activityData.filter(activityInfo => {
       return activityInfo.userID === user.id;
-    })
+    });
     this.userActivityData = userActivityInfo;
   }
 
-  getSingleDayData(selectedDate){
+  getSingleDayData(selectedDate) {
     const singleDayData = this.userActivityData.find(day => {
       return day.date === selectedDate;
     })
