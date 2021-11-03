@@ -38,6 +38,10 @@ describe('Activity', () => {
     activityInfo = new Activity(activityData);
   })
 
+  it('should be an instance of Activity', () => {
+    expect(activityInfo).to.be.an.instanceof(Activity)
+  })
+
   it('should be able to store an array of user activity data', () => {
     activityInfo.getUserActivityData(user1);
     expect(activityInfo.userActivityData).to.deep.equal([
@@ -72,7 +76,6 @@ describe('Activity', () => {
 
   it('should be able to calculate miles walked based on steps specified by a date', () => {
     expect(activityInfo.getDailyMiles(user1, '2019/06/15')).to.equal(2.9)
-    expect(activityInfo.getDailyMiles(user1, '1945/09/30')).to.fail()
   })
 
   it('should be able to return a user\'s daily minutes active specified by a date', () => {
