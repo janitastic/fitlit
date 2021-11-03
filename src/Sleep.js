@@ -26,7 +26,7 @@ class Sleep {
     const dailySleepQual = userSleepHours.reduce((totalQual, sleepInfo) => {
       return totalQual += sleepInfo.sleepQuality
     }, 0);
-
+    //what happens if you're dividing by 0 length? What does it return? Add in a test where the array length is 0, test returns NaN.
     return Math.round(dailySleepQual / userSleepHours.length)
   }
 
@@ -53,13 +53,13 @@ class Sleep {
     const userSleepHoursReverse = userSleepHours.reverse();
 
     let targetStartDate = userSleepHoursReverse.findIndex(sleepInfo => {
-
       return sleepInfo.date === startDate;
     });
 
     let targetEndDate = targetStartDate + 7;
 
     const weeklyHoursSlept = userSleepHoursReverse.slice(targetStartDate, targetEndDate);
+
     const dailySleep = weeklyHoursSlept.map((day) => {
       return day.hoursSlept;
     });

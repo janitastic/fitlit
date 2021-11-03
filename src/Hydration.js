@@ -22,6 +22,7 @@ class Hydration {
   }
 
   calculateDailyOunces(id, selectedDate) {
+    //what happens if you pass in a date that there's no data for? Create a test that says you return 'undefined'
     const userWaterConsumption = this.getUserWaterIntake(id);
 
     const dailyWaterConsumed = userWaterConsumption.find(day => {
