@@ -60,47 +60,84 @@ const avgStepGoal = document.getElementById('avgStepGoal');
 const dailySleepQuality = document.getElementById('dailySleepQuality');
 const avgSleepQuality = document.getElementById('avgSleepQuality');
 
-//EVENT LISTENER
+//Form Field Query Selectors
+const addWaterBtn = document.getElementById('addWaterBtn');
+const waterChart = document.getElementById('waterChart');
+const waterForm = document.getElementById('waterForm');
+
+addWaterBtn.addEventListener('click', showWaterForm);
+
+//EVENT LISTENERS
 window.addEventListener('load', () => {
   fetchAllData();
 });
 
 //HELPER FUNCTIONS
-const displayUserInfoCard = () => {
-  greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`;
-  displayUserEmail();
-  displayUserAddress();
-  displayUserStride();
-  displayUserDailyStepGoal();
-  displayAvgStepGoal();
-  displaySleepQuality();
-};
-
-const displayUserEmail = () => {
-  userEmail.innerText = `${currentUser.email}`;
-};
-
-const displayUserAddress = () => {
-  userAddress.innerText = `${currentUser.address}`;
-};
-
-const displayUserStride = () => {
-  userStride.innerText = `${currentUser.strideLength}`;
-};
-
-const displayUserDailyStepGoal = () => {
-  userStepGoal.innerText = `${currentUser.dailyStepGoal}`;
-};
-
-const displayAvgStepGoal = () => {
-  avgStepGoal.innerText = `${userRepository.getAvgStepCount()}`
+function hide(element) {
+  element.classList.add('hidden')
 }
 
-const displaySleepQuality = () => {
-  dailySleepQuality.innerText = allUsersSleep.getDailySleepQual(currentUser.id, todaysDate);
-  avgSleepQuality.innerText = allUsersSleep.getAvgDailySleepQual(currentUser.id)
+function show(element) {
+  element.classList.remove('hidden')
+}
+
+function toggle(element) {
+  element.classList.toggle('hidden');
 }
 
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length)
+};
+
+//DATA DISPLAY FUNCTIONS
+
+const displayUserInfoCard = () => {
+  greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`;
+  displayUserData();
+  // displayUserEmail();
+  // displayUserAddress();
+  // displayUserStride();
+  // displayUserDailyStepGoal();
+  displayAvgStepGoal();
+  displaySleepQuality();
+};
+
+const displayUserData = () => {
+  userEmail.innerText = `${currentUser.email}`;
+  userAddress.innerText = `${currentUser.address}`;
+  userStride.innerText = `${currentUser.strideLength}`;
+  userStepGoal.innerText = `${currentUser.dailyStepGoal}`;
+};
+
+// const displayUserEmail = () => {
+//   userEmail.innerText = `${currentUser.email}`;
+// };
+//
+// const displayUserAddress = () => {
+//   userAddress.innerText = `${currentUser.address}`;
+// };
+//
+// const displayUserStride = () => {
+//   userStride.innerText = `${currentUser.strideLength}`;
+// };
+//
+// const displayUserDailyStepGoal = () => {
+//   userStepGoal.innerText = `${currentUser.dailyStepGoal}`;
+// };
+
+const displayAvgStepGoal = () => {
+  avgStepGoal.innerText = `${userRepository.getAvgStepCount()}`;
+};
+
+const displaySleepQuality = () => {
+  dailySleepQuality.innerText = allUsersSleep.getDailySleepQual(currentUser.id, todaysDate);
+  avgSleepQuality.innerText = allUsersSleep.getAvgDailySleepQual(currentUser.id);
+};
+
+//FORM FUNCTIONS & EVENT LISTENERS
+// addWaterBtn.addEventListener('click', showWaterForm);
+
+function showWaterForm() {
+  toggle(waterChart);
+  toggle(waterForm);
 };

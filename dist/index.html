@@ -10,6 +10,7 @@
         <h1>fitlit</h1>
       </section>
       <section class="large-card">
+        <!-- TOP BANNER START -->
         <article class="banner">
           <h2 id="firstName"></h2>
             <span class="date-selector">
@@ -26,6 +27,7 @@
           <p id="avgStepGoal"></p>
         </article>
       </section>
+      <!-- TOP BANNER END -->
       <nav>
         <article class="mini-card user-profile">
             <h3>Your Profile</h3>
@@ -37,17 +39,25 @@
         </article>
         <aside class="mini-card summary">
           <h3>Today's Overview</h3>
-          <article>
+          <section>
             <span class="two-column">
                 <h4>Water</h4>
                 <span class="plus-icon">
-                  <img class="white-plus" src="assets/add.png" alt="Log Some Water">
-                  <img class="color-plus" src="assets/add-hover.png" alt="Add Ounces">
+                  <button id="addWaterBtn">+</button>
+                  <!-- <img class="white-plus" src="../assets/add.png" alt="Log Some Water">
+                  <img class="color-plus" id="addWaterBtn" src="../assets/add-hover.png" alt="Add Ounces"> -->
                 </span>
             </span>
-            <canvas id="dailyWaterChart" width="400" height="60"></canvas>
-          </article>
-          <article>
+            <article class="daily-water" id="waterChart">
+              <canvas id="dailyWaterChart" width="400" height="60"></canvas>
+            </article>
+            <article class="hidden" id="waterForm">
+              <label for="water">How much did you drink?</label>
+              <input type="text" placeholder="total ounces" id="water-intake" name="ounces-drank" required minlength="4" maxlength="8" size="20">
+              <button>Save</button>
+            </article>
+          </section>
+          <section>
               <span class="two-column">
                 <h4>Sleep</h4>
                 <span class="plus-icon">
@@ -57,9 +67,8 @@
               </span>
             <canvas id="dailySleepChart" width="400" height="60"></canvas>
             <h5>Sleep Quality = <span id="dailySleepQuality"></span> / 5</h5>
-          </article>
-          </article>
-          <article>
+          </section>
+          <section>
             <span class="two-column">
               <h4>Activity</h4>
               <span class="plus-icon">
@@ -71,7 +80,7 @@
               <!-- Chart for Steps Taken vs Goal Goes Here -->
               <h5>Flights of Stairs = <span id="flightsOfStairs"></span></h5>
               <h5>Active Minutes = <span id="activeMinutes"></span></h5>
-          </article>
+          </section>
       </nav>
     </header>
     <main>
