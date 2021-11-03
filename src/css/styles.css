@@ -160,6 +160,11 @@ li {
   grid-gap: 1em;
 }
 
+.averages {
+  font-size: 80%;
+  margin: 4%;
+}
+
 .plus-icon {
   display: inline-block;
 }

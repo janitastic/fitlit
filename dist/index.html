@@ -41,8 +41,29 @@
         <!-- TODAY'S OVERVIEW CARD -->
         <aside class="mini-card summary">
           <h3>Today's Overview</h3>
+          <section id="logActivity">
+            <!-- TODAY'S OVERVIEW: ACTIVITY SECTION -->
+            <span class="two-column">
+              <h4>Activity</h4>
+              <span class="plus-icon">
+                <img class="white-plus" src="assets/add.png" alt="Log Activity">
+                <img class="color-plus" src="assets/add-hover.png" alt="Add An Activity">
+              </span>
+            </span>
+              <article class="daily-activity" id="activityReport">
+                <h5>Steps Taken</h5>
+                <!-- Chart for Steps Taken vs Goal Goes Here -->
+                <h5>Flights of Stairs = <span id="flightsOfStairs"></span></h5>
+                <h5>Active Minutes = <span id="activeMinutes"></span></h5>
+              </article>
+              <article class="hidden" id="activityForm">
+                <label for="steps">How many steps have you taken today?</label>
+                <input type="text" placeholder="total steps" id="stepsTaken" name="step-log" required minlength="4" maxlength="8" size="20">
+                <button>Save</button>
+              </article>
+          </section>
+          <!-- TODAY'S OVERVIEW: WATER SECTION -->
           <section id="logWater">
-            <!-- TODAY'S OVERVIEW: WATER SECTION -->
             <span class="two-column">
               <h4>Water</h4>
               <span class="plus-icon">
@@ -78,27 +99,6 @@
               <button>Save</button>
             </article>
           </section>
-          <section id="logActivity">
-            <!-- TODAY'S OVERVIEW: ACTIVITY SECTION -->
-            <span class="two-column">
-              <h4>Activity</h4>
-              <span class="plus-icon">
-                <img class="white-plus" src="assets/add.png" alt="Log Activity">
-                <img class="color-plus" src="assets/add-hover.png" alt="Add An Activity">
-              </span>
-            </span>
-              <article class="daily-activity" id="activityReport">
-                <h5>Steps Taken</h5>
-                <!-- Chart for Steps Taken vs Goal Goes Here -->
-                <h5>Flights of Stairs = <span id="flightsOfStairs"></span></h5>
-                <h5>Active Minutes = <span id="activeMinutes"></span></h5>
-              </article>
-              <article class="hidden" id="activityForm">
-                <label for="steps">How many steps have you taken today?</label>
-                <input type="text" placeholder="total steps" id="stepsTaken" name="step-log" required minlength="4" maxlength="8" size="20">
-                <button>Save</button>
-              </article>
-          </section>
       </nav>
     </header>
     <main>
@@ -107,20 +107,21 @@
           <section>
             <h3>Your Averages</h3>
             <div class="average-widgets">
-              <article class="steps" id="avgUserSteps">
-                <h4>Steps</h4>
+              <article class="activity">
+                <h4>Activity</h4>
+                  <p class="averages">Steps <span id="avgUserSteps"></span>
+                  <br>Flights of Stairs <span id="avgUserStairs"></span>
+                  <br>Active Minutes<span id="avgUserMinsActive"></span></p>
               </article>
               <article class="water" id="avgUserWater">
                 <h4>Water</h4>
-                <canvas id="avgUserWaterChart" width="200" height="60";></canvas>
+                <!-- <canvas id="avgUserWaterChart" width="200" height="60";></canvas> -->
               </article>
-              <article class="sleep" id="avgUserSleep">
+              <article class="sleep">
                 <h4>Sleep</h4>
-                <canvas id="avgUserSleepChart" width="200" height="60";></canvas>
-                <h4>Sleep Quality = <span id="avgSleepQuality"></span></h4>
-              </article>
-              <article class="activity" id="avgUserActivity">
-                <h4>Activity</h4>
+                  <p class="averages">Hours Slept<span id="avgUserSleep"></span>
+                <!-- <canvas id="avgUserSleepChart" width="200" height="60";></canvas> -->
+                  <br>Sleep Quality = <span id="avgSleepQuality"></span> / 5</p>
               </article>
             </div>
           </section>
@@ -128,20 +129,21 @@
           <section>
             <h3>Community Averages</h3>
             <div class="average-widgets">
-              <article class="steps" id="avgUserSteps">
-                <h4>Steps</h4>
+              <article class="activity">
+                <h4>Activity</h4>
+                  <p class="averages">Steps <span id="avgCommSteps"></span>
+                  <br>Flights of Stairs <span id="avgCommStairs"></span>
+                  <br>Active Minutes<span id="avgCommMinsActive"></span></p>
               </article>
-              <article class="water" id="avgUserWater">
+              <article class="water" id="avgCommWater">
                 <h4>Water</h4>
                 <!-- <canvas id="avgUserWaterChart" width="200" height="60";></canvas> -->
               </article>
               <article class="sleep" id="avgUserSleep">
                 <h4>Sleep</h4>
-                <!-- <canvas id="avgUserSleepChart" width="200" height="60";></canvas> -->
-                <h4>Sleep Quality = <span id="avgSleepQuality"></span></h4>
-              </article>
-              <article class="activity" id="avgUserActivity">
-                <h4>Activity</h4>
+                  <p class="averages">Hours Slept<span id="avgCommSleep"></span>
+                  <!-- <canvas id="avgUserSleepChart" width="200" height="60";></canvas> -->
+                  <br>Sleep Quality = <span id="avgCommSleepQuality"></span> / 5</p>
               </article>
             </div>
           </section>
@@ -149,20 +151,23 @@
     <!-- WEEKLY TOTALS SECTION -->
       <section class="large-card weekly-widgets">
         <h3>Weekly Totals</h3>
-        <article class="steps" id="userSteps">
-          <h4>Steps</h4>
-        </article>
-        <article class="water" id="userWater">
-          <h4>Water</h4>
-          <canvas id="weeklyWaterChart" width="200" height="60" style="margin-left: 4%"></canvas>
-        </article>
-        <article class="sleep" id="userSleep">
-          <h4>Sleep</h4>
-          <canvas id="weeklySleepChart" width="200" height="60" style="margin-left: 4%"></canvas>
-        </article>
-        <article class="activity" id="userActivity">
-          <h4>Activity</h4>
-        </article>
+          <article class="activity" id="userActivity">
+            <h4>Activity</h4>
+              <h5>Steps</h5>
+              <!-- Weekly Steps Chart Goes Here -->
+              <h5>Flights of Stairs</h5>
+              <!-- Weekly Stairs Chart Goes Here -->
+              <h5>Active Minutes</h5>
+              <!-- Weekly Active Minutes Goes Here -->
+          </article>
+          <article class="water" id="userWater">
+            <h4>Water</h4>
+            <canvas id="weeklyWaterChart" width="200" height="60" style="margin-left: 4%"></canvas>
+          </article>
+          <article class="sleep" id="userSleep">
+            <h4>Sleep</h4>
+            <canvas id="weeklySleepChart" width="200" height="60" style="margin-left: 4%"></canvas>
+          </article>
       </section>
     </main>
     <script src="bundle.js"></script>
