@@ -208,6 +208,17 @@ label {
 
 button {
   cursor: pointer;
+  background-color: transparent;
+  color: #f2f2f2;
+  border: 1px solid #f2f2f2;
+  padding: .5% 2%;
+  border-radius: 100px;
+}
+
+button:hover {
+  background: linear-gradient(
+227deg, #d83c48, #5622c7);
+  border: none;
 }
 
 /* Media Queries for Screen Size */
