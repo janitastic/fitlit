@@ -6,9 +6,10 @@ import Sleep from '../src/Sleep';
 describe('Sleep', () => {
 
   let sleepInfo;
+  let sleepData;
 
   beforeEach(() => {
-    let sleepData = [
+    sleepData = [
       {userID: 1, date: '2019/06/15', hoursSlept: 6.1, sleepQuality: 2.2},
       {userID: 1, date: '2019/06/16', hoursSlept: 7, sleepQuality: 4.7},
       {userID: 1, date: '2019/06/17', hoursSlept: 10.8, sleepQuality: 4.7},
@@ -21,8 +22,12 @@ describe('Sleep', () => {
     ];
 
     sleepInfo = new Sleep(sleepData);
-
   })
+
+  it('should be able to hold a set of sleep data', () => {
+    expect(sleepInfo.sleepData).to.deep.equal(sleepData);
+  })
+
   it('should be able calculate a user/s daily average hours sleep', () => {
     expect(sleepInfo.getAvgSleepPerDay(1)).to.equal(7);
   })

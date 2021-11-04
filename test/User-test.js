@@ -30,6 +30,11 @@ describe('User', () => {
     })
   })
 
+  it('should be have an id number', () => {
+    expect(user2.id).to.equal(2)
+    expect(user3).to.equal(undefined)
+  })
+
   it('should be able to return a users first name', () => {
     expect(user2.getFirstName()).to.equal('Jarvis')
   })
