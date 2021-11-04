@@ -55,84 +55,15 @@ const allData = (user, sleep, activity, h20Data) => {
   displayCharts(userh20, allUsersSleep, currentUser, todaysDate);
 };
 
-
-//
-// //QUERY SELECTORS
-// const greeting = document.getElementById('firstName');
-// const userSteps = document.getElementById('userSteps');
-// const userWater = document.getElementById('userWater');
-// const userSleep = document.getElementById('userSleep');
-// const userActivity = document.getElementById('userActivity');
-// const userEmail = document.getElementById('userEmail');
-// const userAddress = document.getElementById('userAddress');
-// const userStride = document.getElementById('userStride');
-// const userStepGoal = document.getElementById('userStepGoal');
-// const avgStepGoal = document.getElementById('avgStepGoal');
-// const dailySleepQuality = document.getElementById('dailySleepQuality');
-// const avgSleepQuality = document.getElementById('avgSleepQuality');
-//
-// //Form Field Query Selectors & Event Listeners
-// const logWater = document.getElementById('logWater');
-// const waterChart = document.getElementById('waterChart');
-// const waterForm = document.getElementById('waterForm');
-// const logSleep = document.getElementById('logSleep');
-// const sleepChart = document.getElementById('sleepChart');
-// const sleepForm = document.getElementById('sleepForm');
-// const logActivity = document.getElementById('logActivity');
-// const activityReport = document.getElementById('activityReport');
-// const activityForm = document.getElementById('activityForm');
-//
-// logWater.addEventListener('click', showWaterForm);
-// logSleep.addEventListener('click', showSleepForm);
-// logActivity.addEventListener('click', showActivityForm);
-
-// //EVENT LISTENERS
+//EVENT LISTENERS
 window.addEventListener('load', () => {
   fetchAllData();
 });
-//
-// //HELPER FUNCTIONS
-// function hide(element) {
-//   element.classList.add('hidden')
-// }
-//
-// function show(element) {
-//   element.classList.remove('hidden')
-// }
-//
-// function toggle(element) {
-//   element.classList.toggle('hidden');
-// }
-//
+
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length)
 };
-//
-// //DATA DISPLAY FUNCTIONS
-//
-// const displayUserInfoCard = () => {
-//   greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`;
-//   displayUserData();
-//   displayAvgStepGoal();
-//   displaySleepQuality();
-// };
-//
-// const displayUserData = () => {
-//   userEmail.innerText = `${currentUser.email}`;
-//   userAddress.innerText = `${currentUser.address}`;
-//   userStride.innerText = `${currentUser.strideLength}`;
-//   userStepGoal.innerText = `${currentUser.dailyStepGoal}`;
-// };
-//
-// const displayAvgStepGoal = () => {
-//   avgStepGoal.innerText = `${userRepository.getAvgStepCount()}`;
-// };
-//
-// const displaySleepQuality = () => {
-//   dailySleepQuality.innerText = allUsersSleep.getDailySleepQual(currentUser.id, todaysDate);
-//   avgSleepQuality.innerText = allUsersSleep.getAvgDailySleepQual(currentUser.id);
-// };
-//
+
 // //FUNCTIONS FOR USER AVERAGES
 //   /*** FYI - pulled the two below from the charts we're removing ***/
 //
