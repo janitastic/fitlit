@@ -6,9 +6,10 @@ import Hydration from '../src/Hydration';
 describe('Hydration', () => {
 
   let hydrationInfo;
+  let hydrationData;
 
   beforeEach(() => {
-    let hydrationData = [
+    hydrationData = [
       {userID: 1, date: '2019/06/15', numOunces: 37},
       {userID: 1, date: '2019/06/16', numOunces: 42},
       {userID: 1, date: '2019/06/17', numOunces: 54},
@@ -19,6 +20,10 @@ describe('Hydration', () => {
     ];
 
     hydrationInfo = new Hydration(hydrationData);
+  })
+
+  it('should be able to hold a set of hydration data', () => {
+    expect(hydrationInfo.h20Data).to.deep.equal(hydrationData);
   })
 
   it('should return how much water the user consumed on average', () => {

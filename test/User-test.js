@@ -30,6 +30,36 @@ describe('User', () => {
     })
   })
 
+  it('should be have an id number', () => {
+    expect(user2.id).to.equal(2)
+    expect(user3).to.equal(undefined)
+  })
+
+  it('should have a name', () => {
+    expect(user1.name).to.equal("Luisa Hane")
+  })
+
+  it('should have an email address', () => {
+    expect(user1.email).to.equal("Diana.Hayes1@hotmail.com");
+    expect(user2.email).to.equal("Dimitri.Bechtelar11@gmail.com");
+  })
+
+  it('should have a physical address', () => {
+    expect(user2.address).to.equal("30086 Kathryn Port, Ciceroland NE 07273");
+  })
+
+  it('should have a stride length', () => {
+    expect(user1.strideLength).to.equal(4.3);
+  })
+
+  it('should have a daily step goal', () => {
+    expect(user1.dailyStepGoal).to.equal(10000);
+  })
+
+  it('should have an array of friends', () => {
+    expect(user2.friends).to.deep.equal([9, 18, 24, 19]);
+  })
+
   it('should be able to return a users first name', () => {
     expect(user2.getFirstName()).to.equal('Jarvis')
   })

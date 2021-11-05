@@ -42,6 +42,9 @@ describe('User Repository', () => {
   it('should be a function', () => {
     expect(UserRepository).to.be.a('function');
   });
+  it('should be able to hold an array of users', () =>{
+    expect(userRepo1.users).to.deep.equal([user1, user2, user3]);
+  })
   it('should be able to fetch user data when given an ID', () =>{
     expect(userRepo1.fetchUserData(3)).to.deep.equal(user3);
   })
