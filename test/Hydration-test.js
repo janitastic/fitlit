@@ -6,6 +6,7 @@ import Hydration from '../src/Hydration';
 describe('Hydration', () => {
 
   let hydrationInfo;
+  let hydrationInfo2;
   let hydrationData;
 
   beforeEach(() => {
@@ -20,6 +21,7 @@ describe('Hydration', () => {
     ];
 
     hydrationInfo = new Hydration(hydrationData);
+    hydrationInfo2 = new Hydration([]);
   })
 
   it('should be a function', () => {
@@ -28,6 +30,7 @@ describe('Hydration', () => {
 
   it('should be able to hold a set of hydration data', () => {
     expect(hydrationInfo.h20Data).to.deep.equal(hydrationData);
+    expect(hydrationInfo2.h20Data).to.deep.equal([]);
   })
 
   it('should return how much water the user consumed on average', () => {
