@@ -75,19 +75,4 @@ const getRandomIndex = (array) => {
 //
 // //FUNCTIONS FOR COMMUNITY AVERAGES
 //
-// //FORM FUNCTIONS
-//
-// function showWaterForm() {
-//   toggle(waterChart);
-//   toggle(waterForm);
-// };
-//
-// function showSleepForm() {
-//   toggle(sleepChart);
-//   toggle(sleepForm);
-// };
-//
-// function showActivityForm() {
-//   toggle(activityReport);
-//   toggle(activityForm);
-// };
+
