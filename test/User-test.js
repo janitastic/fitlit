@@ -30,6 +30,10 @@ describe('User', () => {
     })
   })
 
+  it('should be a function', () => {
+    expect(User).to.be.a('function');
+  });
+
   it('should be have an id number', () => {
     expect(user2.id).to.equal(2)
     expect(user3).to.equal(undefined)

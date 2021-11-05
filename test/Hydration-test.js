@@ -22,6 +22,10 @@ describe('Hydration', () => {
     hydrationInfo = new Hydration(hydrationData);
   })
 
+  it('should be a function', () => {
+    expect(Hydration).to.be.a('function');
+  });
+
   it('should be able to hold a set of hydration data', () => {
     expect(hydrationInfo.h20Data).to.deep.equal(hydrationData);
   })

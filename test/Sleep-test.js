@@ -24,6 +24,10 @@ describe('Sleep', () => {
     sleepInfo = new Sleep(sleepData);
   })
 
+  it('should be a function', () => {
+    expect(Sleep).to.be.a('function');
+  });
+
   it('should be able to hold a set of sleep data', () => {
     expect(sleepInfo.sleepData).to.deep.equal(sleepData);
   })
