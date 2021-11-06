@@ -20,7 +20,7 @@ let userData;
 let userh20;
 let userSleep;
 let userActivity;
-const todaysDate = '2020/01/23';
+let todaysDate = '2020/01/23';
 
 domUpdates();
 
@@ -29,9 +29,10 @@ import {
   fetchSleepData,
   fetchActivityData,
   fetchHydrationData,
-  postSleepData
+  postSleepData,
+  postActivityData,
+  postHydrationData
 } from './apiCalls.js';
-
 
 
 const fetchAllData = () => {
@@ -45,12 +46,15 @@ const parseData = (allUserData) => {
   sleepData = allUserData[1].sleepData;
   activityData = allUserData[2].activityData;
   h20Data = allUserData[3].hydrationData;
+  console.log('after indexing>>>',allUserData)
   instantiateClasses(userData, sleepData, activityData, h20Data)
 };
 
 const instantiateClasses = (users, sleep, activity, h20Data) => {
   userRepository = new UserRepository(users);
+  console.log('userRepo>>', userRepository.users)
   currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
+  console.log('user', currentUser)
   userSleep = new Sleep(sleep);
   userActivity = new Activity(activity);
   userh20 = new Hydration(h20Data);
@@ -64,6 +68,9 @@ const instantiateClasses = (users, sleep, activity, h20Data) => {
 //EVENT LISTENERS
 window.addEventListener('load', () => {
   fetchAllData();
+  postSleepData()
+  postActivityData()
+  postHydrationData()
 });
 
 const getRandomIndex = (array) => {
