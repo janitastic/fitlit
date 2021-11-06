@@ -11,13 +11,15 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist')
   },
   "devtool": "source-map",
+  // CSS and file (image) loaders
   "module": {
     "rules": [
       {
-        test: /\.css$/i,
+        test: /\.s[ac]ss$/i,
         use: [
           "style-loader",
           "css-loader",
+          "sass-loader"
         ],
       },
       {
