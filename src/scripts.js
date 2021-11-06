@@ -68,10 +68,12 @@ const instantiateClasses = (users, sleep, activity, h20Data) => {
 //EVENT LISTENERS
 window.addEventListener('load', () => {
   fetchAllData();
-  postSleepData()
-  postActivityData()
-  postHydrationData()
+  postSleepData();
+  postActivityData();
+  postHydrationData();
 });
+
+
 
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length)

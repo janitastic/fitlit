@@ -20,6 +20,15 @@ const displaySleepQuality = (allUsersSleep, currentUser, todaysDate) => {
   avgSleepQuality.innerText = allUsersSleep.getAvgDailySleepQual(currentUser.id);
 };
 
+const captureOunces = () => {
+  let input = ouncesInput.value
+  if (input && input > 0) {
+    console.log('it works!')
+  } else {
+    console.log('nuh uh')
+  }
+}
+
 //QUERY SELECTORS
 const greeting = document.getElementById('firstName');
 const userSteps = document.getElementById('userSteps');
@@ -36,6 +45,8 @@ const avgSleepQuality = document.getElementById('avgSleepQuality');
 
 //Form Field Query Selectors & Event Listeners
 const logWater = document.getElementById('logWater');
+const saveWaterBtn = document.getElementById('saveWaterBtn');
+const ouncesInput = document.getElementById('waterIntake');
 const waterChart = document.getElementById('waterChart');
 const waterForm = document.getElementById('waterForm');
 const logSleep = document.getElementById('logSleep');
@@ -47,6 +58,7 @@ const activityForm = document.getElementById('activityForm');
 
 let domUpdates = () => {
 logWater.addEventListener('click', showWaterForm);
+saveWaterBtn.addEventListener('click', captureOunces);
 logSleep.addEventListener('click', showSleepForm);
 logActivity.addEventListener('click', showActivityForm);
 
