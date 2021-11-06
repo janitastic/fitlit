@@ -2,13 +2,25 @@ import {
   expect
 } from 'chai';
 import Hydration from '../src/Hydration';
+import User from '../src/User';
 
 describe('Hydration', () => {
 
   let hydrationInfo;
   let hydrationData;
+  let user1;
 
   beforeEach(() => {
+    user1 = new User({
+      id: 1,
+      name: "Luisa Hane",
+      address: "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+      email: "Diana.Hayes1@hotmail.com",
+      strideLength: 4.3,
+      dailyStepGoal: 10000,
+      friends: [16, 4, 8],
+    });
+
     hydrationData = [
       {userID: 1, date: '2019/06/15', numOunces: 37},
       {userID: 1, date: '2019/06/16', numOunces: 42},
@@ -20,23 +32,23 @@ describe('Hydration', () => {
     ];
 
     hydrationInfo = new Hydration(hydrationData);
-  })
+  });
 
   it('should be able to hold a set of hydration data', () => {
-    expect(hydrationInfo.h20Data).to.deep.equal(hydrationData);
+    expect(hydrationInfo.dataset).to.deep.equal(hydrationData);
   })
 
   it('should return how much water the user consumed on average', () => {
-    expect(hydrationInfo.getAvgOuncesPerDay(1)).to.equal(46);
+    expect(hydrationInfo.getAvgOuncesPerDay(user1)).to.equal(46);
   })
 
   it('should be able to calculate total ounces consumed in a specific day', () => {
-    const totalOunces = hydrationInfo.calculateDailyOunces(1, '2019/06/15');
+    const totalOunces = hydrationInfo.calculateDailyOunces(user1, '2019/06/15');
     expect(totalOunces).to.equal(37);
   })
 
   it('should return the amount of water consumed each day for a week ', () => {
-    const totalOunces = hydrationInfo.calculateWeeklyWater(1, '2019/06/21');
+    const totalOunces = hydrationInfo.calculateWeeklyWater(user1, '2019/06/21');
     expect(totalOunces).to.deep.equal([16, 22, 87, 65, 54, 42, 37]);
   })
 })
