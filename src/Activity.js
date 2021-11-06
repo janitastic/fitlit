@@ -6,27 +6,6 @@ class Activity extends DataHandler {
     super(dataset)
   }
 
-  // getUserFilteredData(user) {
-  //   const userActivityInfo = this.activityData.filter(activityInfo => {
-  //     return activityInfo.userID === user.id;
-  //   });
-  //   this.userFilteredData = userActivityInfo;
-  // }
-  //
-  // getSingleDayData(selectedDate) {
-  //   const singleDayData = this.userFilteredData.find(day => {
-  //     return day.date === selectedDate;
-  //   })
-  //   this.singleDayData = singleDayData;
-  // }
-  //
-  // getAllUserDataSingleDate(selectedDate){
-  //   const allUserSingleDate = this.activityData.filter(day => {
-  //     return day.date === selectedDate;
-  //   })
-  //   this.allUserSingleDateData = allUserSingleDate;
-  // }
-
   getDailyMiles(user, selectedDate) {
     this.getUserFilteredData(user);
     this.getSingleDayData(selectedDate);
