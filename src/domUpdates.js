@@ -41,6 +41,39 @@ const captureSleep = () => {
   return todaysSleep;
 }
 
+const captureSteps = () => {
+  let todaysSteps;
+  if (stepsInput.value && stepsInput.value >= 0 && stepsInput.value < 100000)  {
+    todaysSteps = stepsInput.value
+    console.log(todaysSteps)
+  } else {
+    stepsInput.value = ''
+  }
+  return todaysSteps;
+}
+
+// const captureStairs = () => {
+//   let todaysSleep;
+//   if (sleepInput.value && sleepInput.value >= 0 && sleepInput.value <= 24)  {
+//     todaysSleep = sleepInput.value
+//     console.log(todaysSleep)
+//   } else {
+//     sleepInput.value = ''
+//   }
+//   return todaysSleep;
+// }
+
+// const captureMinutes = () => {
+//   let todaysSleep;
+//   if (sleepInput.value && sleepInput.value >= 0 && sleepInput.value <= 24)  {
+//     todaysSleep = sleepInput.value
+//     console.log(todaysSleep)
+//   } else {
+//     sleepInput.value = ''
+//   }
+//   return todaysSleep;
+// }
+
 //QUERY SELECTORS
 const greeting = document.getElementById('firstName');
 const userSteps = document.getElementById('userSteps');
