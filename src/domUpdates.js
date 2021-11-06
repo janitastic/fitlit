@@ -21,12 +21,13 @@ const displaySleepQuality = (allUsersSleep, currentUser, todaysDate) => {
 };
 
 const captureOunces = () => {
-  let input = ouncesInput.value
-  if (input && input > 0) {
-    console.log('it works!')
+  let todaysOunces;  
+  if (ouncesInput.value && ouncesInput.value > 0 && ouncesInput.value.length <= 2) {
+    todaysOunces = ouncesInput.value
   } else {
-    console.log('nuh uh')
+    ouncesInput.value = ''
   }
+  return todaysOunces
 }
 
 //QUERY SELECTORS
