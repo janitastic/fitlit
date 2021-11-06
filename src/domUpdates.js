@@ -51,9 +51,17 @@ const ouncesInput = document.getElementById('waterIntake');
 const waterChart = document.getElementById('waterChart');
 const waterForm = document.getElementById('waterForm');
 const logSleep = document.getElementById('logSleep');
+const saveSleepBtn = document.getElementById('saveSleepBtn');
+const sleepInput = document.getElementById('hoursSlept');
 const sleepChart = document.getElementById('sleepChart');
 const sleepForm = document.getElementById('sleepForm');
 const logActivity = document.getElementById('logActivity');
+const saveStepsBtn = document.getElementById('stepsBtn');
+const stepsInput = document.getElementById('stepsTaken');
+const saveStairsBtn = document.getElementById('stairsBtn');
+const stairsInput = document.getElementById('stairsClimbed');
+const saveMinutesBtn = document.getElementById('minutesBtn');
+const minutesInput = document.getElementById('minsActive')
 const activityReport = document.getElementById('activityReport');
 const activityForm = document.getElementById('activityForm');
 

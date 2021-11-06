@@ -58,8 +58,14 @@
               </article>
               <article class="hidden" id="activityForm">
                 <label for="steps">How many steps have you taken today?</label>
-                <input type="text" placeholder="total steps" id="stepsTaken" name="step-log" required minlength="4" maxlength="8" size="20">
-                <button>Save</button>
+                <input type="number" placeholder="Total Steps" id="stepsTaken" name="step-log" required minlength="1" maxlength="8" size="20">
+                <button id="stepsBtn">Save</button>
+                <label for="stairs">How many flights of stairs did you climb today?</label>
+                <input type="number" placeholder="Total Flights" id="stairsClimbed" name="stairs-log" required minlength="1" maxlength="8" size="20">
+                <button id="stairsBtn">Save</button>
+                <label for="minutes">How many minutes were you active today?</label>
+                <input type="number" placeholder="Minutes Active" id="minsActive" name="activity-log" required minlength="1" maxlength="8" size="20">
+                <button id="minutesBtn">Save</button>
               </article>
           </section>
           <!-- TODAY'S OVERVIEW: WATER SECTION -->
@@ -76,7 +82,7 @@
               </article>
               <article class="hidden" id="waterForm">
                 <label for="water">How much did you drink?</label>
-                <input type="number" placeholder="Total oz.(1-99)" id="waterIntake" name="ounces-drank" required minlength="1" required maxlength="2" size="25">
+                <input type="number" placeholder="Total oz.(1-99)" id="waterIntake" name="ounces-drank" required minlength="1" maxlength="2" size="25">
                 <button id="saveWaterBtn">Save</button>
               </article>
           </section>
@@ -95,8 +101,8 @@
             </article>
             <article class="hidden" id="sleepForm">
               <label for="sleep">How many hours did you sleep?</label>
-              <input type="text" placeholder="total hours" id="hoursSlept" name="hours-slept" required minlength="4" maxlength="8" size="20">
-              <button>Save</button>
+              <input type="number" placeholder="Total Hours Slept" id="hoursSlept" name="hours-slept" required minlength="1" maxlength="2" size="20">
+              <button id="saveSleepBtn">Save</button>
             </article>
           </section>
       </nav>
