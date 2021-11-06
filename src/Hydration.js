@@ -6,13 +6,6 @@ class Hydration extends DataHandler {
     super(dataset)
   }
 
-  // getUserWaterIntake(user) {
-  //   const userWaterConsumption = this.dataset.filter(waterInfo => {
-  //     return waterInfo.userID === user.id;
-  //   });
-  //   return userWaterConsumption;
-  // }
-
   getAvgOuncesPerDay(user) {
     this.getUserFilteredData(user);
 
