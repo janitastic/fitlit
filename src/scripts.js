@@ -20,7 +20,7 @@ let userData;
 let userh20;
 let userSleep;
 let userActivity;
-const todaysDate = '2020/01/22';
+const todaysDate = '2020/01/23';
 
 domUpdates();
 
@@ -28,8 +28,11 @@ import {
   fetchUserData,
   fetchSleepData,
   fetchActivityData,
-  fetchHydrationData
+  fetchHydrationData,
+  postSleepData
 } from './apiCalls.js';
+
+
 
 const fetchAllData = () => {
   Promise.all([fetchUserData(), fetchSleepData(), fetchActivityData(), fetchHydrationData()])
@@ -37,6 +40,7 @@ const fetchAllData = () => {
 };
 
 const parseData = (allUserData) => {
+  console.log(allUserData)
   userData = allUserData[0].userData;
   sleepData = allUserData[1].sleepData;
   activityData = allUserData[2].activityData;
