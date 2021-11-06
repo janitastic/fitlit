@@ -18,10 +18,11 @@ let currentUser;
 let allUsers;
 let userData;
 let userh20;
-let allUsersSleep;
+let userSleep;
+let userActivity;
 const todaysDate = '2020/01/22';
 
-domUpdates()
+domUpdates();
 
 import {
   fetchUserData,
@@ -40,19 +41,20 @@ const parseData = (allUserData) => {
   sleepData = allUserData[1].sleepData;
   activityData = allUserData[2].activityData;
   h20Data = allUserData[3].hydrationData;
-  allData(userData, sleepData, activityData, h20Data)
+  instantiateClasses(userData, sleepData, activityData, h20Data)
 };
 
-const allData = (user, sleep, activity, h20Data) => {
-  userRepository = new UserRepository(user);
+const instantiateClasses = (users, sleep, activity, h20Data) => {
+  userRepository = new UserRepository(users);
   currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
-  allUsersSleep = new Sleep(sleepData)
+  userSleep = new Sleep(sleep);
+  userActivity = new Activity(activity);
   userh20 = new Hydration(h20Data);
   displayUserInfoCard(currentUser);
   displayUserData(currentUser);
   displayAvgStepGoal(userRepository);
-  displaySleepQuality(allUsersSleep, currentUser, todaysDate);
-  displayCharts(userh20, allUsersSleep, currentUser, todaysDate);
+  displaySleepQuality(userSleep, currentUser, todaysDate);
+  displayCharts(userh20, userSleep, currentUser, todaysDate);
 };
 
 //EVENT LISTENERS
@@ -75,4 +77,3 @@ const getRandomIndex = (array) => {
 //
 // //FUNCTIONS FOR COMMUNITY AVERAGES
 //
-
