@@ -41,6 +41,17 @@ const captureSleep = () => {
   return todaysSleep;
 }
 
+const captureQuality = () => {
+  let todaysQuality;
+  if (qualityInput.value && qualityInput.value >0 && qualityInput.value <= 5)  {
+    todaysQuality = qualityInput.value
+    console.log(todaysQuality)
+  } else {
+    qualityInput.value = ''
+  }
+  return todaysQuality
+}
+
 const captureSteps = () => {
   let todaysSteps;
   if (stepsInput.value && stepsInput.value >= 0 && stepsInput.value < 100000)  {
@@ -74,6 +85,11 @@ const captureMinutes = () => {
   return todaysMinutes;
 }
 
+const displayQualityRange = () => {
+  qualityRange.innerText = qualityInput.value
+  console.log('slide>>', qualityInput.value);
+}
+
 //QUERY SELECTORS
 const greeting = document.getElementById('firstName');
 const userSteps = document.getElementById('userSteps');
@@ -96,6 +112,9 @@ const waterChart = document.getElementById('waterChart');
 const waterForm = document.getElementById('waterForm');
 const logSleep = document.getElementById('logSleep');
 const saveSleepBtn = document.getElementById('saveSleepBtn');
+const saveQualityBtn = document.getElementById('saveQualityBtn');
+const qualityInput = document.getElementById('sleepQuality');
+const qualityRange = document.getElementById('selectedRange');
 const sleepInput = document.getElementById('hoursSlept');
 const sleepChart = document.getElementById('sleepChart');
 const sleepForm = document.getElementById('sleepForm');
@@ -114,6 +133,8 @@ logWater.addEventListener('click', showWaterForm);
 saveWaterBtn.addEventListener('click', captureOunces);
 logSleep.addEventListener('click', showSleepForm);
 saveSleepBtn.addEventListener('click', captureSleep);
+saveQualityBtn.addEventListener('click', captureQuality);
+qualityInput.addEventListener('change', displayQualityRange)
 logActivity.addEventListener('click', showActivityForm);
 saveStepsBtn.addEventListener('click', captureSteps);
 saveStairsBtn.addEventListener('click', captureStairs);

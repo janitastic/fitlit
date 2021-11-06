@@ -103,6 +103,10 @@
               <label for="sleep">How many hours did you sleep?</label>
               <input type="number" placeholder="Hours Slept (0-24)" id="hoursSlept" name="hours-slept" required minlength="1" maxlength="2" size="20">
               <button id="saveSleepBtn">Save</button>
+              <label for="sleep">How well did you sleep, on a scale of 1 to 5?</label>
+              <input type="range" placeholder="Sleep Quality (1-5)" id="sleepQuality" name="sleep-quality" min="1" max="5" value="3" size="20">
+              <p id="selectedRange">3</p>
+              <button id="saveQualityBtn">Save</button>
             </article>
           </section>
       </nav>

@@ -36,7 +36,6 @@ const fetchActivityData = () => {
     .then(response => response.json())
 };
 
-
 const postActivityData = () => {
   const newActivity = {
     userID: 1,
@@ -61,6 +60,7 @@ const fetchHydrationData = () => {
   return fetch("http://localhost:3001/api/v1/hydration")
     .then((response) => response.json())
 };
+
 const postHydrationData = () => {
   const newHydration = {
     userID: 1,
@@ -78,9 +78,6 @@ const postHydrationData = () => {
     .then(data => data)
     .catch(err => console.log(err));
 }
-
-
-
 
 export {
   fetchUserData,
