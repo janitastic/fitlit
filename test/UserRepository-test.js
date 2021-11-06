@@ -8,6 +8,7 @@ describe('User Repository', () => {
   let user2;
   let user3;
   let userRepo1;
+  let userRepo2;
   beforeEach(() => {
     user1 = new User ({
       "id": 1,
@@ -38,17 +39,21 @@ describe('User Repository', () => {
       "friends": [ 19, 11, 42, 33 ]
     })
     userRepo1 = new UserRepository([user1, user2, user3]);
+    userRepo2 = new UserRepository([]);
   })
   it('should be a function', () => {
     expect(UserRepository).to.be.a('function');
   });
   it('should be able to hold an array of users', () =>{
     expect(userRepo1.users).to.deep.equal([user1, user2, user3]);
+    expect(userRepo2.users).to.deep.equal([]);
   })
   it('should be able to fetch user data when given an ID', () =>{
     expect(userRepo1.fetchUserData(3)).to.deep.equal(user3);
+    expect(userRepo2.fetchUserData(3)).to.equal(undefined);
   })
   it('should be able to calculate the average daily step goal amongts all users', () => {
     expect(userRepo1.getAvgStepCount()).to.equal(6666);
+    expect(userRepo2.getAvgStepCount()).to.be.NaN;
   })
 });

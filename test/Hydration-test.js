@@ -7,6 +7,7 @@ import User from '../src/User';
 describe('Hydration', () => {
 
   let hydrationInfo;
+  let hydrationInfo2;
   let hydrationData;
   let user1;
 
@@ -32,10 +33,17 @@ describe('Hydration', () => {
     ];
 
     hydrationInfo = new Hydration(hydrationData);
+    hydrationInfo2 = new Hydration([]);
+  })
+
+
+  it('should be a function', () => {
+    expect(Hydration).to.be.a('function');
   });
 
   it('should be able to hold a set of hydration data', () => {
     expect(hydrationInfo.dataset).to.deep.equal(hydrationData);
+    expect(hydrationInfo2.dataset).to.deep.equal([]);
   })
 
   it('should return how much water the user consumed on average', () => {
