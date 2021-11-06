@@ -30,6 +30,17 @@ const captureOunces = () => {
   return todaysOunces
 }
 
+const captureSleep = () => {
+  let todaysSleep;
+  if (sleepInput.value && sleepInput.value >= 0 && sleepInput.value <= 24)  {
+    todaysSleep = sleepInput.value
+    console.log(todaysSleep)
+  } else {
+    sleepInput.value = ''
+  }
+  return todaysSleep;
+}
+
 //QUERY SELECTORS
 const greeting = document.getElementById('firstName');
 const userSteps = document.getElementById('userSteps');
@@ -69,7 +80,11 @@ let domUpdates = () => {
 logWater.addEventListener('click', showWaterForm);
 saveWaterBtn.addEventListener('click', captureOunces);
 logSleep.addEventListener('click', showSleepForm);
+saveSleepBtn.addEventListener('click', captureSleep);
 logActivity.addEventListener('click', showActivityForm);
+saveStepsBtn.addEventListener('click', captureSteps);
+saveStairsBtn.addEventListener('click', captureStairs);
+saveMinutesBtn.addEventListener('click', captureMinutes);
 
 //HELPER FUNCTIONS
 function hide(element) {
