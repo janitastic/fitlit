@@ -7,7 +7,9 @@ import User from '../src/User';
 
 describe('Activity', () => {
    let activityInfo;
+   let activityInfo2;
    let user1;
+   let user2;
 
   beforeEach(() => {
     user1 = new User({
@@ -19,6 +21,16 @@ describe('Activity', () => {
       dailyStepGoal: 10000,
       friends: [16, 4, 8],
     });
+
+    user2 = new User({
+      id: 2,
+      name: "Bob Sample",
+      address: "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+      email: "Samplebob1@hotmail.com",
+      strideLength: 0,
+      dailyStepGoal: 10000,
+      friends: [16, 4, 8],
+    })
 
     let activityData = [
       {userID:1, date:'2019/06/15', numSteps:3577, minutesActive:140, flightsOfStairs:16},
@@ -36,7 +48,12 @@ describe('Activity', () => {
       {userID:1, date:'2019/06/21', numSteps:6760, minutesActive:135, flightsOfStairs:6},
     ];
     activityInfo = new Activity(activityData);
+    activityInfo2 = new Activity([{userID:2, date:'2019/06/15', numSteps:3577, minutesActive:140, flightsOfStairs:16}]);
   })
+
+  it('should be a function', () => {
+    expect(Activity).to.be.a('function');
+  });
 
   it('should be an instance of Activity', () => {
     expect(activityInfo).to.be.an.instanceof(Activity)
@@ -75,7 +92,8 @@ describe('Activity', () => {
   })
 
   it('should be able to calculate miles walked based on steps specified by a date', () => {
-    expect(activityInfo.getDailyMiles(user1, '2019/06/15')).to.equal(2.9)
+    expect(activityInfo.getDailyMiles(user1, '2019/06/15')).to.equal(2.9);
+    expect(activityInfo.getDailyMiles(user2, '2019/06/15')).to.equal(0);
   })
 
   it('should be able to return a user\'s daily minutes active specified by a date', () => {
@@ -91,7 +109,8 @@ describe('Activity', () => {
   })
 
   it('should be able to find all the days when a user exceeded their step goal', () => {
-    expect(activityInfo.findDaysOverStepGoal(user1)).to.deep.equal(['2019/06/17', '2019/06/20'])
+    expect(activityInfo.findDaysOverStepGoal(user1)).to.deep.equal(['2019/06/17', '2019/06/20']);
+    expect(activityInfo.findDaysOverStepGoal(user2)).to.deep.equal([])
   })
 
   it('should be able to find a user\'s all time stair-climbing record', () => {

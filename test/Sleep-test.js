@@ -6,6 +6,7 @@ import Sleep from '../src/Sleep';
 describe('Sleep', () => {
 
   let sleepInfo;
+  let sleepInfo2;
   let sleepData;
 
   beforeEach(() => {
@@ -22,10 +23,16 @@ describe('Sleep', () => {
     ];
 
     sleepInfo = new Sleep(sleepData);
+    sleepInfo2 = new Sleep([]);
   })
+
+  it('should be a function', () => {
+    expect(Sleep).to.be.a('function');
+  });
 
   it('should be able to hold a set of sleep data', () => {
     expect(sleepInfo.sleepData).to.deep.equal(sleepData);
+    expect(sleepInfo2.sleepData).to.deep.equal([]);
   })
 
   it('should be able calculate a user/s daily average hours sleep', () => {
