@@ -43,8 +43,8 @@ describe('Activity', () => {
   })
 
   it('should be able to store an array of user activity data', () => {
-    activityInfo.getUserActivityData(user1);
-    expect(activityInfo.userActivityData).to.deep.equal([
+    activityInfo.getUserFilteredData(user1);
+    expect(activityInfo.userFilteredData).to.deep.equal([
       {userID:1, date:'2019/06/15', numSteps:3577, minutesActive:140, flightsOfStairs:16},
       {userID:1, date:'2019/06/16', numSteps:6637, minutesActive:175, flightsOfStairs:36},
       {userID:1, date:'2019/06/17', numSteps:14329, minutesActive:168, flightsOfStairs:18},
@@ -56,14 +56,14 @@ describe('Activity', () => {
   })
 
   it('should be able to isolate and store a single day\'s worth of data for a single user', () => {
-    activityInfo.getUserActivityData(user1);
+    activityInfo.getUserFilteredData(user1);
     activityInfo.getSingleDayData('2019/06/17');
     expect(activityInfo.singleDayData).to.deep.equal({userID:1, date:'2019/06/17', numSteps:14329, minutesActive:168, flightsOfStairs:18})
   })
 
   it('should be able to store an array of user activity data for a single date for all users', () => {
     activityInfo.getAllUserDataSingleDate('2019/06/15');
-    expect(activityInfo.allUserSingleDateData).to.deep.equal([
+    expect(activityInfo.allUserSingleDayData).to.deep.equal([
       {userID:1, date:'2019/06/15', numSteps:3577, minutesActive:140, flightsOfStairs:16},
       {userID:2, date:'2019/06/15', numSteps:4294, minutesActive:138, flightsOfStairs:10},
       {userID:3, date:'2019/06/15', numSteps:7402, minutesActive:116, flightsOfStairs:33},

@@ -1,36 +1,34 @@
-let User = require('../src/User')
+let DataHandler = require('./DataHandler');
+let User = require('./User');
 
-class Activity {
-  constructor(activityData) {
-    this.activityData = activityData;
-    this.userActivityData;
-    this.singleDayData;
-    this.allUserSingleDateData;
+class Activity extends DataHandler {
+  constructor(dataset) {
+    super(dataset)
   }
 
-  getUserActivityData(user) {
-    const userActivityInfo = this.activityData.filter(activityInfo => {
-      return activityInfo.userID === user.id;
-    });
-    this.userActivityData = userActivityInfo;
-  }
-
-  getSingleDayData(selectedDate) {
-    const singleDayData = this.userActivityData.find(day => {
-      return day.date === selectedDate;
-    })
-    this.singleDayData = singleDayData;
-  }
-
-  getAllUserDataSingleDate(selectedDate){
-    const allUserSingleDate = this.activityData.filter(day => {
-      return day.date === selectedDate;
-    })
-    this.allUserSingleDateData = allUserSingleDate;
-  }
+  // getUserFilteredData(user) {
+  //   const userActivityInfo = this.activityData.filter(activityInfo => {
+  //     return activityInfo.userID === user.id;
+  //   });
+  //   this.userFilteredData = userActivityInfo;
+  // }
+  //
+  // getSingleDayData(selectedDate) {
+  //   const singleDayData = this.userFilteredData.find(day => {
+  //     return day.date === selectedDate;
+  //   })
+  //   this.singleDayData = singleDayData;
+  // }
+  //
+  // getAllUserDataSingleDate(selectedDate){
+  //   const allUserSingleDate = this.activityData.filter(day => {
+  //     return day.date === selectedDate;
+  //   })
+  //   this.allUserSingleDateData = allUserSingleDate;
+  // }
 
   getDailyMiles(user, selectedDate) {
-    this.getUserActivityData(user);
+    this.getUserFilteredData(user);
     this.getSingleDayData(selectedDate);
       let milesWalked = this.singleDayData.numSteps / (5280 / user.strideLength)
 
@@ -38,19 +36,19 @@ class Activity {
   }
 
   getDailyMinsActive(user, selectedDate) {
-    this.getUserActivityData(user);
+    this.getUserFilteredData(user);
     this.getSingleDayData(selectedDate);
       let minsActive = this.singleDayData.minutesActive;
       return minsActive;
   }
 
   getAvgDailyMinsActive(user, startDate){
-    this.getUserActivityData(user);
-    const targetStartDate = this.userActivityData.findIndex(day => {
+    this.getUserFilteredData(user);
+    const targetStartDate = this.userFilteredData.findIndex(day => {
       return day.date === startDate;
     })
     const targetEndDate = targetStartDate + 7;
-    let weeklyMinsActive = this.userActivityData.slice(targetStartDate, targetEndDate);
+    let weeklyMinsActive = this.userFilteredData.slice(targetStartDate, targetEndDate);
     const totalMinsActive = weeklyMinsActive.reduce((totalMinsActive, day) => {
       totalMinsActive += day.minutesActive;
       return totalMinsActive
@@ -59,7 +57,7 @@ class Activity {
   }
 
   checkStepGoalStatus(user, selectedDate){
-    this.getUserActivityData(user);
+    this.getUserFilteredData(user);
     this.getSingleDayData(selectedDate);
     if(this.singleDayData.numSteps >= user.dailyStepGoal){
       return true
@@ -69,8 +67,8 @@ class Activity {
   }
 
   findDaysOverStepGoal(user){
-    this.getUserActivityData(user);
-    const stepGoalClears = this.userActivityData.reduce((passedDays, day) => {
+    this.getUserFilteredData(user);
+    const stepGoalClears = this.userFilteredData.reduce((passedDays, day) => {
       if(day.numSteps >= user.dailyStepGoal){
         passedDays.push(day.date)
       }
@@ -80,8 +78,8 @@ class Activity {
   }
 
   findMostClimbedFlights(user){
-    this.getUserActivityData(user);
-    const mostStairsClimbed = this.userActivityData.sort((a, b) => {
+    this.getUserFilteredData(user);
+    const mostStairsClimbed = this.userFilteredData.sort((a, b) => {
       return b.flightsOfStairs - a.flightsOfStairs
     })
     return mostStairsClimbed[0].flightsOfStairs;
@@ -89,29 +87,29 @@ class Activity {
 
   findCommunityAvgFlights(selectedDate){
     this.getAllUserDataSingleDate(selectedDate);
-    const avgFlightsClimbed = this.allUserSingleDateData.reduce((allFlights, userData) => {
+    const avgFlightsClimbed = this.allUserSingleDayData.reduce((allFlights, userData) => {
       allFlights += userData.flightsOfStairs;
       return allFlights
     }, 0)
-    return Math.floor(avgFlightsClimbed / this.allUserSingleDateData.length * 10) / 10;
+    return Math.floor(avgFlightsClimbed / this.allUserSingleDayData.length * 10) / 10;
   }
 
   findCommunityAvgSteps(selectedDate){
     this.getAllUserDataSingleDate(selectedDate);
-    const avgStepsTaken = this.allUserSingleDateData.reduce((allSteps, userData) => {
+    const avgStepsTaken = this.allUserSingleDayData.reduce((allSteps, userData) => {
       allSteps += userData.numSteps;
       return allSteps
     }, 0)
-    return Math.floor(avgStepsTaken / this.allUserSingleDateData.length);
+    return Math.floor(avgStepsTaken / this.allUserSingleDayData.length);
   }
 
   findCommunityAvgMinutes(selectedDate){
     this.getAllUserDataSingleDate(selectedDate);
-    const avgMinutesActive = this.allUserSingleDateData.reduce((allActivity, userData) => {
+    const avgMinutesActive = this.allUserSingleDayData.reduce((allActivity, userData) => {
       allActivity += userData.minutesActive;
       return allActivity;
     }, 0)
-    return Math.floor(avgMinutesActive / this.allUserSingleDateData.length);
+    return Math.floor(avgMinutesActive / this.allUserSingleDayData.length);
   }
 }
 
