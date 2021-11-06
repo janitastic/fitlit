@@ -52,27 +52,27 @@ const captureSteps = () => {
   return todaysSteps;
 }
 
-// const captureStairs = () => {
-//   let todaysSleep;
-//   if (sleepInput.value && sleepInput.value >= 0 && sleepInput.value <= 24)  {
-//     todaysSleep = sleepInput.value
-//     console.log(todaysSleep)
-//   } else {
-//     sleepInput.value = ''
-//   }
-//   return todaysSleep;
-// }
+const captureStairs = () => {
+  let todaysStairs;
+  if (stairsInput.value && stairsInput.value >= 0 && stairsInput.value <= 8350)  {
+    todaysStairs = stairsInput.value
+    console.log(todaysStairs)
+  } else {
+    stairsInput.value = ''
+  }
+  return todaysStairs;
+}
 
-// const captureMinutes = () => {
-//   let todaysSleep;
-//   if (sleepInput.value && sleepInput.value >= 0 && sleepInput.value <= 24)  {
-//     todaysSleep = sleepInput.value
-//     console.log(todaysSleep)
-//   } else {
-//     sleepInput.value = ''
-//   }
-//   return todaysSleep;
-// }
+const captureMinutes = () => {
+  let todaysMinutes;
+  if (minutesInput.value && minutesInput.value >= 0 && minutesInput.value <= 1440)  {
+    todaysMinutes = minutesInput.value
+    console.log(todaysMinutes)
+  } else {
+    minutesInput.value = ''
+  }
+  return todaysMinutes;
+}
 
 //QUERY SELECTORS
 const greeting = document.getElementById('firstName');
