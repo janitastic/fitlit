@@ -1,64 +1,56 @@
-class Sleep {
-  constructor(sleepData) {
-    this.sleepData = sleepData;
+let DataHandler = require('./DataHandler');
+let User = require('./User');
+
+class Sleep extends DataHandler {
+  constructor(dataset) {
+    super(dataset);
   }
 
-  getUserSleepHours(id) {
-    const userSleepHours = this.sleepData.filter(sleepInfo => {
-      return sleepInfo.userID === id
-    });
-    return userSleepHours;
-  }
+  getAvgSleepPerDay(user) {
+    this.getUserFilteredData(user);
 
-  getAvgSleepPerDay(id) {
-    const userSleepHours = this.getUserSleepHours(id);
-
-    const totalHoursSlept = userSleepHours.reduce((totalHours, sleepInfo) => {
+    const totalHoursSlept = this.userFilteredData.reduce((totalHours, sleepInfo) => {
       return totalHours += sleepInfo.hoursSlept
     }, 0);
 
-    return Math.round(totalHoursSlept / userSleepHours.length)
+    return Math.round(totalHoursSlept / this.userFilteredData.length)
   }
 
-  getAvgDailySleepQual(id) {
-    const userSleepHours = this.getUserSleepHours(id);
+  getAvgDailySleepQual(user) {
+    this.getUserFilteredData(user);
 
-    const dailySleepQual = userSleepHours.reduce((totalQual, sleepInfo) => {
+    const dailySleepQual = this.userFilteredData.reduce((totalQual, sleepInfo) => {
       return totalQual += sleepInfo.sleepQuality
     }, 0);
     //what happens if you're dividing by 0 length? What does it return? Add in a test where the array length is 0, test returns NaN.
-    return Math.round(dailySleepQual / userSleepHours.length)
+    return Math.round(dailySleepQual / this.userFilteredData.length)
   }
 
-  getDailyHrsSlept(id, selectedDate) {
-    const userSleepHours = this.getUserSleepHours(id);
+  getDailyHrsSlept(user, selectedDate) {
+    this.getUserFilteredData(user);
+    this.getSingleDayData(selectedDate);
 
-    const dailyHoursSlept = userSleepHours.find(day => {
-      return day.date === selectedDate;
-    })
-    return dailyHoursSlept.hoursSlept;
+    return this.singleDayData.hoursSlept;
   }
 
-  getDailySleepQual(id, selectedDate) {
-    const userSleepHours = this.getUserSleepHours(id);
+  getDailySleepQual(user, selectedDate) {
+    this.getUserFilteredData(user);
+    this.getSingleDayData(selectedDate);
 
-    const dailySleepQual = userSleepHours.find(day => {
-      return day.date === selectedDate;
-    })
-    return dailySleepQual.sleepQuality
+    return this.singleDayData.sleepQuality;
   }
-  getWeeklyHrsSlept(id, startDate) {
-    const userSleepHours = this.getUserSleepHours(id);
 
-    const userSleepHoursReverse = userSleepHours.reverse();
+  getWeeklyHrsSlept(user, startDate) {
+    this.getUserFilteredData(user);
+    this.userFilteredData.reverse();
 
-    let targetStartDate = userSleepHoursReverse.findIndex(sleepInfo => {
+    let targetStartDate = this.userFilteredData.findIndex(sleepInfo => {
       return sleepInfo.date === startDate;
     });
 
     let targetEndDate = targetStartDate + 7;
 
-    const weeklyHoursSlept = userSleepHoursReverse.slice(targetStartDate, targetEndDate);
+    const weeklyHoursSlept = this.userFilteredData.slice(targetStartDate, targetEndDate);
 
     const dailySleep = weeklyHoursSlept.map((day) => {
       return day.hoursSlept;
@@ -66,21 +58,18 @@ class Sleep {
     return dailySleep;
   }
 
-  getWeeklySleepQual(id, startDate) {
-    const userSleepQual = this.sleepData.filter((sleepInfo) => {
-      return sleepInfo.userID === id;
-    });
+  getWeeklySleepQual(user, startDate) {
+    this.getUserFilteredData(user);
+    this.userFilteredData.reverse();
 
-    const pastWeekSleepQual = userSleepQual.reverse();
-
-    let targetStartDate = pastWeekSleepQual.findIndex(sleepInfo => {
+    let targetStartDate = this.userFilteredData.findIndex(sleepInfo => {
 
       return sleepInfo.date === startDate;
     });
 
     let targetEndDate = targetStartDate + 7;
 
-    const weeklySleepQual = pastWeekSleepQual.slice(targetStartDate, targetEndDate);
+    const weeklySleepQual = this.userFilteredData.slice(targetStartDate, targetEndDate);
 
     const dailySleepQuality = weeklySleepQual.map((day) => {
       return day.sleepQuality;
@@ -89,11 +78,11 @@ class Sleep {
   }
 
   getAvgAllSleepQual() {
-    const sumOfSleepQual = this.sleepData.reduce((acc, sleepInfo) => {
+    const sumOfSleepQual = this.dataset.reduce((acc, sleepInfo) => {
       acc += sleepInfo.sleepQuality
       return acc
     }, 0);
-    const allUserAvgQual = Math.round(sumOfSleepQual / this.sleepData.length * 10) / 10;
+    const allUserAvgQual = Math.round(sumOfSleepQual / this.dataset.length * 10) / 10;
     return allUserAvgQual;
   }
 }

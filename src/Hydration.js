@@ -1,41 +1,34 @@
-class Hydration {
-  constructor(hydrationData) {
-    this.h20Data = hydrationData;
+let DataHandler = require('./DataHandler');
+let User = require('./User');
+
+class Hydration extends DataHandler {
+  constructor(dataset) {
+    super(dataset)
   }
 
-  getUserWaterIntake(id) {
-    const userWaterConsumption = this.h20Data.filter(waterInfo => {
-      return waterInfo.userID === id;
-    });
-    return userWaterConsumption;
-  }
+  getAvgOuncesPerDay(user) {
+    this.getUserFilteredData(user);
 
-  getAvgOuncesPerDay(id) {
-    const userWaterConsumption = this.getUserWaterIntake(id);
-
-    const totalOuncesConsumed = userWaterConsumption.reduce((totalOunces, waterInfo) => {
+    const totalOuncesConsumed = this.userFilteredData.reduce((totalOunces, waterInfo) => {
 
       return totalOunces += waterInfo.numOunces;
     }, 0);
 
-    return Math.round(totalOuncesConsumed / userWaterConsumption.length);
+    return Math.round(totalOuncesConsumed / this.userFilteredData.length);
   }
 
-  calculateDailyOunces(id, selectedDate) {
+  calculateDailyOunces(user, selectedDate) {
     //what happens if you pass in a date that there's no data for? Create a test that says you return 'undefined'
-    const userWaterConsumption = this.getUserWaterIntake(id);
+    this.getUserFilteredData(user);
+    this.getSingleDayData(selectedDate);
 
-    const dailyWaterConsumed = userWaterConsumption.find(day => {
-      return day.date === selectedDate;
-    });
-
-    return dailyWaterConsumed.numOunces;
+    return this.singleDayData.numOunces;
   }
 
-  calculateWeeklyWater(id, startDate) {
-    const userWaterConsumption = this.getUserWaterIntake(id);
+  calculateWeeklyWater(user, startDate) {
+    this.getUserFilteredData(user);
 
-    const userWaterConsumptionReverse = userWaterConsumption.reverse()
+    const userWaterConsumptionReverse = this.userFilteredData.reverse()
 
     let targetStartDate = userWaterConsumptionReverse.findIndex(waterInfo => {
       return waterInfo.date === startDate;
