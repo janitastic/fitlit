@@ -30,7 +30,7 @@ const captureOunces = () => {
   return todaysOunces
 }
 
-const captureSleep = () => {
+const captureHrsSlept = () => {
   let todaysSleep;
   if (sleepInput.value && sleepInput.value >= 0 && sleepInput.value <= 24)  {
     todaysSleep = sleepInput.value
@@ -110,7 +110,6 @@ const captureMinutes = () => {
   return todaysMinutes;
 }
 
-
 const displayQualityRange = () => {
   qualityRange.innerText = qualityInput.value
   console.log('slide>>', qualityInput.value);
@@ -160,7 +159,7 @@ let domUpdates = () => {
   logWater.addEventListener('click', showWaterForm);
   saveWaterBtn.addEventListener('click', captureOunces);
   logSleep.addEventListener('click', showSleepForm);
-  saveSleepBtn.addEventListener('click', captureSleep);
+  saveSleepBtn.addEventListener('click', captureHrsSlept);
   saveQualityBtn.addEventListener('click', captureQuality);
   qualityInput.addEventListener('change', displayQualityRange)
   logActivity.addEventListener('click', showActivityForm);
@@ -206,7 +205,16 @@ let domUpdates = () => {
 
 export default domUpdates;
 export {
+captureHrsSlept,
+captureQuality,
+captureOunces,
+captureActivity,
+captureMinutes,
+captureStairs,
+captureSteps,
 displayUserInfoCard,
 displayUserData,
 displayAvgStepGoal,
-displaySleepQuality};
+displaySleepQuality
+};
+

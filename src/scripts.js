@@ -29,9 +29,9 @@ import {
   fetchSleepData,
   fetchActivityData,
   fetchHydrationData,
-  postSleepData,
-  postActivityData,
-  postHydrationData
+  // postSleepData,
+  // postActivityData,
+  // postHydrationData
 } from './apiCalls.js';
 
 
@@ -43,12 +43,6 @@ const fetchAllDataOnLoad = () => {
 
 
 // const postSleepData = () => {
-//   const newSleep = {
-//     userID: 1,
-//     date: '2020/01/23',
-//     hoursSlept: 6,
-//     sleepQuality: 4
-//   }
 //   return fetch('http://localhost:3001/api/v1/sleep', {
 //       method: 'POST',
 //       body: JSON.stringify(newSleep),
@@ -62,19 +56,31 @@ const fetchAllDataOnLoad = () => {
 // }
 
 
-// const postActivityData = () => {
-//   return fetch('http://localhost:3001/api/v1/activity', {
-//       method: 'POST',
-//       body: JSON.stringify(newActivity),
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     })
-//     .then(response => response.json())
-//     .then(data => data)
-//     .catch(err => console.log(err));
+
+// function createNewActivity() {
+//   let updatedActivity = {userId : currentUser.id, date: todaysDate, flightsOfStairs: todaysStairs, minutesActives: todaysMinutes, numSteps: todaysSteps}
+//   postActivityData(updatedActivity)
 // }
 
+var updatedActivity = {userID: 1, date: "2020/01/23", flightsOfStairs: 5, minutesActives: 450, numSteps: 3500};
+
+
+const postActivityData = () => {
+  return fetch('http://localhost:3001/api/v1/activity', {
+      method: 'POST',
+      body: JSON.stringify(updatedActivity),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+}
+
+// const populateNewActivity = (data) => {
+//   capturedUserActivity = new Activity(data)
+// }
 
 // const postHydrationData = () => {
 //   const newHydration = {
@@ -126,9 +132,9 @@ const instantiateClasses = (users, sleep, activity, h20Data) => {
 //EVENT LISTENERS
 window.addEventListener('load', () => {
   fetchAllDataOnLoad();
-  postSleepData();
+  // postSleepData();
   postActivityData();
-  postHydrationData();
+  // postHydrationData();
 });
 
 
