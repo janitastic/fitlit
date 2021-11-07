@@ -1,8 +1,8 @@
 import Chart from 'chart.js/auto';
 
-const displayCharts = (userh20, allUsersSleep, currentUser, todaysDate) => {
+const displayCharts = (userh20, userSleep, currentUser, todaysDate) => {
   //WEEKLY WATER
-  let weeklyWaterChartData = userh20.calculateWeeklyWater(currentUser.id, todaysDate);
+  let weeklyWaterChartData = userh20.calculateWeeklyWater(currentUser, todaysDate);
   var weeklyWaterChart = document.getElementById('weeklyWaterChart').getContext('2d');
   const weeklyWaterLabels = ['SUN', 'MON', 'TUES', 'WED', 'THUR', 'FRI', 'SAT'];
   const weeklyWaterData = {
@@ -56,7 +56,7 @@ const displayCharts = (userh20, allUsersSleep, currentUser, todaysDate) => {
 
   // DAILY WATER CHART
   var dailyWaterChart = document.getElementById('dailyWaterChart').getContext('2d');
-  let dailyWaterChartData = userh20.calculateDailyOunces(currentUser.id, todaysDate)
+  let dailyWaterChartData = userh20.calculateDailyOunces(currentUser, todaysDate)
   const dailyWaterData = {
     labels: [''],
     datasets: [{
@@ -154,7 +154,7 @@ const displayCharts = (userh20, allUsersSleep, currentUser, todaysDate) => {
 
   // DAILY SLEEP CHART
   var dailySleepChart = document.getElementById('dailySleepChart').getContext('2d');
-  let dailySleepChartData = allUsersSleep.getDailyHrsSlept(currentUser.id, todaysDate);
+  let dailySleepChartData = userSleep.getDailyHrsSlept(currentUser, todaysDate);
   const dailySleepData = {
     labels: [""],
     datasets: [{
@@ -251,8 +251,8 @@ const displayCharts = (userh20, allUsersSleep, currentUser, todaysDate) => {
 
     //WEEKLY SLEEP
 
-    let weeklySleepChartData = allUsersSleep.getWeeklyHrsSlept(currentUser.id, todaysDate);
-    let weeklySleepQualData = allUsersSleep.getWeeklySleepQual(currentUser.id, todaysDate);
+    let weeklySleepChartData = userSleep.getWeeklyHrsSlept(currentUser, todaysDate);
+    let weeklySleepQualData = userSleep.getWeeklySleepQual(currentUser, todaysDate);
 
     var weeklySleepChart = document.getElementById('weeklySleepChart').getContext('2d');
 

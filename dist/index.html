@@ -8,6 +8,7 @@
     <header>
       <section>
         <h1>fitlit</h1>
+        <p id="testSection">Hello</p>
       </section>
       <section class="large-card">
         <!-- TOP BANNER START -->
@@ -51,15 +52,25 @@
               </span>
             </span>
               <article class="daily-activity" id="activityReport">
-                <h5>Steps Taken</h5>
+                <h5>Steps Taken: <span id="dailySteps"></span></h5>
                 <!-- Chart for Steps Taken vs Goal Goes Here -->
                 <h5>Flights of Stairs = <span id="flightsOfStairs"></span></h5>
                 <h5>Active Minutes = <span id="activeMinutes"></span></h5>
               </article>
               <article class="hidden" id="activityForm">
                 <label for="steps">How many steps have you taken today?</label>
-                <input type="text" placeholder="total steps" id="stepsTaken" name="step-log" required minlength="4" maxlength="8" size="20">
-                <button>Save</button>
+                <input type="number" placeholder="Steps Taken" id="stepsTaken" name="step-log" required minlength="1" maxlength="8" size="20" label="Add your steps for today">
+                <!-- <button id="stepsBtn">Save</button> -->
+                <label for="stairs">How many flights of stairs did you climb today?</label>
+                <input type="number" placeholder="Flights Climbed" id="stairsClimbed" name="stairs-log" required minlength="1" maxlength="8" size="20" label="Add your stairs for today">
+                <!-- <button id="stairsBtn">Save</button> -->
+                <label for="minutes">How many minutes were you active today?</label>
+                <input type="number" placeholder="Minutes Active" id="minsActive" name="activity-log" required minlength="1" maxlength="8" size="20" label="Add your active minutes for today">
+                <!-- <button id="minutesBtn">Save</button> -->
+                <!-- <div class="hidden" id="fieldError">
+                  <p class="error-message">Please Complete All Fields</p>
+                </div> -->
+                <button id="activityBtn">Save All Activity</button>
               </article>
           </section>
           <!-- TODAY'S OVERVIEW: WATER SECTION -->
@@ -76,8 +87,8 @@
               </article>
               <article class="hidden" id="waterForm">
                 <label for="water">How much did you drink?</label>
-                <input type="text" placeholder="total ounces" id="waterIntake" name="ounces-drank" required minlength="4" maxlength="8" size="20">
-                <button>Save</button>
+                <input type="number" placeholder="Total oz.(1-99)" id="waterIntake" name="ounces-drank" required minlength="1" maxlength="2" size="25" label="Add your ounces drank for today">
+                <button id="saveWaterBtn">Save</button>
               </article>
           </section>
           <section>
@@ -86,7 +97,7 @@
               <h4>Sleep</h4>
               <span class="plus-icon" id="logSleep">
                 <img class="white-plus" src="./images/add.png" alt="Log Sleep">
-                <img class="color-plus" src="./images/add-hover.png" alt="Add Time Slept">
+                <img class="color-plus" src="./images/add-hover.png" alt="Add Time Slept" label="Add your sleep information">
               </span>
             </span>
             <article class="daily-sleep" id="sleepChart">
@@ -95,8 +106,12 @@
             </article>
             <article class="hidden" id="sleepForm">
               <label for="sleep">How many hours did you sleep?</label>
-              <input type="text" placeholder="total hours" id="hoursSlept" name="hours-slept" required minlength="4" maxlength="8" size="20">
-              <button>Save</button>
+              <input type="number" placeholder="Hours Slept (0-24)" id="hoursSlept" name="hours-slept" required minlength="1" maxlength="2" size="20" label="Add your hours slept last night">
+              <button id="saveSleepBtn">Save</button>
+              <label for="sleep">How well did you sleep, on a scale of 1 to 5?</label>
+              <input type="range" placeholder="Sleep Quality (1-5)" id="sleepQuality" name="sleep-quality" min="1" max="5" value="3" size="20" label="Select your quality of sleep">
+              <p id="selectedRange">3</p>
+              <button id="saveQualityBtn">Save</button>
             </article>
           </section>
       </nav>
