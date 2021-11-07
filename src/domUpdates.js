@@ -73,10 +73,12 @@ const clearActivityInputs = () => {
 
 const captureActivity = () => {
   checkActivityInputs()
-  // captureSteps();
-  // captureStairs();
-  // captureMinutes();
-  console.log(currentUser);
+  captureSteps();
+  captureStairs();
+  captureMinutes();
+  activityReport.classList.remove('hidden');
+  activityForm.classList.add('hidden')
+  // console.log(currentUser);
   postSleepData(currentUser);
   postActivityData(currentUser);
   postHydrationData(currentUser);
@@ -158,6 +160,7 @@ const captureStairs = () => {
   let todaysStairs;
   if (stairsInput.value && stairsInput.value >= 0 && stairsInput.value <= 8350)  {
     todaysStairs = stairsInput.value
+    dailyStairsOverview.innerText= `${todaysStairs}`
     console.log(todaysStairs)
   } else {
     stairsInput.value = null
@@ -169,6 +172,7 @@ const captureMinutes = () => {
   let todaysMinutes;
   if (minutesInput.value && minutesInput.value >= 0 && minutesInput.value <= 1440)  {
     todaysMinutes = minutesInput.value
+    dailyMinutesOverview.innerText= `${todaysMinutes}`
     console.log(todaysMinutes)
   } else {
     minutesInput.value = null
@@ -228,6 +232,8 @@ const stairsInput = document.getElementById('stairsClimbed');
 const minutesInput = document.getElementById('minsActive')
 const saveActivityBtn = document.getElementById('activityBtn');
 const activityReport = document.getElementById('activityReport');
+const dailyStairsOverview = document.getElementById('flightsOfStairs');
+const dailyMinutesOverview = document.getElementById('activeMinutes');
 const activityForm = document.getElementById('activityForm');
 
 let domUpdates = () => {
