@@ -71,7 +71,8 @@ const instantiateClasses = (users, sleep, activity, h20Data) => {
   userSleep = new Sleep(sleep);
   userActivity = new Activity(activity);
   userh20 = new Hydration(h20Data);
-  refreshDisplay(userRepository, userh20, userSleep, currentUser, todaysDate);
+  console.log(">>>>Current User instantiate", currentUser)
+  refreshDisplay(userRepository, userh20, userSleep, userActivity, currentUser, todaysDate);
 };
 
 
