@@ -30,7 +30,7 @@ let userData;
 let userh20;
 let userSleep;
 let userActivity;
-let todaysDate = '2020/01/23';
+let todaysDate = '2020/01/22';
 
 domUpdates();
 
@@ -55,7 +55,7 @@ const fetchAllDataOnLoad = () => {
 const postSleepData = () => {
   const newSleep = {
         userID: 1,
-        date: '2020/01/23',
+        date: '2020/01/22',
         hoursSlept: 6,
         sleepQuality: 4
       }
@@ -75,7 +75,7 @@ const postSleepData = () => {
 const postHydrationData = () => {
   const newHydration = {
     userID: 1,
-    date: '2020/01/23',
+    date: '2020/01/22',
     numOunces: 45
   }
   return fetch('http://localhost:3001/api/v1/hydration', {
@@ -94,7 +94,7 @@ const postHydrationData = () => {
 const postActivityData = () => {
   const newActivity = {
     userID: 1,
-    date: '2020/01/23',
+    date: '2020/01/22',
     numSteps: 3400,
     minutesActive: 130,
     flightsOfStairs: 17
@@ -125,7 +125,10 @@ const parseData = (allUserData) => {
 const instantiateClasses = (users, sleep, activity, h20Data) => {
   userRepository = new UserRepository(users);
   // console.log('userRepo>>', userRepository.users)
-  currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
+  if (currentUser === undefined){
+    getRandomUser();
+  }
+  // currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
   // console.log('user', currentUser)
   userSleep = new Sleep(sleep);
   userActivity = new Activity(activity);
@@ -135,6 +138,7 @@ const instantiateClasses = (users, sleep, activity, h20Data) => {
   displayAvgStepGoal(userRepository);
   displaySleepQuality(userSleep, currentUser, todaysDate);
   displayCharts(userh20, userSleep, currentUser, todaysDate);
+  console.log(userh20, userSleep, currentUser, todaysDate)
 };
 
 
@@ -143,15 +147,19 @@ const instantiateClasses = (users, sleep, activity, h20Data) => {
 //EVENT LISTENERS
 window.addEventListener('load', () => {
   fetchAllDataOnLoad();
-    postSleepData();
+  postSleepData();
   postActivityData();
-    postHydrationData();
+  postHydrationData();
 });
 
 
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length)
 };
+
+const getRandomUser = () => {
+  currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
+}
 
 // //FUNCTIONS FOR USER AVERAGES
 //   /*** FYI - pulled the two below from the charts we're removing ***/
