@@ -26,6 +26,7 @@ const captureOunces = () => {
   let todaysOunces;  
   if (ouncesInput.value && ouncesInput.value > 0 && ouncesInput.value.length <= 2) {
     todaysOunces = ouncesInput.value
+    console.log(todaysOunces)
   } else {
     ouncesInput.value = ''
   }
