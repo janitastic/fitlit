@@ -48,9 +48,25 @@ const captureQuality = () => {
     console.log(todaysQuality)
   } else {
     qualityInput.value = ''
+    return false
   }
   return todaysQuality
 }
+
+const captureActivity = () => {
+  if(!stepsInput.value || !stairsInput.value || !minutesInput.value){
+    // emptyFieldError.classList.add('hidden')
+    saveActivityBtn.disabled = true;
+    
+    // showError()
+  } else {
+    saveActivityBtn.disabled = false;
+  captureSteps();
+  captureStairs();
+  captureMinutes();
+}
+}
+
 
 const captureSteps = () => {
   let todaysSteps;
@@ -58,8 +74,10 @@ const captureSteps = () => {
     todaysSteps = stepsInput.value
     console.log(todaysSteps)
   } else {
-    stepsInput.value = ''
+    stepsInput.value = 0
+    
   }
+  console.log('todaysStepsAftrRtn>>', todaysSteps)
   return todaysSteps;
 }
 
@@ -69,7 +87,7 @@ const captureStairs = () => {
     todaysStairs = stairsInput.value
     console.log(todaysStairs)
   } else {
-    stairsInput.value = ''
+    stairsInput.value = 0
   }
   return todaysStairs;
 }
@@ -80,10 +98,11 @@ const captureMinutes = () => {
     todaysMinutes = minutesInput.value
     console.log(todaysMinutes)
   } else {
-    minutesInput.value = ''
+    minutesInput.value = 0
   }
   return todaysMinutes;
 }
+
 
 const displayQualityRange = () => {
   qualityRange.innerText = qualityInput.value
@@ -105,6 +124,7 @@ const dailySleepQuality = document.getElementById('dailySleepQuality');
 const avgSleepQuality = document.getElementById('avgSleepQuality');
 
 //Form Field Query Selectors & Event Listeners
+const emptyFieldError = document.getElementById('fieldError');
 const logWater = document.getElementById('logWater');
 const saveWaterBtn = document.getElementById('saveWaterBtn');
 const ouncesInput = document.getElementById('waterIntake');
@@ -119,55 +139,61 @@ const sleepInput = document.getElementById('hoursSlept');
 const sleepChart = document.getElementById('sleepChart');
 const sleepForm = document.getElementById('sleepForm');
 const logActivity = document.getElementById('logActivity');
-const saveStepsBtn = document.getElementById('stepsBtn');
+// const saveStepsBtn = document.getElementById('stepsBtn');
 const stepsInput = document.getElementById('stepsTaken');
-const saveStairsBtn = document.getElementById('stairsBtn');
+// const saveStairsBtn = document.getElementById('stairsBtn');
 const stairsInput = document.getElementById('stairsClimbed');
-const saveMinutesBtn = document.getElementById('minutesBtn');
+// const saveMinutesBtn = document.getElementById('minutesBtn');
 const minutesInput = document.getElementById('minsActive')
+const saveActivityBtn = document.getElementById('activityBtn');
 const activityReport = document.getElementById('activityReport');
 const activityForm = document.getElementById('activityForm');
 
 let domUpdates = () => {
-logWater.addEventListener('click', showWaterForm);
-saveWaterBtn.addEventListener('click', captureOunces);
-logSleep.addEventListener('click', showSleepForm);
-saveSleepBtn.addEventListener('click', captureSleep);
-saveQualityBtn.addEventListener('click', captureQuality);
-qualityInput.addEventListener('change', displayQualityRange)
-logActivity.addEventListener('click', showActivityForm);
-saveStepsBtn.addEventListener('click', captureSteps);
-saveStairsBtn.addEventListener('click', captureStairs);
-saveMinutesBtn.addEventListener('click', captureMinutes);
+  logWater.addEventListener('click', showWaterForm);
+  saveWaterBtn.addEventListener('click', captureOunces);
+  logSleep.addEventListener('click', showSleepForm);
+  saveSleepBtn.addEventListener('click', captureSleep);
+  saveQualityBtn.addEventListener('click', captureQuality);
+  qualityInput.addEventListener('change', displayQualityRange)
+  logActivity.addEventListener('click', showActivityForm);
+  saveActivityBtn.addEventListener('click', captureActivity);
+  // saveStepsBtn.addEventListener('click', captureSteps);
+  // saveStairsBtn.addEventListener('click', captureStairs);
+  // saveMinutesBtn.addEventListener('click', captureMinutes);
 
-//HELPER FUNCTIONS
-function hide(element) {
-  element.classList.add('hidden')
-}
+  //HELPER FUNCTIONS
+  function hide(element) {
+    element.classList.add('hidden')
+  }
 
-function show(element) {
-  element.classList.remove('hidden')
-}
+  function show(element) {
+    element.classList.remove('hidden')
+  }
 
-function toggle(element) {
-  element.classList.toggle('hidden');
-}
+  function toggle(element) {
+    element.classList.toggle('hidden');
+  }
 
-//FORM FUNCTIONS
-function showWaterForm() {
-  toggle(waterChart);
-  toggle(waterForm);
-};
+  //FORM FUNCTIONS
+  function showWaterForm() {
+    toggle(waterChart);
+    toggle(waterForm);
+  };
 
-function showSleepForm() {
-  toggle(sleepChart);
-  toggle(sleepForm);
-};
+  function showSleepForm() {
+    toggle(sleepChart);
+    toggle(sleepForm);
+  };
 
-function showActivityForm() {
-  toggle(activityReport);
-  toggle(activityForm);
-};
+  function showActivityForm() {
+    toggle(activityReport);
+    toggle(activityForm);
+  };
+
+  // function showError() {
+  //   show(emptyFieldError);
+  // }
 }
 
 

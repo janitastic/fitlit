@@ -74,7 +74,6 @@ window.addEventListener('load', () => {
 });
 
 
-
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length)
 };
