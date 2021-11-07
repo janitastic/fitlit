@@ -1,0 +1,222 @@
+// variables
+$white: #f2f2f2;
+$red: #d83c48;
+$purple: #5622c7;
+
+// mixin
+@mixin flex($justify, $align, $direction, $wrap) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  // justify-items: $
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 1em;
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+body, html {
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+header {
+  @include flex(center, stretch, column, nowrap);
+}
+
+main {
+  @include flex(space-evenly, stretch, row, wrap);
+}
+
+nav {
+  @include flex(space-around, stretch, row, nowrap);
+}
+
+.banner {
+  @include flex(space-between, center, row, nowrap);
+  margin: 2% 0;
+}
+
+.banner-goals,
+.banner-totals {
+  @include grid();
+  justify-items: center;
+}
+
+.summary {
+  @include flex(flex-start, stretch, column, nowrap);
+  background-color: #151516;
+}
+
+.two-column {
+  @mixin flex(space-between, center, row, nowrap);
+}
+
+.average-widgets {
+  @include grid();
+  margin: 4% 0;
+}
+
+.average-display {
+  @include grid();
+}
+
+h1 {
+  margin: 2%;
+  color: #A1A1A6;
+  font-size: 3em;
+}
+
+h2 {
+  margin: 0;
+  font-size: 2em;
+  text-shadow: 2px 1px 4px #111111;
+}
+
+h3 {
+  margin: 2% 0;
+  font-size: 1.5em;
+  text-transform: capitalize;
+  text-shadow: 2px 1px 4px #111111;
+}
+
+h4 {
+  margin: 2% 0;
+  font-size: 1.5em;
+}
+
+h5 {
+  margin: 0 0 2% 3%;
+  font-weight: 500;
+  font-size: 1.2em;
+}
+
+li {
+  margin-top: 5%;
+  font-size: 1.2em;
+}
+
+.theme-dark {
+  background-color: #0a0a0a;
+  color: #ececec;
+}
+
+.hidden {
+  display: none;
+}
+
+.user-info {
+  font-weight: bolder;
+}
+
+.mini-card,
+.large-card {
+  border-radius: 1em;
+  padding: 3%;
+  margin: 2%;
+  overflow-wrap: break-word;
+  box-shadow: 7px 3px 8px 0px #7c7c7c;
+}
+
+.mini-card {
+  width: 50%;
+}
+
+.large-card {
+  width: 90%;
+  background: linear-gradient(44deg, $red, $purple);
+}
+
+.user-profile {
+  background: linear-gradient(226deg, $red, $purple);
+}
+
+.averages {
+  margin: 4%;
+  font-size: 80%;
+}
+
+.plus-icon .white-plus {
+  height: 40px;
+}
+
+.plus-icon .color-plus {
+  display: none;
+  height: 40px;
+}
+
+.plus-icon:hover .color-plus {
+  display: inline;
+}
+
+.plus-icon:hover .white-plus {
+  display: none;
+}
+
+label {
+  display: block;
+}
+
+input,
+label {
+  margin: 1%;
+  font-size: 1.2em;
+}
+
+.date-selector {
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  color: $white;
+  border: 1px solid $white;
+  padding: .5% 2%;
+  border-radius: 100px;
+}
+
+button:hover {
+  background: linear-gradient(318deg, $red, $purple);
+  border: none;
+}
+
+@media only screen and (max-width: 1068px) {
+  .mini-card {
+    max-width: 50%;
+  }
+}
+
+@media only screen and (max-width: 734px) {
+  .mini-card {
+    min-width: 90%;
+  }
+
+  nav,
+  main {
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .mini-card {
+    min-width: 90%;
+  }
+
+  nav,
+  main {
+    flex-wrap: wrap;
+  }
+
+  .average-display {
+    display: flex;
+  }
+}
