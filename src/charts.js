@@ -13,12 +13,12 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
       backgroundColor: ['rgba(54, 162, 235, 0.4)'],
       borderColor: ['rgb(54, 162, 235)'],
       borderWidth: 1,
-      order: 1
+      order: 1,
     }, {
       label: 'Goal',
       data: [64, 64, 64, 64, 64, 64, 64],
       backgroundColor: ['rgba(255, 255, 255, 0.8)'],
-      order: 1
+      order: 1,
     }]
   };
 
@@ -56,7 +56,7 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
 
   // DAILY WATER CHART
   var dailyWaterChart = document.getElementById('dailyWaterChart').getContext('2d');
-  let dailyWaterChartData = userh20.calculateDailyOunces(currentUser, todaysDate)
+  let dailyWaterChartData = userh20.calculateDailyOunces(currentUser, todaysDate);
   const dailyWaterData = {
     labels: [''],
     datasets: [{
