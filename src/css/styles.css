@@ -4,22 +4,22 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-/* body, html {
+body, html {
   background-repeat: no-repeat;
   height: 100%;
-} */
-/*
+}
+
 header {
   display: flex;
   justify-content: center;
   flex-direction: column;
-} */
+}
 
-/* main {
+main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-} */
+}
 
 nav {
   display: flex;
@@ -85,20 +85,20 @@ li {
   justify-items: center;
 }
 
-/* .summary {
+.summary {
   display: flex;
   flex-direction: column;
   background-color: #151516;
-} */
+}
 
 /* Cards Display */
 
-/* .steps,
+.steps,
 .water,
 .sleep,
 .activity {
   white-space: nowrap;
-} */
+}
 
 /* .average-widgets, */
 .average-widgets {
