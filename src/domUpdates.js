@@ -18,6 +18,7 @@ const displayAvgStepGoal = (userRepository) => {
   avgStepGoal.innerText = `${userRepository.getAvgStepCount()}`;
 };
 
+
 const displayAvgCommSteps = (userRepository) => {
   avgCommSteps.innerText = `${userRepository.getAvgStepCount()}`
 }
@@ -26,15 +27,30 @@ const displayAvgCommSteps = (userRepository) => {
 //   avgCommStairs.innerText = `${userRepository.get}`
 // }
 
-
-const displaySleepQuality = (allUsersSleep, currentUser, todaysDate) => {
-  dailySleepQuality.innerText = allUsersSleep.getDailySleepQual(currentUser.id, todaysDate);
-  avgSleepQuality.innerText = allUsersSleep.getAvgDailySleepQual(currentUser.id);
-};
-
 // const displayAvgStairs = (userActivity, currentUser) => {
 //   avgStairsOverview.innerText = userActivity.findMostClimbedFlights(userActivity, currentUser.id)
 // }
+
+const displaySleepQuality = (userSleep, currentUser, todaysDate) => {
+  dailySleepQuality.innerText = userSleep.getDailySleepQual(currentUser, todaysDate);
+  avgSleepQuality.innerText = userSleep.getAvgDailySleepQual(currentUser);
+};
+
+const displayUserDailySteps = (currentUser, userActivity, todaysDate) => {
+  let numSteps = userActivity.getDailySteps(currentUser, todaysDate);
+  userDailySteps.innerText = `${numSteps} out of ${currentUser.dailyStepGoal}`;
+};
+
+const refreshDisplay = (userRepository, userh20, userSleep, userActivity, currentUser, todaysDate) => {
+  displayUserInfoCard(currentUser);
+  displayUserData(currentUser);
+  displayAvgStepGoal(userRepository);
+  displaySleepQuality(userSleep, currentUser, todaysDate);
+  displayCharts(userh20, userSleep, userActivity, currentUser, todaysDate);
+  displayUserDailySteps(currentUser, userActivity, todaysDate);
+  console.log(userh20, userSleep, currentUser, todaysDate, currentUser);
+}
+
 
 const captureOunces = () => {
   let todaysOunces;
@@ -199,16 +215,22 @@ const displayQualityRange = () => {
   console.log('slide>>', qualityInput.value);
 }
 
-const refreshDisplay = (userRepository, userh20, userSleep, currentUser, todaysDate) => {
+const displayUserDailySteps = (currentUser, userActivity, todaysDate) => {
+  let numSteps = userActivity.getDailySteps(currentUser, todaysDate);
+  userDailySteps.innerText = `${numSteps} out of ${currentUser.dailyStepGoal}`;
+};
+
+const refreshDisplay = (userRepository, userh20, userSleep, userActivity, currentUser, todaysDate) => {
   displayUserInfoCard(currentUser);
   displayUserData(currentUser);
   displayAvgStepGoal(userRepository);
   displaySleepQuality(userSleep, currentUser, todaysDate);
-  displayCharts(userh20, userSleep, currentUser, todaysDate);
+  displayCharts(userh20, userSleep, currentUser, userActivity, todaysDate);
   displayAvgCommSteps(userRepository);
   // displayAvgStairs(userActivity);
-  console.log(userh20, userSleep, currentUser, todaysDate, currentUser);
+  console.log(userh20, userSleep, currentUser, userActivity, todaysDate, currentUser);
 }
+
 
 //QUERY SELECTORS
 const greeting = document.getElementById('firstName');
@@ -223,6 +245,7 @@ const userStepGoal = document.getElementById('userStepGoal');
 const avgStepGoal = document.getElementById('avgStepGoal');
 const dailySleepQuality = document.getElementById('dailySleepQuality');
 const avgSleepQuality = document.getElementById('avgSleepQuality');
+const userDailySteps = document.getElementById('dailySteps');
 
 //Form Field Query Selectors & Event Listeners
 const emptyFieldError = document.getElementById('fieldError');

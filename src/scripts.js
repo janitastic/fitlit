@@ -6,6 +6,7 @@ import Hydration from './Hydration';
 import Activity from './Activity';
 import DataHandler from './DataHandler';
 import './css/styles.css';
+// import './css/index.scss';
 import displayCharts from './charts.js';
 import domUpdates from './domUpdates.js';
 import {captureHrsSlept,
@@ -70,8 +71,10 @@ const instantiateClasses = (users, sleep, activity, h20Data) => {
   userActivity = new Activity(activity);
   console.log('scripts activity>>',userActivity)
   userh20 = new Hydration(h20Data);
-  refreshDisplay(userRepository, userh20, userSleep, currentUser, todaysDate);
-}
+  console.log(">>>>Current User instantiate", currentUser)
+  refreshDisplay(userRepository, userh20, userSleep, userActivity, currentUser, todaysDate);
+};
+
 
 // const postSleepData = () => {
 //   const newSleep = {
