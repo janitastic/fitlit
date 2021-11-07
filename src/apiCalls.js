@@ -36,7 +36,7 @@ const fetchActivityData = () => {
     .then(response => response.json())
 };
 
-const postActivityData = (userActivity) => {
+const postActivityData = () => {
   const newActivity = {
     userID: 1,
     date: '2020/01/23',

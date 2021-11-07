@@ -53,18 +53,25 @@ const captureQuality = () => {
   return todaysQuality
 }
 
-const captureActivity = () => {
-  if(!stepsInput.value || !stairsInput.value || !minutesInput.value){
-    // emptyFieldError.classList.add('hidden')
-    saveActivityBtn.disabled = true;
-    
-    // showError()
-  } else {
+const checkActivityInputs = () => {
+  if (stepsInput.value && stairsInput.value && minutesInput.value) {
     saveActivityBtn.disabled = false;
+  } else {
+    clearActivityInputs()
+  }
+}
+
+const clearActivityInputs = () => {
+  stepsInput.value = null
+  stairsInput.value = null
+  minutesInput.value = null
+}
+
+const captureActivity = () => {
+  checkActivityInputs()
   captureSteps();
   captureStairs();
   captureMinutes();
-}
 }
 
 
@@ -74,7 +81,7 @@ const captureSteps = () => {
     todaysSteps = stepsInput.value
     console.log(todaysSteps)
   } else {
-    stepsInput.value = 0
+    stepsInput.value = null
     
   }
   console.log('todaysStepsAftrRtn>>', todaysSteps)
@@ -87,7 +94,7 @@ const captureStairs = () => {
     todaysStairs = stairsInput.value
     console.log(todaysStairs)
   } else {
-    stairsInput.value = 0
+    stairsInput.value = null
   }
   return todaysStairs;
 }
@@ -98,7 +105,7 @@ const captureMinutes = () => {
     todaysMinutes = minutesInput.value
     console.log(todaysMinutes)
   } else {
-    minutesInput.value = 0
+    minutesInput.value = null
   }
   return todaysMinutes;
 }

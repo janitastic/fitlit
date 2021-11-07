@@ -35,26 +35,82 @@ import {
 } from './apiCalls.js';
 
 
-const fetchAllData = () => {
+const fetchAllDataOnLoad = () => {
   Promise.all([fetchUserData(), fetchSleepData(), fetchActivityData(), fetchHydrationData()])
     .then(allUserData => parseData(allUserData))
 };
 
+
+
+// const postSleepData = () => {
+//   const newSleep = {
+//     userID: 1,
+//     date: '2020/01/23',
+//     hoursSlept: 6,
+//     sleepQuality: 4
+//   }
+//   return fetch('http://localhost:3001/api/v1/sleep', {
+//       method: 'POST',
+//       body: JSON.stringify(newSleep),
+//       headers: {
+//         'Content-Type': 'application/json'
+//       }
+//     })
+//     .then(response => response.json())
+//     .then(data => data)
+//     .catch(err => console.log(err));
+// }
+
+
+// const postActivityData = () => {
+//   return fetch('http://localhost:3001/api/v1/activity', {
+//       method: 'POST',
+//       body: JSON.stringify(newActivity),
+//       headers: {
+//         'Content-Type': 'application/json'
+//       }
+//     })
+//     .then(response => response.json())
+//     .then(data => data)
+//     .catch(err => console.log(err));
+// }
+
+
+// const postHydrationData = () => {
+//   const newHydration = {
+//     userID: 1,
+//     date: '2020/01/23',
+//     numOunces: 45
+//   }
+//   return fetch('http://localhost:3001/api/v1/hydration', {
+//       method: 'POST',
+//       body: JSON.stringify(newHydration),
+//       headers: {
+//         'Content-Type': 'application/json'
+//       }
+//     })
+//     .then(response => response.json())
+//     .then(data => data)
+//     .catch(err => console.log(err));
+// }
+
+
+
 const parseData = (allUserData) => {
-  console.log(allUserData)
+  // console.log(allUserData)
   userData = allUserData[0].userData;
   sleepData = allUserData[1].sleepData;
   activityData = allUserData[2].activityData;
   h20Data = allUserData[3].hydrationData;
-  console.log('after indexing>>>',allUserData)
+  // console.log('after indexing>>>',allUserData)
   instantiateClasses(userData, sleepData, activityData, h20Data)
 };
 
 const instantiateClasses = (users, sleep, activity, h20Data) => {
   userRepository = new UserRepository(users);
-  console.log('userRepo>>', userRepository.users)
+  // console.log('userRepo>>', userRepository.users)
   currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
-  console.log('user', currentUser)
+  // console.log('user', currentUser)
   userSleep = new Sleep(sleep);
   userActivity = new Activity(activity);
   userh20 = new Hydration(h20Data);
@@ -65,9 +121,11 @@ const instantiateClasses = (users, sleep, activity, h20Data) => {
   displayCharts(userh20, userSleep, currentUser, todaysDate);
 };
 
+
+
 //EVENT LISTENERS
 window.addEventListener('load', () => {
-  fetchAllData();
+  fetchAllDataOnLoad();
   postSleepData();
   postActivityData();
   postHydrationData();
