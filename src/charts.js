@@ -1,6 +1,6 @@
 import Chart from 'chart.js/auto';
 
-const displayCharts = (userh20, userSleep, currentUser, todaysDate) => {
+const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate) => {
   //WEEKLY WATER
   let weeklyWaterChartData = userh20.calculateWeeklyWater(currentUser, todaysDate);
   var weeklyWaterChart = document.getElementById('weeklyWaterChart').getContext('2d');
@@ -103,54 +103,55 @@ const displayCharts = (userh20, userSleep, currentUser, todaysDate) => {
       }
   }});
 
-  //AVERAGE WATER - can we remove this one now?
-  // var totalAvgWaterChart = document.getElementById('avgUserWaterChart').getContext('2d');
-  // let avgWaterChartData = userh20.getAvgOuncesPerDay(currentUser.id);
-  // const avgWaterData = {
-  //   labels: [''],
-  //   datasets: [{
-  //     label: 'Average Ounces',
-  //     data: [avgWaterChartData],
-  //     backgroundColor: ['rgba(54, 162, 235, 0.4)'],
-  //     borderColor: ['rgb(54, 162, 235)'],
-  //     borderWidth: 1,
-  //     order: 1
-  //   }, {
-  //     label: 'Goal',
-  //     data: [64],
-  //     backgroundColor: ['rgba(255, 255, 255, 0.8)'],
-  //     order: 1
-  //   }]
-  // };
-  //
-  // var avgWaterChartBuilder = new Chart(totalAvgWaterChart, {
-  //   type: 'bar',
-  //   data: avgWaterData,
-  //   options: {
-  //     plugins: {
-  //       legend: false
-  //     },
-  //     indexAxis: 'y',
-  //     scales: {
-  //       x: {
-  //         grid: {
-  //           display: false
-  //         },
-  //         display: false
-  //       },
-  //       y: {
-  //         title: false,
-  //         beginAtZero: true,
-  //         stacked: true,
-  //         grid: {
-  //           display: false
-  //         },
-  //         ticks: {
-  //           color: ['#FFF'],
-  //         },
-  //       }
-  //     }
-  //   }});
+  // DAILY STEPS CHART
+
+  var dailyStepsChart = document.getElementById('dailyStepsChart').getContext('2d');
+  let dailyStepsChartData = userActivity.getDailySteps(currentUser, todaysDate)
+  const dailyStepsData = {
+    labels: [''],
+    datasets: [{
+      label: 'Steps',
+      data: [dailyStepsChartData],
+      backgroundColor: ['rgba(235, 179, 35, 0.4)'],
+      borderColor: ['rgb(235, 179, 35)'],
+      borderWidth: 1,
+      order: 1
+    }, {
+      label: 'Goal',
+      data: [currentUser.dailyStepGoal],
+      backgroundColor: ['rgba(255, 255, 255, 0.8)'],
+      order: 1
+    }]
+  };
+
+  var dailyStepsChartBuilder = new Chart(dailyStepsChart, {
+    type: 'bar',
+    data: dailyStepsData,
+    options: {
+      plugins: {
+        legend: false
+      },
+      indexAxis: 'y',
+      scales: {
+        x: {
+          grid: {
+            display: false
+          },
+          display: false
+        },
+        y: {
+          title: false,
+          beginAtZero: true,
+          stacked: true,
+          grid: {
+            display: false
+          },
+          ticks: {
+            color: ['#FFF'],
+          },
+        }
+      }
+  }});
 
   // DAILY SLEEP CHART
   var dailySleepChart = document.getElementById('dailySleepChart').getContext('2d');

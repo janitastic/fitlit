@@ -181,12 +181,12 @@ const displayQualityRange = () => {
   console.log('slide>>', qualityInput.value);
 }
 
-const refreshDisplay = (userRepository, userh20, userSleep, currentUser, todaysDate) => {
+const refreshDisplay = (userRepository, userh20, userSleep, userActivity, currentUser, todaysDate) => {
   displayUserInfoCard(currentUser);
   displayUserData(currentUser);
   displayAvgStepGoal(userRepository);
   displaySleepQuality(userSleep, currentUser, todaysDate);
-  displayCharts(userh20, userSleep, currentUser, todaysDate);
+  displayCharts(userh20, userSleep, userActivity, currentUser, todaysDate);
   console.log(userh20, userSleep, currentUser, todaysDate, currentUser);
 }
 
