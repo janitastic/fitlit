@@ -16,7 +16,7 @@ class DataHandler {
   }
 
   getSingleDayData(selectedDate) {
-    const singleDayData = this.dataset.find(day => {
+    const singleDayData = this.userFilteredData.find(day => {
       return day.date === selectedDate;
     })
     this.singleDayData = singleDayData;
