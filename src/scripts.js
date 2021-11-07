@@ -4,6 +4,7 @@ import UserRepository from './UserRepository';
 import Sleep from './Sleep';
 import Hydration from './Hydration';
 import Activity from './Activity';
+import DataHandler from './DataHandler';
 import './css/styles.css';
 // import './css/index.scss';
 import displayCharts from './charts.js';
@@ -22,6 +23,7 @@ import {captureHrsSlept,
   refreshDisplay} from './domUpdates.js';
 import './images/add.png';
 import './images/add-hover.png';
+let data;
 let sleepData;
 let activityData;
 let h20Data;
@@ -41,9 +43,6 @@ import {
   fetchSleepData,
   fetchActivityData,
   fetchHydrationData,
-  // postSleepData,
-  // postActivityData,
-  // postHydrationData
 } from './apiCalls.js';
 
 
@@ -65,12 +64,12 @@ const parseData = (allUserData) => {
 
 const instantiateClasses = (users, sleep, activity, h20Data) => {
   userRepository = new UserRepository(users);
-  // console.log('userRepo>>', userRepository.users)
   if (currentUser === undefined){
     getRandomUser();
   }
   userSleep = new Sleep(sleep);
   userActivity = new Activity(activity);
+  console.log('scripts activity>>',userActivity)
   userh20 = new Hydration(h20Data);
   console.log(">>>>Current User instantiate", currentUser)
   refreshDisplay(userRepository, userh20, userSleep, userActivity, currentUser, todaysDate);
