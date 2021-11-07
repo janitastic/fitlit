@@ -27,18 +27,28 @@ nav {
 }
 
 h1 {
+  margin: 2% 0;
   color: #A1A1A6;
-  font-size: 2em;
+  font-size: 3em;
 }
 
-h2, h3 {
+h2 {
+  margin: 0;
+  font-size: 2em;
   text-transform: capitalize;
-  margin-bottom: 0;
+  text-shadow: 2px 1px 4px #111111;
+}
+
+h3 {
+  margin: 2% 0;
+  font-size: 1.5em;
+  text-transform: capitalize;
   text-shadow: 2px 1px 4px #111111;
 }
 
 h4 {
-  margin: 4% 0 2% 0;
+  margin: 2% 0;
+  font-size: 1.5em;
 }
 
 h5 {
@@ -60,9 +70,10 @@ li {
 }
 
 .banner {
+  margin: 2% 0;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2%;
+  align-items: center;
 }
 
 .banner-goals,
@@ -206,6 +217,7 @@ label {
 input,
 label {
   margin: 1%;
+  font-size: 1.2em;
 }
 
 .date-selector {
