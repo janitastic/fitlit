@@ -182,12 +182,13 @@ button {
   border: 1px solid $white;
   padding: .5% 2%;
   border-radius: 100px;
+
+  &:hover {
+    background: linear-gradient(318deg, $red, $purple);
+    border: none;
+  }
 }
 
-button:hover {
-  background: linear-gradient(318deg, $red, $purple);
-  border: none;
-}
 
 @media only screen and (max-width: 1068px) {
   .mini-card {
