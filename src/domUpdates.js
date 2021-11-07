@@ -20,6 +20,8 @@ const displaySleepQuality = (allUsersSleep, currentUser, todaysDate) => {
   avgSleepQuality.innerText = allUsersSleep.getAvgDailySleepQual(currentUser.id);
 };
 
+
+
 const captureOunces = () => {
   let todaysOunces;  
   if (ouncesInput.value && ouncesInput.value > 0 && ouncesInput.value.length <= 2) {

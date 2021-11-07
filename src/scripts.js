@@ -7,7 +7,17 @@ import Activity from './Activity';
 import './css/styles.css';
 import displayCharts from './charts.js';
 import domUpdates from './domUpdates.js';
-import {displayUserInfoCard, displayUserData, displayAvgStepGoal, displaySleepQuality} from './domUpdates.js';
+import {captureHrsSlept,
+  captureQuality,
+  captureOunces,
+  captureActivity,
+  captureMinutes,
+  captureStairs,
+  captureSteps,
+  displayUserInfoCard,
+  displayUserData,
+  displayAvgStepGoal,
+  displaySleepQuality} from './domUpdates.js';
 import './images/add.png';
 import './images/add-hover.png';
 let sleepData;
@@ -56,32 +66,6 @@ const fetchAllDataOnLoad = () => {
 // }
 
 
-
-// function createNewActivity() {
-//   let updatedActivity = {userId : currentUser.id, date: todaysDate, flightsOfStairs: todaysStairs, minutesActives: todaysMinutes, numSteps: todaysSteps}
-//   postActivityData(updatedActivity)
-// }
-
-var updatedActivity = {userID: 1, date: "2020/01/23", flightsOfStairs: 5, minutesActives: 450, numSteps: 3500};
-
-
-const postActivityData = () => {
-  return fetch('http://localhost:3001/api/v1/activity', {
-      method: 'POST',
-      body: JSON.stringify(updatedActivity),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
-}
-
-// const populateNewActivity = (data) => {
-//   capturedUserActivity = new Activity(data)
-// }
-
 // const postHydrationData = () => {
 //   const newHydration = {
 //     userID: 1,
@@ -129,11 +113,12 @@ const instantiateClasses = (users, sleep, activity, h20Data) => {
 
 
 
+
 //EVENT LISTENERS
 window.addEventListener('load', () => {
   fetchAllDataOnLoad();
   // postSleepData();
-  postActivityData();
+  // postActivityData();
   // postHydrationData();
 });
 
