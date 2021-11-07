@@ -1,6 +1,7 @@
 import displayCharts from './charts.js';
 import currentUser from './scripts.js';
 
+
 const displayUserInfoCard = (currentUser) => {
   greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`;
 };
@@ -10,18 +11,30 @@ const displayUserData = (currentUser) => {
   userAddress.innerText = `${currentUser.address}`;
   userStride.innerText = `${currentUser.strideLength}`;
   userStepGoal.innerText = `${currentUser.dailyStepGoal}`;
+  console.log('displayUserData', currentUser);
 };
 
 const displayAvgStepGoal = (userRepository) => {
   avgStepGoal.innerText = `${userRepository.getAvgStepCount()}`;
 };
 
+const displayAvgCommSteps = (userRepository) => {
+  avgCommSteps.innerText = `${userRepository.getAvgStepCount()}`
+}
+
+// const displayAvgCommStairs = (userRepository) => {
+//   avgCommStairs.innerText = `${userRepository.get}`
+// }
+
+
 const displaySleepQuality = (allUsersSleep, currentUser, todaysDate) => {
   dailySleepQuality.innerText = allUsersSleep.getDailySleepQual(currentUser.id, todaysDate);
   avgSleepQuality.innerText = allUsersSleep.getAvgDailySleepQual(currentUser.id);
 };
 
-
+// const displayAvgStairs = (userActivity, currentUser) => {
+//   avgStairsOverview.innerText = userActivity.findMostClimbedFlights(userActivity, currentUser.id)
+// }
 
 const captureOunces = () => {
   let todaysOunces;
@@ -36,7 +49,7 @@ const captureOunces = () => {
 
 const captureHrsSlept = () => {
   let todaysSleep;
-  if (sleepInput.value && sleepInput.value >= 0 && sleepInput.value <= 24)  {
+  if (sleepInput.value && sleepInput.value >= 0 && sleepInput.value <= 24) {
     todaysSleep = sleepInput.value
     console.log(todaysSleep)
   } else {
@@ -47,7 +60,7 @@ const captureHrsSlept = () => {
 
 const captureQuality = () => {
   let todaysQuality;
-  if (qualityInput.value && qualityInput.value >0 && qualityInput.value <= 5)  {
+  if (qualityInput.value && qualityInput.value > 0 && qualityInput.value <= 5) {
     todaysQuality = qualityInput.value
     console.log(todaysQuality)
   } else {
@@ -71,14 +84,15 @@ const clearActivityInputs = () => {
   minutesInput.value = null
 }
 
+
 const captureActivity = () => {
-  checkActivityInputs()
+  checkActivityInputs();
   captureSteps();
   captureStairs();
   captureMinutes();
   activityReport.classList.remove('hidden');
   activityForm.classList.add('hidden')
-  // console.log(currentUser);
+  console.log(currentUser);
   postSleepData(currentUser);
   postActivityData(currentUser);
   postHydrationData(currentUser);
@@ -86,11 +100,11 @@ const captureActivity = () => {
 
 const postSleepData = () => {
   const newSleep = {
-        userID: 1,
-        date: '2020/01/22',
-        hoursSlept: 6,
-        sleepQuality: 4
-      }
+    userID: 1,
+    date: '2020/01/22',
+    hoursSlept: 6,
+    sleepQuality: 4
+  }
   return fetch('http://localhost:3001/api/v1/sleep', {
       method: 'POST',
       body: JSON.stringify(newSleep),
@@ -146,7 +160,7 @@ const postActivityData = () => {
 
 const captureSteps = () => {
   let todaysSteps;
-  if (stepsInput.value && stepsInput.value >= 0 && stepsInput.value < 100000)  {
+  if (stepsInput.value && stepsInput.value >= 0 && stepsInput.value < 100000) {
     todaysSteps = stepsInput.value
     console.log(todaysSteps)
   } else {
@@ -158,9 +172,9 @@ const captureSteps = () => {
 
 const captureStairs = () => {
   let todaysStairs;
-  if (stairsInput.value && stairsInput.value >= 0 && stairsInput.value <= 8350)  {
+  if (stairsInput.value && stairsInput.value >= 0 && stairsInput.value <= 8350) {
     todaysStairs = stairsInput.value
-    dailyStairsOverview.innerText= `${todaysStairs}`
+    dailyStairsOverview.innerText = `${todaysStairs}`
     console.log(todaysStairs)
   } else {
     stairsInput.value = null
@@ -170,9 +184,9 @@ const captureStairs = () => {
 
 const captureMinutes = () => {
   let todaysMinutes;
-  if (minutesInput.value && minutesInput.value >= 0 && minutesInput.value <= 1440)  {
+  if (minutesInput.value && minutesInput.value >= 0 && minutesInput.value <= 1440) {
     todaysMinutes = minutesInput.value
-    dailyMinutesOverview.innerText= `${todaysMinutes}`
+    dailyMinutesOverview.innerText = `${todaysMinutes}`
     console.log(todaysMinutes)
   } else {
     minutesInput.value = null
@@ -191,6 +205,8 @@ const refreshDisplay = (userRepository, userh20, userSleep, currentUser, todaysD
   displayAvgStepGoal(userRepository);
   displaySleepQuality(userSleep, currentUser, todaysDate);
   displayCharts(userh20, userSleep, currentUser, todaysDate);
+  displayAvgCommSteps(userRepository);
+  // displayAvgStairs(userActivity);
   console.log(userh20, userSleep, currentUser, todaysDate, currentUser);
 }
 
@@ -234,6 +250,10 @@ const saveActivityBtn = document.getElementById('activityBtn');
 const activityReport = document.getElementById('activityReport');
 const dailyStairsOverview = document.getElementById('flightsOfStairs');
 const dailyMinutesOverview = document.getElementById('activeMinutes');
+const avgStairsOverview = document.getElementById('avgUserStairs');
+const avgCommSteps = document.getElementById('avgCommSteps');
+const avgCommStairs = document.getElementById('avgCommStairs');
+const avgCommMinutes = document.getElementById('avgCommMinutes');
 const activityForm = document.getElementById('activityForm');
 
 let domUpdates = () => {
@@ -286,16 +306,17 @@ let domUpdates = () => {
 
 export default domUpdates;
 export {
-captureHrsSlept,
-captureQuality,
-captureOunces,
-captureActivity,
-captureMinutes,
-captureStairs,
-captureSteps,
-displayUserInfoCard,
-displayUserData,
-displayAvgStepGoal,
-displaySleepQuality,
-refreshDisplay
+  captureHrsSlept,
+  captureQuality,
+  captureOunces,
+  captureActivity,
+  captureMinutes,
+  captureStairs,
+  captureSteps,
+  displayUserInfoCard,
+  displayUserData,
+  displayAvgStepGoal,
+  displaySleepQuality,
+  // displayAvgStairs,
+  refreshDisplay
 };
