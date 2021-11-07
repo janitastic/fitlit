@@ -1,4 +1,5 @@
 import displayCharts from './charts.js';
+import currentUser from './scripts.js';
 
 const displayUserInfoCard = (currentUser) => {
   greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`;
@@ -23,7 +24,7 @@ const displaySleepQuality = (allUsersSleep, currentUser, todaysDate) => {
 
 
 const captureOunces = () => {
-  let todaysOunces;  
+  let todaysOunces;
   if (ouncesInput.value && ouncesInput.value > 0 && ouncesInput.value.length <= 2) {
     todaysOunces = ouncesInput.value
     console.log(todaysOunces)
@@ -72,9 +73,72 @@ const clearActivityInputs = () => {
 
 const captureActivity = () => {
   checkActivityInputs()
-  captureSteps();
-  captureStairs();
-  captureMinutes();
+  // captureSteps();
+  // captureStairs();
+  // captureMinutes();
+  console.log(currentUser);
+  postSleepData(currentUser);
+  postActivityData(currentUser);
+  postHydrationData(currentUser);
+}
+
+const postSleepData = () => {
+  const newSleep = {
+        userID: 1,
+        date: '2020/01/22',
+        hoursSlept: 6,
+        sleepQuality: 4
+      }
+  return fetch('http://localhost:3001/api/v1/sleep', {
+      method: 'POST',
+      body: JSON.stringify(newSleep),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+}
+
+
+const postHydrationData = () => {
+  const newHydration = {
+    userID: 1,
+    date: '2020/01/22',
+    numOunces: 45
+  }
+  return fetch('http://localhost:3001/api/v1/hydration', {
+      method: 'POST',
+      body: JSON.stringify(newHydration),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+}
+
+
+const postActivityData = () => {
+  const newActivity = {
+    userID: 1,
+    date: '2020/01/22',
+    numSteps: 3400,
+    minutesActive: 130,
+    flightsOfStairs: 17
+  }
+  return fetch('http://localhost:3001/api/v1/activity', {
+      method: 'POST',
+      body: JSON.stringify(newActivity),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
 }
 
 
@@ -85,7 +149,6 @@ const captureSteps = () => {
     console.log(todaysSteps)
   } else {
     stepsInput.value = null
-    
   }
   console.log('todaysStepsAftrRtn>>', todaysSteps)
   return todaysSteps;
@@ -116,6 +179,15 @@ const captureMinutes = () => {
 const displayQualityRange = () => {
   qualityRange.innerText = qualityInput.value
   console.log('slide>>', qualityInput.value);
+}
+
+const refreshDisplay = (userRepository, userh20, userSleep, currentUser, todaysDate) => {
+  displayUserInfoCard(currentUser);
+  displayUserData(currentUser);
+  displayAvgStepGoal(userRepository);
+  displaySleepQuality(userSleep, currentUser, todaysDate);
+  displayCharts(userh20, userSleep, currentUser, todaysDate);
+  console.log(userh20, userSleep, currentUser, todaysDate, currentUser);
 }
 
 //QUERY SELECTORS
@@ -218,6 +290,6 @@ captureSteps,
 displayUserInfoCard,
 displayUserData,
 displayAvgStepGoal,
-displaySleepQuality
+displaySleepQuality,
+refreshDisplay
 };
-

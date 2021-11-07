@@ -17,7 +17,8 @@ import {captureHrsSlept,
   displayUserInfoCard,
   displayUserData,
   displayAvgStepGoal,
-  displaySleepQuality} from './domUpdates.js';
+  displaySleepQuality,
+  refreshDisplay} from './domUpdates.js';
 import './images/add.png';
 import './images/add-hover.png';
 let sleepData;
@@ -51,67 +52,6 @@ const fetchAllDataOnLoad = () => {
 };
 
 
-
-const postSleepData = () => {
-  const newSleep = {
-        userID: 1,
-        date: '2020/01/22',
-        hoursSlept: 6,
-        sleepQuality: 4
-      }
-  return fetch('http://localhost:3001/api/v1/sleep', {
-      method: 'POST',
-      body: JSON.stringify(newSleep),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
-}
-
-
-const postHydrationData = () => {
-  const newHydration = {
-    userID: 1,
-    date: '2020/01/22',
-    numOunces: 45
-  }
-  return fetch('http://localhost:3001/api/v1/hydration', {
-      method: 'POST',
-      body: JSON.stringify(newHydration),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
-}
-
-
-const postActivityData = () => {
-  const newActivity = {
-    userID: 1,
-    date: '2020/01/22',
-    numSteps: 3400,
-    minutesActive: 130,
-    flightsOfStairs: 17
-  }
-  return fetch('http://localhost:3001/api/v1/activity', {
-      method: 'POST',
-      body: JSON.stringify(newActivity),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
-}
-
-
 const parseData = (allUserData) => {
   // console.log(allUserData)
   userData = allUserData[0].userData;
@@ -128,28 +68,79 @@ const instantiateClasses = (users, sleep, activity, h20Data) => {
   if (currentUser === undefined){
     getRandomUser();
   }
-  // currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
-  // console.log('user', currentUser)
   userSleep = new Sleep(sleep);
   userActivity = new Activity(activity);
   userh20 = new Hydration(h20Data);
-  displayUserInfoCard(currentUser);
-  displayUserData(currentUser);
-  displayAvgStepGoal(userRepository);
-  displaySleepQuality(userSleep, currentUser, todaysDate);
-  displayCharts(userh20, userSleep, currentUser, todaysDate);
-  console.log(userh20, userSleep, currentUser, todaysDate)
+  refreshDisplay(userRepository, userh20, userSleep, currentUser, todaysDate);
 };
 
 
+// const postSleepData = () => {
+//   const newSleep = {
+//         userID: currentUser.id,
+//         date: '2020/01/22',
+//         hoursSlept: 6,
+//         sleepQuality: 4
+//       }
+//   return fetch('http://localhost:3001/api/v1/sleep', {
+//       method: 'POST',
+//       body: JSON.stringify(newSleep),
+//       headers: {
+//         'Content-Type': 'application/json'
+//       }
+//     })
+//     .then(response => response.json())
+//     .then(data => console.log(data))
+//     .catch(err => console.log(err));
+// }
+//
+//
+// const postHydrationData = () => {
+//   const newHydration = {
+//     userID: currentUser.id,
+//     date: '2020/01/22',
+//     numOunces: 45
+//   }
+//   return fetch('http://localhost:3001/api/v1/hydration', {
+//       method: 'POST',
+//       body: JSON.stringify(newHydration),
+//       headers: {
+//         'Content-Type': 'application/json'
+//       }
+//     })
+//     .then(response => response.json())
+//     .then(data => console.log(data))
+//     .catch(err => console.log(err));
+// }
+//
+//
+// const postActivityData = () => {
+//   const newActivity = {
+//     userID: currentUser.id,
+//     date: '2020/01/22',
+//     numSteps: 3400,
+//     minutesActive: 130,
+//     flightsOfStairs: 17
+//   }
+//   return fetch('http://localhost:3001/api/v1/activity', {
+//       method: 'POST',
+//       body: JSON.stringify(newActivity),
+//       headers: {
+//         'Content-Type': 'application/json'
+//       }
+//     })
+//     .then(response => response.json())
+//     .then(data => console.log(data))
+//     .catch(err => console.log(err));
+// }
 
 
 //EVENT LISTENERS
 window.addEventListener('load', () => {
   fetchAllDataOnLoad();
-  postSleepData();
-  postActivityData();
-  postHydrationData();
+  // postSleepData();
+  // postActivityData();
+  // postHydrationData();
 });
 
 
@@ -172,3 +163,5 @@ const getRandomUser = () => {
 //
 // //FUNCTIONS FOR COMMUNITY AVERAGES
 //
+
+export default currentUser;
