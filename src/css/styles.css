@@ -27,7 +27,7 @@ nav {
 }
 
 h1 {
-  margin: 2% 0;
+  margin: 2%;
   color: #A1A1A6;
   font-size: 3em;
 }
@@ -35,7 +35,6 @@ h1 {
 h2 {
   margin: 0;
   font-size: 2em;
-  text-transform: capitalize;
   text-shadow: 2px 1px 4px #111111;
 }
 
@@ -86,18 +85,9 @@ li {
   justify-items: center;
 }
 
-.app-title,
 .summary {
   display: flex;
   flex-direction: column;
-}
-
-.app-title {
-  flex-wrap: wrap;
-  margin: 1% 2%;
-}
-
-.summary {
   background-color: #151516;
 }
 
@@ -110,21 +100,11 @@ li {
   white-space: nowrap;
 }
 
-/* .average-widgets, */
-.weekly-widgets,
-.large-card, {
-  display: flex;
-}
-
-.weekly-widgets,
-.large-card {
-  flex-direction: column;
-}
-
 .average-widgets {
   display: grid;
   grid-template-columns: 50% 50%;
-  margin: 4%;
+  margin: 4% 0;
+  grid-gap: 1em;
 }
 
 .user-info {
@@ -153,7 +133,7 @@ li {
   background: linear-gradient(226deg, #d83c48, #673dc2);
 }
 
-.two-column {
+.overview-columns {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -185,17 +165,6 @@ li {
 
 .plus-icon:hover .white-plus {
   display: none;
-}
-
-/* CHARTS */
-.chart-title {
-  margin-top: 5%;
-  margin-left: 2%;
-  margin-bottom: 0;
-}
-
-.graph {
-  margin-top: 0;
 }
 
 /* INPUTS */

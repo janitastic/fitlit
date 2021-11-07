@@ -1,40 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
 // Variables
-
-
+$white: #f2f2f2;
+$red: #d83c48;
+$purple: #5622c7;
 
 //Mixins
-
-
-/* Media Queries for Screen Size */
-
-@media only screen and (max-width: 1068px) {
-  .mini-card {
-    max-width: 50%;
-  }
+@mixin flex($justify, $direction, $wrap, $align) {
+  display: flex;
+  justify-content: $justify;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  align-items: $align;
 }
 
-@media only screen and (max-width: 734px) {
-  .mini-card {
-    min-width: 90%;
-  }
-
-  nav,
-  main {
-    flex-wrap: wrap;
-  }
+@mixin grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 1em;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
-  .mini-card {
-    min-width: 90%;
-  }
+* {
+  font-family: 'Montserrat', sans-serif;
+}
 
-  nav,
-  main {
-    flex-wrap: wrap;
-  }
+body, html {
+  background-repeat: no-repeat;
+  height: 100%;
+}
 
-  .average-display {
-    display: flex;
+header {
+  @include flex(center, column, nowrap, stretch);
+}
+
+main {
+  @include flex(space-evenly, row, wrap, stretch);
+}
+
+nav {
+  @include flex(space-around, row, nowrap, stretch);
+}
+
+.banner {
+  margin: 2% 0;
+  @include flex(space-between, row, nowrap, center);
+}
+
+.banner-goals,
+.banner-totals {
+  @include grid();
+  justify-items: center;
+}
+
+.summary {
+  @include flex(center, column, npwrap, stretch);
+  background-color: #151516;
+}
+
+.steps,
+.water,
+.sleep,
+.activity {
+  white-space: nowrap;
+}
+
+.average-widgets {
+  @include grid();
+  margin: 4%;
+}
+
+.user-info {
+  font-weight: bolder;
+}
+
+.mini-card,
+.large-card {
+  border-radius: 1em;
+  padding: 3%;
+  margin: 2%;
+  overflow-wrap: break-word;
+  box-shadow: 7px 3px 8px 0px #7c7c7c;
+}
+
+.mini-card {
+  width: 50%;
+}
+
+.large-card {
+  width: 90%;
+  background: linear-gradient(44deg, $red, $purple);
+}
+
+.user-profile {
+  background: linear-gradient(226deg, $red, $purple);
+}
+
+.overview-columns {
+  @include flex(space-between, row, nowrap, center)
+}
+
+.average-display {
+  @include grid();
+}
+
+.averages {
+  margin: 4%;
+  font-size: 1.2em;
+}
+
+/* Add Icons */
+
+.plus-icon .white-plus {
+  height: 30px;
+}
+
+.plus-icon .color-plus {
+  display: none;
+  height: 30px;
+}
+
+.plus-icon:hover .color-plus {
+  display: inline;
+}
+
+.plus-icon:hover .white-plus {
+  display: none;
+}
+
+/* INPUTS */
+label {
+    display: block;
+}
+
+input,
+label {
+  margin: 1%;
+  font-size: 1.2em;
+}
+
+.date-selector {
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  color: $white;
+  border: 1px solid $white;
+  padding: .5% 2%;
+  border-radius: 100px;
+
+  &:hover {
+    background: linear-gradient(318deg, $red, $purple);
+    border: none;
   }
 }
