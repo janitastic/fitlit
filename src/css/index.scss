@@ -1,4 +1,23 @@
-/* Overall Display */
+// variables
+$white: #f2f2f2;
+$red: #d83c48;
+$purple: #5622c7;
+
+// mixin
+@mixin flex($justify, $align, $direction, $wrap) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  // justify-items: $
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 1em;
+}
 
 * {
   font-family: 'Montserrat', sans-serif;
@@ -10,20 +29,44 @@ body, html {
 }
 
 header {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  @include flex(center, stretch, column, nowrap);
 }
 
 main {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  @include flex(space-evenly, stretch, row, wrap);
 }
 
 nav {
-  display: flex;
-  justify-content: space-around;
+  @include flex(space-around, stretch, row, nowrap);
+}
+
+.banner {
+  @include flex(space-between, center, row, nowrap);
+  margin: 2% 0;
+}
+
+.banner-goals,
+.banner-totals {
+  @include grid();
+  justify-items: center;
+}
+
+.summary {
+  @include flex(flex-start, stretch, column, nowrap);
+  background-color: #151516;
+}
+
+.two-column {
+  @mixin flex(space-between, center, row, nowrap);
+}
+
+.average-widgets {
+  @include grid();
+  margin: 4% 0;
+}
+
+.average-display {
+  @include grid();
 }
 
 h1 {
@@ -70,44 +113,6 @@ li {
   display: none;
 }
 
-.banner {
-  margin: 2% 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.banner-goals,
-.banner-totals {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-gap: 1em;
-  justify-items: center;
-}
-
-.summary {
-  display: flex;
-  flex-direction: column;
-  background-color: #151516;
-}
-
-/* Cards Display */
-
-.steps,
-.water,
-.sleep,
-.activity {
-  white-space: nowrap;
-}
-
-/* .average-widgets, */
-.average-widgets {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  margin: 4% 0;
-  grid-gap: 1em;
-}
-
 .user-info {
   font-weight: bolder;
 }
@@ -127,23 +132,11 @@ li {
 
 .large-card {
   width: 90%;
-  background: linear-gradient(44deg, #d83c48, #5622c7);
-}
-
-.two-column {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  background: linear-gradient(44deg, $red, $purple);
 }
 
 .user-profile {
-  background: linear-gradient(226deg, #d83c48, #673dc2);
-}
-
-.average-display {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-gap: 1em;
+  background: linear-gradient(226deg, $red, $purple);
 }
 
 .averages {
@@ -168,7 +161,6 @@ li {
   display: none;
 }
 
-/* INPUTS */
 label {
   display: block;
 }
@@ -186,18 +178,17 @@ label {
 button {
   cursor: pointer;
   background-color: transparent;
-  color: #f2f2f2;
-  border: 1px solid #f2f2f2;
+  color: $white;
+  border: 1px solid $white;
   padding: .5% 2%;
   border-radius: 100px;
+
+  &:hover {
+    background: linear-gradient(318deg, $red, $purple);
+    border: none;
+  }
 }
 
-button:hover {
-  background: linear-gradient(318deg, #d83c48, #5622c7);
-  border: none;
-}
-
-/* Media Queries for Screen Size */
 
 @media only screen and (max-width: 1068px) {
   .mini-card {
