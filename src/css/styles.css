@@ -54,10 +54,12 @@ h4 {
 h5 {
   margin: 0 0 2% 3%;
   font-weight: 500;
+  font-size: 1.2em;
 }
 
 li {
   margin-top: 5%;
+  font-size: 1.2em;
 }
 
 .theme-dark {
@@ -125,10 +127,6 @@ li {
   margin: 4%;
 }
 
-.weekly-widgets {
-  background: linear-gradient(132deg, #d83c48, #5622c7);
-}
-
 .user-info {
   font-weight: bolder;
 }
@@ -148,15 +146,11 @@ li {
 
 .large-card {
   width: 90%;
-  background: linear-gradient(227deg, #d83c48, #5622c7);
+  background: linear-gradient(44deg, #d83c48, #5622c7);
 }
 
 .user-profile {
-  background: linear-gradient(315deg, #d83c48, #673dc2);
-}
-
-.date-and-time {
-  background: linear-gradient(45deg, #d83c48, #5622c7);
+  background: linear-gradient(226deg, #d83c48, #673dc2);
 }
 
 .two-column {
@@ -172,22 +166,17 @@ li {
 }
 
 .averages {
-  font-size: 80%;
   margin: 4%;
-}
-
-.plus-icon {
-  display: inline-block;
+  font-size: 1.2em;
 }
 
 .plus-icon .white-plus {
-  display: inline;
-  height: 20px;
+  height: 30px;
 }
 
 .plus-icon .color-plus {
   display: none;
-  height: 20px;
+  height: 30px;
 }
 
 .plus-icon:hover .color-plus {
@@ -234,8 +223,7 @@ button {
 }
 
 button:hover {
-  background: linear-gradient(
-227deg, #d83c48, #5622c7);
+  background: linear-gradient(318deg, #d83c48, #5622c7);
   border: none;
 }
 
