@@ -5,6 +5,7 @@ import Sleep from './Sleep';
 import Hydration from './Hydration';
 import Activity from './Activity';
 import './css/styles.css';
+// import './css/index.scss';
 import displayCharts from './charts.js';
 import domUpdates from './domUpdates.js';
 import {captureHrsSlept,
