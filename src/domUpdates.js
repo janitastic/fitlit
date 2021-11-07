@@ -88,9 +88,9 @@ const clearActivityInputs = () => {
 
 const captureActivity = () => {
   checkActivityInputs()
-  // captureSteps();
-  // captureStairs();
-  // captureMinutes();
+  captureSteps();
+  captureStairs();
+  captureMinutes();
   console.log(currentUser);
   postSleepData(currentUser);
   postActivityData(currentUser);
