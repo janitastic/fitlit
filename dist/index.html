@@ -41,7 +41,7 @@
         <!-- TODAY'S OVERVIEW CARD -->
         <aside class="mini-card summary">
           <h3>Today's Overview</h3>
-          <section>
+          <section class="activitySection">
             <!-- TODAY'S OVERVIEW: ACTIVITY SECTION -->
             <span class="two-column">
               <h4>Activity</h4>
@@ -61,16 +61,18 @@
               </article>
               <article class="hidden" id="activityForm">
                 <label for="steps">How many steps have you taken today?</label>
-                <input class="activity-input" type="number" placeholder="Steps Taken" id="stepsTaken" name="step-log" min="0" required minlength="1" maxlength="8" size="20" label="Add your steps for today" tabindex="3">
-                <!-- <button id="stepsBtn">Save</button> -->
+                  <input class="activity-input" type="number" placeholder="Steps Taken" id="stepsTaken" name="step-log" min="0" required minlength="1" maxlength="8" size="20" label="Add your steps for today" tabindex="3">
                 <label for="stairs">How many flights of stairs did you climb today?</label>
-                <input class="activity-input" type="number" placeholder="Flights Climbed" id="stairsClimbed" name="stairs-log" min="0" required minlength="1" maxlength="8" size="20" label="Add your stairs for today" tabindex="4">
+                  <input class="activity-input" type="number" placeholder="Flights Climbed" id="stairsClimbed" name="stairs-log" min="0" required minlength="1" maxlength="8" size="20" label="Add your stairs for today" tabindex="4">
                 <label for="minutes">How many minutes were you active today?</label>
-                <input class="activity-input" type="number" placeholder="Minutes Active" id="minsActive" name="activity-log" min="0" required minlength="1" maxlength="8" size="20" label="Add your active minutes for today" tabindex="5">
-                <div class="hidden" id="activityMessage">
-                </div>
-                <button id="activityBtn" tabindex="6">Save</button>
+                  <input class="activity-input" type="number" placeholder="Minutes Active" id="minsActive" name="activity-log" min="0" required minlength="1" maxlength="8" size="20" label="Add your active minutes for today" tabindex="5">
               </article>
+              <div class="hidden" id="activityMessage">
+              </div>
+              <div class="activity-buttons hidden" id="actBtnView">
+                <button id="activityBtn" tabindex="6">Save</button>
+                <button id="cancelActivity" tabindex="7">Cancel</button>
+              </div>
           </section>
           <!-- TODAY'S OVERVIEW: WATER SECTION -->
           <section>

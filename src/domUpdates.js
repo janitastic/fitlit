@@ -292,6 +292,8 @@ const minutesInput = document.getElementById('minsActive');
 const saveActivityBtn = document.getElementById('activityBtn');
 const activityReport = document.getElementById('activityReport');
 const activityForm = document.getElementById('activityForm');
+const actBtnView = document.getElementById('actBtnView');
+const actCancelBtn = document.getElementById('cancelActivity');
 // const activityInputs = document.querySelectorAll('.activity-input').forEach(input => {
 //   input.addEventListener('change', disableSaveButton => {
 //     if (!stepsInput.value || !stairsInput.value || !minutesInput.value) {
@@ -303,23 +305,23 @@ const activityForm = document.getElementById('activityForm');
 // });
 
 let domUpdates = () => {
-  ouncesInput.addEventListener('change', () => {
-    if (!ouncesInput.value) {
-      // saveWaterBtn.disabled = false;
-      show(waterMessage);
-    } else {
-      // saveWaterBtn.disabled = true;
-      show(waterMessage);
-    }
-  });
+  // ouncesInput.addEventListener('change', () => {
+  //   if (!ouncesInput.value) {
+  //     saveWaterBtn.disabled = false;
+  //     show(waterMessage);
+  //   } else {
+  //     saveWaterBtn.disabled = true;
+  //     show(waterMessage);
+  //   }
+  // });
 
-  sleepInput.addEventListener('change', () => {
-    if (sleepInput.value) {
-      saveSleepBtn.disabled = false;
-    } else {
-      saveSleepBtn.disable = true;
-    }
-  });
+  // sleepInput.addEventListener('change', () => {
+  //   if (sleepInput.value) {
+  //     saveSleepBtn.disabled = false;
+  //   } else {
+  //     saveSleepBtn.disable = true;
+  //   }
+  // });
 
   logWater.addEventListener('click', showWaterForm);
   logWater.addEventListener('keyup', showWaterForm);
@@ -348,6 +350,11 @@ let domUpdates = () => {
     captureActivity();
     checkActivityInputs();
   });
+  actCancelBtn.addEventListener('click', () => {
+    show(activityReport);
+    hide(activityForm);
+    hide(actBtnView);
+  });
 
   //HELPER FUNCTIONS
   function hide(element) {
@@ -372,12 +379,13 @@ let domUpdates = () => {
   function showSleepForm() {
     toggle(sleepChart);
     toggle(sleepForm);
-    saveSleepBtn.disabled = true;
+    // saveSleepBtn.disabled = true;
   };
 
   function showActivityForm() {
-    toggle(activityReport);
-    toggle(activityForm);
+    hide(activityReport);
+    show(activityForm);
+    show(actBtnView);
     // saveActivityBtn.disabled = true;
   };
 
@@ -389,6 +397,8 @@ let domUpdates = () => {
     } else {
      show(activityMessage);
      clearActivityInputs();
+     hide(saveActivityBtn);
+     hide(activityForm);
     }
   };
 

@@ -189,6 +189,14 @@ label {
   margin: 0 1%;
 }
 
+.activity-input {
+  margin: 1% 4%;
+}
+
+.activity-buttons {
+  margin: 4% 2%;
+}
+
 button {
   cursor: pointer;
   background-color: transparent;
