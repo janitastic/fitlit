@@ -27,6 +27,36 @@ class Activity extends DataHandler {
     return weeklySteps;
   }
 
+  getWeeklyTotalFlights(user, startDate){
+    this.getUserFilteredData(user);
+    this.userFilteredData.reverse();
+    const targetStartDate = this.userFilteredData.findIndex(day => {
+      return day.date === startDate;
+    })
+    const targetEndDate = targetStartDate + 7;
+    let weeklyFlightsData = this.userFilteredData.slice(targetStartDate, targetEndDate);
+    const weeklyFlights = weeklyFlightsData.reduce((totalFlights, day) => {
+      totalFlights += day.flightsOfStairs;
+      return totalFlights;
+    }, 0)
+    return weeklyFlights;
+  }
+
+  getWeeklyTotalActiveMinutes(user, startDate){
+    this.getUserFilteredData(user);
+    this.userFilteredData.reverse();
+    const targetStartDate = this.userFilteredData.findIndex(day => {
+      return day.date === startDate;
+    })
+    const targetEndDate = targetStartDate + 7;
+    let weeklyActiveMinutesData = this.userFilteredData.slice(targetStartDate, targetEndDate);
+    const weeklyActiveMinutes = weeklyActiveMinutesData.reduce((totalMins, day) => {
+      totalMins += day.minutesActive;
+      return totalMins
+    }, 0)
+    return weeklyActiveMinutes;
+  }
+
   getDailyFlights(user, selectedDate){
     this.getUserFilteredData(user);
     this.getSingleDayData(selectedDate);
