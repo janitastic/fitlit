@@ -13,6 +13,13 @@ class Activity extends DataHandler {
     return this.singleDayData.numSteps;
   }
 
+  getDailyFlights(user, selectedDate){
+    this.getUserFilteredData(user);
+    this.getSingleDayData(selectedDate);
+
+    return this.singleDayData.flightsOfStairs;
+  }
+
   getDailyMiles(user, selectedDate) {
     this.getUserFilteredData(user);
     this.getSingleDayData(selectedDate);

@@ -59,7 +59,13 @@ const displayUserAvgHrsSlept = (userSleep, currentUser) => {
 const displayUserAvgQual = (userSleep, currentUser) => {
   avgUserSleepQual.innerText = userSleep.getAvgDailySleepQual(currentUser)
 }
+const displayDayMins = (userActivity,currentUser, todaysDate) => {
+  dayMinsOverview.innerText = userActivity.getDailyMinsActive(currentUser, todaysDate)
+}
 
+const displayDayStairs = (userActivity, currentUser, todaysDate) => {
+  dayStairsOverview.innerText = userActivity.getDailyFlights(currentUser,todaysDate)
+}
 const refreshDisplay = (userRepository, userh20, userSleep, userActivity, currentUser, todaysDate) => {
   displayUserInfoCard(currentUser);
   displayUserData(currentUser);
@@ -73,6 +79,8 @@ const refreshDisplay = (userRepository, userh20, userSleep, userActivity, curren
   displayUserAvgOz(userh20, currentUser);
   displayUserAvgHrsSlept(userSleep, currentUser);
   displayUserAvgQual(userSleep, currentUser);
+  displayDayMins(userActivity,currentUser, todaysDate);
+  displayDayStairs(userActivity,currentUser, todaysDate);
   console.log(userh20, userSleep, currentUser, todaysDate, currentUser);
 }
 
@@ -199,12 +207,13 @@ const captureSteps = () => {
   } else {
     stepsInput.value = 0
   }
-  console.log('todaysStepsAftrRtn>>', todaysSteps)
+  
   return todaysSteps;
 }
 const captureStairs = () => {
   if (stairsInput.value && stairsInput.value >= 0 && stairsInput.value <= 8350) {
     todaysStairs = stairsInput.value
+    dayStairsOverview.innerText = todaysStairs
     console.log(todaysStairs)
   } else {
     stairsInput.value = null
@@ -214,6 +223,7 @@ const captureStairs = () => {
 const captureMinutes = () => {
   if (minutesInput.value && minutesInput.value >= 0 && minutesInput.value <= 1440) {
     todaysMinutes = minutesInput.value
+    dayMinutesOverView.innerText =
     console.log(todaysMinutes)
   } else {
     minutesInput.value = null
@@ -244,6 +254,8 @@ const avgUserStepsOverview = document.getElementById('avgUserSteps')
 const avgUserOzOverview = document.getElementById('avgUserOz')
 const avgUserSleep = document.getElementById('avgUserSleep');
 const avgUserSleepQual = document.getElementById('avgSleepQuality');
+const dayStairsOverview = document.getElementById('flightsOfStairs');
+const dayMinsOverview = document.getElementById('activeMinutes')
 //Form Field Query Selectors & Event Listeners
 const emptyFieldError = document.getElementById('fieldError');
 const logWater = document.getElementById('logWater');
