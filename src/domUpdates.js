@@ -43,8 +43,18 @@ const displayUserDailySteps = (currentUser, userActivity, todaysDate) => {
   let numSteps = userActivity.getDailySteps(currentUser, todaysDate);
   let milesWalked = userActivity.getDailyMiles(currentUser, todaysDate);
   userDailySteps.innerText = `${numSteps} out of ${currentUser.dailyStepGoal}`;
+
   userDailyMilesWalked.innerText = `${milesWalked}`;
 };
+
+const displayChartFallbacks = (currentUser, userActivity, userh20, userSleep, todaysDate) => {
+  let numSteps = userActivity.getDailySteps(currentUser, todaysDate);
+  dailyStepsFallback.innerText = `Today, you've walked ${numSteps} out of your ${currentUser.dailyStepGoal}-step goal!`;
+  let ozDrank = userh20.calculateDailyOunces(currentUser, todaysDate);
+  dailyWaterFallback.innerText = `Today, you've consumed ${ozDrank} ounces of water.`;
+  let hoursSlept = userSleep.getDailyHrsSlept(currentUser, todaysDate);
+  dailySleepFallback.innerText = `Last night, you slept ${hoursSlept} hours.`;
+}
 
 const displayUserAvgOz = (userh20, currentUser) => {
   avgUserOzOverview.innerText = userh20.getAvgOuncesPerDay(currentUser);
@@ -291,10 +301,14 @@ const avgCommMinsActive = document.getElementById('avgCommMinsActive');
 const avgCommWater = document.getElementById('avgCommWater');
 const avgCommSleep = document.getElementById('avgCommSleep');
 const avgCommSleepQuality = document.getElementById('avgCommSleepQuality');
-
 const userWeeklyFlightsClimbed = document.getElementById('weeklyFlightsStairs');
 const userWeeklyActiveMinutes = document.getElementById('weeklyActiveMinutes');
-
+const dailyStepsFallback = document.getElementById('dailyStepsFallback');
+const dailyWaterFallback = document.getElementById('dailyWaterFallback');
+const dailySleepFallback = document.getElementById('dailySleepFallback');
+const weeklyStepsFallback = document.getElementById('weeklyStepsFallback');
+const weeklyWaterFallback = document.getElementById('weeklyWaterFallback');
+const weeklySleepFallback = document.getElementById('weeklySleepFallback');
 const activityMessage = document.getElementById('activityMessage');
 const logWater = document.getElementById('logWater');
 const waterMessage = document.getElementById('waterMessage');
@@ -434,7 +448,7 @@ let domUpdates = () => {
   function checkSleepInput() {
     if (!sleepInput.value) {
      show(sleepMessage);
-     sleepMessage.innerHTML = 
+     sleepMessage.innerHTML =
      `<p class="error-message">Oops! Are you sure you didn't get any sleep last night? 😧 </p>`
     } else {
      postSleepData()
@@ -445,7 +459,7 @@ let domUpdates = () => {
     }
   };
 
-  
+
 }; //CLOSING TAG FOR domUpdates - DO NOT DELETE!
 
 export default domUpdates;
