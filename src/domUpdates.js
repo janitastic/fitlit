@@ -130,7 +130,6 @@ const refreshDisplay = (userRepository, userh20, userSleep, userActivity, curren
   displayAvgCommSleep(userSleep, todaysDate);
   displayUserWeeklyActivity(userActivity, currentUser, todaysDate);
   displayChartFallbacks(currentUser, userActivity, userh20, userSleep, todaysDate);
-  console.log(userh20, userSleep, currentUser, todaysDate);
 };
 
 const captureOunces = (currentUser) => {
@@ -469,7 +468,7 @@ let domUpdates = () => {
   };
 
 
-}; //CLOSING TAG FOR domUpdates - DO NOT DELETE!
+}; 
 
 export default domUpdates;
 export {

@@ -7,7 +7,6 @@ import Activity from './Activity';
 import DataHandler from './DataHandler';
 import './css/index.scss';
 import './css/_reset.scss';
-
 import displayCharts from './charts.js';
 import domUpdates from './domUpdates.js';
 import {captureHrsSlept,
@@ -54,12 +53,10 @@ const fetchAllDataOnLoad = () => {
 
 
 const parseData = (allUserData) => {
-  // console.log(allUserData)
   userData = allUserData[0].userData;
   sleepData = allUserData[1].sleepData;
   activityData = allUserData[2].activityData;
   h20Data = allUserData[3].hydrationData;
-  // console.log('after indexing>>>',allUserData)
   instantiateClasses(userData, sleepData, activityData, h20Data)
 };
 
@@ -77,72 +74,9 @@ const instantiateClasses = (users, sleep, activity, h20Data) => {
 };
 
 
-// const postSleepData = () => {
-//   const newSleep = {
-//         userID: currentUser.id,
-//         date: '2020/01/22',
-//         hoursSlept: 6,
-//         sleepQuality: 4
-//       }
-//   return fetch('http://localhost:3001/api/v1/sleep', {
-//       method: 'POST',
-//       body: JSON.stringify(newSleep),
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     })
-//     .then(response => response.json())
-//     .then(data => console.log(data))
-//     .catch(err => console.log(err));
-// }
-//
-//
-// const postHydrationData = () => {
-//   const newHydration = {
-//     userID: currentUser.id,
-//     date: '2020/01/22',
-//     numOunces: 45
-//   }
-//   return fetch('http://localhost:3001/api/v1/hydration', {
-//       method: 'POST',
-//       body: JSON.stringify(newHydration),
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     })
-//     .then(response => response.json())
-//     .then(data => console.log(data))
-//     .catch(err => console.log(err));
-// }
-//
-//
-// const postActivityData = () => {
-//   const newActivity = {
-//     userID: currentUser.id,
-//     date: '2020/01/22',
-//     numSteps: 3400,
-//     minutesActive: 130,
-//     flightsOfStairs: 17
-//   }
-//   return fetch('http://localhost:3001/api/v1/activity', {
-//       method: 'POST',
-//       body: JSON.stringify(newActivity),
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     })
-//     .then(response => response.json())
-//     .then(data => console.log(data))
-//     .catch(err => console.log(err));
-// }
-
-
 //EVENT LISTENERS
 window.addEventListener('load', () => {
   fetchAllDataOnLoad();
-  // postSleepData();
-  // postActivityData();
-  // postHydrationData();
 });
 
 
@@ -154,17 +88,5 @@ const getRandomUser = () => {
   currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
   console.log('randomize>>>>', currentUser)
 }
-
-// //FUNCTIONS FOR USER AVERAGES
-//   /*** FYI - pulled the two below from the charts we're removing ***/
-//
-// // let userAvgSleepHours = allUsersSleep.getAvgSleepPerDay(currentUser.id);
-// //
-// // let userAvgWater = userh20.getAvgOuncesPerDay(currentUser.id);
-//
-//
-//
-// //FUNCTIONS FOR COMMUNITY AVERAGES
-//
 
 export {currentUser};

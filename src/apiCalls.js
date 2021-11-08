@@ -26,7 +26,4 @@ export {
   fetchSleepData,
   fetchActivityData,
   fetchHydrationData,
-  // postSleepData,
-  // postActivityData,
-  // postHydrationData
 };
