@@ -24,7 +24,6 @@ const displayAvgStepGoal = (userRepository) => {
   avgStepGoal.innerText = `${userRepository.getAvgStepCount()}`;
 };
 
-
 const displaySleepQuality = (userSleep, currentUser, todaysDate) => {
   dailySleepQuality.innerText = userSleep.getDailySleepQual(currentUser, todaysDate);
   console.log('DOMUpdates line 24>>', currentUser)
@@ -44,7 +43,9 @@ const displayUserAvgMins = (currentUser, userActivity, todaysDate) => {
 
 const displayUserDailySteps = (currentUser, userActivity, todaysDate) => {
   let numSteps = userActivity.getDailySteps(currentUser, todaysDate);
+  let milesWalked = userActivity.getDailyMiles(currentUser, todaysDate);
   userDailySteps.innerText = `${numSteps} out of ${currentUser.dailyStepGoal}`;
+
   console.log('DOMUpdates line 29>>', currentUser)
 };
 
@@ -65,7 +66,30 @@ const displayDayMins = (userActivity,currentUser, todaysDate) => {
 
 const displayDayStairs = (userActivity, currentUser, todaysDate) => {
   dayStairsOverview.innerText = userActivity.getDailyFlights(currentUser,todaysDate)
-}
+  userDailyMilesWalked.innerText = `${milesWalked}`;
+};
+
+const displayAvgCommActivity = (userActivity, todaysDate) => {
+  let numSteps = userActivity.findCommunityAvgSteps(todaysDate);
+  let numFlights = userActivity.findCommunityAvgFlights(todaysDate);
+  let minsActive = userActivity.findCommunityAvgMinutes(todaysDate);
+  avgCommSteps.innerText = `${numSteps}`;
+  avgCommStairs.innerText = `${numFlights}`;
+  avgCommMinsActive.innerText = `${minsActive} min.`;
+};
+
+const displayAvgCommWater = (userh20, todaysDate) => {
+  let numOunces = userh20.calculateAvgCommDailyOunces(todaysDate);
+  avgCommWater.innerText = `${numOunces} Oz.`;
+};
+
+const displayAvgCommSleep = (userSleep, todaysDate) => {
+  let sleepHrs = userSleep.getAvgCommHrsSlept(todaysDate);
+  let sleepQual = userSleep.getAvgAllSleepQual(todaysDate);
+  avgCommSleep.innerText = `${sleepHrs} hrs.`
+  avgCommSleepQuality.innerText = `${sleepQual}`;
+};
+
 const refreshDisplay = (userRepository, userh20, userSleep, userActivity, currentUser, todaysDate) => {
   displayUserInfoCard(currentUser);
   displayUserData(currentUser);
@@ -81,6 +105,10 @@ const refreshDisplay = (userRepository, userh20, userSleep, userActivity, curren
   displayUserAvgQual(userSleep, currentUser);
   displayDayMins(userActivity,currentUser, todaysDate);
   displayDayStairs(userActivity,currentUser, todaysDate);
+  displayAvgCommActivity(userActivity, todaysDate);
+  displayAvgCommWater(userh20, todaysDate);
+  displayAvgCommSleep(userSleep, todaysDate);
+
   console.log(userh20, userSleep, currentUser, todaysDate, currentUser);
 }
 
@@ -248,6 +276,7 @@ const avgStepGoal = document.getElementById('avgStepGoal');
 const dailySleepQuality = document.getElementById('dailySleepQuality');
 const avgSleepQuality = document.getElementById('avgSleepQuality');
 const userDailySteps = document.getElementById('dailySteps');
+
 const avgUserStairsOverView = document.getElementById('avgUserStairs');
 const avgUserMinutesOverview = document.getElementById('avgUserMinsActive');
 const avgUserStepsOverview = document.getElementById('avgUserSteps')
@@ -256,6 +285,13 @@ const avgUserSleep = document.getElementById('avgUserSleep');
 const avgUserSleepQual = document.getElementById('avgSleepQuality');
 const dayStairsOverview = document.getElementById('flightsOfStairs');
 const dayMinsOverview = document.getElementById('activeMinutes')
+const userDailyMilesWalked = document.getElementById('dailyMilesWalked');
+const avgCommSteps = document.getElementById('avgCommSteps');
+const avgCommStairs = document.getElementById('avgCommStairs');
+const avgCommMinsActive = document.getElementById('avgCommMinsActive');
+const avgCommWater = document.getElementById('avgCommWater');
+const avgCommSleep = document.getElementById('avgCommSleep');
+const avgCommSleepQuality = document.getElementById('avgCommSleepQuality');
 //Form Field Query Selectors & Event Listeners
 const emptyFieldError = document.getElementById('fieldError');
 const logWater = document.getElementById('logWater');

@@ -52,6 +52,7 @@
             </span>
               <article class="daily-activity" id="activityReport">
                 <h5>Steps Taken: <span id="dailySteps"></span></h5>
+                <h5>Miles Walked: <span id="dailyMilesWalked"></span></h5>
                 <article class="daily-steps" id="stepsChart">
                   <canvas id="dailyStepsChart" width="400" height="60"></canvas>
                 </article>
@@ -129,7 +130,7 @@
                   <br>Flights of Stairs = <span id="avgUserStairs"></span>
                   <br>Active Minutes = <span id="avgUserMinsActive"></span></p>
               </article>
-              <article class="water" id="avgUserWater">
+              <article class="water">
                 <h4>Water</h4>
                 <p> Ounces = <span id="avgUserOz"></span>
               </article>
@@ -146,17 +147,18 @@
             <div class="average-widgets">
               <article class="activity">
                 <h4>Activity</h4>
-                  <p class="averages">Steps <span id="avgCommSteps"></span>
-                  <br>Flights of Stairs <span id="avgCommStairs"></span>
-                  <br>Active Minutes<span id="avgCommMinsActive"></span></p>
+                  <p class="averages">Steps: <span id="avgCommSteps"></span>
+                  <br>Flights of Stairs: <span id="avgCommStairs"></span>
+                  <br>Active Minutes: <span id="avgCommMinsActive"></span></p>
               </article>
-              <article class="water" id="avgCommWater">
+              <article class="water">
                 <h4>Water</h4>
+                <span id="avgCommWater"></span>
                 <!-- <canvas id="avgUserWaterChart" width="200" height="60";></canvas> -->
               </article>
               <article class="sleep" id="avgUserSleep">
                 <h4>Sleep</h4>
-                  <p class="averages">Hours Slept<span id="avgCommSleep"></span>
+                  <p class="averages">Hours Slept: <span id="avgCommSleep"></span>
                   <!-- <canvas id="avgUserSleepChart" width="200" height="60";></canvas> -->
                   <br>Sleep Quality = <span id="avgCommSleepQuality"></span> / 5</p>
               </article>
