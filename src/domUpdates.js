@@ -1,4 +1,4 @@
-Sleepimport displayCharts from './charts.js';
+import displayCharts from './charts.js';
 import {currentUser} from './scripts.js';
 
 let todaysSteps;
