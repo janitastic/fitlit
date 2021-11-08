@@ -56,7 +56,7 @@ nav {
 }
 
 .two-column {
-  @mixin flex(space-between, center, row, nowrap);
+  @include flex(space-between, center, row, nowrap);
 }
 
 .average-widgets {
@@ -190,6 +190,36 @@ button {
     cursor: no-drop;
     background-color: gray;
   }
+}
+
+.error-message {
+  color: #d83c48;
+  font-size: 1.2em;
+}
+
+.success-message {
+  color: #66a8b7;
+  font-size: 1.5em;
+  animation-duration: 2s;
+}
+
+.bounce {
+  animation-name: bounce;
+  animation-timing-function: ease;
+}
+
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes bounce {
+  0%   { transform: scale(1,1)    translateY(0); }
+  10%  { transform: scale(1.1,.9) translateY(0); }
+  30%  { transform: scale(.9,1.1) translateY(-50px); }
+  50%  { transform: scale(1,1)    translateY(0); }
+  100% { transform: scale(1,1)    translateY(0); }
 }
 
 
