@@ -278,6 +278,8 @@ const saveWaterBtn = document.getElementById('saveWaterBtn');
 const ouncesInput = document.getElementById('waterIntake');
 const waterChart = document.getElementById('waterChart');
 const waterForm = document.getElementById('waterForm');
+const waterBtnView = document.getElementById('waterBtnView');
+const waterCancelBtn = document.getElementById('cancelWater');
 const logSleep = document.getElementById('logSleep');
 const saveSleepBtn = document.getElementById('saveAllSleepBtn');
 const qualityInput = document.getElementById('sleepQuality');
@@ -329,7 +331,13 @@ let domUpdates = () => {
     captureOunces();
     postHydrationData();
     checkWaterInput();
-    ouncesInput.value = null;
+    // ouncesInput.value = null;
+  });
+  waterCancelBtn.addEventListener('click', () => {
+    show(waterChart);
+    show(logWater);
+    hide(waterForm);
+    hide(waterBtnView);
   });
 
   logSleep.addEventListener('click', showSleepForm);
@@ -352,6 +360,7 @@ let domUpdates = () => {
   });
   actCancelBtn.addEventListener('click', () => {
     show(activityReport);
+    show(logActivity);
     hide(activityForm);
     hide(actBtnView);
   });
@@ -371,8 +380,11 @@ let domUpdates = () => {
 
   //FORM FUNCTIONS
   function showWaterForm() {
-    toggle(waterChart);
-    toggle(waterForm);
+    hide(waterChart);
+    show(waterForm);
+    show(waterBtnView);
+    hide(waterMessage);
+    hide(logWater);
     // saveWaterBtn.disabled = true;
   };
 
@@ -386,6 +398,8 @@ let domUpdates = () => {
     hide(activityReport);
     show(activityForm);
     show(actBtnView);
+    hide(activityMessage);
+    hide(logActivity);
     // saveActivityBtn.disabled = true;
   };
 
@@ -397,7 +411,7 @@ let domUpdates = () => {
     } else {
      show(activityMessage);
      clearActivityInputs();
-     hide(saveActivityBtn);
+     hide(actBtnView);
      hide(activityForm);
     }
   };
@@ -408,6 +422,9 @@ let domUpdates = () => {
      waterMessage.innerHTML = `<p class="error-message">Oops! Your forgot something.🥛 <br>Please enter how many ounces you drank. </p>`
     } else {
      show(waterMessage);
+     ouncesInput.value = null;
+     hide(waterBtnView);
+     hide(waterForm);
     }
   };
 

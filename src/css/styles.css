@@ -193,7 +193,8 @@ label {
   margin: 1% 4%;
 }
 
-.activity-buttons {
+.activity-buttons,
+.water-buttons, {
   margin: 4% 2%;
 }
 

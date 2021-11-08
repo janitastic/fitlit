@@ -41,7 +41,7 @@
         <!-- TODAY'S OVERVIEW CARD -->
         <aside class="mini-card summary">
           <h3>Today's Overview</h3>
-          <section class="activitySection">
+          <section>
             <!-- TODAY'S OVERVIEW: ACTIVITY SECTION -->
             <span class="two-column">
               <h4>Activity</h4>
@@ -78,7 +78,7 @@
           <section>
             <span class="two-column">
               <h4>Water</h4>
-              <span class="plus-icon" id="logWater" tabindex="7">
+              <span class="plus-icon" id="logWater" tabindex="8">
                 <img class="white-plus" src="./images/add.png" alt="Log Some Water">
                 <img class="color-plus" id="addWaterBtn" src="./images/add-hover.png" alt="Add Ounces">
               </span>
@@ -88,11 +88,14 @@
               </article>
               <article class="hidden" id="waterForm">
                 <label for="water">How much did you drink today? (in ounces)</label>
-                <input type="number" placeholder="Total oz.(1-99)" id="waterIntake" name="ounces-drank" min="0" required minlength="1" maxlength="2" value="" size="25" label="Add your ounces drank for today" tabindex="8">
-                <div class="hidden" id="waterMessage">
-                </div>
-                <button id="saveWaterBtn" tabindex="9">Save</button>
+                  <input type="number" placeholder="Total oz.(1-99)" id="waterIntake" name="ounces-drank" min="0" required minlength="1" maxlength="2" value="" size="25" label="Add your ounces drank for today" tabindex="9">
               </article>
+              <div class="hidden" id="waterMessage">
+              </div>
+              <div class="water-buttons hidden" id="waterBtnView">
+                <button id="saveWaterBtn" tabindex="10">Save</button>
+                <button id="cancelWater" tabindex="11">Cancel</button>
+              </div>
           </section>
           <section>
             <!-- TODAY'S OVERVIEW: SLEEP SECTION -->
