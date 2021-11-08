@@ -91,6 +91,26 @@ describe('Activity', () => {
     ])
   })
 
+  it('should be able to return a user\'s daily steps', () => {
+    expect(activityInfo.getDailySteps(user1, '2019/06/15')).to.equal(3577)
+  })
+
+  it('should be able to return a user\'s weekly steps', () => {
+    expect(activityInfo.getWeeklySteps(user1, '2019/06/21')).to.deep.equal([6760, 14478, 8429, 4419, 14329, 6637, 3577])
+  })
+
+  it('should be able to return a user\'s weekly total flights climbed', () => {
+    expect(activityInfo.getWeeklyTotalFlights(user1, '2019/06/21')).to.equal(123)
+  })
+
+  it('should be able to return a user\'s weekly total active minutes', () => {
+    expect(activityInfo.getWeeklyTotalActiveMinutes(user1, '2019/06/21')).to.equal(1198)
+  })
+
+  it('should be able to return a user\'s daily flights climbed', () => {
+    expect(activityInfo.getDailyFlights(user1, '2019/06/15')).to.equal(16)
+  })
+
   it('should be able to calculate miles walked based on steps specified by a date', () => {
     expect(activityInfo.getDailyMiles(user1, '2019/06/15')).to.equal(2.9);
     expect(activityInfo.getDailyMiles(user2, '2019/06/15')).to.equal(0);
@@ -115,6 +135,10 @@ describe('Activity', () => {
 
   it('should be able to find a user\'s all time stair-climbing record', () => {
     expect(activityInfo.findMostClimbedFlights(user1)).to.equal(36)
+  })
+
+  it('should be able to return a user\'s all-time average flights climbed', () => {
+    expect(activityInfo.findUserAvgFlights(user1)).to.equal(17.5)
   })
 
   it('should be able to find, for all users, the average number of climbed flights on a given day', () => {

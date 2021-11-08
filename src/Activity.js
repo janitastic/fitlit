@@ -66,6 +66,7 @@ class Activity extends DataHandler {
 
   getAvgDailyMinsActive(user, startDate){
     this.getUserFilteredData(user);
+    this.userFilteredData.reverse();
     this.getWeeklyData(startDate);
     const totalMinsActive = this.weeklyData.reduce((totalMinsActive, day) => {
       totalMinsActive += day.minutesActive;
