@@ -160,6 +160,7 @@ const captureActivity = (currentUser) => {
   captureMinutes();
   console.log('DOMUpdates line 92>>', currentUser);
   postActivityData();
+  clearActivityInputs();
 }
 
 const postSleepData = () => {
@@ -336,9 +337,9 @@ const activityInputs = document.querySelectorAll('.activity-input').forEach(inpu
 let domUpdates = () => {
   ouncesInput.addEventListener('change', () => {
     if (ouncesInput.value) {
-      saveWaterBtn.disabled = false; 
+      saveWaterBtn.disabled = false;
     } else {
-      saveWaterBtn.disabled = true;     
+      saveWaterBtn.disabled = true;
   }
 })
   sleepInput.addEventListener('change', () => {
