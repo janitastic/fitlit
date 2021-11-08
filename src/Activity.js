@@ -15,13 +15,8 @@ class Activity extends DataHandler {
 
   getWeeklySteps(user, startDate){
     this.getUserFilteredData(user);
-    this.userFilteredData.reverse();
-    const targetStartDate = this.userFilteredData.findIndex(day => {
-      return day.date === startDate;
-    })
-    const targetEndDate = targetStartDate + 7;
-    let weeklyStepsData = this.userFilteredData.slice(targetStartDate, targetEndDate);
-    const weeklySteps = weeklyStepsData.map((day) => {
+    this.getWeeklyData(startDate);
+    const weeklySteps = this.weeklyData.map((day) => {
       return day.numSteps
     })
     return weeklySteps;
@@ -29,13 +24,8 @@ class Activity extends DataHandler {
 
   getWeeklyTotalFlights(user, startDate){
     this.getUserFilteredData(user);
-    this.userFilteredData.reverse();
-    const targetStartDate = this.userFilteredData.findIndex(day => {
-      return day.date === startDate;
-    })
-    const targetEndDate = targetStartDate + 7;
-    let weeklyFlightsData = this.userFilteredData.slice(targetStartDate, targetEndDate);
-    const weeklyFlights = weeklyFlightsData.reduce((totalFlights, day) => {
+    this.getWeeklyData(startDate);
+    const weeklyFlights = this.weeklyData.reduce((totalFlights, day) => {
       totalFlights += day.flightsOfStairs;
       return totalFlights;
     }, 0)
@@ -44,13 +34,8 @@ class Activity extends DataHandler {
 
   getWeeklyTotalActiveMinutes(user, startDate){
     this.getUserFilteredData(user);
-    this.userFilteredData.reverse();
-    const targetStartDate = this.userFilteredData.findIndex(day => {
-      return day.date === startDate;
-    })
-    const targetEndDate = targetStartDate + 7;
-    let weeklyActiveMinutesData = this.userFilteredData.slice(targetStartDate, targetEndDate);
-    const weeklyActiveMinutes = weeklyActiveMinutesData.reduce((totalMins, day) => {
+    this.getWeeklyData(startDate);
+    const weeklyActiveMinutes = this.weeklyData.reduce((totalMins, day) => {
       totalMins += day.minutesActive;
       return totalMins
     }, 0)
@@ -81,12 +66,8 @@ class Activity extends DataHandler {
 
   getAvgDailyMinsActive(user, startDate){
     this.getUserFilteredData(user);
-    const targetStartDate = this.userFilteredData.findIndex(day => {
-      return day.date === startDate;
-    })
-    const targetEndDate = targetStartDate + 7;
-    let weeklyMinsActive = this.userFilteredData.slice(targetStartDate, targetEndDate);
-    const totalMinsActive = weeklyMinsActive.reduce((totalMinsActive, day) => {
+    this.getWeeklyData(startDate);
+    const totalMinsActive = this.weeklyData.reduce((totalMinsActive, day) => {
       totalMinsActive += day.minutesActive;
       return totalMinsActive
     }, 0)

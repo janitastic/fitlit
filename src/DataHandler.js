@@ -6,6 +6,7 @@ class DataHandler {
     this.userFilteredData;
     this.singleDayData;
     this.allUserSingleDayData;
+    this.weeklyData;
   }
 
   getUserFilteredData(user) {
@@ -27,6 +28,15 @@ class DataHandler {
       return day.date === selectedDate;
     })
     this.allUserSingleDayData = allUserSingleDate;
+  }
+
+  getWeeklyData(selectedDate){
+    this.userFilteredData.reverse();
+    const targetStartDate = this.userFilteredData.findIndex(day => {
+      return day.date === selectedDate;
+    })
+    const targetEndDate = targetStartDate + 7;
+    this.weeklyData = this.userFilteredData.slice(targetStartDate, targetEndDate);
   }
 }
 
