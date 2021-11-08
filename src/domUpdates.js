@@ -1,4 +1,4 @@
-import displayCharts from './charts.js';
+Sleepimport displayCharts from './charts.js';
 import {currentUser} from './scripts.js';
 
 let todaysSteps;
@@ -54,6 +54,12 @@ const displayChartFallbacks = (currentUser, userActivity, userh20, userSleep, to
   dailyWaterFallback.innerText = `Today, you've consumed ${ozDrank} ounces of water.`;
   let hoursSlept = userSleep.getDailyHrsSlept(currentUser, todaysDate);
   dailySleepFallback.innerText = `Last night, you slept ${hoursSlept} hours.`;
+  let weeklySteps = userActivity.getWeeklySteps(currentUser, todaysDate);
+  weeklyStepsFallback.innerText = `In the last seven days, you've walked ${weeklySteps[0]} steps, ${weeklySteps[1]} steps, ${weeklySteps[2]} steps, ${weeklySteps[3]} steps, ${weeklySteps[4]} steps, ${weeklySteps[5]} steps, and ${weeklySteps[6]} steps!`;
+  let weeklyWater = userh20.calculateWeeklyWater(currentUser, todaysDate);
+  weeklyWaterFallback.innerText = `In the last seven days, you've drank ${weeklyWater[0]} ounces, ${weeklyWater[1]} ounces, ${weeklyWater[2]} ounces, ${weeklyWater[3]} ounces, ${weeklyWater[4]} ounces, ${weeklyWater[5]} ounces, and ${weeklyWater[6]} ounces!`;
+  let weeklySleep = userSleep.getWeeklyHrsSlept(currentUser, todaysDate);
+  weeklySleepFallback.innerText = `In the last seven days, you've slept ${weeklySteps[0]} hours, ${weeklySleep[1]} hours, ${weeklySleep[2]} hours, ${weeklySleep[3]} hours, ${weeklySleep[4]} hours, ${weeklySleep[5]} hours, and ${weeklySleep[6]} hours!`;
 }
 
 const displayUserAvgOz = (userh20, currentUser) => {
@@ -123,6 +129,7 @@ const refreshDisplay = (userRepository, userh20, userSleep, userActivity, curren
   displayAvgCommWater(userh20, todaysDate);
   displayAvgCommSleep(userSleep, todaysDate);
   displayUserWeeklyActivity(userActivity, currentUser, todaysDate);
+  displayChartFallbacks(currentUser, userActivity, userh20, userSleep, todaysDate);
   console.log(userh20, userSleep, currentUser, todaysDate);
 };
 
