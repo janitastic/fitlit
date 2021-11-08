@@ -55,6 +55,10 @@ describe('Hydration', () => {
     expect(totalOunces).to.equal(37);
   })
 
+  it('should be able to calculate the average daily ounces for the whole user set', () => {
+    expect(hydrationInfo.calculateAvgCommDailyOunces('2019/06/15')).to.equal(37);
+  })
+
   it('should return the amount of water consumed each day for a week ', () => {
     const totalOunces = hydrationInfo.calculateWeeklyWater(user1, '2019/06/21');
     expect(totalOunces).to.deep.equal([16, 22, 87, 65, 54, 42, 37]);
