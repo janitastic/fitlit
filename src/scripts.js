@@ -166,4 +166,4 @@ const getRandomUser = () => {
 // //FUNCTIONS FOR COMMUNITY AVERAGES
 //
 
-export default currentUser;
+export {currentUser};
