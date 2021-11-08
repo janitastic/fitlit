@@ -27,6 +27,13 @@ class Activity extends DataHandler {
     return weeklySteps;
   }
 
+  getDailyFlights(user, selectedDate){
+    this.getUserFilteredData(user);
+    this.getSingleDayData(selectedDate);
+
+    return this.singleDayData.flightsOfStairs;
+  }
+
   getDailyMiles(user, selectedDate) {
     this.getUserFilteredData(user);
     this.getSingleDayData(selectedDate);
@@ -83,6 +90,15 @@ class Activity extends DataHandler {
       return b.flightsOfStairs - a.flightsOfStairs
     })
     return mostStairsClimbed[0].flightsOfStairs;
+  }
+
+  findUserAvgFlights(user){
+    this.getUserFilteredData(user);
+    const avgFlightsClimbed = this.userFilteredData.reduce((allFlights, userData) => {
+      allFlights += userData.flightsOfStairs;
+      return allFlights
+    }, 0)
+    return Math.floor(avgFlightsClimbed / this.userFilteredData.length * 10) / 10;
   }
 
   findCommunityAvgFlights(selectedDate){
