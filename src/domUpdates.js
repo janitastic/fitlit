@@ -27,7 +27,6 @@ const displayAvgStepGoal = (userRepository) => {
 
 const displaySleepQuality = (userSleep, currentUser, todaysDate) => {
   dailySleepQuality.innerText = userSleep.getDailySleepQual(currentUser, todaysDate);
-  avgSleepQuality.innerText = userSleep.getAvgDailySleepQual(currentUser);
   console.log('DOMUpdates line 24>>', currentUser)
 };
 
@@ -53,6 +52,13 @@ const displayUserAvgOz = (userh20, currentUser) => {
  avgUserOzOverview.innerText = userh20.getAvgOuncesPerDay(currentUser)
 }
 
+const displayUserAvgHrsSlept = (userSleep, currentUser) => {
+  avgUserSleep.innerText = userSleep.getAvgSleepPerDay(currentUser)
+}
+
+const displayUserAvgQual = (userSleep, currentUser) => {
+  avgUserSleepQual.innerText = userSleep.getAvgDailySleepQual(currentUser)
+}
 
 const refreshDisplay = (userRepository, userh20, userSleep, userActivity, currentUser, todaysDate) => {
   displayUserInfoCard(currentUser);
@@ -65,6 +71,8 @@ const refreshDisplay = (userRepository, userh20, userSleep, userActivity, curren
   displayUserAvgMins(currentUser,userActivity,todaysDate);
   displayUserAvgSteps(userRepository);
   displayUserAvgOz(userh20, currentUser);
+  displayUserAvgHrsSlept(userSleep, currentUser);
+  displayUserAvgQual(userSleep, currentUser);
   console.log(userh20, userSleep, currentUser, todaysDate, currentUser);
 }
 
@@ -233,7 +241,9 @@ const userDailySteps = document.getElementById('dailySteps');
 const avgUserStairsOverView = document.getElementById('avgUserStairs');
 const avgUserMinutesOverview = document.getElementById('avgUserMinsActive');
 const avgUserStepsOverview = document.getElementById('avgUserSteps')
-const avgUserOzOverview = document.getElementById('avgUserOz');
+const avgUserOzOverview = document.getElementById('avgUserOz')
+const avgUserSleep = document.getElementById('avgUserSleep');
+const avgUserSleepQual = document.getElementById('avgSleepQuality');
 //Form Field Query Selectors & Event Listeners
 const emptyFieldError = document.getElementById('fieldError');
 const logWater = document.getElementById('logWater');
