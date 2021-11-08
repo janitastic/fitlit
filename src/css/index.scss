@@ -4,6 +4,11 @@
 $white: #f2f2f2;
 $red: #d83c48;
 $purple: #5622c7;
+$titleFont: 1.5em;
+$bodyFont: 1.2em;
+$buttonHeight: 40px;
+$textShadow: 2px 1px 4px #111111;
+
 
 * {
   font-family: 'Montserrat', sans-serif;
@@ -47,15 +52,6 @@ nav {
   }
 }
 
-// .two-column {
-//   @include flex(space-between, center, row, nowrap);
-// }
-
-// .average-widgets {
-//   @include grid();
-//   margin: 4% 0;
-// }
-
 .average-display {
   @include grid();
 
@@ -74,30 +70,30 @@ h1 {
 h2 {
   margin: 0;
   font-size: 2em;
-  text-shadow: 2px 1px 4px #111111;
+  text-shadow: $textShadow;
 }
 
 h3 {
   margin: 2% 0;
-  font-size: 1.5em;
+  font-size: $titleFont;
   text-transform: capitalize;
-  text-shadow: 2px 1px 4px #111111;
+  text-shadow: $textShadow;
 }
 
 h4 {
   margin: 2% 0;
-  font-size: 1.5em;
+  font-size: $titleFont;
 }
 
 h5 {
   margin: 0 0 2% 3%;
   font-weight: 500;
-  font-size: 1.2em;
+  font-size: $bodyFont;
 }
 
 li {
   margin-top: 5%;
-  font-size: 1.2em;
+  font-size: $bodyFont;
 }
 
 .theme-dark {
@@ -137,16 +133,16 @@ li {
 
 .averages {
   margin: 4%;
-  font-size: 1.2em;
+  font-size: $bodyFont;
 }
 
 .plus-icon .white-plus {
-  height: 40px;
+  height: $buttonHeight;
 }
 
 .plus-icon .color-plus {
   display: none;
-  height: 40px;
+  height: $buttonHeight;
 }
 
 .plus-icon:hover .color-plus {
@@ -164,7 +160,7 @@ label {
 input,
 label {
   margin: 1%;
-  font-size: 1.2em;
+  font-size: $bodyFont;
 }
 
 .date-selector {
@@ -178,7 +174,7 @@ button {
   border: 1px solid $white;
   padding: 1% 5%;
   border-radius: 100px;
-  font-size: 1.2em;
+  font-size: $bodyFont;
 
   &:hover {
     background: linear-gradient(318deg, $red, $purple);
@@ -192,12 +188,12 @@ button {
 
 .error-message {
   color: #d83c48;
-  font-size: 1.2em;
+  font-size: $bodyFont;
 }
 
 .success-message {
   color: #66a8b7;
-  font-size: 1.5em;
+  font-size: $titleFont;
   animation-duration: 2s;
 }
 
