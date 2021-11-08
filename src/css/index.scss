@@ -55,14 +55,8 @@ nav {
   background-color: #151516;
 }
 
-// .two-column {
-//   @mixin flex(space-between, center, row, nowrap);
-// }
-
 .two-column {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include flex(space-between, center, row, nowrap);
 }
 
 .average-widgets {
@@ -207,7 +201,6 @@ button {
   color: #66a8b7;
   font-size: 1.5em;
   animation-duration: 2s;
-  /* animation-iteration-count: infinite; */
 }
 
 .bounce {
