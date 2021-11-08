@@ -8,47 +8,30 @@ class Hydration extends DataHandler {
 
   getAvgOuncesPerDay(user) {
     this.getUserFilteredData(user);
-
     const totalOuncesConsumed = this.userFilteredData.reduce((totalOunces, waterInfo) => {
-
       return totalOunces += waterInfo.numOunces;
     }, 0);
-
     return Math.round(totalOuncesConsumed / this.userFilteredData.length);
   }
 
   calculateDailyOunces(user, selectedDate) {
-    //what happens if you pass in a date that there's no data for? Create a test that says you return 'undefined'
     this.getUserFilteredData(user);
     this.getSingleDayData(selectedDate);
-
     return this.singleDayData.numOunces;
   }
 
   calculateAvgCommDailyOunces(selectedDate) {
     this.getAllUserDataSingleDate(selectedDate);
     const totalOuncesConsumed = this.allUserSingleDayData.reduce((totalOunces, waterInfo) => {
-
       return totalOunces += waterInfo.numOunces;
     }, 0);
-
     return Math.round(totalOuncesConsumed / this.allUserSingleDayData.length);
   }
 
   calculateWeeklyWater(user, startDate) {
     this.getUserFilteredData(user);
-
-    const userWaterConsumptionReverse = this.userFilteredData.reverse()
-
-    let targetStartDate = userWaterConsumptionReverse.findIndex(waterInfo => {
-      return waterInfo.date === startDate;
-    });
-
-    const targetEndDate = targetStartDate + 7;
-
-    const weeklyWaterIntake = userWaterConsumptionReverse.slice(targetStartDate, targetEndDate);
-
-    const dailyWaterIntake = weeklyWaterIntake.map((day) => {
+    this.getWeeklyData(startDate);
+    const dailyWaterIntake = this.weeklyData.map((day) => {
       return day.numOunces;
     });
     return dailyWaterIntake;
