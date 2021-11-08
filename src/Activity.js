@@ -13,6 +13,20 @@ class Activity extends DataHandler {
     return this.singleDayData.numSteps;
   }
 
+  getWeeklySteps(user, startDate){
+    this.getUserFilteredData(user);
+    this.userFilteredData.reverse();
+    const targetStartDate = this.userFilteredData.findIndex(day => {
+      return day.date === startDate;
+    })
+    const targetEndDate = targetStartDate + 7;
+    let weeklyStepsData = this.userFilteredData.slice(targetStartDate, targetEndDate);
+    const weeklySteps = weeklyStepsData.map((day) => {
+      return day.numSteps
+    })
+    return weeklySteps;
+  }
+
   getDailyFlights(user, selectedDate){
     this.getUserFilteredData(user);
     this.getSingleDayData(selectedDate);
