@@ -151,6 +151,7 @@ const getRandomIndex = (array) => {
 
 const getRandomUser = () => {
   currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
+  console.log('randomize>>>>', currentUser)
 }
 
 // //FUNCTIONS FOR USER AVERAGES

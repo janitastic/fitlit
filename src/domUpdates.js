@@ -1,7 +1,15 @@
 import displayCharts from './charts.js';
-import currentUser from './scripts.js';
+import currentUser
+ from './scripts.js';
+
+let todaysSteps;
+let todaysMinutes;
+let todaysStairs;
+
+
 const displayUserInfoCard = (currentUser) => {
   greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`;
+  console.log('DOMUpdates line 8>>', currentUser);
 };
 
 const displayUserData = (currentUser) => {
@@ -9,6 +17,7 @@ const displayUserData = (currentUser) => {
   userAddress.innerText = `${currentUser.address}`;
   userStride.innerText = `${currentUser.strideLength}`;
   userStepGoal.innerText = `${currentUser.dailyStepGoal}`;
+  console.log('DOMUpdates line 15>>', currentUser)
 };
 
 const displayAvgStepGoal = (userRepository) => {
@@ -17,13 +26,46 @@ const displayAvgStepGoal = (userRepository) => {
 
 const displaySleepQuality = (userSleep, currentUser, todaysDate) => {
   dailySleepQuality.innerText = userSleep.getDailySleepQual(currentUser, todaysDate);
-  avgSleepQuality.innerText = userSleep.getAvgDailySleepQual(currentUser);
+  console.log('DOMUpdates line 24>>', currentUser)
 };
+
+
+const displayUserAvgSteps = (userRepository) => {
+  avgUserStepsOverview.innerText = userRepository.getAvgStepCount()
+}
+const displayUserAvgStairs = (currentUser, userActivity) => {
+  avgUserStairsOverView.innerText = userActivity.findUserAvgFlights(currentUser)
+}
+
+const displayUserAvgMins = (currentUser, userActivity, todaysDate) => {
+  avgUserMinutesOverview.innerText = userActivity.getAvgDailyMinsActive(currentUser, todaysDate)
+}
 
 const displayUserDailySteps = (currentUser, userActivity, todaysDate) => {
   let numSteps = userActivity.getDailySteps(currentUser, todaysDate);
   let milesWalked = userActivity.getDailyMiles(currentUser, todaysDate);
   userDailySteps.innerText = `${numSteps} out of ${currentUser.dailyStepGoal}`;
+
+  console.log('DOMUpdates line 29>>', currentUser)
+};
+
+const displayUserAvgOz = (userh20, currentUser) => {
+ avgUserOzOverview.innerText = userh20.getAvgOuncesPerDay(currentUser)
+}
+
+const displayUserAvgHrsSlept = (userSleep, currentUser) => {
+  avgUserSleep.innerText = userSleep.getAvgSleepPerDay(currentUser)
+}
+
+const displayUserAvgQual = (userSleep, currentUser) => {
+  avgUserSleepQual.innerText = userSleep.getAvgDailySleepQual(currentUser)
+}
+const displayDayMins = (userActivity,currentUser, todaysDate) => {
+  dayMinsOverview.innerText = userActivity.getDailyMinsActive(currentUser, todaysDate)
+}
+
+const displayDayStairs = (userActivity, currentUser, todaysDate) => {
+  dayStairsOverview.innerText = userActivity.getDailyFlights(currentUser,todaysDate)
   userDailyMilesWalked.innerText = `${milesWalked}`;
 };
 
@@ -55,11 +97,21 @@ const refreshDisplay = (userRepository, userh20, userSleep, userActivity, curren
   displaySleepQuality(userSleep, currentUser, todaysDate);
   displayCharts(userh20, userSleep, userActivity, currentUser, todaysDate);
   displayUserDailySteps(currentUser, userActivity, todaysDate);
+  displayUserAvgStairs(currentUser,userActivity);
+  displayUserAvgMins(currentUser,userActivity,todaysDate);
+  displayUserAvgSteps(userRepository);
+  displayUserAvgOz(userh20, currentUser);
+  displayUserAvgHrsSlept(userSleep, currentUser);
+  displayUserAvgQual(userSleep, currentUser);
+  displayDayMins(userActivity,currentUser, todaysDate);
+  displayDayStairs(userActivity,currentUser, todaysDate);
   displayAvgCommActivity(userActivity, todaysDate);
   displayAvgCommWater(userh20, todaysDate);
   displayAvgCommSleep(userSleep, todaysDate);
+
   console.log(userh20, userSleep, currentUser, todaysDate, currentUser);
 }
+
 const captureOunces = () => {
   let todaysOunces;
   if (ouncesInput.value && ouncesInput.value > 0 && ouncesInput.value.length <= 2) {
@@ -72,7 +124,7 @@ const captureOunces = () => {
 }
 const captureHrsSlept = () => {
   let todaysSleep;
-  if (sleepInput.value && sleepInput.value >= 0 && sleepInput.value <= 24)  {
+  if (sleepInput.value && sleepInput.value >= 0 && sleepInput.value <= 24) {
     todaysSleep = sleepInput.value
     console.log(todaysSleep)
   } else {
@@ -82,7 +134,7 @@ const captureHrsSlept = () => {
 }
 const captureQuality = () => {
   let todaysQuality;
-  if (qualityInput.value && qualityInput.value >0 && qualityInput.value <= 5)  {
+  if (qualityInput.value && qualityInput.value > 0 && qualityInput.value <= 5) {
     todaysQuality = qualityInput.value
     console.log(todaysQuality)
   } else {
@@ -103,23 +155,25 @@ const clearActivityInputs = () => {
   stairsInput.value = null
   minutesInput.value = null
 }
-const captureActivity = () => {
+const captureActivity = (currentUser) => {
+  console.log('DOMUpdates line 88>>', currentUser);
   checkActivityInputs()
-  // captureSteps();
-  // captureStairs();
-  // captureMinutes();
-  console.log(currentUser);
-  postSleepData(currentUser);
+  captureSteps();
+  captureStairs();
+  captureMinutes();
+  console.log('DOMUpdates line 92>>', currentUser);
+  // postSleepData(currentUser);
   postActivityData(currentUser);
-  postHydrationData(currentUser);
+  // postHydrationData(currentUser);
 }
+
 const postSleepData = () => {
   const newSleep = {
-        userID: 1,
-        date: '2020/01/22',
-        hoursSlept: 6,
-        sleepQuality: 4
-      }
+    userID: 1,
+    date: '2020/01/22',
+    hoursSlept: 6,
+    sleepQuality: 4
+  }
   return fetch('http://localhost:3001/api/v1/sleep', {
       method: 'POST',
       body: JSON.stringify(newSleep),
@@ -131,6 +185,7 @@ const postSleepData = () => {
     .then(data => console.log(data))
     .catch(err => console.log(err));
 }
+
 const postHydrationData = () => {
   const newHydration = {
     userID: 1,
@@ -148,13 +203,15 @@ const postHydrationData = () => {
     .then(data => console.log(data))
     .catch(err => console.log(err));
 }
+
 const postActivityData = () => {
+  console.log('activityData user>>', currentUser);
   const newActivity = {
     userID: 1,
-    date: '2020/01/22',
-    numSteps: 3400,
-    minutesActive: 130,
-    flightsOfStairs: 17
+    date: '2020/01/23',
+    numSteps: parseInt(todaysSteps),
+    minutesActive: parseInt(todaysMinutes),
+    flightsOfStairs: parseInt(todaysStairs)
   }
   return fetch('http://localhost:3001/api/v1/activity', {
       method: 'POST',
@@ -167,21 +224,24 @@ const postActivityData = () => {
     .then(data => console.log(data))
     .catch(err => console.log(err));
 }
+
+
+
+
 const captureSteps = () => {
-  let todaysSteps;
-  if (stepsInput.value && stepsInput.value >= 0 && stepsInput.value < 100000)  {
+  if (stepsInput.value && stepsInput.value >= 0 && stepsInput.value < 100000) {
     todaysSteps = stepsInput.value
     console.log(todaysSteps)
   } else {
-    stepsInput.value = null
+    stepsInput.value = 0
   }
-  console.log('todaysStepsAftrRtn>>', todaysSteps)
+  
   return todaysSteps;
 }
 const captureStairs = () => {
-  let todaysStairs;
-  if (stairsInput.value && stairsInput.value >= 0 && stairsInput.value <= 8350)  {
+  if (stairsInput.value && stairsInput.value >= 0 && stairsInput.value <= 8350) {
     todaysStairs = stairsInput.value
+    dayStairsOverview.innerText = todaysStairs
     console.log(todaysStairs)
   } else {
     stairsInput.value = null
@@ -189,9 +249,9 @@ const captureStairs = () => {
   return todaysStairs;
 }
 const captureMinutes = () => {
-  let todaysMinutes;
-  if (minutesInput.value && minutesInput.value >= 0 && minutesInput.value <= 1440)  {
+  if (minutesInput.value && minutesInput.value >= 0 && minutesInput.value <= 1440) {
     todaysMinutes = minutesInput.value
+    dayMinutesOverView.innerText =
     console.log(todaysMinutes)
   } else {
     minutesInput.value = null
@@ -216,6 +276,15 @@ const avgStepGoal = document.getElementById('avgStepGoal');
 const dailySleepQuality = document.getElementById('dailySleepQuality');
 const avgSleepQuality = document.getElementById('avgSleepQuality');
 const userDailySteps = document.getElementById('dailySteps');
+
+const avgUserStairsOverView = document.getElementById('avgUserStairs');
+const avgUserMinutesOverview = document.getElementById('avgUserMinsActive');
+const avgUserStepsOverview = document.getElementById('avgUserSteps')
+const avgUserOzOverview = document.getElementById('avgUserOz')
+const avgUserSleep = document.getElementById('avgUserSleep');
+const avgUserSleepQual = document.getElementById('avgSleepQuality');
+const dayStairsOverview = document.getElementById('flightsOfStairs');
+const dayMinsOverview = document.getElementById('activeMinutes')
 const userDailyMilesWalked = document.getElementById('dailyMilesWalked');
 const avgCommSteps = document.getElementById('avgCommSteps');
 const avgCommStairs = document.getElementById('avgCommStairs');
@@ -264,9 +333,11 @@ let domUpdates = () => {
   function hide(element) {
     element.classList.add('hidden')
   }
+
   function show(element) {
     element.classList.remove('hidden')
   }
+
   function toggle(element) {
     element.classList.toggle('hidden');
   }
@@ -275,10 +346,12 @@ let domUpdates = () => {
     toggle(waterChart);
     toggle(waterForm);
   };
+
   function showSleepForm() {
     toggle(sleepChart);
     toggle(sleepForm);
   };
+
   function showActivityForm() {
     toggle(activityReport);
     toggle(activityForm);
@@ -289,16 +362,16 @@ let domUpdates = () => {
 }
 export default domUpdates;
 export {
-captureHrsSlept,
-captureQuality,
-captureOunces,
-captureActivity,
-captureMinutes,
-captureStairs,
-captureSteps,
-displayUserInfoCard,
-displayUserData,
-displayAvgStepGoal,
-displaySleepQuality,
-refreshDisplay
+  captureHrsSlept,
+  captureQuality,
+  captureOunces,
+  captureActivity,
+  captureMinutes,
+  captureStairs,
+  captureSteps,
+  displayUserInfoCard,
+  displayUserData,
+  displayAvgStepGoal,
+  displaySleepQuality,
+  refreshDisplay
 };
