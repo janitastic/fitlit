@@ -333,6 +333,14 @@ const activityInputs = document.querySelectorAll('.activity-input').forEach(inpu
 })
 
 let domUpdates = () => {
+  ouncesInput.addEventListener('change', () => {
+    if (ouncesInput.value) {
+      saveWaterBtn.disabled = false; 
+    } else {
+      saveWaterBtn.disabled = true;     
+  }
+})
+
   logWater.addEventListener('click', showWaterForm);
   logWater.addEventListener('keyup', showWaterForm);
   saveWaterBtn.addEventListener('click', () => {
@@ -374,6 +382,7 @@ let domUpdates = () => {
   function showWaterForm() {
     toggle(waterChart);
     toggle(waterForm);
+    saveWaterBtn.disabled = true;
   };
 
   function showSleepForm() {
