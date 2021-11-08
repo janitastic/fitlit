@@ -159,15 +159,15 @@ const captureActivity = (currentUser) => {
   captureStairs();
   captureMinutes();
   console.log('DOMUpdates line 92>>', currentUser);
-  // postSleepData(currentUser);
-  postActivityData(currentUser);
-  // postHydrationData(currentUser);
+  postSleepData(currentUser);
+  postActivityData();
+  postHydrationData(currentUser);
 }
 
-const postSleepData = () => {
+const postSleepData = (currentUser) => {
   const newSleep = {
-    userID: 1,
-    date: '2020/01/22',
+    userID: currentUser.id,
+    date: '2020/01/23',
     hoursSlept: 6,
     sleepQuality: 4
   }
@@ -183,10 +183,10 @@ const postSleepData = () => {
     .catch(err => console.log(err));
 }
 
-const postHydrationData = () => {
+const postHydrationData = (currentUser) => {
   const newHydration = {
-    userID: 1,
-    date: '2020/01/22',
+    userID: currentUser.id,
+    date: '2020/01/23',
     numOunces: 45
   }
   return fetch('http://localhost:3001/api/v1/hydration', {
@@ -202,6 +202,7 @@ const postHydrationData = () => {
 }
 
 const postActivityData = () => {
+  console.log('minutes active>>>', userActivity.minutesActive)
   console.log('activityData user>>', currentUser);
   const newActivity = {
     userID: currentUser.id,
@@ -218,7 +219,7 @@ const postActivityData = () => {
       }
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => console.log(data, newActivity))
     .catch(err => console.log(err));
 }
 
