@@ -16,6 +16,16 @@ class Sleep extends DataHandler {
     return Math.round(totalHoursSlept / this.userFilteredData.length)
   }
 
+  getAvgCommHrsSlept(selectedDate) {
+    this.getAllUserDataSingleDate(selectedDate);
+
+    const totalHoursSlept = this.allUserSingleDayData.reduce((totalHours, sleepInfo) => {
+      return totalHours += sleepInfo.hoursSlept
+    }, 0);
+
+    return Math.round(totalHoursSlept / this.allUserSingleDayData.length)
+  }
+
   getAvgDailySleepQual(user) {
     this.getUserFilteredData(user);
 

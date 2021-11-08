@@ -41,6 +41,13 @@ const displayAvgCommWater = (userh20, todaysDate) => {
   avgCommWater.innerText = `${numOunces} Oz.`;
 };
 
+const displayAvgCommSleep = (userSleep, todaysDate) => {
+  let sleepHrs = userSleep.getAvgCommHrsSlept(todaysDate);
+  let sleepQual = userSleep.getAvgAllSleepQual(todaysDate);
+  avgCommSleep.innerText = `${sleepHrs} hrs.`
+  avgCommSleepQuality.innerText = `${sleepQual}`;
+};
+
 const refreshDisplay = (userRepository, userh20, userSleep, userActivity, currentUser, todaysDate) => {
   displayUserInfoCard(currentUser);
   displayUserData(currentUser);
@@ -50,6 +57,7 @@ const refreshDisplay = (userRepository, userh20, userSleep, userActivity, curren
   displayUserDailySteps(currentUser, userActivity, todaysDate);
   displayAvgCommActivity(userActivity, todaysDate);
   displayAvgCommWater(userh20, todaysDate);
+  displayAvgCommSleep(userSleep, todaysDate);
   console.log(userh20, userSleep, currentUser, todaysDate, currentUser);
 }
 const captureOunces = () => {
@@ -212,7 +220,6 @@ const userDailyMilesWalked = document.getElementById('dailyMilesWalked');
 const avgCommSteps = document.getElementById('avgCommSteps');
 const avgCommStairs = document.getElementById('avgCommStairs');
 const avgCommMinsActive = document.getElementById('avgCommMinsActive');
-//
 const avgCommWater = document.getElementById('avgCommWater');
 const avgCommSleep = document.getElementById('avgCommSleep');
 const avgCommSleepQuality = document.getElementById('avgCommSleepQuality');
