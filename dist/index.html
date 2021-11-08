@@ -52,7 +52,7 @@
             </span>
               <article class="daily-activity" id="activityReport">
                 <article class="daily-steps" id="stepsChart">
-                  <canvas id="dailyStepsChart" width="400" height="60"></canvas>
+                  <canvas id="dailyStepsChart" width="400" height="60"><p id="dailyStepsFallback">A chart of daily steps taken.</p></canvas>
                 </article>
                 <h5>Steps Taken - <span id="dailySteps"></span></h5>
                 <h5>Estimated Miles Walked -  <span id="dailyMilesWalked"></span></h5>
@@ -84,7 +84,7 @@
               </span>
             </span>
               <article class="daily-water" id="waterChart">
-                <canvas id="dailyWaterChart" width="400" height="60"></canvas>
+                <canvas id="dailyWaterChart" width="400" height="60"><p id="dailyWaterFallback">A chart of daily water consumed.</p></canvas>
               </article>
               <article class="hidden" id="waterForm">
                 <label for="water">How much did you drink today? (in ounces)</label>
@@ -107,12 +107,12 @@
               </span>
             </span>
             <article class="daily-sleep" id="sleepChart">
-              <canvas id="dailySleepChart" width="400" height="60"></canvas>
+              <canvas id="dailySleepChart" width="400" height="60"><p id="dailySleepFallback">A chart of daily hours slept.</p></canvas>
                 <h5>Sleep Quality - <span id="dailySleepQuality"></span> / 5</h5>
             </article>
             <article class="hidden" id="sleepForm">
               <label for="sleep">How many hours of sleep did you get last night?</label>
-                <input class="sleep-input-field" type="number" placeholder="Hours Slept (1-24)" id="hoursSlept" name="hours-slept" min="1" required minlength="1" maxlength="2" size="20" 
+                <input class="sleep-input-field" type="number" placeholder="Hours Slept (1-24)" id="hoursSlept" name="hours-slept" min="1" required minlength="1" maxlength="2" size="20"
                 label="Add your hours slept last night" tabindex="13">
               <label for="sleep">How well did you sleep, on a scale of 1 to 5?</label>
                 <input class="sleep-input-field" type="range" id="sleepQuality" name="sleep-quality" min="1" max="5" value="3" size="20" label="Select your quality of sleep" tabindex="14">
@@ -180,18 +180,18 @@
           <article class="activity" id="userActivity">
             <h4>Activity</h4>
               <h5>Steps</h5>
-              <canvas id="weeklyStepChart" width="200" height="60" style="margin-left: 4%"></canvas>
+              <canvas id="weeklyStepChart" width="200" height="60" style="margin-left: 4%"><p id="weeklyStepsFallback">A chart of weekly steps taken.</p></canvas>
               <h5>Flights of Stairs - <span id="weeklyFlightsStairs"></span></h5>
               <h5>Active Minutes - <span id="weeklyActiveMinutes"></span></h5>
               <!-- Weekly Active Minutes Goes Here -->
           </article>
           <article class="water" id="userWater">
             <h4>Water</h4>
-            <canvas id="weeklyWaterChart" width="200" height="60" style="margin-left: 4%"></canvas>
+            <canvas id="weeklyWaterChart" width="200" height="60" style="margin-left: 4%"><p id="weeklyWaterFallback">A chart of weekly ounces drank.</p></canvas>
           </article>
           <article class="sleep" id="userSleep">
             <h4>Sleep</h4>
-            <canvas id="weeklySleepChart" width="200" height="60" style="margin-left: 4%"></canvas>
+            <canvas id="weeklySleepChart" width="200" height="60" style="margin-left: 4%"><p id="weeklySleepFallback">A chart of weekly hours slept, as well as sleep quality.</p></canvas>
           </article>
       </section>
     </main>

@@ -15,7 +15,7 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
       borderWidth: 1,
       order: 1,
     }, {
-      label: 'Goal',
+      label: 'Recommended Daily',
       data: [64, 64, 64, 64, 64, 64, 64],
       backgroundColor: ['rgba(255, 255, 255, 0.8)'],
       order: 1,
@@ -67,7 +67,7 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
       borderWidth: 1,
       order: 1
     }, {
-      label: 'Goal',
+      label: 'Recommended Daily',
       data: [64],
       backgroundColor: ['rgba(255, 255, 255, 0.8)'],
       order: 1
@@ -166,7 +166,7 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
       borderWidth: 1,
       order: 1
     }, {
-      label: 'Goal',
+      label: 'Recommended Nightly',
       data: [7],
       backgroundColor: ['rgba(255, 255, 255, 0.8)'],
       order: 1
@@ -202,53 +202,6 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
       }
     }});
 
-  //AVERAGE SLEEP - we can also remove this chart
-  // var totalAvgSleepChart = document.getElementById('avgUserSleepChart').getContext('2d');
-  // let avgSleepChartData = allUsersSleep.getAvgSleepPerDay(currentUser.id);
-  // const avgSleepData = {
-  //   labels: [''],
-  //   datasets: [{
-  //     label: 'Time Slept Average',
-  //     data: [avgSleepChartData],
-  //     backgroundColor: ['rgba(96, 23, 116, 0.4)'],
-  //     borderColor: ['rgb(96, 23, 116)'],
-  //     borderWidth: 1,
-  //     order: 1
-  //   }, {
-  //     label: 'Goal',
-  //     data: [7],
-  //     backgroundColor: ['rgba(255, 255, 255, 0.8)'],
-  //     order: 1
-  //   }]
-  // };
-  // var avgSleepChartBuilder = new Chart(totalAvgSleepChart, {
-  //   type: 'bar',
-  //   data: avgSleepData,
-  //   options: {
-  //     plugins: {
-  //       legend: false
-  //     },
-  //     indexAxis: 'y',
-  //     scales: {
-  //       x: {
-  //         grid: {
-  //           display: false
-  //         },
-  //         display: false
-  //       },
-  //       y: {
-  //         title: false,
-  //         beginAtZero: true,
-  //         stacked: true,
-  //         grid: {
-  //           display: false
-  //         },
-  //         ticks: {
-  //           color: ['#FFF'],
-  //         },
-  //       }
-  //     }
-  //   }});
 
 // WEEKLY STEPS
 
@@ -326,7 +279,7 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
         order: 2
       }, {
         type: 'bar',
-        label: 'Goal',
+        label: 'Recommended Nightly',
         data: [7, 7, 7, 7, 7, 7, 7],
         backgroundColor: ['rgba(255, 255, 255, 0.8)'],
         order: 3
