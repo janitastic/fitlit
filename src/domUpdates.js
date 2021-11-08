@@ -171,6 +171,16 @@ const displayQualityRange = () => {
   qualityRange.innerText = qualityInput.value
   console.log('slide>>', qualityInput.value);
 }
+
+/* User Input Dropdowns. DON'T DELETE. */
+
+
+// const displayInputFields = () => {
+//   inputFieldsDropDown
+// }
+
+
+
 //QUERY SELECTORS
 const greeting = document.getElementById('firstName');
 const userSteps = document.getElementById('userSteps');
@@ -210,18 +220,23 @@ const minutesInput = document.getElementById('minsActive')
 const saveActivityBtn = document.getElementById('activityBtn');
 const activityReport = document.getElementById('activityReport');
 const activityForm = document.getElementById('activityForm');
+
 let domUpdates = () => {
   logWater.addEventListener('click', showWaterForm);
+  logWater.addEventListener('keyup', showWaterForm);
   saveWaterBtn.addEventListener('click', captureOunces);
   logSleep.addEventListener('click', showSleepForm);
+  logSleep.addEventListener('keyup', showSleepForm);
   saveSleepBtn.addEventListener('click', captureHrsSlept);
   saveQualityBtn.addEventListener('click', captureQuality);
   qualityInput.addEventListener('change', displayQualityRange)
   logActivity.addEventListener('click', showActivityForm);
+  logActivity.addEventListener('keyup', showActivityForm);
   saveActivityBtn.addEventListener('click', captureActivity);
   // saveStepsBtn.addEventListener('click', captureSteps);
   // saveStairsBtn.addEventListener('click', captureStairs);
   // saveMinutesBtn.addEventListener('click', captureMinutes);
+
   //HELPER FUNCTIONS
   function hide(element) {
     element.classList.add('hidden')
