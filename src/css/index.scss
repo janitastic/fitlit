@@ -29,6 +29,7 @@ body, html {
 
 header {
   @include flex(center, stretch, column, nowrap);
+
 }
 
 main {
@@ -53,19 +54,28 @@ nav {
 .summary {
   @include flex(flex-start, stretch, column, nowrap);
   background-color: #151516;
+  
+  .two-column {
+    @include flex(space-between, center, row, nowrap);
+  }
 }
 
-.two-column {
-  @include flex(space-between, center, row, nowrap);
-}
+// .two-column {
+//   @include flex(space-between, center, row, nowrap);
+// }
 
-.average-widgets {
-  @include grid();
-  margin: 4% 0;
-}
+// .average-widgets {
+//   @include grid();
+//   margin: 4% 0;
+// }
 
 .average-display {
   @include grid();
+
+  .average-widgets {
+    @include grid();
+    margin: 4% 0;
+  }
 }
 
 h1 {
