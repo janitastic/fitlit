@@ -25,6 +25,16 @@ class Hydration extends DataHandler {
     return this.singleDayData.numOunces;
   }
 
+  calculateAvgCommDailyOunces(selectedDate) {
+    this.getAllUserDataSingleDate(selectedDate);
+    const totalOuncesConsumed = this.allUserSingleDayData.reduce((totalOunces, waterInfo) => {
+
+      return totalOunces += waterInfo.numOunces;
+    }, 0);
+
+    return Math.round(totalOuncesConsumed / this.allUserSingleDayData.length);
+  }
+
   calculateWeeklyWater(user, startDate) {
     this.getUserFilteredData(user);
 
