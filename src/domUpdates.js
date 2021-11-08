@@ -123,7 +123,7 @@ const captureHrsSlept = (currentUser) => {
     todaysSleep = sleepInput.value;
     console.log('line 124', sleepInput.value);
   } else {
-    sleepInput.value = '';
+    sleepInput.value = null;
     return false;
   }
   return todaysSleep;
@@ -156,7 +156,6 @@ const captureActivity = (currentUser) => {
   captureStairs();
   captureMinutes();
   postActivityData();
-  // clearActivityInputs(); - removed from here so field error would hide
 };
 
 const postSleepData = () => {
@@ -297,7 +296,6 @@ const waterCancelBtn = document.getElementById('cancelWater');
 const logSleep = document.getElementById('logSleep');
 const saveSleepBtn = document.getElementById('saveAllSleepBtn');
 const sleepMessage = document.getElementById('sleepMessage');
-// const sleepError = document.getElementById('sleepError');
 const qualityInput = document.getElementById('sleepQuality');
 const qualityRange = document.getElementById('selectedRange');
 const sleepInput = document.getElementById('hoursSlept');
@@ -314,15 +312,6 @@ const activityReport = document.getElementById('activityReport');
 const activityForm = document.getElementById('activityForm');
 const actBtnView = document.getElementById('actBtnView');
 const actCancelBtn = document.getElementById('cancelActivity');
-// const activityInputs = document.querySelectorAll('.activity-input').forEach(input => {
-//   input.addEventListener('change', disableSaveButton => {
-//     if (!stepsInput.value || !stairsInput.value || !minutesInput.value) {
-//       saveActivityBtn.disabled = true;
-//     } else {
-//       saveActivityBtn.disabled = false;
-//     }
-//   });
-// });
 
 let domUpdates = () => {
   logWater.addEventListener('click', showWaterForm);
@@ -331,7 +320,6 @@ let domUpdates = () => {
     captureOunces();
     postHydrationData();
     checkWaterInput();
-    // ouncesInput.value = null;
   });
   waterCancelBtn.addEventListener('click', () => {
     show(waterChart);
@@ -340,15 +328,15 @@ let domUpdates = () => {
     hide(waterBtnView);
   });
 
-  logSleep.addEventListener('click', showSleepForm);
+  logSleep.addEventListener('click', () => {
+    showSleepForm();
+    clearSleepInputs();
+  });
   logSleep.addEventListener('keyup', showSleepForm);
   saveSleepBtn.addEventListener('click', () => {
     checkSleepInput();
     captureHrsSlept();
     captureQuality();
-    postSleepData();
-    // show(sleepMessage);
-    clearSleepInputs();
   });
   sleepCancelBtn.addEventListener('click', () => {
     show(sleepChart);
@@ -381,10 +369,6 @@ let domUpdates = () => {
     element.classList.remove('hidden');
   }
 
-  function toggle(element) {
-    element.classList.toggle('hidden');
-  }
-
   //FORM FUNCTIONS
   function showWaterForm() {
     hide(waterChart);
@@ -392,7 +376,6 @@ let domUpdates = () => {
     show(waterBtnView);
     hide(waterMessage);
     hide(logWater);
-    // saveWaterBtn.disabled = true;
   };
 
   function showSleepForm() {
@@ -400,7 +383,6 @@ let domUpdates = () => {
     hide(logSleep);
     show(sleepForm);
     show(sleepBtnView);
-    // saveSleepBtn.disabled = true;
   };
 
   function showActivityForm() {
@@ -409,7 +391,6 @@ let domUpdates = () => {
     show(actBtnView);
     hide(activityMessage);
     hide(logActivity);
-    // saveActivityBtn.disabled = true;
   };
 
   function checkActivityInputs() {
@@ -445,16 +426,10 @@ let domUpdates = () => {
      sleepMessage.innerHTML = 
      `<p class="error-message">Oops! Are you sure you didn't get any sleep last night? 😧 </p>`
     } else {
-      sleepMessage.innerHTML = 
-      `<p class="error-message"> Great job getting some zzz's</p>`
      postSleepData()
      show(sleepMessage);
-    //  hide(sleepMessage);
-    //  sleepInput.value = null;
-    //  show(sleepError);
      hide(sleepBtnView);
      hide(sleepForm);
-    //  show(sleepChart);
      show(logSleep);
     }
   };
