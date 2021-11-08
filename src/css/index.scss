@@ -181,6 +181,7 @@ button {
   border: 1px solid $white;
   padding: 1% 5%;
   border-radius: 100px;
+  font-size: 1.2em;
 
   &:hover {
     background: linear-gradient(318deg, $red, $purple);
@@ -201,6 +202,12 @@ button {
   color: #66a8b7;
   font-size: 1.5em;
   animation-duration: 2s;
+}
+
+.activity-buttons,
+.water-buttons,
+.sleep-buttons {
+  margin: 4% 2%;
 }
 
 .bounce {
