@@ -86,7 +86,9 @@
               </article>
               <article class="hidden" id="waterForm">
                 <label for="water">How much did you drink today? (in ounces)</label>
-                <input type="number" placeholder="Total oz.(1-99)" id="waterIntake" name="ounces-drank" min="0" required minlength="1" maxlength="2" size="25" label="Add your ounces drank for today" tabindex="8">
+                <input type="number" placeholder="Total oz.(1-99)" id="waterIntake" name="ounces-drank" min="0" required minlength="1" maxlength="2" value="" size="25" label="Add your ounces drank for today" tabindex="8">
+                <div class="hidden" id="waterMessage">
+                </div>
                 <button id="saveWaterBtn" tabindex="9">Save</button>
               </article>
           </section>

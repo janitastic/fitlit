@@ -215,7 +215,7 @@ button:disabled {
 }
 
 .success-message {
-  color: #DDBA8F;
+  color: #66a8b7;
   font-size: 1.5em;
   animation-duration: 2s;
   /* animation-iteration-count: infinite; */

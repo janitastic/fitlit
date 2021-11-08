@@ -184,7 +184,8 @@ const postHydrationData = () => {
       }
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => console.log(data),
+      waterMessage.innerHTML = `<p class="success-message bounce">Way to stay hydrated! 💧</p>`)
     .catch(err => console.log(err))
 };
 
@@ -272,6 +273,7 @@ const avgCommSleep = document.getElementById('avgCommSleep');
 const avgCommSleepQuality = document.getElementById('avgCommSleepQuality');
 const activityMessage = document.getElementById('activityMessage');
 const logWater = document.getElementById('logWater');
+const waterMessage = document.getElementById('waterMessage');
 const saveWaterBtn = document.getElementById('saveWaterBtn');
 const ouncesInput = document.getElementById('waterIntake');
 const waterChart = document.getElementById('waterChart');
@@ -302,10 +304,12 @@ const activityForm = document.getElementById('activityForm');
 
 let domUpdates = () => {
   ouncesInput.addEventListener('change', () => {
-    if (ouncesInput.value) {
-      saveWaterBtn.disabled = false;
+    if (!ouncesInput.value) {
+      // saveWaterBtn.disabled = false;
+      show(waterMessage);
     } else {
-      saveWaterBtn.disabled = true;
+      // saveWaterBtn.disabled = true;
+      show(waterMessage);
     }
   });
 
@@ -322,6 +326,7 @@ let domUpdates = () => {
   saveWaterBtn.addEventListener('click', () => {
     captureOunces();
     postHydrationData();
+    checkWaterInput();
     ouncesInput.value = null;
   });
 
@@ -361,7 +366,7 @@ let domUpdates = () => {
   function showWaterForm() {
     toggle(waterChart);
     toggle(waterForm);
-    saveWaterBtn.disabled = true;
+    // saveWaterBtn.disabled = true;
   };
 
   function showSleepForm() {
@@ -381,11 +386,20 @@ let domUpdates = () => {
      show(activityMessage);
      activityMessage.innerHTML = `<p class="error-message">Oops! Your forgot something.<br>Please complete all fields. 😀</p>`
      clearActivityInputs();
-   } else {
+    } else {
      show(activityMessage);
      clearActivityInputs();
-   }
- };
+    }
+  };
+
+  function checkWaterInput() {
+    if (!ouncesInput.value) {
+     show(waterMessage);
+     waterMessage.innerHTML = `<p class="error-message">Oops! Your forgot something.🥛 <br>Please enter how many ounces you drank. </p>`
+    } else {
+     show(waterMessage);
+    }
+  };
 
 }; //CLOSING TAG FOR domUpdates - DO NOT DELETE!
 
