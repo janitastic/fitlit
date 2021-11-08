@@ -250,6 +250,62 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
   //     }
   //   }});
 
+// WEEKLY STEPS
+
+  let weeklyStepChartData = userActivity.getWeeklySteps(currentUser, todaysDate);
+  var weeklyStepChart = document.getElementById('weeklyStepChart').getContext('2d');
+  const weeklyStepLabels = ['SUN', 'MON', 'TUES', 'WED', 'THUR', 'FRI', 'SAT'];
+  const weeklyStepGoals = new Array(7).fill(currentUser.dailyStepGoal);
+  const weeklyStepData = {
+    labels: weeklyStepLabels,
+    datasets: [{
+      label: 'Total Steps',
+      data: weeklyStepChartData,
+      backgroundColor: ['rgba(235, 180, 35, 0.4)'],
+      borderColor: ['rgb(235, 180, 35)'],
+      borderWidth: 1,
+      order: 1,
+    }, {
+      label: 'Goal',
+      data: weeklyStepGoals,
+      backgroundColor: ['rgba(255, 255, 255, 0.8)'],
+      order: 1,
+    }]
+  };
+
+  var weeklyStepChartBuilder = new Chart(weeklyStepChart, {
+    type: 'bar',
+    data: weeklyStepData,
+    options: {
+      plugins: {
+        legend: {
+          labels: {
+            color: ['#FFF']
+          }
+        }
+      },
+      indexAxis: 'y',
+      scales: {
+        x: {
+          grid: {
+            display: false
+          },
+          display: false
+        },
+        y: {
+          beginAtZero: true,
+          stacked: true,
+          grid: {
+            display: false
+          },
+          ticks: {
+            color: ['#FFF'],
+          },
+        }
+      }
+    }});
+
+
     //WEEKLY SLEEP
 
     let weeklySleepChartData = userSleep.getWeeklyHrsSlept(currentUser, todaysDate);
