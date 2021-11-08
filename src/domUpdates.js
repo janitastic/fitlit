@@ -45,8 +45,7 @@ const displayUserDailySteps = (currentUser, userActivity, todaysDate) => {
   let numSteps = userActivity.getDailySteps(currentUser, todaysDate);
   let milesWalked = userActivity.getDailyMiles(currentUser, todaysDate);
   userDailySteps.innerText = `${numSteps} out of ${currentUser.dailyStepGoal}`;
-
-  console.log('DOMUpdates line 29>>', currentUser)
+  userDailyMilesWalked.innerText = `${milesWalked}`;
 };
 
 const displayUserAvgOz = (userh20, currentUser) => {
@@ -66,7 +65,6 @@ const displayDayMins = (userActivity,currentUser, todaysDate) => {
 
 const displayDayStairs = (userActivity, currentUser, todaysDate) => {
   dayStairsOverview.innerText = userActivity.getDailyFlights(currentUser,todaysDate)
-  userDailyMilesWalked.innerText = `${milesWalked}`;
 };
 
 const displayAvgCommActivity = (userActivity, todaysDate) => {
@@ -235,7 +233,7 @@ const captureSteps = () => {
   } else {
     stepsInput.value = 0
   }
-  
+
   return todaysSteps;
 }
 const captureStairs = () => {
