@@ -75,6 +75,13 @@ const displayAvgCommActivity = (userActivity, todaysDate) => {
   avgCommMinsActive.innerText = `${minsActive} min.`;
 };
 
+const displayUserWeeklyActivity = (userActivity, currentUser, todaysDate) => {
+  let weeklyFlightsClimbed = userActivity.getWeeklyTotalFlights(currentUser, todaysDate);
+  let weeklyActiveMinutes = userActivity.getWeeklyTotalActiveMinutes(currentUser, todaysDate);
+  userWeeklyFlightsClimbed.innerText = `${weeklyFlightsClimbed}`;
+  userWeeklyActiveMinutes.innerText = `${weeklyActiveMinutes} min.`;
+}
+
 const displayAvgCommWater = (userh20, todaysDate) => {
   let numOunces = userh20.calculateAvgCommDailyOunces(todaysDate);
   avgCommWater.innerText = `${numOunces} oz.`;
@@ -105,7 +112,7 @@ const refreshDisplay = (userRepository, userh20, userSleep, userActivity, curren
   displayAvgCommActivity(userActivity, todaysDate);
   displayAvgCommWater(userh20, todaysDate);
   displayAvgCommSleep(userSleep, todaysDate);
-
+  displayUserWeeklyActivity(userActivity, currentUser, todaysDate);
   console.log(userh20, userSleep, currentUser, todaysDate);
 };
 
@@ -284,6 +291,10 @@ const avgCommMinsActive = document.getElementById('avgCommMinsActive');
 const avgCommWater = document.getElementById('avgCommWater');
 const avgCommSleep = document.getElementById('avgCommSleep');
 const avgCommSleepQuality = document.getElementById('avgCommSleepQuality');
+
+const userWeeklyFlightsClimbed = document.getElementById('weeklyFlightsStairs');
+const userWeeklyActiveMinutes = document.getElementById('weeklyActiveMinutes');
+
 const activityMessage = document.getElementById('activityMessage');
 const logWater = document.getElementById('logWater');
 const waterMessage = document.getElementById('waterMessage');
