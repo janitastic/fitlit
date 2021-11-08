@@ -119,9 +119,11 @@ const captureOunces = (currentUser) => {
 };
 
 const captureHrsSlept = (currentUser) => {
-  if (sleepInput.value && sleepInput.value >= 0 && sleepInput.value <= 24) {
+  if (sleepInput.value && sleepInput.value > 0 && sleepInput.value <= 24) {
     todaysSleep = sleepInput.value;
+    console.log('line 124', sleepInput.value);
   } else {
+    // sleepMessage.innerHTML = `<p class="error-message">Oops! Are you sure you didn't get any sleep last night? 😧</p>`
     sleepInput.value = '';
   }
   return todaysSleep;
@@ -141,6 +143,12 @@ const clearActivityInputs = () => {
   stepsInput.value = '';
   stairsInput.value = '';
   minutesInput.value = '';
+};
+
+const clearSleepInputs = () => {
+  sleepInput.value = null;
+  qualityInput.value = null;
+  qualityRange.innerText = 3;
 };
 
 const captureActivity = (currentUser) => {
@@ -166,7 +174,9 @@ const postSleepData = () => {
       }
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => console.log(data),
+      sleepMessage.innerHTML = `<p class="success-message bounce">Great job getting some Zzzzs! 😴</p>`
+    )
     .catch(err => console.log(err))
 };
 
@@ -185,7 +195,9 @@ const postHydrationData = () => {
     })
     .then(response => response.json())
     .then(data => console.log(data),
-      waterMessage.innerHTML = `<p class="success-message bounce">Way to stay hydrated! 💧</p>`)
+      waterMessage.innerHTML =
+      `<p class="success-message bounce">Way to stay hydrated! 💧</p>`
+    )
     .catch(err => console.log(err))
 };
 
@@ -206,7 +218,9 @@ const postActivityData = () => {
     })
     .then(response => response.json())
     .then(data => console.log(data),
-      activityMessage.innerHTML = `<p class="success-message bounce">Great work! Keep it up! 🏃🏻</p>`)
+      activityMessage.innerHTML =
+      `<p class="success-message bounce">Great work! Keep it up! 🏃🏻</p>`
+    )
     .catch(err => console.log(err))
 };
 
@@ -282,11 +296,14 @@ const waterBtnView = document.getElementById('waterBtnView');
 const waterCancelBtn = document.getElementById('cancelWater');
 const logSleep = document.getElementById('logSleep');
 const saveSleepBtn = document.getElementById('saveAllSleepBtn');
+const sleepMessage = document.getElementById('sleepMessage');
 const qualityInput = document.getElementById('sleepQuality');
 const qualityRange = document.getElementById('selectedRange');
 const sleepInput = document.getElementById('hoursSlept');
 const sleepChart = document.getElementById('sleepChart');
 const sleepForm = document.getElementById('sleepForm');
+const sleepBtnView = document.getElementById('sleepBtnView');
+const sleepCancelBtn = document.getElementById('cancelSleep');
 const logActivity = document.getElementById('logActivity');
 const stepsInput = document.getElementById('stepsTaken');
 const stairsInput = document.getElementById('stairsClimbed');
@@ -346,9 +363,15 @@ let domUpdates = () => {
     captureHrsSlept();
     captureQuality();
     postSleepData();
-    sleepInput.value = null;
-    qualityInput.value = null;
-    qualityRange.innerText = 3;
+    show(sleepMessage);
+    clearSleepInputs();
+  });
+  sleepCancelBtn.addEventListener('click', () => {
+    show(sleepChart);
+    show(logSleep);
+    hide(sleepForm);
+    hide(sleepBtnView);
+    hide(sleepMessage);
   });
 
   qualityInput.addEventListener('change', displayQualityRange);
@@ -389,8 +412,10 @@ let domUpdates = () => {
   };
 
   function showSleepForm() {
-    toggle(sleepChart);
-    toggle(sleepForm);
+    hide(sleepChart);
+    hide(logSleep);
+    show(sleepForm);
+    show(sleepBtnView);
     // saveSleepBtn.disabled = true;
   };
 
@@ -406,7 +431,8 @@ let domUpdates = () => {
   function checkActivityInputs() {
     if (!stepsInput.value || !stairsInput.value || !minutesInput.value) {
      show(activityMessage);
-     activityMessage.innerHTML = `<p class="error-message">Oops! Your forgot something.<br>Please complete all fields. 😀</p>`
+     activityMessage.innerHTML =
+      `<p class="error-message">Oops! Your forgot something.<br>Please complete all fields. 😀</p>`
      clearActivityInputs();
     } else {
      show(activityMessage);
@@ -419,7 +445,8 @@ let domUpdates = () => {
   function checkWaterInput() {
     if (!ouncesInput.value) {
      show(waterMessage);
-     waterMessage.innerHTML = `<p class="error-message">Oops! Your forgot something.🥛 <br>Please enter how many ounces you drank. </p>`
+     waterMessage.innerHTML =
+     `<p class="error-message">Oops! Your forgot something.🥛 <br>Please enter how many ounces you drank. </p>`
     } else {
      show(waterMessage);
      ouncesInput.value = null;

@@ -194,7 +194,8 @@ label {
 }
 
 .activity-buttons,
-.water-buttons, {
+.water-buttons,
+.sleep-buttons {
   margin: 4% 2%;
 }
 
