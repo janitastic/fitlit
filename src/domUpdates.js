@@ -148,9 +148,9 @@ const captureQuality = (currentUser) => {
 //   }
 // }
 const clearActivityInputs = () => {
-  stepsInput.value = null
-  stairsInput.value = null
-  minutesInput.value = null
+  stepsInput.value = null;
+  stairsInput.value = null;
+  minutesInput.value = null;
 }
 const captureActivity = (currentUser) => {
   console.log('DOMUpdates line 88>>', currentUser);
@@ -354,6 +354,7 @@ let domUpdates = () => {
   saveWaterBtn.addEventListener('click', () => {
     captureOunces();
     postHydrationData();
+    ouncesInput.value = null;
   });
   logSleep.addEventListener('click', showSleepForm);
   logSleep.addEventListener('keyup', showSleepForm);
@@ -361,6 +362,9 @@ let domUpdates = () => {
     captureHrsSlept();
     captureQuality();
     postSleepData();
+    sleepInput.value = null;
+    qualityInput.value = null;
+    qualityRange.innerText = 3;
   });
 
 
