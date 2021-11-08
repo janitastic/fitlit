@@ -28,15 +28,16 @@ const displaySleepQuality = (userSleep, currentUser, todaysDate) => {
 };
 
 const displayUserAvgSteps = (userRepository) => {
-  avgUserStepsOverview.innerText = userRepository.getAvgStepCount()
-}
+  avgUserStepsOverview.innerText = userRepository.getAvgStepCount();
+};
+
 const displayUserAvgStairs = (currentUser, userActivity) => {
-  avgUserStairsOverView.innerText = userActivity.findUserAvgFlights(currentUser)
-}
+  avgUserStairsOverView.innerText = userActivity.findUserAvgFlights(currentUser);
+};
 
 const displayUserAvgMins = (currentUser, userActivity, todaysDate) => {
-  avgUserMinutesOverview.innerText = userActivity.getAvgDailyMinsActive(currentUser, todaysDate)
-}
+  avgUserMinutesOverview.innerText = userActivity.getAvgDailyMinsActive(currentUser, todaysDate);
+};
 
 const displayUserDailySteps = (currentUser, userActivity, todaysDate) => {
   let numSteps = userActivity.getDailySteps(currentUser, todaysDate);
@@ -46,22 +47,23 @@ const displayUserDailySteps = (currentUser, userActivity, todaysDate) => {
 };
 
 const displayUserAvgOz = (userh20, currentUser) => {
- avgUserOzOverview.innerText = userh20.getAvgOuncesPerDay(currentUser)
-}
+  avgUserOzOverview.innerText = userh20.getAvgOuncesPerDay(currentUser);
+};
 
 const displayUserAvgHrsSlept = (userSleep, currentUser) => {
-  avgUserSleep.innerText = userSleep.getAvgSleepPerDay(currentUser)
-}
+  avgUserSleep.innerText = userSleep.getAvgSleepPerDay(currentUser);
+};
 
 const displayUserAvgQual = (userSleep, currentUser) => {
-  avgUserSleepQual.innerText = userSleep.getAvgDailySleepQual(currentUser)
-}
-const displayDayMins = (userActivity,currentUser, todaysDate) => {
-  dayMinsOverview.innerText = userActivity.getDailyMinsActive(currentUser, todaysDate)
-}
+  avgUserSleepQual.innerText = userSleep.getAvgDailySleepQual(currentUser);
+};
+
+const displayDayMins = (userActivity, currentUser, todaysDate) => {
+  dayMinsOverview.innerText = userActivity.getDailyMinsActive(currentUser, todaysDate);
+};
 
 const displayDayStairs = (userActivity, currentUser, todaysDate) => {
-  dayStairsOverview.innerText = userActivity.getDailyFlights(currentUser,todaysDate)
+  dayStairsOverview.innerText = userActivity.getDailyFlights(currentUser, todaysDate);
 };
 
 const displayAvgCommActivity = (userActivity, todaysDate) => {
@@ -81,7 +83,7 @@ const displayAvgCommWater = (userh20, todaysDate) => {
 const displayAvgCommSleep = (userSleep, todaysDate) => {
   let sleepHrs = userSleep.getAvgCommHrsSlept(todaysDate);
   let sleepQual = userSleep.getAvgAllSleepQual(todaysDate);
-  avgCommSleep.innerText = `${sleepHrs} hrs.`
+  avgCommSleep.innerText = `${sleepHrs} hrs.`;
   avgCommSleepQuality.innerText = `${sleepQual}`;
 };
 
@@ -92,98 +94,99 @@ const refreshDisplay = (userRepository, userh20, userSleep, userActivity, curren
   displaySleepQuality(userSleep, currentUser, todaysDate);
   displayCharts(userh20, userSleep, userActivity, currentUser, todaysDate);
   displayUserDailySteps(currentUser, userActivity, todaysDate);
-  displayUserAvgStairs(currentUser,userActivity);
-  displayUserAvgMins(currentUser,userActivity,todaysDate);
+  displayUserAvgStairs(currentUser, userActivity);
+  displayUserAvgMins(currentUser, userActivity, todaysDate);
   displayUserAvgSteps(userRepository);
   displayUserAvgOz(userh20, currentUser);
   displayUserAvgHrsSlept(userSleep, currentUser);
   displayUserAvgQual(userSleep, currentUser);
-  displayDayMins(userActivity,currentUser, todaysDate);
-  displayDayStairs(userActivity,currentUser, todaysDate);
+  displayDayMins(userActivity, currentUser, todaysDate);
+  displayDayStairs(userActivity, currentUser, todaysDate);
   displayAvgCommActivity(userActivity, todaysDate);
   displayAvgCommWater(userh20, todaysDate);
   displayAvgCommSleep(userSleep, todaysDate);
 
   console.log(userh20, userSleep, currentUser, todaysDate);
-}
+};
 
 const captureOunces = (currentUser) => {
   if (ouncesInput.value && ouncesInput.value > 0 && ouncesInput.value.length <= 2) {
-    todaysOunces = ouncesInput.value
+    todaysOunces = ouncesInput.value;
   } else {
-    ouncesInput.value = ''
+    ouncesInput.value = '';
   }
-  return todaysOunces
-}
+  return todaysOunces;
+};
+
 const captureHrsSlept = (currentUser) => {
   if (sleepInput.value && sleepInput.value >= 0 && sleepInput.value <= 24) {
-    todaysSleep = sleepInput.value
+    todaysSleep = sleepInput.value;
   } else {
-    sleepInput.value = ''
+    sleepInput.value = '';
   }
   return todaysSleep;
-}
+};
 
 const captureQuality = (currentUser) => {
   if (qualityInput.value && qualityInput.value > 0 && qualityInput.value <= 5) {
-    todaysQuality = qualityInput.value
+    todaysQuality = qualityInput.value;
   } else {
-    qualityInput.value = ''
+    qualityInput.value = '';
     return false
   }
-  return todaysQuality
-}
+  return todaysQuality;
+};
 
 const clearActivityInputs = () => {
-  stepsInput.value = null;
-  stairsInput.value = null;
-  minutesInput.value = null;
-}
+  stepsInput.value = '';
+  stairsInput.value = '';
+  minutesInput.value = '';
+};
 
 const captureActivity = (currentUser) => {
   captureSteps();
   captureStairs();
   captureMinutes();
   postActivityData();
-  // clearActivityInputs(); - removed from here so hidden error would hide
-}
+  // clearActivityInputs(); - removed from here so field error would hide
+};
 
 const postSleepData = () => {
   const newSleep = {
     userID: currentUser.id,
     date: '2020/01/23',
     hoursSlept: parseInt(todaysSleep),
-    sleepQuality: parseInt(todaysQuality)
+    sleepQuality: parseInt(todaysQuality),
   }
   return fetch('http://localhost:3001/api/v1/sleep', {
       method: 'POST',
       body: JSON.stringify(newSleep),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }
     })
     .then(response => response.json())
     .then(data => console.log(data))
-    .catch(err => console.log(err));
-}
+    .catch(err => console.log(err))
+};
 
 const postHydrationData = () => {
   const newHydration = {
     userID: currentUser.id,
     date: '2020/01/23',
-    numOunces: parseInt(todaysOunces)
+    numOunces: parseInt(todaysOunces),
   }
   return fetch('http://localhost:3001/api/v1/hydration', {
       method: 'POST',
       body: JSON.stringify(newHydration),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }
     })
     .then(response => response.json())
     .then(data => console.log(data))
-    .catch(err => console.log(err));
-}
+    .catch(err => console.log(err))
+};
 
 const postActivityData = () => {
   const newActivity = {
@@ -191,51 +194,50 @@ const postActivityData = () => {
     date: '2020/01/23',
     numSteps: parseInt(todaysSteps),
     minutesActive: parseInt(todaysMinutes),
-    flightsOfStairs: parseInt(todaysStairs)
+    flightsOfStairs: parseInt(todaysStairs),
   }
   return fetch('http://localhost:3001/api/v1/activity', {
       method: 'POST',
       body: JSON.stringify(newActivity),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }
     })
     .then(response => response.json())
     .then(data => console.log(data))
-    .catch(err => console.log(err));
-}
+    .catch(err => console.log(err))
+};
 
 const captureSteps = () => {
   if (stepsInput.value && stepsInput.value >= 0 && stepsInput.value < 100000) {
-    todaysSteps = stepsInput.value
+    todaysSteps = stepsInput.value;
   } else {
-    stepsInput.value = 0
+    stepsInput.value = null;
   }
-
   return todaysSteps;
-}
+};
 
 const captureStairs = () => {
   if (stairsInput.value && stairsInput.value >= 0 && stairsInput.value <= 8350) {
-    todaysStairs = stairsInput.value
+    todaysStairs = stairsInput.value;
   } else {
-    stairsInput.value = null
+    stairsInput.value = null;
   }
   return todaysStairs;
-}
+};
 
 const captureMinutes = () => {
   if (minutesInput.value && minutesInput.value >= 0 && minutesInput.value <= 1440) {
-    todaysMinutes = minutesInput.value
+    todaysMinutes = minutesInput.value;
   } else {
-    minutesInput.value = null
+    minutesInput.value = null;
   }
   return todaysMinutes;
-}
+};
 
 const displayQualityRange = () => {
-  qualityRange.innerText = qualityInput.value
-}
+  qualityRange.innerText = qualityInput.value;
+};
 
 
 //QUERY SELECTORS
@@ -254,12 +256,12 @@ const avgSleepQuality = document.getElementById('avgSleepQuality');
 const userDailySteps = document.getElementById('dailySteps');
 const avgUserStairsOverView = document.getElementById('avgUserStairs');
 const avgUserMinutesOverview = document.getElementById('avgUserMinsActive');
-const avgUserStepsOverview = document.getElementById('avgUserSteps')
-const avgUserOzOverview = document.getElementById('avgUserOz')
+const avgUserStepsOverview = document.getElementById('avgUserSteps');
+const avgUserOzOverview = document.getElementById('avgUserOz');
 const avgUserSleep = document.getElementById('avgUserSleep');
 const avgUserSleepQual = document.getElementById('avgSleepQuality');
 const dayStairsOverview = document.getElementById('flightsOfStairs');
-const dayMinsOverview = document.getElementById('activeMinutes')
+const dayMinsOverview = document.getElementById('activeMinutes');
 const userDailyMilesWalked = document.getElementById('dailyMilesWalked');
 const avgCommSteps = document.getElementById('avgCommSteps');
 const avgCommStairs = document.getElementById('avgCommStairs');
@@ -283,7 +285,7 @@ const sleepForm = document.getElementById('sleepForm');
 const logActivity = document.getElementById('logActivity');
 const stepsInput = document.getElementById('stepsTaken');
 const stairsInput = document.getElementById('stairsClimbed');
-const minutesInput = document.getElementById('minsActive')
+const minutesInput = document.getElementById('minsActive');
 const saveActivityBtn = document.getElementById('activityBtn');
 const activityReport = document.getElementById('activityReport');
 const activityForm = document.getElementById('activityForm');
@@ -304,15 +306,15 @@ let domUpdates = () => {
     } else {
       saveWaterBtn.disabled = true;
     }
-  })
+  });
 
   sleepInput.addEventListener('change', () => {
-    if(sleepInput.value){
+    if (sleepInput.value) {
       saveSleepBtn.disabled = false;
     } else {
       saveSleepBtn.disable = true;
     }
-  })
+  });
 
   logWater.addEventListener('click', showWaterForm);
   logWater.addEventListener('keyup', showWaterForm);
@@ -333,8 +335,7 @@ let domUpdates = () => {
     qualityRange.innerText = 3;
   });
 
-
-  qualityInput.addEventListener('change', displayQualityRange)
+  qualityInput.addEventListener('change', displayQualityRange);
   logActivity.addEventListener('click', showActivityForm);
   logActivity.addEventListener('keyup', showActivityForm);
   saveActivityBtn.addEventListener('click', () => {
@@ -344,11 +345,11 @@ let domUpdates = () => {
 
   //HELPER FUNCTIONS
   function hide(element) {
-    element.classList.add('hidden')
+    element.classList.add('hidden');
   }
 
   function show(element) {
-    element.classList.remove('hidden')
+    element.classList.remove('hidden');
   }
 
   function toggle(element) {
@@ -371,7 +372,6 @@ let domUpdates = () => {
   function showActivityForm() {
     toggle(activityReport);
     toggle(activityForm);
-    // saveActivityBtn.disabled = true;
   };
 
   function checkActivityInputs() {
@@ -382,9 +382,9 @@ let domUpdates = () => {
      hide(activityMessage);
      clearActivityInputs();
    }
-  }
+ };
 
-} //CLOSING TAG FOR domUpdates - DO NOT DELETE!
+}; //CLOSING TAG FOR domUpdates - DO NOT DELETE!
 
 export default domUpdates;
 export {
