@@ -8,7 +8,6 @@ $purple: #5622c7;
   display: flex;
   justify-content: $justify;
   align-items: $align;
-  // justify-items: $
   flex-direction: $direction;
   flex-wrap: $wrap;
 }
@@ -141,7 +140,7 @@ li {
 
 .averages {
   margin: 4%;
-  font-size: 80%;
+  font-size: 1.2em;
 }
 
 .plus-icon .white-plus {
@@ -180,12 +179,16 @@ button {
   background-color: transparent;
   color: $white;
   border: 1px solid $white;
-  padding: .5% 2%;
+  padding: 1% 5%;
   border-radius: 100px;
 
   &:hover {
     background: linear-gradient(318deg, $red, $purple);
     border: none;
+  }
+  &:disabled {
+    cursor: no-drop;
+    background-color: gray;
   }
 }
 
