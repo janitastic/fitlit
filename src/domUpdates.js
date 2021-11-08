@@ -78,7 +78,7 @@ const displayAvgCommActivity = (userActivity, todaysDate) => {
 
 const displayAvgCommWater = (userh20, todaysDate) => {
   let numOunces = userh20.calculateAvgCommDailyOunces(todaysDate);
-  avgCommWater.innerText = `${numOunces} Oz.`;
+  avgCommWater.innerText = `${numOunces} oz.`;
 };
 
 const displayAvgCommSleep = (userSleep, todaysDate) => {
