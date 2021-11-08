@@ -442,20 +442,24 @@ let domUpdates = () => {
   function checkSleepInput() {
     if (!sleepInput.value) {
      show(sleepMessage);
-     sleepMessage.innerHTML =
+     sleepMessage.innerHTML = 
      `<p class="error-message">Oops! Are you sure you didn't get any sleep last night? 😧 </p>`
     } else {
+      sleepMessage.innerHTML = 
+      `<p class="error-message"> Great job getting some zzz's</p>`
      postSleepData()
-     hide(sleepMessage);
+     show(sleepMessage);
+    //  hide(sleepMessage);
     //  sleepInput.value = null;
     //  show(sleepError);
      hide(sleepBtnView);
      hide(sleepForm);
-     show(sleepChart);
+    //  show(sleepChart);
      show(logSleep);
     }
   };
 
+  
 }; //CLOSING TAG FOR domUpdates - DO NOT DELETE!
 
 export default domUpdates;
