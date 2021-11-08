@@ -153,6 +153,7 @@ li {
 
 .plus-icon .white-plus {
   height: 40px;
+  animation: fadeIn 5s;
 }
 
 .plus-icon .color-plus {
@@ -216,18 +217,27 @@ button:disabled {
 .success-message {
   color: #DDBA8F;
   font-size: 1.5em;
+  animation-duration: 2s;
+  /* animation-iteration-count: infinite; */
 }
 
-.fade {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 2s linear;
+.bounce {
+  animation-name: bounce;
+  animation-timing-function: ease;
 }
 
-.fade-out {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s 2s, opacity 2s linear;
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes bounce {
+  0%   { transform: scale(1,1)    translateY(0); }
+  10%  { transform: scale(1.1,.9) translateY(0); }
+  30%  { transform: scale(.9,1.1) translateY(-50px); }
+  50%  { transform: scale(1,1)    translateY(0); }
+  100% { transform: scale(1,1)    translateY(0); }
 }
 /* Media Queries for Screen Size */
 

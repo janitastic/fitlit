@@ -205,7 +205,7 @@ const postActivityData = () => {
     })
     .then(response => response.json())
     .then(data => console.log(data),
-      activityMessage.innerHTML = `<p class="success-message">Great work! Keep it up! 🏃🏻</p>`)
+      activityMessage.innerHTML = `<p class="success-message bounce">Great work! Keep it up! 🏃🏻</p>`)
     .catch(err => console.log(err))
 };
 
@@ -379,9 +379,10 @@ let domUpdates = () => {
   function checkActivityInputs() {
     if (!stepsInput.value || !stairsInput.value || !minutesInput.value) {
      show(activityMessage);
-     activityMessage.innerHTML = `<p class="error-message">Please complete all fields. 😀</p>`
+     activityMessage.innerHTML = `<p class="error-message">Oops! Your forgot something.<br>Please complete all fields. 😀</p>`
      clearActivityInputs();
    } else {
+     show(activityMessage);
      clearActivityInputs();
    }
  };
