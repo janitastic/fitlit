@@ -18,7 +18,9 @@ const displaySleepQuality = (userSleep, currentUser, todaysDate) => {
 };
 const displayUserDailySteps = (currentUser, userActivity, todaysDate) => {
   let numSteps = userActivity.getDailySteps(currentUser, todaysDate);
+  let milesWalked = userActivity.getDailyMiles(currentUser, todaysDate);
   userDailySteps.innerText = `${numSteps} out of ${currentUser.dailyStepGoal}`;
+  userDailyMilesWalked.innerText = `${milesWalked}`
 };
 const refreshDisplay = (userRepository, userh20, userSleep, userActivity, currentUser, todaysDate) => {
   displayUserInfoCard(currentUser);
@@ -185,6 +187,7 @@ const avgStepGoal = document.getElementById('avgStepGoal');
 const dailySleepQuality = document.getElementById('dailySleepQuality');
 const avgSleepQuality = document.getElementById('avgSleepQuality');
 const userDailySteps = document.getElementById('dailySteps');
+const userDailyMilesWalked = document.getElementById('dailyMilesWalked');
 //Form Field Query Selectors & Event Listeners
 const emptyFieldError = document.getElementById('fieldError');
 const logWater = document.getElementById('logWater');
