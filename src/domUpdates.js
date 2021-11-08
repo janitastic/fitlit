@@ -119,11 +119,12 @@ const captureOunces = (currentUser) => {
 };
 
 const captureHrsSlept = (currentUser) => {
-  if (sleepInput.value && sleepInput.value > 0 && sleepInput.value <= 24) {
+  if (sleepInput.value && sleepInput.value > 1 && sleepInput.value <= 24) {
     todaysSleep = sleepInput.value;
     console.log('line 124', sleepInput.value);
   } else {
     sleepInput.value = '';
+    return false;
   }
   return todaysSleep;
 };
@@ -132,7 +133,7 @@ const captureQuality = (currentUser) => {
   if (qualityInput.value && qualityInput.value > 0 && qualityInput.value <= 5) {
     todaysQuality = qualityInput.value;
   } else {
-    qualityInput.value = '';
+    qualityInput.value = 3;
     return false
   }
   return todaysQuality;
@@ -296,7 +297,7 @@ const waterCancelBtn = document.getElementById('cancelWater');
 const logSleep = document.getElementById('logSleep');
 const saveSleepBtn = document.getElementById('saveAllSleepBtn');
 const sleepMessage = document.getElementById('sleepMessage');
-const sleepError = document.getElementById('sleepError');
+// const sleepError = document.getElementById('sleepError');
 const qualityInput = document.getElementById('sleepQuality');
 const qualityRange = document.getElementById('selectedRange');
 const sleepInput = document.getElementById('hoursSlept');
@@ -324,24 +325,6 @@ const actCancelBtn = document.getElementById('cancelActivity');
 // });
 
 let domUpdates = () => {
-  // ouncesInput.addEventListener('change', () => {
-  //   if (!ouncesInput.value) {
-  //     saveWaterBtn.disabled = false;
-  //     show(waterMessage);
-  //   } else {
-  //     saveWaterBtn.disabled = true;
-  //     show(waterMessage);
-  //   }
-  // });
-
-  // sleepInput.addEventListener('change', () => {
-  //   if (sleepInput.value) {
-  //     saveSleepBtn.disabled = false;
-  //   } else {
-  //     saveSleepBtn.disable = true;
-  //   }
-  // });
-
   logWater.addEventListener('click', showWaterForm);
   logWater.addEventListener('keyup', showWaterForm);
   saveWaterBtn.addEventListener('click', () => {
@@ -447,7 +430,7 @@ let domUpdates = () => {
     if (!ouncesInput.value) {
      show(waterMessage);
      waterMessage.innerHTML =
-     `<p class="error-message">Oops! Your forgot something.🥛 <br>Please enter how many ounces you drank. </p>`
+     `<p class="error-message">Oops! You forgot something.🥛 <br>Please enter how many ounces you drank. </p>`
     } else {
      show(waterMessage);
      ouncesInput.value = null;
@@ -459,11 +442,17 @@ let domUpdates = () => {
   function checkSleepInput() {
     if (!sleepInput.value) {
      show(sleepMessage);
+     sleepMessage.innerHTML =
+     `<p class="error-message">Oops! Are you sure you didn't get any sleep last night? 😧 </p>`
     } else {
+     postSleepData()
      hide(sleepMessage);
-     show(sleepError);
+    //  sleepInput.value = null;
+    //  show(sleepError);
      hide(sleepBtnView);
      hide(sleepForm);
+     show(sleepChart);
+     show(logSleep);
     }
   };
 
