@@ -14,7 +14,7 @@
         <article class="banner">
           <h2 id="firstName"></h2>
             <span class="date-selector">
-              <label for="start">Selected Date:</label>
+              <label for="start">Selected Date - </label>
               <input type="date" id="start" name="start-date" value="2022-01-23" min="2019-06-15" max="2020-01-22" tabindex="1">
             </span>
         </article>
@@ -51,13 +51,13 @@
               </span>
             </span>
               <article class="daily-activity" id="activityReport">
-                <h5>Steps Taken: <span id="dailySteps"></span></h5>
-                <h5>Miles Walked: <span id="dailyMilesWalked"></span></h5>
+                <h5>Steps Taken - <span id="dailySteps"></span></h5>
                 <article class="daily-steps" id="stepsChart">
                   <canvas id="dailyStepsChart" width="400" height="60"></canvas>
                 </article>
-                <h5>Flights of Stairs = <span id="flightsOfStairs"></span></h5>
-                <h5>Active Minutes = <span id="activeMinutes"></span></h5>
+                <h5>Estimated Miles Walked -  <span id="dailyMilesWalked"></span></h5>
+                <h5>Flights of Stairs - <span id="flightsOfStairs"></span></h5>
+                <h5>Active Minutes - <span id="activeMinutes"></span></h5>
               </article>
               <article class="hidden" id="activityForm">
                 <label for="steps">How many steps have you taken today?</label>
@@ -88,7 +88,7 @@
                 <canvas id="dailyWaterChart" width="400" height="60"></canvas>
               </article>
               <article class="hidden" id="waterForm">
-                <label for="water">How much did you drink?</label>
+                <label for="water">How much did you drink today? (in ounces)</label>
                 <input type="number" placeholder="Total oz.(1-99)" id="waterIntake" name="ounces-drank" required minlength="1" maxlength="2" size="25" label="Add your ounces drank for today" tabindex="8">
                 <button id="saveWaterBtn" tabindex="9">Save</button>
               </article>
@@ -104,7 +104,7 @@
             </span>
             <article class="daily-sleep" id="sleepChart">
               <canvas id="dailySleepChart" width="400" height="60"></canvas>
-                <h5>Sleep Quality = <span id="dailySleepQuality"></span> / 5</h5>
+                <h5>Sleep Quality - <span id="dailySleepQuality"></span> / 5</h5>
             </article>
             <article class="hidden" id="sleepForm">
               <label for="sleep">How many hours did you sleep?</label>
@@ -125,18 +125,18 @@
             <div class="average-widgets">
               <article class="activity">
                 <h4>Activity</h4>
-                  <p class="averages">Steps =  <span id="avgUserSteps"></span>
-                  <br>Flights of Stairs = <span id="avgUserStairs"></span>
-                  <br>Active Minutes = <span id="avgUserMinsActive"></span></p>
+                  <p class="averages">Steps -  <span id="avgUserSteps"></span>
+                  <br>Flights of Stairs - <span id="avgUserStairs"></span>
+                  <br>Active Minutes - <span id="avgUserMinsActive"></span></p>
               </article>
               <article class="water">
                 <h4>Water</h4>
-                <p> Ounces = <span id="avgUserOz"></span>
+                <p class="averages"><span id="avgUserOz"></span> oz.</p>
               </article>
               <article class="sleep">
                 <h4>Sleep</h4>
-                  <p class="averages">Hours Slept = <span id="avgUserSleep"></span>
-                  <br>Sleep Quality = <span id="avgSleepQuality"></span> / 5</p>
+                  <p class="averages">Hours Slept - <span id="avgUserSleep"></span>
+                  <br>Sleep Quality - <span id="avgSleepQuality"></span> / 5</p>
               </article>
             </div>
           </section>
@@ -146,20 +146,19 @@
             <div class="average-widgets">
               <article class="activity">
                 <h4>Activity</h4>
-                  <p class="averages">Steps: <span id="avgCommSteps"></span>
-                  <br>Flights of Stairs: <span id="avgCommStairs"></span>
-                  <br>Active Minutes: <span id="avgCommMinsActive"></span></p>
+                  <p class="averages">Steps -  <span id="avgCommSteps"></span>
+                  <br>Flights of Stairs - <span id="avgCommStairs"></span>
+                  <br>Active Minutes -  <span id="avgCommMinsActive"></span></p>
               </article>
               <article class="water">
                 <h4>Water</h4>
-                <span id="avgCommWater"></span>
-                <!-- <canvas id="avgUserWaterChart" width="200" height="60";></canvas> -->
+                <p class="averages"><span id="avgCommWater"></span></p>
               </article>
               <article class="sleep" id="avgUserSleep">
                 <h4>Sleep</h4>
-                  <p class="averages">Hours Slept: <span id="avgCommSleep"></span>
+                  <p class="averages">Hours Slept -  <span id="avgCommSleep"></span>
                   <!-- <canvas id="avgUserSleepChart" width="200" height="60";></canvas> -->
-                  <br>Sleep Quality = <span id="avgCommSleepQuality"></span> / 5</p>
+                  <br>Sleep Quality - <span id="avgCommSleepQuality"></span> / 5</p>
               </article>
             </div>
           </section>
@@ -171,9 +170,8 @@
             <h4>Activity</h4>
               <h5>Steps</h5>
               <canvas id="weeklyStepChart" width="200" height="60" style="margin-left: 4%"></canvas>
-              <h5>Flights of Stairs</h5>
-              <!-- Weekly Stairs Chart Goes Here -->
-              <h5>Active Minutes</h5>
+              <h5>Flights of Stairs - <span id="weeklyFlightsStairs"></span></h5>
+              <h5>Active Minutes - <span id="weeklyActiveMinutes"></span></h5>
               <!-- Weekly Active Minutes Goes Here -->
           </article>
           <article class="water" id="userWater">
