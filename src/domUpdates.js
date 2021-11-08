@@ -1,6 +1,5 @@
 import displayCharts from './charts.js';
-import currentUser
- from './scripts.js';
+import {currentUser} from './scripts.js';
 
 let todaysSteps;
 let todaysMinutes;
@@ -205,7 +204,7 @@ const postHydrationData = () => {
 const postActivityData = () => {
   console.log('activityData user>>', currentUser);
   const newActivity = {
-    userID: 1,
+    userID: currentUser.id,
     date: '2020/01/23',
     numSteps: parseInt(todaysSteps),
     minutesActive: parseInt(todaysMinutes),
@@ -239,7 +238,7 @@ const captureSteps = () => {
 const captureStairs = () => {
   if (stairsInput.value && stairsInput.value >= 0 && stairsInput.value <= 8350) {
     todaysStairs = stairsInput.value
-    dayStairsOverview.innerText = todaysStairs
+    // dayStairsOverview.innerText = todaysStairs
     console.log(todaysStairs)
   } else {
     stairsInput.value = null
@@ -249,7 +248,6 @@ const captureStairs = () => {
 const captureMinutes = () => {
   if (minutesInput.value && minutesInput.value >= 0 && minutesInput.value <= 1440) {
     todaysMinutes = minutesInput.value
-    dayMinutesOverView.innerText =
     console.log(todaysMinutes)
   } else {
     minutesInput.value = null
