@@ -8,10 +8,8 @@ let todaysOunces;
 let todaysSleep;
 let todaysQuality;
 
-
 const displayUserInfoCard = (currentUser) => {
   greeting.innerText = `Welcome, ${currentUser.getFirstName()}!`;
-  console.log('DOMUpdates line 8>>', currentUser);
 };
 
 const displayUserData = (currentUser) => {
@@ -19,7 +17,6 @@ const displayUserData = (currentUser) => {
   userAddress.innerText = `${currentUser.address}`;
   userStride.innerText = `${currentUser.strideLength}`;
   userStepGoal.innerText = `${currentUser.dailyStepGoal}`;
-  console.log('DOMUpdates line 15>>', currentUser)
 };
 
 const displayAvgStepGoal = (userRepository) => {
@@ -28,9 +25,7 @@ const displayAvgStepGoal = (userRepository) => {
 
 const displaySleepQuality = (userSleep, currentUser, todaysDate) => {
   dailySleepQuality.innerText = userSleep.getDailySleepQual(currentUser, todaysDate);
-  console.log('DOMUpdates line 24>>', currentUser)
 };
-
 
 const displayUserAvgSteps = (userRepository) => {
   avgUserStepsOverview.innerText = userRepository.getAvgStepCount()
@@ -109,13 +104,12 @@ const refreshDisplay = (userRepository, userh20, userSleep, userActivity, curren
   displayAvgCommWater(userh20, todaysDate);
   displayAvgCommSleep(userSleep, todaysDate);
 
-  console.log(userh20, userSleep, currentUser, todaysDate, currentUser);
+  console.log(userh20, userSleep, currentUser, todaysDate);
 }
 
 const captureOunces = (currentUser) => {
   if (ouncesInput.value && ouncesInput.value > 0 && ouncesInput.value.length <= 2) {
     todaysOunces = ouncesInput.value
-    console.log(todaysOunces)
   } else {
     ouncesInput.value = ''
   }
@@ -124,43 +118,34 @@ const captureOunces = (currentUser) => {
 const captureHrsSlept = (currentUser) => {
   if (sleepInput.value && sleepInput.value >= 0 && sleepInput.value <= 24) {
     todaysSleep = sleepInput.value
-    console.log(todaysSleep)
   } else {
     sleepInput.value = ''
   }
   return todaysSleep;
 }
+
 const captureQuality = (currentUser) => {
   if (qualityInput.value && qualityInput.value > 0 && qualityInput.value <= 5) {
     todaysQuality = qualityInput.value
-    console.log(todaysQuality)
   } else {
     qualityInput.value = ''
     return false
   }
   return todaysQuality
 }
-// const checkActivityInputs = () => {
-//   if (stepsInput.value && stairsInput.value && minutesInput.value) {
-//     saveActivityBtn.disabled = false;
-//   } else {
-//     clearActivityInputs()
-//   }
-// }
+
 const clearActivityInputs = () => {
   stepsInput.value = null;
   stairsInput.value = null;
   minutesInput.value = null;
 }
+
 const captureActivity = (currentUser) => {
-  console.log('DOMUpdates line 88>>', currentUser);
-  // checkActivityInputs()
   captureSteps();
   captureStairs();
   captureMinutes();
-  console.log('DOMUpdates line 92>>', currentUser);
   postActivityData();
-  clearActivityInputs();
+  // clearActivityInputs(); - removed from here so hidden error would hide
 }
 
 const postSleepData = () => {
@@ -201,8 +186,6 @@ const postHydrationData = () => {
 }
 
 const postActivityData = () => {
-  console.log('minutes active>>>', userActivity.minutesActive)
-  console.log('activityData user>>', currentUser);
   const newActivity = {
     userID: currentUser.id,
     date: '2020/01/23',
@@ -218,54 +201,41 @@ const postActivityData = () => {
       }
     })
     .then(response => response.json())
-    .then(data => console.log(data, newActivity))
+    .then(data => console.log(data))
     .catch(err => console.log(err));
 }
-
-
-
 
 const captureSteps = () => {
   if (stepsInput.value && stepsInput.value >= 0 && stepsInput.value < 100000) {
     todaysSteps = stepsInput.value
-    console.log(todaysSteps)
   } else {
     stepsInput.value = 0
   }
 
   return todaysSteps;
 }
+
 const captureStairs = () => {
   if (stairsInput.value && stairsInput.value >= 0 && stairsInput.value <= 8350) {
     todaysStairs = stairsInput.value
-    // dayStairsOverview.innerText = todaysStairs
-    console.log(todaysStairs)
   } else {
     stairsInput.value = null
   }
   return todaysStairs;
 }
+
 const captureMinutes = () => {
   if (minutesInput.value && minutesInput.value >= 0 && minutesInput.value <= 1440) {
     todaysMinutes = minutesInput.value
-    console.log(todaysMinutes)
   } else {
     minutesInput.value = null
   }
   return todaysMinutes;
 }
+
 const displayQualityRange = () => {
   qualityRange.innerText = qualityInput.value
-  console.log('slide>>', qualityInput.value);
 }
-
-/* User Input Dropdowns. DON'T DELETE. */
-
-
-// const displayInputFields = () => {
-//   inputFieldsDropDown
-// }
-
 
 
 //QUERY SELECTORS
@@ -282,7 +252,6 @@ const avgStepGoal = document.getElementById('avgStepGoal');
 const dailySleepQuality = document.getElementById('dailySleepQuality');
 const avgSleepQuality = document.getElementById('avgSleepQuality');
 const userDailySteps = document.getElementById('dailySteps');
-
 const avgUserStairsOverView = document.getElementById('avgUserStairs');
 const avgUserMinutesOverview = document.getElementById('avgUserMinsActive');
 const avgUserStepsOverview = document.getElementById('avgUserSteps')
@@ -298,8 +267,7 @@ const avgCommMinsActive = document.getElementById('avgCommMinsActive');
 const avgCommWater = document.getElementById('avgCommWater');
 const avgCommSleep = document.getElementById('avgCommSleep');
 const avgCommSleepQuality = document.getElementById('avgCommSleepQuality');
-//Form Field Query Selectors & Event Listeners
-const emptyFieldError = document.getElementById('fieldError');
+const activityMessage = document.getElementById('activityMessage');
 const logWater = document.getElementById('logWater');
 const saveWaterBtn = document.getElementById('saveWaterBtn');
 const ouncesInput = document.getElementById('waterIntake');
@@ -313,26 +281,21 @@ const sleepInput = document.getElementById('hoursSlept');
 const sleepChart = document.getElementById('sleepChart');
 const sleepForm = document.getElementById('sleepForm');
 const logActivity = document.getElementById('logActivity');
-// const saveStepsBtn = document.getElementById('stepsBtn');
 const stepsInput = document.getElementById('stepsTaken');
-// const saveStairsBtn = document.getElementById('stairsBtn');
 const stairsInput = document.getElementById('stairsClimbed');
-// const saveMinutesBtn = document.getElementById('minutesBtn');
 const minutesInput = document.getElementById('minsActive')
 const saveActivityBtn = document.getElementById('activityBtn');
 const activityReport = document.getElementById('activityReport');
 const activityForm = document.getElementById('activityForm');
-const activityInputs = document.querySelectorAll('.activity-input').forEach(input => {
-  input.addEventListener('change', disableSaveButton => {
-    if (stepsInput.value && stairsInput.value && minutesInput.value) {
-    saveActivityBtn.disabled = false;
-  } else {
-    saveActivityBtn.disabled = true;
-  }
-})
-})
-
-
+// const activityInputs = document.querySelectorAll('.activity-input').forEach(input => {
+//   input.addEventListener('keydown', disableSaveButton => {
+//     if (stepsInput.value && stairsInput.value && minutesInput.value) {
+//       saveActivityBtn.disabled = false;
+//     } else {
+//       saveActivityBtn.disabled = true;
+//     }
+//   })
+// })
 
 let domUpdates = () => {
   ouncesInput.addEventListener('change', () => {
@@ -340,8 +303,9 @@ let domUpdates = () => {
       saveWaterBtn.disabled = false;
     } else {
       saveWaterBtn.disabled = true;
-  }
-})
+    }
+  })
+
   sleepInput.addEventListener('change', () => {
     if(sleepInput.value){
       saveSleepBtn.disabled = false;
@@ -349,6 +313,7 @@ let domUpdates = () => {
       saveSleepBtn.disable = true;
     }
   })
+
   logWater.addEventListener('click', showWaterForm);
   logWater.addEventListener('keyup', showWaterForm);
   saveWaterBtn.addEventListener('click', () => {
@@ -356,6 +321,7 @@ let domUpdates = () => {
     postHydrationData();
     ouncesInput.value = null;
   });
+
   logSleep.addEventListener('click', showSleepForm);
   logSleep.addEventListener('keyup', showSleepForm);
   saveSleepBtn.addEventListener('click', () => {
@@ -371,10 +337,10 @@ let domUpdates = () => {
   qualityInput.addEventListener('change', displayQualityRange)
   logActivity.addEventListener('click', showActivityForm);
   logActivity.addEventListener('keyup', showActivityForm);
-  saveActivityBtn.addEventListener('click', captureActivity);
-  // saveStepsBtn.addEventListener('click', captureSteps);
-  // saveStairsBtn.addEventListener('click', captureStairs);
-  // saveMinutesBtn.addEventListener('click', captureMinutes);
+  saveActivityBtn.addEventListener('click', () => {
+    captureActivity();
+    checkActivityInputs();
+  });
 
   //HELPER FUNCTIONS
   function hide(element) {
@@ -388,6 +354,7 @@ let domUpdates = () => {
   function toggle(element) {
     element.classList.toggle('hidden');
   }
+
   //FORM FUNCTIONS
   function showWaterForm() {
     toggle(waterChart);
@@ -404,12 +371,21 @@ let domUpdates = () => {
   function showActivityForm() {
     toggle(activityReport);
     toggle(activityForm);
-    saveActivityBtn.disabled = true;
+    // saveActivityBtn.disabled = true;
   };
-  // function showError() {
-  //   show(emptyFieldError);
-  // }
-}
+
+  function checkActivityInputs() {
+    if (!stepsInput.value || !stairsInput.value || !minutesInput.value) {
+     show(activityMessage);
+     clearActivityInputs();
+   } else {
+     hide(activityMessage);
+     clearActivityInputs();
+   }
+  }
+
+} //CLOSING TAG FOR domUpdates - DO NOT DELETE!
+
 export default domUpdates;
 export {
   captureHrsSlept,
