@@ -42,6 +42,9 @@
 ## 🎥 [Video Demo!]((https://vimeo.com/643699820))
 
 ### Installation and Setup:
+- Download the necessary server and API [here](https://github.com/turingschool-examples/fitlit-api)
+- Cd into the `server` directory and then into the `fit-lit-api` directory.
+- Run the command `npm start`
 - Cd into your local directory and clone down this repository:
 `git clone https://github.com/janitastic/fitlit`
 - Install the necessary package dependencies:
