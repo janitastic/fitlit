@@ -123,7 +123,6 @@ const captureHrsSlept = (currentUser) => {
     todaysSleep = sleepInput.value;
     console.log('line 124', sleepInput.value);
   } else {
-    // sleepMessage.innerHTML = `<p class="error-message">Oops! Are you sure you didn't get any sleep last night? 😧</p>`
     sleepInput.value = '';
   }
   return todaysSleep;
@@ -297,6 +296,7 @@ const waterCancelBtn = document.getElementById('cancelWater');
 const logSleep = document.getElementById('logSleep');
 const saveSleepBtn = document.getElementById('saveAllSleepBtn');
 const sleepMessage = document.getElementById('sleepMessage');
+const sleepError = document.getElementById('sleepError');
 const qualityInput = document.getElementById('sleepQuality');
 const qualityRange = document.getElementById('selectedRange');
 const sleepInput = document.getElementById('hoursSlept');
@@ -360,10 +360,11 @@ let domUpdates = () => {
   logSleep.addEventListener('click', showSleepForm);
   logSleep.addEventListener('keyup', showSleepForm);
   saveSleepBtn.addEventListener('click', () => {
+    checkSleepInput();
     captureHrsSlept();
     captureQuality();
     postSleepData();
-    show(sleepMessage);
+    // show(sleepMessage);
     clearSleepInputs();
   });
   sleepCancelBtn.addEventListener('click', () => {
@@ -452,6 +453,17 @@ let domUpdates = () => {
      ouncesInput.value = null;
      hide(waterBtnView);
      hide(waterForm);
+    }
+  };
+
+  function checkSleepInput() {
+    if (!sleepInput.value) {
+     show(sleepMessage);
+    } else {
+     hide(sleepMessage);
+     show(sleepError);
+     hide(sleepBtnView);
+     hide(sleepForm);
     }
   };
 
