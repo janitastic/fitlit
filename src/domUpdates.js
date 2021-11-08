@@ -337,6 +337,7 @@ let domUpdates = () => {
     show(logWater);
     hide(waterForm);
     hide(waterBtnView);
+    hide(waterMessage);
   });
 
   logSleep.addEventListener('click', () => {
@@ -369,6 +370,7 @@ let domUpdates = () => {
     show(logActivity);
     hide(activityForm);
     hide(actBtnView);
+    hide(activityMessage);
   });
 
   //HELPER FUNCTIONS
