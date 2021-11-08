@@ -51,6 +51,10 @@ describe('Sleep', () => {
     expect(sleepInfo.getAvgSleepPerDay(user1)).to.equal(7);
   })
 
+  it('should be able calculate a user\'s daily average hours sleep', () => {
+    expect(sleepInfo.getAvgCommHrsSlept('2019/06/15')).to.equal(7);
+  })
+
   it('should be able to calculate a user\'s daily average sleep quality', () => {
     expect(sleepInfo.getAvgDailySleepQual(user1)).to.equal(3)
   })
