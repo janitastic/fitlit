@@ -175,12 +175,17 @@ label {
 
 input,
 label {
-  margin: 1%;
+  margin: 2% 1%;
   font-size: 1.2em;
 }
 
 .date-selector {
   text-align: center;
+}
+
+.quality-range {
+  font-size: 1.5em;
+  margin: 0 1%;
 }
 
 button {
