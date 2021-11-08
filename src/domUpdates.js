@@ -4,6 +4,7 @@ import {currentUser} from './scripts.js';
 let todaysSteps;
 let todaysMinutes;
 let todaysStairs;
+let todaysOunces;
 
 
 const displayUserInfoCard = (currentUser) => {
@@ -109,8 +110,7 @@ const refreshDisplay = (userRepository, userh20, userSleep, userActivity, curren
   console.log(userh20, userSleep, currentUser, todaysDate, currentUser);
 }
 
-const captureOunces = () => {
-  let todaysOunces;
+const captureOunces = (currentUser) => {
   if (ouncesInput.value && ouncesInput.value > 0 && ouncesInput.value.length <= 2) {
     todaysOunces = ouncesInput.value
     console.log(todaysOunces)
@@ -159,9 +159,8 @@ const captureActivity = (currentUser) => {
   captureStairs();
   captureMinutes();
   console.log('DOMUpdates line 92>>', currentUser);
-  postSleepData(currentUser);
+  // postSleepData(currentUser);
   postActivityData();
-  postHydrationData(currentUser);
 }
 
 const postSleepData = (currentUser) => {
@@ -183,11 +182,11 @@ const postSleepData = (currentUser) => {
     .catch(err => console.log(err));
 }
 
-const postHydrationData = (currentUser) => {
+const postHydrationData = () => {
   const newHydration = {
     userID: currentUser.id,
     date: '2020/01/23',
-    numOunces: 45
+    numOunces: parseInt(todaysOunces)
   }
   return fetch('http://localhost:3001/api/v1/hydration', {
       method: 'POST',
@@ -328,7 +327,10 @@ const activityForm = document.getElementById('activityForm');
 let domUpdates = () => {
   logWater.addEventListener('click', showWaterForm);
   logWater.addEventListener('keyup', showWaterForm);
-  saveWaterBtn.addEventListener('click', captureOunces);
+  saveWaterBtn.addEventListener('click', () => {
+    captureOunces();
+    postHydrationData();
+  });
   logSleep.addEventListener('click', showSleepForm);
   logSleep.addEventListener('keyup', showSleepForm);
   saveSleepBtn.addEventListener('click', captureHrsSlept);
