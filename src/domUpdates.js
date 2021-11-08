@@ -162,12 +162,12 @@ const captureActivity = (currentUser) => {
   postActivityData();
 }
 
-const postSleepData = (currentUser) => {
+const postSleepData = () => {
   const newSleep = {
     userID: currentUser.id,
     date: '2020/01/23',
-    hoursSlept: 6,
-    sleepQuality: 4
+    hoursSlept: parseInt(todaysSleep),
+    sleepQuality: parseInt(todaysQuality)
   }
   return fetch('http://localhost:3001/api/v1/sleep', {
       method: 'POST',
@@ -305,8 +305,7 @@ const ouncesInput = document.getElementById('waterIntake');
 const waterChart = document.getElementById('waterChart');
 const waterForm = document.getElementById('waterForm');
 const logSleep = document.getElementById('logSleep');
-const saveSleepBtn = document.getElementById('saveSleepBtn');
-const saveQualityBtn = document.getElementById('saveQualityBtn');
+const saveSleepBtn = document.getElementById('saveAllSleepBtn');
 const qualityInput = document.getElementById('sleepQuality');
 const qualityRange = document.getElementById('selectedRange');
 const sleepInput = document.getElementById('hoursSlept');
@@ -332,6 +331,8 @@ const activityInputs = document.querySelectorAll('.activity-input').forEach(inpu
 })
 })
 
+
+
 let domUpdates = () => {
   ouncesInput.addEventListener('change', () => {
     if (ouncesInput.value) {
@@ -340,7 +341,13 @@ let domUpdates = () => {
       saveWaterBtn.disabled = true;     
   }
 })
-
+  sleepInput.addEventListener('change', () => {
+    if(sleepInput.value){
+      saveSleepBtn.disabled = false;
+    } else {
+      saveSleepBtn.disable = true;
+    }
+  })
   logWater.addEventListener('click', showWaterForm);
   logWater.addEventListener('keyup', showWaterForm);
   saveWaterBtn.addEventListener('click', () => {
@@ -351,13 +358,11 @@ let domUpdates = () => {
   logSleep.addEventListener('keyup', showSleepForm);
   saveSleepBtn.addEventListener('click', () => {
     captureHrsSlept();
-    postSleepData();
-  });
-  saveQualityBtn.addEventListener('click', () => {
     captureQuality();
     postSleepData();
-  }
-);
+  });
+
+
   qualityInput.addEventListener('change', displayQualityRange)
   logActivity.addEventListener('click', showActivityForm);
   logActivity.addEventListener('keyup', showActivityForm);
@@ -388,6 +393,7 @@ let domUpdates = () => {
   function showSleepForm() {
     toggle(sleepChart);
     toggle(sleepForm);
+    saveSleepBtn.disabled = true;
   };
 
   function showActivityForm() {

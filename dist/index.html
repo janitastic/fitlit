@@ -108,11 +108,11 @@
             </article>
             <article class="hidden" id="sleepForm">
               <label for="sleep">How many hours did you sleep?</label>
-              <input type="number" placeholder="Hours Slept (0-24)" id="hoursSlept" name="hours-slept" required minlength="1" maxlength="2" size="20" label="Add your hours slept last night" tabindex="11">
-              <button id="saveSleepBtn" tabindex="12">Save</button>
+              <input class="sleep-input-field" type="number" placeholder="Hours Slept (0-24)" id="hoursSlept" name="hours-slept" required minlength="1" maxlength="2" size="20" label="Add your hours slept last night" tabindex="11">
+              <!-- <button id="saveSleepBtn" tabindex="12">Save</button> -->
               <label for="sleep">How well did you sleep, on a scale of 1 to 5?</label>
-              <input type="range" id="sleepQuality" name="sleep-quality" min="1" max="5" value="3" size="20" label="Select your quality of sleep" tabindex="13"><span class="quality-range" id="selectedRange">3</span><br>
-              <button id="saveQualityBtn" tabindex="14">Save</button>
+              <input class="sleep-input-field" type="range" id="sleepQuality" name="sleep-quality" min="1" max="5" value="3" size="20" label="Select your quality of sleep" tabindex="12"><span class="quality-range" id="selectedRange">3</span><br>
+              <button id="saveAllSleepBtn" tabindex="13">Save</button>
             </article>
           </section>
       </nav>
