@@ -1,14 +1,5 @@
 @import './_mixins.scss';
-
-// variables
-$white: #f2f2f2;
-$red: #d83c48;
-$purple: #5622c7;
-$titleFont: 1.5em;
-$bodyFont: 1.2em;
-$buttonHeight: 40px;
-$textShadow: 2px 1px 4px #111111;
-
+@import './_variables.scss';
 
 * {
   font-family: 'Montserrat', sans-serif;
@@ -21,7 +12,6 @@ body, html {
 
 header {
   @include flex(center, stretch, column, nowrap);
-
 }
 
 main {
