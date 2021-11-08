@@ -204,7 +204,8 @@ const postActivityData = () => {
       }
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => console.log(data),
+      activityMessage.innerHTML = `<p class="success-message">Great work! Keep it up! 🏃🏻</p>`)
     .catch(err => console.log(err))
 };
 
@@ -290,14 +291,14 @@ const saveActivityBtn = document.getElementById('activityBtn');
 const activityReport = document.getElementById('activityReport');
 const activityForm = document.getElementById('activityForm');
 // const activityInputs = document.querySelectorAll('.activity-input').forEach(input => {
-//   input.addEventListener('keydown', disableSaveButton => {
-//     if (stepsInput.value && stairsInput.value && minutesInput.value) {
-//       saveActivityBtn.disabled = false;
-//     } else {
+//   input.addEventListener('change', disableSaveButton => {
+//     if (!stepsInput.value || !stairsInput.value || !minutesInput.value) {
 //       saveActivityBtn.disabled = true;
+//     } else {
+//       saveActivityBtn.disabled = false;
 //     }
-//   })
-// })
+//   });
+// });
 
 let domUpdates = () => {
   ouncesInput.addEventListener('change', () => {
@@ -372,14 +373,15 @@ let domUpdates = () => {
   function showActivityForm() {
     toggle(activityReport);
     toggle(activityForm);
+    // saveActivityBtn.disabled = true;
   };
 
   function checkActivityInputs() {
     if (!stepsInput.value || !stairsInput.value || !minutesInput.value) {
      show(activityMessage);
+     activityMessage.innerHTML = `<p class="error-message">Please complete all fields. 😀</p>`
      clearActivityInputs();
    } else {
-     hide(activityMessage);
      clearActivityInputs();
    }
  };

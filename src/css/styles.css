@@ -210,6 +210,24 @@ button:disabled {
 
 .error-message {
   color: #d83c48;
+  font-size: 1.2em;
+}
+
+.success-message {
+  color: #DDBA8F;
+  font-size: 1.5em;
+}
+
+.fade {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 2s linear;
+}
+
+.fade-out {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
 }
 /* Media Queries for Screen Size */
 

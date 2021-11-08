@@ -51,10 +51,10 @@
               </span>
             </span>
               <article class="daily-activity" id="activityReport">
-                <h5>Steps Taken - <span id="dailySteps"></span></h5>
                 <article class="daily-steps" id="stepsChart">
                   <canvas id="dailyStepsChart" width="400" height="60"></canvas>
                 </article>
+                <h5>Steps Taken - <span id="dailySteps"></span></h5>
                 <h5>Estimated Miles Walked -  <span id="dailyMilesWalked"></span></h5>
                 <h5>Flights of Stairs - <span id="flightsOfStairs"></span></h5>
                 <h5>Active Minutes - <span id="activeMinutes"></span></h5>
@@ -65,12 +65,9 @@
                 <!-- <button id="stepsBtn">Save</button> -->
                 <label for="stairs">How many flights of stairs did you climb today?</label>
                 <input class="activity-input" type="number" placeholder="Flights Climbed" id="stairsClimbed" name="stairs-log" required minlength="1" maxlength="8" size="20" label="Add your stairs for today" tabindex="4">
-                <!-- <button id="stairsBtn">Save</button> -->
                 <label for="minutes">How many minutes were you active today?</label>
                 <input class="activity-input" type="number" placeholder="Minutes Active" id="minsActive" name="activity-log" required minlength="1" maxlength="8" size="20" label="Add your active minutes for today" tabindex="5">
-                <!-- <button id="minutesBtn">Save</button> -->
-                <div class="hidden" id="activityMessage">
-                  <p class="error-message">Please complete all fields. 😀</p>
+                <div class="hidden fade" id="activityMessage">
                 </div>
                 <button id="activityBtn" tabindex="6">Save</button>
               </article>
