@@ -70,6 +70,4 @@ class Sleep extends DataHandler {
   }
 }
 
-
-
 module.exports = Sleep;
