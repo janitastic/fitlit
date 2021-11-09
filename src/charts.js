@@ -37,15 +37,15 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
       scales: {
         x: {
           grid: {
-            display: false
+            display: false,
           },
-          display: false
+          display: false,
         },
         y: {
           beginAtZero: true,
           stacked: true,
           grid: {
-            display: false
+            display: false,
           },
           ticks: {
             color: ['#FFF'],
@@ -65,7 +65,7 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
       backgroundColor: ['rgba(54, 162, 235, 0.4)'],
       borderColor: ['rgb(54, 162, 235)'],
       borderWidth: 1,
-      order: 1
+      order: 1,
     }, {
       label: 'Recommended Daily',
       data: [64],
@@ -79,22 +79,22 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
     data: dailyWaterData,
     options: {
       plugins: {
-        legend: false
+        legend: false,
       },
       indexAxis: 'y',
       scales: {
         x: {
           grid: {
-            display: false
+            display: false,
           },
-          display: false
+          display: false,
         },
         y: {
           title: false,
           beginAtZero: true,
           stacked: true,
           grid: {
-            display: false
+            display: false,
           },
           ticks: {
             color: ['#FFF'],
@@ -115,12 +115,12 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
       backgroundColor: ['rgba(235, 179, 35, 0.4)'],
       borderColor: ['rgb(235, 179, 35)'],
       borderWidth: 1,
-      order: 1
+      order: 1,
     }, {
       label: 'Goal',
       data: [currentUser.dailyStepGoal],
       backgroundColor: ['rgba(255, 255, 255, 0.8)'],
-      order: 1
+      order: 1,
     }]
   };
 
@@ -129,22 +129,22 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
     data: dailyStepsData,
     options: {
       plugins: {
-        legend: false
+        legend: false,
       },
       indexAxis: 'y',
       scales: {
         x: {
           grid: {
-            display: false
+            display: false,
           },
-          display: false
+          display: false,
         },
         y: {
           title: false,
           beginAtZero: true,
           stacked: true,
           grid: {
-            display: false
+            display: false,
           },
           ticks: {
             color: ['#FFF'],
@@ -164,12 +164,12 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
       backgroundColor: ['rgba(96, 23, 116, 0.4)'],
       borderColor: ['rgb(96, 23, 116)'],
       borderWidth: 1,
-      order: 1
+      order: 1,
     }, {
       label: 'Recommended Nightly',
       data: [7],
       backgroundColor: ['rgba(255, 255, 255, 0.8)'],
-      order: 1
+      order: 1,
     }]
   };
 
@@ -178,22 +178,22 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
     data: dailySleepData,
     options: {
       plugins: {
-        legend: false
+        legend: false,
       },
       indexAxis: 'y',
       scales: {
         x: {
           grid: {
-            display: false
+            display: false,
           },
-          display: false
+          display: false,
         },
         y: {
           title: false,
           beginAtZero: true,
           stacked: true,
           grid: {
-            display: false
+            display: false,
           },
           ticks: {
             color: ['#FFF'],
@@ -233,7 +233,7 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
       plugins: {
         legend: {
           labels: {
-            color: ['#FFF']
+            color: ['#FFF'],
           }
         }
       },
@@ -241,15 +241,15 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
       scales: {
         x: {
           grid: {
-            display: false
+            display: false,
           },
-          display: false
+          display: false,
         },
         y: {
           beginAtZero: true,
           stacked: true,
           grid: {
-            display: false
+            display: false,
           },
           ticks: {
             color: ['#FFF'],
@@ -258,12 +258,9 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
       }
     }});
 
-
     //WEEKLY SLEEP
-
     let weeklySleepChartData = userSleep.getWeeklyHrsSlept(currentUser, todaysDate);
     let weeklySleepQualData = userSleep.getWeeklySleepQual(currentUser, todaysDate);
-
     var weeklySleepChart = document.getElementById('weeklySleepChart').getContext('2d');
 
     const weeklySleepQuality = weeklySleepQualData;
@@ -276,13 +273,13 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
         backgroundColor: ['rgba(96, 23, 116, 0.4)'],
         borderColor: ['rgb(96, 23, 116)'],
         borderWidth: 1,
-        order: 2
+        order: 2,
       }, {
         type: 'bar',
         label: 'Recommended Nightly',
         data: [7, 7, 7, 7, 7, 7, 7],
         backgroundColor: ['rgba(255, 255, 255, 0.8)'],
-        order: 3
+        order: 3,
       }, {
         type: 'line',
         label: 'Sleep Quality',
@@ -292,7 +289,7 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
         borderWidth: 8,
         tension: 0.3,
         backgroundColor: ['rgb(96, 23, 116)'],
-        order: 1
+        order: 1,
       }]
     };
 
@@ -303,7 +300,7 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
         plugins: {
           legend: {
             labels: {
-              color: ['#FFF']
+              color: ['#FFF'],
             }
           }
         },
@@ -314,15 +311,15 @@ const displayCharts = (userh20, userSleep, userActivity, currentUser, todaysDate
         scales: {
           x: {
             grid: {
-              display: false
+              display: false,
             } ,
-            display: false
+            display: false,
             },
           y: {
             beginAtZero: true,
             stacked: true,
             grid: {
-              display: false
+              display: false,
             },
             ticks: {
               color: ['#FFF'],
