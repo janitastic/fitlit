@@ -144,7 +144,6 @@ const captureOunces = (currentUser) => {
 const captureHrsSlept = (currentUser) => {
   if (sleepInput.value && sleepInput.value > 1 && sleepInput.value <= 24) {
     todaysSleep = sleepInput.value;
-    console.log('line 124', sleepInput.value);
   } else {
     sleepInput.value = null;
     return false;
