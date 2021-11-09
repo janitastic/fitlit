@@ -45,12 +45,10 @@ import {
   fetchHydrationData,
 } from './apiCalls.js';
 
-
 const fetchAllDataOnLoad = () => {
   Promise.all([fetchUserData(), fetchSleepData(), fetchActivityData(), fetchHydrationData()])
     .then(allUserData => parseData(allUserData))
 };
-
 
 const parseData = (allUserData) => {
   userData = allUserData[0].userData;
@@ -67,18 +65,14 @@ const instantiateClasses = (users, sleep, activity, h20Data) => {
   }
   userSleep = new Sleep(sleep);
   userActivity = new Activity(activity);
-  console.log('scripts activity>>',userActivity)
   userh20 = new Hydration(h20Data);
-  console.log(">>>>Current User instantiate", currentUser)
   refreshDisplay(userRepository, userh20, userSleep, userActivity, currentUser, todaysDate);
 };
-
 
 //EVENT LISTENERS
 window.addEventListener('load', () => {
   fetchAllDataOnLoad();
 });
-
 
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length)
@@ -86,7 +80,6 @@ const getRandomIndex = (array) => {
 
 const getRandomUser = () => {
   currentUser = new User(userRepository.users[getRandomIndex(userRepository.users)]);
-  console.log('randomize>>>>', currentUser)
-}
+};
 
 export {currentUser};

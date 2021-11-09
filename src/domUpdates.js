@@ -60,7 +60,7 @@ const displayChartFallbacks = (currentUser, userActivity, userh20, userSleep, to
   weeklyWaterFallback.innerText = `In the last seven days, you've drank ${weeklyWater[0]} ounces, ${weeklyWater[1]} ounces, ${weeklyWater[2]} ounces, ${weeklyWater[3]} ounces, ${weeklyWater[4]} ounces, ${weeklyWater[5]} ounces, and ${weeklyWater[6]} ounces!`;
   let weeklySleep = userSleep.getWeeklyHrsSlept(currentUser, todaysDate);
   weeklySleepFallback.innerText = `In the last seven days, you've slept ${weeklySteps[0]} hours, ${weeklySleep[1]} hours, ${weeklySleep[2]} hours, ${weeklySleep[3]} hours, ${weeklySleep[4]} hours, ${weeklySleep[5]} hours, and ${weeklySleep[6]} hours!`;
-}
+};
 
 const displayUserAvgOz = (userh20, currentUser) => {
   avgUserOzOverview.innerText = userh20.getAvgOuncesPerDay(currentUser);
@@ -96,7 +96,7 @@ const displayUserWeeklyActivity = (userActivity, currentUser, todaysDate) => {
   let weeklyActiveMinutes = userActivity.getWeeklyTotalActiveMinutes(currentUser, todaysDate);
   userWeeklyFlightsClimbed.innerText = `${weeklyFlightsClimbed}`;
   userWeeklyActiveMinutes.innerText = `${weeklyActiveMinutes} min.`;
-}
+};
 
 const displayAvgCommWater = (userh20, todaysDate) => {
   let numOunces = userh20.calculateAvgCommDailyOunces(todaysDate);
@@ -138,7 +138,7 @@ const captureOunces = (currentUser) => {
   } else {
     ouncesInput.value = '';
   }
-  return todaysOunces;
+    return todaysOunces;
 };
 
 const captureHrsSlept = (currentUser) => {
@@ -149,7 +149,7 @@ const captureHrsSlept = (currentUser) => {
     sleepInput.value = null;
     return false;
   }
-  return todaysSleep;
+    return todaysSleep;
 };
 
 const captureQuality = (currentUser) => {
@@ -159,7 +159,7 @@ const captureQuality = (currentUser) => {
     qualityInput.value = 3;
     return false
   }
-  return todaysQuality;
+    return todaysQuality;
 };
 
 const clearActivityInputs = () => {
@@ -277,7 +277,6 @@ const displayQualityRange = () => {
   qualityRange.innerText = qualityInput.value;
 };
 
-
 //QUERY SELECTORS
 const greeting = document.getElementById('firstName');
 const userSteps = document.getElementById('userSteps');
@@ -359,7 +358,6 @@ let domUpdates = () => {
     hide(waterBtnView);
     hide(waterMessage);
   });
-
   logSleep.addEventListener('click', () => {
     showSleepForm();
     clearSleepInputs();
@@ -396,11 +394,11 @@ let domUpdates = () => {
   //HELPER FUNCTIONS
   function hide(element) {
     element.classList.add('hidden');
-  }
+  };
 
   function show(element) {
     element.classList.remove('hidden');
-  }
+  };
 
   //FORM FUNCTIONS
   function showWaterForm() {
@@ -466,9 +464,7 @@ let domUpdates = () => {
      hide(logSleep);
     }
   };
-
-
-}; 
+};
 
 export default domUpdates;
 export {
